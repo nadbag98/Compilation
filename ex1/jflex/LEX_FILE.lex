@@ -70,10 +70,18 @@ import java_cup.runtime.*;
 /***********************/
 /* MACRO DECALARATIONS */
 /***********************/
-LineTerminator	= \r|\n|\r\n
+LineTerminator		= \r|\n|\r\n
 WhiteSpace		= {LineTerminator} | [ \t\f]
-INTEGER			= 0 | [1-9][0-9]*
-ID				= [a-z]+
+INTEGER			= (3276[0-7])|(327[0-5][0-9])|(32[0-6][0-9][0-9])|(3[0-1][0-9][0-9][0-9])|([12][0-9]{4})|([1-9][0-9]?[0-9]?[0-9]?)|0
+LETTERS			= [a-zA-Z]
+ID			= {LETTERS}[a-zA-z0-9]*
+LComFriend		= {LETTERS} | [0-9] | [ \t\f] | [\(\)\[\]\{\}\?\!\+\-\*\/\.\;] 
+BComFriend		= {LETTERS} | [0-9] | [ \t\f] | [\(\)\[\]\{\}\?\!\+\-\/\.\;]?!\*\/
+LCOMMENT		= \/\/{LComFriend}*\n
+BCOMMENT		= \/\*(\*(?!\/)|BComFriend)*\*\/ 
+COMMENT			= {LCOMMENT} | {BCOMMENT}
+STRING			= "LETTERS*"
+
 
 /******************************/
 /* DOLAR DOLAR - DON'T TOUCH! */
@@ -92,15 +100,35 @@ ID				= [a-z]+
 /**************************************************************/
 
 <YYINITIAL> {
-
-"+"					{ return symbol(TokenNames.PLUS);}
-"-"					{ return symbol(TokenNames.MINUS);}
-"PPP"				{ return symbol(TokenNames.TIMES);}
-"/"					{ return symbol(TokenNames.DIVIDE);}
-"("					{ return symbol(TokenNames.LPAREN);}
-")"					{ return symbol(TokenNames.RPAREN);}
-{INTEGER}			{ return symbol(TokenNames.NUMBER, new Integer(yytext()));}
-{ID}				{ return symbol(TokenNames.ID,     new String( yytext()));}   
-{WhiteSpace}		{ /* just skip what was found, do nothing */ }
-<<EOF>>				{ return symbol(TokenNames.EOF);}
+{WhiteSpace}		{}
+{COMMENT}		{}
+"class"			{ return symbol(TokenNames.CLASS);}
+"nil"			{ return symbol(TokenNames.NIL);}
+"array"			{ return symbol(TokenNames.ARRAY);}
+"while"			{ return symbol(TokenNames.WHILE);}
+"extends"		{ return symbol(TokenNames.EXTENDS);}
+"return"		{ return symbol(TokenNames.RETURN);}
+"new"			{ return symbol(TokenNames.NEW);}
+"if"			{ return symbol(TokenNames.IF);}
+"["			{ return symbol(TokenNames.LBRACK);}
+"]"			{ return symbol(TokenNames.RBRACK);}
+"{"			{ return symbol(TokenNames.LBRACE);}
+"}"			{ return symbol(TokenNames.RBRACE);}
+","			{ return symbol(TokenNames.COMMA);}
+"."			{ return symbol(TokenNames.DOT);}
+";"			{ return symbol(TokenNames.SEMICOLON);}
+":="			{ return symbol(TokenNames.ASSIGN);}
+"="			{ return symbol(TokenNames.EQ);}
+"<"			{ return symbol(TokenNames.LT);}
+">"			{ return symbol(TokenNames.GT);}
+"+"			{ return symbol(TokenNames.PLUS);}
+"-"			{ return symbol(TokenNames.MINUS);}
+"*"			{ return symbol(TokenNames.TIMES);}
+"("			{ return symbol(TokenNames.LPAREN);}
+")"			{ return symbol(TokenNames.RPAREN);}
+{INTEGER}		{ return symbol(TokenNames.INT, new Integer(yytext()));}
+{ID}			{ return symbol(TokenNames.ID,  new String( yytext()));}
+{STRING}		{ return symbol(TokenNames.STRING,     new String( yytext()));}
+"/"			{ return symbol(TokenNames.DIVIDE);}
+<<EOF>>			{ return symbol(TokenNames.EOF);}
 }
