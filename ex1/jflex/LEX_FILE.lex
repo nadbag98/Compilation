@@ -78,11 +78,17 @@ LETTERS			= [a-zA-Z]
 ID			= {LETTERS}[a-zA-z0-9]*
 LComFriend		= {LETTERS} | [0-9] | [ \t\f] | [\(\)\[\]\{\}\?\!\+\-\*\/\.\;] 
 BComFriend		= {LETTERS} | [0-9] | [ \t\f] | [\(\)\[\]\{\}\?\!\+\-\/\.\;]?!\*\/
+
+//BCONTENT		= \*?![\/]
 LCOMMENT		= \/\/{LComFriend}*\n
-BCOMMENT		= \/\*(\*(?!\/)|BComFriend)*\*\/ 
+
+BCOMMENT		= \/\*(\*(?!\/)|{BComFriend})*\*\/ 
+
+//BCOMMENT		= \/\*{BCONTENT}*\*\/ 
 COMMENT			= {LCOMMENT} | {BCOMMENT}
 STRING			= "LETTERS*"
 DIVIDE			= \/(?![\/\*])
+//DIVIDE			= \/?![\/\*]
 CATCHALL		= .
 
 
