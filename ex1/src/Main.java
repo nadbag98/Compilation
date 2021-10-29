@@ -150,7 +150,7 @@ public class Main
 					case 28:
 						tokenName = "INT";
 						//if (Integer.parseInt(s.value) < 32768){
-						if (Integer.parseInt(s.toString) < 32768){
+						if (Integer.parseInt(s.value.toString()) < 32768){
 							withValue = true;
 							break;
 						}
