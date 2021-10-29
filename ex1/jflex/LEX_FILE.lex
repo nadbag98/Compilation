@@ -77,26 +77,23 @@ INTEGER			= 0 | [1-9][0-9]*
 LETTERS			= [a-zA-Z]
 ID			= {LETTERS}[a-zA-z0-9]*
 LComFriend		= {LETTERS} | [0-9] | [ \t\f] | [\(\)\[\]\{\}\?\!\+\-\*\/\.\;] 
+
 //BComFriend		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\/\.\;]?!\*\/
 
 NOTSLASH		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\*\.\;]
-
-NOTSTARSLASH		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\.\;]
 
 BComFriend		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\/\.\;] | \*{NOTSLASH}
 
 LCOMMENT		= \/\/{LComFriend}*{LineTerminator}
 
 //BCOMMENT		= \/\*(\*(?!\/)|{BComFriend})*\*\/ 
+
 BCOMMENT		= \/\*{BComFriend}*\*\/ 
 BADBCOM			= \/\*{BComFriend}*
 LASTLCOM		= \/\/{LComFriend}*
 
-COMMENT			= {LCOMMENT} | {BCOMMENT}
+COMMENT			= {LCOMMENT} | {BCOMMENT} | {LASTLCOM}
 STRING			= "LETTERS*"
-
-//DIVIDE			= \/(?![\/\*])
-//DIVIDE			= \//[^\*]
 
 DIVIDE 			= \/
 CATCHALL		= .
@@ -148,7 +145,8 @@ CATCHALL		= .
 {INTEGER}		{ return symbol(TokenNames.INT, new Integer(yytext()));}
 {ID}			{ return symbol(TokenNames.ID,  new String( yytext()));}
 {STRING}		{ return symbol(TokenNames.STRING,     new String( yytext()));}
-DIVIDE			{ return symbol(TokenNames.DIVIDE);}
-CATCHALL		{ return symbol(TokenNames.ERROR);}
+{BADCOM}		{ return symbol(TokenNames.ERROR);}
+{DIVIDE}		{ return symbol(TokenNames.DIVIDE);}
+{CATCHALL}		{ return symbol(TokenNames.ERROR);}
 <<EOF>>			{ return symbol(TokenNames.EOF);}
 }
