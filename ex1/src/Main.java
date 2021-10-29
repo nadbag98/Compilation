@@ -149,7 +149,7 @@ public class Main
 						break;
 					case 28:
 						tokenName = "INT";
-						if (Integer.valueOf(s.value) < 32768){
+						if (Integer.parseInt(s.value) < 32768){
 							withValue = true;
 							break;
 						}
