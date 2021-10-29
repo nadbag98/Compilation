@@ -149,7 +149,6 @@ public class Main
 						break;
 					case 28:
 						tokenName = "INT";
-						//if (Integer.parseInt(s.value) < 32768){
 						if (Integer.parseInt(s.value.toString()) < 32768){
 							withValue = true;
 							break;
@@ -161,18 +160,20 @@ public class Main
 						file_writer.print("ERROR");
 						is_error = true;
 				}
-				file_writer.print(tokenName);
-				if (withValue) {
-					file_writer.print("(");
-					file_writer.print(s.value);
-					file_writer.print(")");
-				}
-				file_writer.print("[");
-				file_writer.print(l.getLine());
-				file_writer.print(",");
-				file_writer.print(l.getTokenStartPosition());
-				file_writer.print("]\n");
+				if (!is_error) {
+					file_writer.print(tokenName);
 				
+					if (withValue) {
+						file_writer.print("(");
+						file_writer.print(s.value);
+						file_writer.print(")");
+					}
+					file_writer.print("[");
+					file_writer.print(l.getLine());
+					file_writer.print(",");
+					file_writer.print(l.getTokenStartPosition());
+					file_writer.print("]\n");
+				}
 				/***********************/
 				/* [8] Read next token */
 				/***********************/
