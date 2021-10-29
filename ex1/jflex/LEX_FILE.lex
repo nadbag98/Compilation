@@ -72,21 +72,16 @@ import java_cup.runtime.*;
 /***********************/
 LineTerminator		= \r|\n|\r\n
 WhiteSpace		= {LineTerminator} | [ \t\f]
-//INTEGER			= (3276[0-7])|(327[0-5][0-9])|(32[0-6][0-9][0-9])|(3[0-1][0-9][0-9][0-9])|([12][0-9]{4})|([1-9][0-9]?[0-9]?[0-9]?)|0
 INTEGER			= 0 | [1-9][0-9]*
 LETTERS			= [a-zA-Z]
 ID			= {LETTERS}[a-zA-z0-9]*
 LComFriend		= {LETTERS} | [0-9] | [ \t\f] | [\(\)\[\]\{\}\?\!\+\-\*\/\.\;] 
-
-//BComFriend		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\/\.\;]?!\*\/
 
 NOTSLASH		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\*\.\;]
 
 BComFriend		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\/\.\;] | \*{NOTSLASH}
 
 LCOMMENT		= \/\/{LComFriend}*{LineTerminator}
-
-//BCOMMENT		= \/\*(\*(?!\/)|{BComFriend})*\*\/ 
 
 BCOMMENT		= \/\*{BComFriend}*\*\/ 
 BADCOM			= \/\*{BComFriend}*
