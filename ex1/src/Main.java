@@ -148,6 +148,9 @@ public class Main
 						file_writer.close();
 						file_writer = new PrintWriter(outputFilename);
 						file_writer.print("ERROR");
+						file_writer.print(l.getLine());
+						file_writer.print(",");
+						file_writer.print(l.getTokenStartPosition());
 						is_error = true;
 				}
 				if (!is_error) {
