@@ -14,8 +14,9 @@ public class Main
 		PrintWriter file_writer;
 		String inputFilename = argv[0];
 		String outputFilename = argv[1];
+		String tokenName;
 		boolean is_error = false;
-		
+		boolean withValue = false;
 		try
 		{
 			/********************************/
@@ -57,14 +58,113 @@ public class Main
 				/*********************/
 				/* [7] Print to file */
 				/*********************/
-				if (s.sym == TokenNames.ERROR){
-					file_writer.close();
-					file_writer = new PrintWriter(outputFilename);
-					file_writer.print("ERROR");
-					is_error = true;
+				
+				switch (s.sym) {
+					case 1:
+						tokenName = "PLUS";
+						break;
+					case 2:
+						tokenName = "MINUS";
+						break;
+					case 3:
+						tokenName = "TIMES";
+						break;
+					case 4:
+						tokenName = "DIVIDE";
+						break;
+					case 5:
+						tokenName = "LPAREN";
+						break;
+					case 6:
+						tokenName = "RPAREN";
+						break;
+					case 7:
+						tokenName = "NUMBER";
+						withValue = true;
+						break;
+					case 8:
+						tokenName = "ID";
+						withValue = true;
+						break;
+					case 9:
+						tokenName = "LBRACK";
+						break;
+					case 10:
+						tokenName = "RBRACK";
+						break;
+					case 11:
+						tokenName = "LBRACE";
+						break;
+					case 12:
+						tokenName = "RBRACE";
+						break;
+					case 13:
+						tokenName = "NIL";
+						break;
+					case 14:
+						tokenName = "COMMA";
+						break;
+					case 15:
+						tokenName = "DOT";
+						break;
+					case 16:
+						tokenName = "SEMICOLON";
+						break;
+					case 17:
+						tokenName = "ASSIGN";
+						break;
+					case 18:
+						tokenName = "EQ";
+						break;
+					case 19:
+						tokenName = "LT";
+						break;
+					case 20:
+						tokenName = "GT";
+						break;
+					case 21:
+						tokenName = "ARRAY";
+						break;
+					case 22:
+						tokenName = "CLASS";
+						break;
+					case 23:
+						tokenName = "EXTENDS";
+						break;
+					case 24:
+						tokenName = "RETURN";
+						break;
+					case 25:
+						tokenName = "WHILE";
+						break;
+					case 26:
+						tokenName = "IF";
+						break;
+					case 27:
+						tokenName = "NEW";
+						break;
+					case 29:
+						tokenName = "STRING";
+						withValue = true;
+						break;
+					case 28:
+						tokenName = "INT";
+						if (Integer.valueOf(s.value) < 32768){
+							withValue = true;
+							break;
+						}
+					default:
+						tokenName = "ERROR";
+						file_writer.close();
+						file_writer = new PrintWriter(outputFilename);
+						file_writer.print("ERROR");
+						is_error = true;
 				}
-				switch(s.sym) {
-						
+				file_writer.print(tokenName);
+				if (withValue) {
+					file_writer.print("(");
+					file_writer.print(s.value);
+					file_writer.print(")");
 				}
 				file_writer.print("[");
 				file_writer.print(l.getLine());
@@ -75,6 +175,7 @@ public class Main
 				/***********************/
 				/* [8] Read next token */
 				/***********************/
+				withValue = false;
 				s = l.next_token();
 			}
 			
