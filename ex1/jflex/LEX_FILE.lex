@@ -72,7 +72,8 @@ import java_cup.runtime.*;
 /***********************/
 LineTerminator		= \r|\n|\r\n
 WhiteSpace		= {LineTerminator} | [ \t\f]
-INTEGER			= (3276[0-7])|(327[0-5][0-9])|(32[0-6][0-9][0-9])|(3[0-1][0-9][0-9][0-9])|([12][0-9]{4})|([1-9][0-9]?[0-9]?[0-9]?)|0
+//INTEGER			= (3276[0-7])|(327[0-5][0-9])|(32[0-6][0-9][0-9])|(3[0-1][0-9][0-9][0-9])|([12][0-9]{4})|([1-9][0-9]?[0-9]?[0-9]?)|0
+INTEGER			= 0 | [1-9][0-9]*
 LETTERS			= [a-zA-Z]
 ID			= {LETTERS}[a-zA-z0-9]*
 LComFriend		= {LETTERS} | [0-9] | [ \t\f] | [\(\)\[\]\{\}\?\!\+\-\*\/\.\;] 
@@ -81,6 +82,8 @@ LCOMMENT		= \/\/{LComFriend}*\n
 BCOMMENT		= \/\*(\*(?!\/)|BComFriend)*\*\/ 
 COMMENT			= {LCOMMENT} | {BCOMMENT}
 STRING			= "LETTERS*"
+DIVIDE			= \/(?![\/\*])
+CATCHALL		= .
 
 
 /******************************/
@@ -129,6 +132,7 @@ STRING			= "LETTERS*"
 {INTEGER}		{ return symbol(TokenNames.INT, new Integer(yytext()));}
 {ID}			{ return symbol(TokenNames.ID,  new String( yytext()));}
 {STRING}		{ return symbol(TokenNames.STRING,     new String( yytext()));}
-"/"			{ return symbol(TokenNames.DIVIDE);}
+DIVIDE			{ return symbol(TokenNames.DIVIDE);}
+CATCHALL		{ return symbol(TokenNames.ERROR);}
 <<EOF>>			{ return symbol(TokenNames.EOF);}
 }
