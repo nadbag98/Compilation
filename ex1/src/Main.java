@@ -44,16 +44,6 @@ public class Main
 			/********************************/
 			while (s.sym != TokenNames.EOF && !is_error)
 			{
-				/************************/
-				/* [6] Print to console */
-				/************************/
-				System.out.print("[");
-				System.out.print(l.getLine());
-				System.out.print(",");
-				System.out.print(l.getTokenStartPosition());
-				System.out.print("]:");
-				System.out.print(s.value);
-				System.out.print("\n");
 				
 				/*********************/
 				/* [7] Print to file */
