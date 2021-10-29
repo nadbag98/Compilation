@@ -83,19 +83,22 @@ NOTSLASH		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\*\.\;]
 
 NOTSTARSLASH		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\.\;]
 
-BComFriend		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\/\.\;] | \*/{NOTSLASH}
+BComFriend		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\/\.\;] | \*{NOTSLASH}
 
-LCOMMENT		= \/\/{LComFriend}*\n
+LCOMMENT		= \/\/{LComFriend}*{LineTerminator}
 
 //BCOMMENT		= \/\*(\*(?!\/)|{BComFriend})*\*\/ 
 BCOMMENT		= \/\*{BComFriend}*\*\/ 
-
+BADBCOM			= \/\*{BComFriend}*
+LASTLCOM		= \/\/{LComFriend}*
 
 COMMENT			= {LCOMMENT} | {BCOMMENT}
 STRING			= "LETTERS*"
+
 //DIVIDE			= \/(?![\/\*])
 //DIVIDE			= \//[^\*]
-DIVIDE 			= \//{NOTSTARSLASH}
+
+DIVIDE 			= \/
 CATCHALL		= .
 
 
