@@ -93,7 +93,7 @@ BADCOM			= \/\*{BComFriend}*
 LASTLCOM		= \/\/{LComFriend}*
 
 COMMENT			= {LCOMMENT} | {BCOMMENT} | {LASTLCOM}
-STRING			= "{LETTERS}*"
+STRING			= \"{LETTERS}*\"
 
 DIVIDE 			= \/
 CATCHALL		= .
