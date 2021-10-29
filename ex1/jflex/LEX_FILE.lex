@@ -89,7 +89,7 @@ LCOMMENT		= \/\/{LComFriend}*{LineTerminator}
 //BCOMMENT		= \/\*(\*(?!\/)|{BComFriend})*\*\/ 
 
 BCOMMENT		= \/\*{BComFriend}*\*\/ 
-BADBCOM			= \/\*{BComFriend}*
+BADCOM			= \/\*{BComFriend}*
 LASTLCOM		= \/\/{LComFriend}*
 
 COMMENT			= {LCOMMENT} | {BCOMMENT} | {LASTLCOM}
