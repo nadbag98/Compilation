@@ -85,10 +85,12 @@ LCOMMENT		= \/\/{LComFriend}*\n
 BCOMMENT		= \/\*(\*(?!\/)|{BComFriend})*\*\/ 
 
 //BCOMMENT		= \/\*{BCONTENT}*\*\/ 
+
 COMMENT			= {LCOMMENT} | {BCOMMENT}
 STRING			= "LETTERS*"
-DIVIDE			= \/(?![\/\*])
-//DIVIDE			= \/?![\/\*]
+//DIVIDE			= \/(?![\/\*])
+DIVIDE			= \/{TRY}
+TRY			= (?![\/\*])
 CATCHALL		= .
 
 
