@@ -171,7 +171,7 @@ public class Main
 				file_writer.print(l.getLine());
 				file_writer.print(",");
 				file_writer.print(l.getTokenStartPosition());
-				file_writer.print("]:\n");
+				file_writer.print("]\n");
 				
 				/***********************/
 				/* [8] Read next token */
