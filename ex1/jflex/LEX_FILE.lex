@@ -79,7 +79,8 @@ LComFriend		= {LETTERS} | [0-9] | [ \t\f] | [\(\)\[\]\{\}\?\!\+\-\*\/\.\;]
 
 NOTSLASH		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\*\.\;]
 
-BComFriend		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\/\.\;] | \*/{NOTSLASH}
+//BComFriend		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\/\.\;] | \*/{NOTSLASH}
+BComFriend		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\/\.\;] | \*/[0-9 \t\fa-zA-Z\(\)\[\]\{\}\?\!\+\-\/\.\;]
 
 LCOMMENT		= \/\/{LComFriend}*{LineTerminator}
 
