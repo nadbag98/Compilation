@@ -77,7 +77,7 @@ LETTERS			= [a-zA-Z]
 ID			= {LETTERS}[a-zA-z0-9]*
 LComFriend		= {LETTERS} | [0-9] | [ \t\f] | [\(\)\[\]\{\}\?\!\+\-\*\/\.\;] 
 
-NOTSLASHNOTSTAR = {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\.\;]
+NOTSLASHNOTSTAR 	= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\.\;]
 
 BComFriend		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\/\.\;] | (\*)+{NOTSLASHNOTSTAR}
 
