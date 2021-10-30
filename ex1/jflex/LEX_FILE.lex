@@ -77,22 +77,23 @@ LETTERS			= [a-zA-Z]
 ID			= {LETTERS}[a-zA-z0-9]*
 LComFriend		= {LETTERS} | [0-9] | [ \t\f] | [\(\)\[\]\{\}\?\!\+\-\*\/\.\;] 
 
-NOTSLASH		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\*\.\;]
+NOTSLASHNOTSTAR = {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\.\;]
 
-BComFriend		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\/\.\;] | \*/{NOTSLASH}
+BComFriend		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\/\.\;] | (\*)+{NOTSLASHNOTSTAR}
 
 LCOMMENT		= \/\/{LComFriend}*{LineTerminator}
 
-BCOMMENT		= \/\*{BComFriend}*\*\/ 
+BCOMMENT		= \/\*{BComFriend}*(\*)+\/ 
 BADCOM			= \/\*{BComFriend}*
 LASTLCOM		= \/\/{LComFriend}*
 
-COMMENT			= {LCOMMENT} | {BCOMMENT} | {LASTLCOM}
+ONLYSTARS		= \/\*(\*)*\*\/
+
+COMMENT			= {LCOMMENT} | {BCOMMENT} | {LASTLCOM} | {ONLYSTARS}
 STRING			= \"{LETTERS}*\"
 
 DIVIDE 			= \/
 CATCHALL		= .
-
 
 /******************************/
 /* DOLAR DOLAR - DON'T TOUCH! */
