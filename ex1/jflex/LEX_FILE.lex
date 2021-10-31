@@ -139,7 +139,7 @@ CATCHALL		= .
 {INTEGER}		{ return symbol(TokenNames.INT, new Integer(yytext()));}
 {ID}			{ return symbol(TokenNames.ID,  new String( yytext()));}
 {STRING}		{ return symbol(TokenNames.STRING,     new String( yytext()));}
-{BADCOM}		{ return symbol(TokenNames.ERROR);}
+{BADCOMMENT}		{ return symbol(TokenNames.ERROR);}
 {DIVIDE}		{ return symbol(TokenNames.DIVIDE);}
 {CATCHALL}		{ return symbol(TokenNames.ERROR);}
 <<EOF>>			{ return symbol(TokenNames.EOF);}
