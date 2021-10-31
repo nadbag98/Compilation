@@ -72,6 +72,7 @@ import java_cup.runtime.*;
 /***********************/
 LineTerminator		= \r|\n|\r\n
 WhiteSpace		= {LineTerminator} | [ \t\f]
+BADINT			= 0[0-9]+
 INTEGER			= 0 | [1-9][0-9]*
 LETTERS			= [a-zA-Z]
 ID			= {LETTERS}[a-zA-z0-9]*
@@ -138,6 +139,7 @@ CATCHALL		= .
 "*"			{ return symbol(TokenNames.TIMES);}
 "("			{ return symbol(TokenNames.LPAREN);}
 ")"			{ return symbol(TokenNames.RPAREN);}
+{BADINT}		{ return symbol(TokenNames.ERROR);}
 {INTEGER}		{ return symbol(TokenNames.INT, new Integer(yytext()));}
 {ID}			{ return symbol(TokenNames.ID,  new String( yytext()));}
 {STRING}		{ return symbol(TokenNames.STRING,     new String( yytext()));}
