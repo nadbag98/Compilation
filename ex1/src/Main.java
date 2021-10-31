@@ -137,6 +137,12 @@ public class Main
 						tokenName = "STRING";
 						withValue = true;
 						break;
+					case 31:
+						tokenName = "TYPE_INT";
+						break;
+					case 32:
+						tokenName = "TYPE_STRING";
+						break;
 					case 28:
 						tokenName = "INT";
 						if (Integer.parseInt(s.value.toString()) < 32768){
