@@ -72,7 +72,7 @@ import java_cup.runtime.*;
 /***********************/
 LineTerminator		= \r|\n|\r\n
 WhiteSpace		= {LineTerminator} | [ \t\f]
-INTEGER			= 0{WhiteSpace}| [1-9][0-9]*
+INTEGER			= 0 | [1-9][0-9]*
 LETTERS			= [a-zA-Z]
 ID			= {LETTERS}[a-zA-z0-9]*
 LComFriend		= {LETTERS} | [0-9] | [ \t\f] | [\(\)\[\]\{\}\?\!\+\-\*\/\.\;] 
