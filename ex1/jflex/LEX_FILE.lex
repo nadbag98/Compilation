@@ -77,22 +77,14 @@ INTEGER			= 0 | [1-9][0-9]*
 LETTERS			= [a-zA-Z]
 ID			= {LETTERS}[a-zA-z0-9]*
 LComFriend		= {LETTERS} | [0-9] | [ \t\f] | [\(\)\[\]\{\}\?\!\+\-\*\/\.\;] 
-
 NOTSLASHNOTSTAR 	= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\.\;]
-
 BComFriend		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\/\.\;] | (\*)+{NOTSLASHNOTSTAR}
-
 LCOMMENT		= \/\/{LComFriend}*{LineTerminator}
-
 BCOMMENT		= \/\*{BComFriend}*(\*)+\/ 
 BADCOM			= \/\*{BComFriend}*
-LASTLCOM		= \/\/{LComFriend}*
-
 ONLYSTARS		= \/\*(\*)*\*\/
-
-COMMENT			= {LCOMMENT} | {BCOMMENT} | {LASTLCOM} | {ONLYSTARS}
+COMMENT			= {LCOMMENT} | {BCOMMENT} | {ONLYSTARS}
 STRING			= \"{LETTERS}*\"
-
 DIVIDE 			= \/
 CATCHALL		= .
 
