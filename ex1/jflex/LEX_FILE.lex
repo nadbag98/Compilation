@@ -138,7 +138,7 @@ CATCHALL		= .
 "*"			{ return symbol(TokenNames.TIMES);}
 "("			{ return symbol(TokenNames.LPAREN);}
 ")"			{ return symbol(TokenNames.RPAREN);}
-{INTEGER}		{ if (yytext()[0].equals("0") && yytext().length() > 1) {
+{INTEGER}		{ if (yytext().charAt(0) == '0' && yytext().length() > 1) {
 				return symbol(TokenNames.ERROR);
 				} else return symbol(TokenNames.INT, new Integer(yytext()));}
 {ID}			{ return symbol(TokenNames.ID,  new String( yytext()));}
