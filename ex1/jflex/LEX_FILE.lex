@@ -124,7 +124,7 @@ CATCHALL		= .
 "new"			{ return symbol(TokenNames.NEW);}
 "if"			{ return symbol(TokenNames.IF);}
 "int"			{ return symbol(TokenNames.TYPE_INT);}
-"string"		{ return symbol(TokenNames.TYPE_STRING;}
+"string"		{ return symbol(TokenNames.TYPE_STRING);}
 "["			{ return symbol(TokenNames.LBRACK);}
 "]"			{ return symbol(TokenNames.RBRACK);}
 "{"			{ return symbol(TokenNames.LBRACE);}
