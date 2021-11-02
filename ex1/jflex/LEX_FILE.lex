@@ -82,7 +82,8 @@ BComFriend		= {LETTERS} | [0-9] | {WhiteSpace} | [\(\)\[\]\{\}\?\!\+\-\/\.\;] | 
 LCOMMENT		= \/\/{LComFriend}*{LineTerminator}
 BCOMMENT		= \/\*{BComFriend}*(\*)+\/ 
 BADBCOM			= \/\*{BComFriend}*
-BADLCOM			= \/\/{LComFriend}*(!{LComFriend})+{LComFriend}*{LineTerminator}
+LCOMENEMY		= [\,\:\=\<\>]
+BADLCOM			= \/\/{LComFriend}*{LCOMENEMY}+{LComFriend}*{LineTerminator}
 BADCOMMENT		= {BADBCOM} | {BADLCOM}
 ONLYSTARS		= \/\*(\*)*\*\/
 COMMENT			= {LCOMMENT} | {BCOMMENT} | {ONLYSTARS}
