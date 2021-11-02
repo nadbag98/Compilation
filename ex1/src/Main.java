@@ -17,6 +17,7 @@ public class Main
 		String tokenName;
 		boolean is_error = false;
 		boolean withValue = false;
+		boolean notFirst = false;
 		try
 		{
 			/********************************/
@@ -151,19 +152,16 @@ public class Main
 						}
 					default:
 						tokenName = "ERROR";
-						//file_writer.close();
-						//file_writer = new PrintWriter(outputFilename);
+						file_writer.close();
+						file_writer = new PrintWriter(outputFilename);
 						file_writer.print("ERROR");
-						file_writer.print("[");
-						file_writer.print(l.getLine());
-						file_writer.print(",");
-						file_writer.print(l.getTokenStartPosition());
-						file_writer.print("]\n");
 						is_error = true;
 				}
 				if (!is_error) {
+					if (notFirst){
+						file_writer.print("\n");
+					}
 					file_writer.print(tokenName);
-				
 					if (withValue) {
 						file_writer.print("(");
 						file_writer.print(s.value);
@@ -173,12 +171,13 @@ public class Main
 					file_writer.print(l.getLine());
 					file_writer.print(",");
 					file_writer.print(l.getTokenStartPosition());
-					file_writer.print("]\n");
+					file_writer.print("]");
 				}
 				/***********************/
 				/* [8] Read next token */
 				/***********************/
 				withValue = false;
+				notFirst = true;
 				s = l.next_token();
 			}
 			
