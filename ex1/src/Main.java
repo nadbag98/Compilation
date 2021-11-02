@@ -145,7 +145,7 @@ public class Main
 						break;
 					case 28:
 						tokenName = "INT";
-						if )(s.value.toString()).length() < 6){  
+						if ((s.value.toString()).length() < 6){  
 							if (Integer.parseInt(s.value.toString()) < 32768){
 							withValue = true;
 							break; }
