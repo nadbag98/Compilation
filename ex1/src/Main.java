@@ -145,11 +145,13 @@ public class Main
 						break;
 					case 28:
 						tokenName = "INT";
-						try {
-							if (Integer.parseInt(s.value.toString()) < 32768){
-								withValue = true;
-								break; }
-						} catch (Exception e) {}
+						if(((String) s.value).length() > 5)
+						    {
+							return new Symbol(TokenNames.ERROR, yyline, yycolumn, value);
+						    }
+						if (((String) s.value).length() < 6 && Integer.parseInt(s.value.toString()) < 32768){
+							withValue = true;
+							break;
 					default:
 						tokenName = "ERROR";
 						//file_writer.close();
