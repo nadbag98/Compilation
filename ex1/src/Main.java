@@ -145,10 +145,11 @@ public class Main
 						break;
 					case 28:
 						tokenName = "INT";
-						if (Integer.parseInt(s.value.toString()) < 32768){
-							withValue = true;
-							break;
-						}
+						try {
+							if (Integer.parseInt(s.value.toString()) < 32768){
+								withValue = true;
+								break; }
+						} catch (Exception e) {}
 					default:
 						tokenName = "ERROR";
 						//file_writer.close();
