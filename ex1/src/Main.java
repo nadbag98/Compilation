@@ -145,11 +145,9 @@ public class Main
 						break;
 					case 28:
 						tokenName = "INT";
-						if ((s.value.toString()).length() < 6){  
-							System.out.println("inside first if\n");
-							if (Integer.parseInt(s.value.toString()) < 32768){
+						if (Integer.parseInt(s.value.toString()) < 32768){
 							withValue = true;
-							break; }
+							break; 
 						}
 					default:
 						tokenName = "ERROR";
