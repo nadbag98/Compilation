@@ -109,7 +109,7 @@ CATCHALL		= .
 
 <YYINITIAL> {
 {WhiteSpace}		{}
-{COMMENT}		{ System.out.println(yytext());}
+{COMMENT}		{}
 "class"			{ return symbol(TokenNames.CLASS);}
 "nil"			{ return symbol(TokenNames.NIL);}
 "array"			{ return symbol(TokenNames.ARRAY);}
