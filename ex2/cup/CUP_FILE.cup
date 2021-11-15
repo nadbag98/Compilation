@@ -94,12 +94,110 @@ precedence left DIVIDE;
 /************************/
 /* START WITH: stmtList */
 /************************/
-start with stmtList;
+start with Program;
 
 /********************/
 /* DERIVATION RULES */
 /********************/
 
+Program		::=		dec:d 		{: RESULT = new :}
+					| dec:d Program:p 	{: RESULT = new :}
+					;
+
+dec			::=		varDec:v 	{: RESULT = new :}
+					| funcDec:f 	{: RESULT = new :}
+					| classDec:c	{: RESULT = new :}
+					| arrayTypedef:a 	{: RESULT = new :}
+					;
+
+type 		::=		TYPE_INT 	{: RESULT = new :}
+					| TYPE_STRING 	{: RESULT = new :}
+					| TYPE_VOID 	{: RESULT = new :}
+					| ID 	{: RESULT = new :}
+					;
+
+arrayTypedef ::= 	ARRAY ID:i EQ type:t LBRACK RBRACK 	{: RESULT = new :};
+
+varDec		::=		type:t ID:i SEMICOLON 	{: RESULT = new :}
+					| type:t ID:i ASSIGN exp:e SEMICOLON 	{: RESULT = new :}
+					| type:t ID:i ASSIGN newExp:n SEMICOLON 	{: RESULT = new :}
+					;
+
+stmtList	::=		stmt:s	stmtList:l		{: RESULT = new AST_STMT_LIST(s,l);    :}
+					| stmt:s				{: RESULT = new AST_STMT_LIST(s,null); :}
+					;
+
+typeIdList	::= 	type:t ID:i 	{: RESULT = new :}
+					| 	type:t ID:i COMMA typeIdList:l	{: RESULT = new :}
+					;
+
+
+funcDec		::= 	type:t ID:i LPAREN RPAREN LBRACE stmtList:l RBRACE	{: RESULT = new :}
+					|	type:t ID:i LPAREN typeIdList:t RPAREN LBRACE stmtList:l RBRACE	{: RESULT = new :}	
+					;
+
+cFieldList	::=		cField:c	cFieldList:l		{: RESULT = new     :}
+					| cField:c				{: RESULT = new  :}
+					;
+
+classDec 	::= 	CLASS ID:i LBRACE cFieldList:c RBRACE 	{: RESULT = new     :}
+					| CLASS ID:i1  EXTENDS ID:i2 LBRACE cFieldList:c RBRACE 	{: RESULT = new     :}
+					;
+
+expList	::= 	exp:e 	{: RESULT = new :}
+					| 	exp:e COMMA expList:l	{: RESULT = new :}
+					;
+
+exp 		::= 	var:v 	{: RESULT = new     :}
+					| LPAREN exp:e RPAREN	{: RESULT = new     :}
+					| exp:e1 binop exp:e2 	{: RESULT = new     :}
+					| ID:i LPAREN RPAREN 	{: RESULT = new     :}
+					| ID:i LPAREN expList:l RPAREN 	{: RESULT = new     :}
+					| var:v DOT ID:i LPAREN RPAREN 	{: RESULT = new     :}
+					| var:v DOT ID:i LPAREN expList:l RPAREN 	{: RESULT = new     :}
+					| INT:i 	{: RESULT = new     :}
+					| MINUS INT:i 	{: RESULT = new     :}
+					| NIL 	{: RESULT = new     :} 
+					| STRING:s 	{: RESULT = new     :}
+					;
+
+var 		::= 	ID:i 	{: RESULT = new     :}
+					| var:v DOT ID:i 	{: RESULT = new     :}
+					| var:v LBRACK exp:e RBRACK {: RESULT = new     :}
+					;
+
+stmt 		::= 	varDec:v 	{: RESULT = new     :}
+					| var:v ASSIGN exp:e SEMICOLON 	{: RESULT = new     :}
+					| var:v ASSIGN newExp:n SEMICOLON 	{: RESULT = new     :}
+					| RETURN SEMICOLON 	{: RESULT = new     :}
+					| RETURN exp:e SEMICOLON 	{: RESULT = new     :}
+					| IF LPAREN exp:e RPAREN LBRACE stmtList:l RBRACE 	{: RESULT = new     :}
+					| WHILE LPAREN exp:e RPAREN LBRACE stmtList:l RBRACE 	{: RESULT = new     :}
+					| ID:i LPAREN RPAREN SEMICOLON	{: RESULT = new     :}
+					| var:v DOT ID:i LPAREN RPAREN SEMICOLON	{: RESULT = new     :}
+					| ID:i LPAREN expList:e RPAREN SEMICOLON	{: RESULT = new     :}
+					| var:v DOT ID:i LPAREN expList:e RPAREN SEMICOLON	{: RESULT = new     :}
+					;
+
+newExp		::= 	NEW ID:i 	{: RESULT = new     :}
+					| NEW ID:i LBRACK exp:e RBRACK 	{: RESULT = new     :}
+					;
+
+cFiled 		::= 	varDec:v 	{: RESULT = new     :}
+					| funcDec:f 	{: RESULT = new     :}
+					;
+
+binop 		::= 	PLUS	{: RESULT = new     :}
+					| MINUS 	{: RESULT = new     :}
+					| TIMES 	{: RESULT = new     :}
+					| DIVIDE 	{: RESULT = new     :}
+					| LT 	{: RESULT = new     :}
+					| GT 	{: RESULT = new     :}
+					| EQ 	{: RESULT = new     :}
+
+
+
+/*
 stmtList	::=		stmt:s	stmtList:l		{: RESULT = new AST_STMT_LIST(s,l);    :}
 					| stmt:s				{: RESULT = new AST_STMT_LIST(s,null); :}
 					;
@@ -119,3 +217,4 @@ exp			::=		INT:i								{: RESULT = new AST_EXP_INT(i);          :}
 					| exp:e1 PLUS  exp:e2				{: RESULT = new AST_EXP_BINOP(e1, e2, 0);:}
 					| exp:e1 MINUS exp:e2				{: RESULT = new AST_EXP_BINOP(e1, e2, 1);:}
 					;
+*/
