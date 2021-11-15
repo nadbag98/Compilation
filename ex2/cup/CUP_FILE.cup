@@ -134,35 +134,35 @@ start with Program;
 /* DERIVATION RULES */
 /********************/
 
-Program		::=		dec:d 		{: RESULT = new :}
-					| dec:d Program:p 	{: RESULT = new :}
+Program		::=		dec:d 		{: RESULT = new AST_PRO(d, null); :}
+					| dec:d Program:p 	{: RESULT = new AST_PRO(d, p); :}
 					;
 
-dec			::=		varDec:v 	{: RESULT = new :}
-					| funcDec:f 	{: RESULT = new :}
-					| classDec:c	{: RESULT = new :}
-					| arrayTypedef:a 	{: RESULT = new :}
+dec			::=		varDec:v 	{: RESULT = new AST_DEC(v); :}
+					| funcDec:f 	{: RESULT = new AST_DEC(f); :}
+					| classDec:c	{: RESULT = new AST_DEC(c); :}
+					| arrayTypedef:a 	{: RESULT = new AST_DEC(a); :}
 					;
 
-type 		::=		TYPE_INT 	{: RESULT = new :}
-					| TYPE_STRING 	{: RESULT = new :}
-					| TYPE_VOID 	{: RESULT = new :}
-					| ID 	{: RESULT = new :}
+type 		::=		TYPE_INT 	{: RESULT = new AST_TYPE("int"); :}
+					| TYPE_STRING 	{: RESULT = new AST_TYPE("string"); :}
+					| TYPE_VOID 	{: RESULT = new AST_TYPE("void"); :}
+					| ID:i 	{: RESULT = new AST_TYPE(i); :}
 					;
 
-arrayTypedef ::= 	ARRAY ID:i EQ type:t LBRACK RBRACK 	{: RESULT = new :};
+arrayTypedef ::= 	ARRAY ID:i EQ type:t LBRACK RBRACK 	{: RESULT = new AST_ARRAY(i, t); };
 
-varDec		::=		type:t ID:i SEMICOLON 	{: RESULT = new :}
-					| type:t ID:i ASSIGN exp:e SEMICOLON 	{: RESULT = new :}
-					| type:t ID:i ASSIGN newExp:n SEMICOLON 	{: RESULT = new :}
+varDec		::=		type:t ID:i SEMICOLON 	{:RESULT = new AST_ARRAY(i, t, null); :}
+					| type:t ID:i ASSIGN exp:e SEMICOLON 	{: RESULT = AST_ARRAY(i, t, e); :}
+					| type:t ID:i ASSIGN newExp:n SEMICOLON 	{: RESULT = AST_ARRAY(i, t, n); :}
 					;
 
-stmtList	::=		stmt:s	stmtList:l		{: RESULT = new AST_STMT_LIST(s,l);    :}
+stmtList	::=		stmt:s	stmtList:l		{: RESULT = new AST_STMT_LIST(s,l); :}
 					| stmt:s				{: RESULT = new AST_STMT_LIST(s,null); :}
 					;
 
-typeIdList	::= 	type:t ID:i 	{: RESULT = new :}
-					| 	type:t ID:i COMMA typeIdList:l	{: RESULT = new :}
+typeIdList	::= 	type:t ID:i 	{: RESULT = new AST_TYPE_LIST(t, i); :}
+					| 	type:t ID:i COMMA typeIdList:l	{: RESULT = new AST_TYPE_LIST(t, l, i); :}
 					;
 
 
