@@ -114,6 +114,7 @@ CATCHALL		= .
 "nil"			{ return symbol(TokenNames.NIL);}
 "array"			{ return symbol(TokenNames.ARRAY);}
 "while"			{ return symbol(TokenNames.WHILE);}
+"void"			{ return symbol(TokenNames.TYPE_VOID);}
 "extends"		{ return symbol(TokenNames.EXTENDS);}
 "return"		{ return symbol(TokenNames.RETURN);}
 "new"			{ return symbol(TokenNames.NEW);}
