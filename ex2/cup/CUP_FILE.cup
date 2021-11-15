@@ -161,7 +161,7 @@ stmtList	::=		stmt:s	stmtList:l		{: RESULT = new AST_STMT_LIST(s,l); :}
 					| stmt:s				{: RESULT = new AST_STMT_LIST(s,null); :}
 					;
 
-typeIdList	::= 	type:t ID:i 	{: RESULT = new AST_TYPE_LIST(t, i); :}
+typeIdList	::= 	type:t ID:i 	{: RESULT = new AST_TYPE_LIST(t, null, i); :}
 					| 	type:t ID:i COMMA typeIdList:l	{: RESULT = new AST_TYPE_LIST(t, l, i); :}
 					;
 
