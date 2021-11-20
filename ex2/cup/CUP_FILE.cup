@@ -203,31 +203,31 @@ var 		::= 	ID:i 	{: RESULT = new AST_VAR(null, i, null);   :}
 stmt 		::= 	varDec:v 	{: RESULT = new AST_STMT_VARDEC(v);    :}
 					| var:v ASSIGN exp:e SEMICOLON 	{: RESULT = new AST_STMT_VAR_EXP(v, e, null);    :}
 					| var:v ASSIGN newExp:n SEMICOLON 	{: RESULT = new new AST_STMT_VAR_EXP(v, null, n);    :}
-					| RETURN SEMICOLON 	{: RESULT = new    :}
+					| RETURN SEMICOLON 	{: RESULT = new AST_STMT_ID(null, null);   :}
 					| RETURN exp:e SEMICOLON 	{: RESULT = new AST_STMT_EXP(e, null, 0);     :}
 					| IF LPAREN exp:e RPAREN LBRACE stmtList:l RBRACE 	{: RESULT = new AST_STMT_EXP(e, l, 0);    :}
 					| WHILE LPAREN exp:e RPAREN LBRACE stmtList:l RBRACE 	{: RESULT = new AST_STMT_EXP(e, l, 1);    :}
-					| ID:i LPAREN RPAREN SEMICOLON	{: RESULT = new     :}
+					| ID:i LPAREN RPAREN SEMICOLON	{: RESULT = new AST_STMT_ID(i, null);     :}
 					| var:v DOT ID:i LPAREN RPAREN SEMICOLON	{: RESULT = new AST_STMT_VAR_ID(v, i, null);    :}
-					| ID:i LPAREN expList:e RPAREN SEMICOLON	{: RESULT = new     :}
+					| ID:i LPAREN expList:l RPAREN SEMICOLON	{: RESULT = new AST_STMT_ID(i, l);     :}
 					| var:v DOT ID:i LPAREN expList:e RPAREN SEMICOLON	{: RESULT = new AST_STMT_VAR_ID(v, i, e);    :}
 					;
 
-newExp		::= 	NEW ID:i 	{: RESULT = new     :}
-					| NEW ID:i LBRACK exp:e RBRACK 	{: RESULT = new     :}
+newExp		::= 	NEW ID:i 	{: RESULT = new AST_NEWEXP(i, null);    :}
+					| NEW ID:i LBRACK exp:e RBRACK 	{: RESULT = new AST_NEWEXP(i, e);    :}
 					;
 
-cFiled 		::= 	varDec:v 	{: RESULT = new     :}
-					| funcDec:f 	{: RESULT = new     :}
+cField 		::= 	varDec:v 	{: RESULT = new AST_CFIELD(v, null);    :}
+					| funcDec:f 	{: RESULT = new AST_CFIELD(null, f);    :}
 					;
 
-binop 		::= 	PLUS	{: RESULT = new     :}
-					| MINUS 	{: RESULT = new     :}
-					| TIMES 	{: RESULT = new     :}
-					| DIVIDE 	{: RESULT = new     :}
-					| LT 	{: RESULT = new     :}
-					| GT 	{: RESULT = new     :}
-					| EQ 	{: RESULT = new     :}
+binop 		::= 	PLUS	{: RESULT = new AST_BINOP(1);    :}
+					| MINUS 	{: RESULT = new AST_BINOP(2);     :}
+					| TIMES 	{: RESULT = new AST_BINOP(3);     :}
+					| DIVIDE 	{: RESULT = new AST_BINOP(4);     :}
+					| LT 	{: RESULT = new AST_BINOP(5);     :}
+					| GT 	{: RESULT = new AST_BINOP(6);     :}
+					| EQ 	{: RESULT = new AST_BINOP(7);     :}
 
 
 
