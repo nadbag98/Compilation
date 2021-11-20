@@ -6,6 +6,7 @@ public class AST_DEC extends AST_Node
 	/* DATA MEMBERS */
 	/****************/
 	public AST_Node child;
+	public int i;
 
 	/******************/
 	/* CONSTRUCTOR(S) */
@@ -20,7 +21,21 @@ public class AST_DEC extends AST_Node
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
-		if (child != null) System.out.print("====================== dec --> child \n");
+		switch(i)
+		{
+			case(1):
+				System.out.print("====================== dec --> varDec \n");
+				break;
+			case(2):
+				System.out.print("====================== dec --> funcDec \n");
+				break;
+			case(3):
+				System.out.print("====================== dec --> classDec \n");
+				break;
+			case(4):
+				System.out.print("====================== dec --> arrayTypedef \n");
+				break;
+		}
 		
 		/*******************************/
 		/* COPY INPUT DATA NENBERS ... */
