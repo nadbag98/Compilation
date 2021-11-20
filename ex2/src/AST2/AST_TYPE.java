@@ -36,7 +36,7 @@ public class AST_TYPE extends AST_Node
 		/**************************************/
 		/* AST NODE TYPE = AST STATEMENT LIST */
 		/**************************************/
-		System.out.print("AST NODE TYPE\n");
+		System.out.print(String.format("AST NODE TYPE (%s)\n", this.s));
 
 		/**********************************/
 		/* PRINT to AST GRAPHVIZ DOT file */
