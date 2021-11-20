@@ -15,8 +15,8 @@ public class AST_PRO extends AST_Node
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
+		if (pro == null) System.out.print("====================== pro -> dec\n");
 		if (pro != null) System.out.print("====================== pro -> dec pro\n");
-		if (pro == null) System.out.print("====================== pro -> dec      \n");
 
 		/*******************************/
 		/* COPY INPUT DATA NENBERS ... */
@@ -28,7 +28,7 @@ public class AST_PRO extends AST_Node
   public void PrintMe()
 	{
 		/**************************************/
-		/* AST NODE TYPE = AST STATEMENT LIST */
+		/* AST NODE TYPE = AST PRO */
 		/**************************************/
 		System.out.print("AST NODE PRO\n");
 
