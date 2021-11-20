@@ -17,7 +17,7 @@ public abstract class AST_STMT_VAR_EXP extends AST_STMT
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
     if (e != null && ne == null) System.out.print("====================== stmt --> var exp\n");
-    if (e -= null && ne != null) System.out.print("====================== stmt --> var newExp\n");
+    if (e == null && ne != null) System.out.print("====================== stmt --> var newExp\n");
 
 
 		/*******************************/
