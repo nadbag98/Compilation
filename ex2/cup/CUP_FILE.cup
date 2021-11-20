@@ -138,10 +138,10 @@ Program		::=		dec:d 		{: RESULT = new AST_PRO(d, null); :}
 					| dec:d Program:p 	{: RESULT = new AST_PRO(d, p); :}
 					;
 
-dec			::=		varDec:v 	{: RESULT = new AST_DEC(v); :}
-					| funcDec:f 	{: RESULT = new AST_DEC(f); :}
-					| classDec:c	{: RESULT = new AST_DEC(c); :}
-					| arrayTypedef:a 	{: RESULT = new AST_DEC(a); :}
+dec			::=		varDec:v 	{: RESULT = new AST_DEC(v, 1); :}
+					| funcDec:f 	{: RESULT = new AST_DEC(f, 2); :}
+					| classDec:c	{: RESULT = new AST_DEC(c, 3); :}
+					| arrayTypedef:a 	{: RESULT = new AST_DEC(a, 4); :}
 					;
 
 type 		::=		TYPE_INT 	{: RESULT = new AST_TYPE("int"); :}
