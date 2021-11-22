@@ -1,6 +1,6 @@
 package AST;
 
-public abstract class AST_EXP_INT extends AST_EXP
+public class AST_EXP_INT extends AST_EXP
 {
   public int i;
   public int is_neg;
