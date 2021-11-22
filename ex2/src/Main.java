@@ -11,7 +11,7 @@ public class Main
 		Lexer l;
 		Parser p;
 		Symbol s;
-		AST_INIT AST;
+		AST_INITIAL AST;
 		FileReader file_reader;
 		PrintWriter file_writer;
 		String inputFilename = argv[0];
@@ -42,7 +42,7 @@ public class Main
 			/***********************************/
 			/* [5] 3 ... 2 ... 1 ... Parse !!! */
 			/***********************************/
-			AST = (AST_INIT) p.parse().value;
+			AST = (AST_INITIAL) p.parse().value;
 			
 			/*************************/
 			/* [6] Print the AST ... */
