@@ -35,8 +35,6 @@ scan with
 	//System.out.print(s.sym);
 	System.out.print("[");
 	System.out.print(lexer.getLine());
-	System.out.print(":");
-	System.out.print(lexer.getCharPos());
 	System.out.print("] ");
 	System.out.print(TokenNames.terminalNames[s.sym]);
 	if (s.value != null)
