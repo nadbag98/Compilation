@@ -134,7 +134,8 @@ start with initial;
 /* DERIVATION RULES */
 /********************/
 
-initial		::=		Program:p EOF 	{: RESULT = new AST_INITIAL(p); :}
+initial		::=		Program:p EOF 	{: RESULT = new AST_INITIAL(p); :} 
+					;
 
 Program		::=		dec:d 		{: RESULT = new AST_PRO(d, null); :}
 					| dec:d Program:p 	{: RESULT = new AST_PRO(d, p); :}
@@ -152,7 +153,8 @@ type 		::=		TYPE_INT 	{: RESULT = new AST_TYPE("int"); :}
 					| ID:i 	{: RESULT = new AST_TYPE(i); :}
 					;
 
-arrayTypedef ::= 	ARRAY ID:i EQ type:t LBRACK RBRACK SEMICOLON	{: RESULT = new AST_ARRAY(i, t); };
+arrayTypedef ::= 	ARRAY ID:i EQ type:t LBRACK RBRACK SEMICOLON	{: RESULT = new AST_ARRAY(i, t); }
+					;
 
 varDec		::=		type:t ID:i SEMICOLON 	{:RESULT = new AST_ARRAY(i, t, null); :}
 					| type:t ID:i ASSIGN exp:e SEMICOLON 	{: RESULT = AST_ARRAY(i, t, e); :}
@@ -230,4 +232,5 @@ binop 		::= 	PLUS	{: RESULT = new AST_BINOP(1);    :}
 					| LT 	{: RESULT = new AST_BINOP(5);     :}
 					| GT 	{: RESULT = new AST_BINOP(6);     :}
 					| EQ 	{: RESULT = new AST_BINOP(7);     :}
+					;
 
