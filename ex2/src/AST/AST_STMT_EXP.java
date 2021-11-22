@@ -1,6 +1,6 @@
 package AST;
 
-public abstract class AST_STMT_EXP extends AST_STMT
+public class AST_STMT_EXP extends AST_STMT
 {
   public AST_EXP e;
   public AST_STMT_LIST l;
