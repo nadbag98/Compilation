@@ -1,6 +1,6 @@
 package AST;
 
-public abstract class AST_EXP_EXP extends AST_EXP
+public class AST_EXP_EXP extends AST_EXP
 {
   public AST_EXP e1;
 	public AST_BINOP b;
