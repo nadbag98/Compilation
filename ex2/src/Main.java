@@ -23,39 +23,36 @@ public class Main
 			/* [1] Initialize a file reader */
 			/********************************/
 			file_reader = new FileReader(inputFilename);
-
-			/********************************/
-			/* [2] Initialize a file writer */
-			/********************************/
-			file_writer = new PrintWriter(outputFilename);
 			
 			/******************************/
-			/* [3] Initialize a new lexer */
+			/* [2] Initialize a new lexer */
 			/******************************/
 			l = new Lexer(file_reader);
 			
 			/*******************************/
-			/* [4] Initialize a new parser */
+			/* [3] Initialize a new parser */
 			/*******************************/
 			p = new Parser(l);
 
 			/***********************************/
-			/* [5] 3 ... 2 ... 1 ... Parse !!! */
+			/* [4] 3 ... 2 ... 1 ... Parse !!! */
 			/***********************************/
 			AST = (AST_INITIAL) p.parse().value;
+			
+			/********************************/
+			/* [5] Write OK */
+			/********************************/
+			file_writer = new PrintWriter(outputFilename);
+			file_writer.print("OK\n");
+			file_writer.close();
 			
 			/*************************/
 			/* [6] Print the AST ... */
 			/*************************/
 			AST.PrintMe();
 			
-			/*************************/
-			/* [7] Close output file */
-			/*************************/
-			file_writer.close();
-			
 			/*************************************/
-			/* [8] Finalize AST GRAPHIZ DOT file */
+			/* [7] Finalize AST GRAPHIZ DOT file */
 			/*************************************/
 			AST_GRAPHVIZ.getInstance().finalizeFile();
     	}
