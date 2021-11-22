@@ -28,7 +28,7 @@ public class AST_NEWEXP extends AST_Node
 		/* COPY INPUT DATA NENBERS ... */
 		/*******************************/
 		this.i = i;
-    this.e = e
+    this.e = e;
     
     }
 
