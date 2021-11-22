@@ -1,6 +1,6 @@
 package AST;
 
-public abstract class AST_STMT_VAR_EXP extends AST_STMT
+public class AST_STMT_VAR_EXP extends AST_STMT
 {
   public AST_VAR v;
   public AST_EXP e;
