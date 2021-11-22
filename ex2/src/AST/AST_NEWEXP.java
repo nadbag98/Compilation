@@ -45,7 +45,7 @@ public class AST_NEWEXP extends AST_Node
 		/*************************************/
 		/* RECURSIVELY PRINT HEAD + TAIL ... */
 		/*************************************/
-    Syste.out.print(i);
+    System.out.print(i);
 		if (e != null) e.PrintMe();
 
 		/**********************************/
