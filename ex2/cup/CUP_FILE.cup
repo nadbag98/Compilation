@@ -72,6 +72,8 @@ scan with
 		file_writer.close();
 		System.exit(0);
 	}
+	
+	System.out.print("\n");
 	return s; 
 :};
 
