@@ -1,6 +1,6 @@
 package AST;
 
-public abstract class AST_EXP_REST extends AST_EXP
+public class AST_EXP_REST extends AST_EXP
 {
   public String s;
   
