@@ -80,7 +80,7 @@ terminal EXTENDS;
 terminal RETURN;
 terminal NEW;
 terminal TYPE_STRING;
-
+terminal EOF;
 
 /*************/
 /* TERMINALS */
