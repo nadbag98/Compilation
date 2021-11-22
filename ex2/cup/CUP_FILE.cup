@@ -37,9 +37,9 @@ scan with
 	System.out.print(TokenNames.terminalNames[s.sym]);
 	if (s.value != null)
 	{
-		System.out.print("( ");
+		System.out.print("(");
 		System.out.print(s.value);
-		System.out.print(" )");
+		System.out.print(")");
 	}
 	if (s.sym == TokenNames.ERROR){
 		System.out.print("Error!!!!!");
