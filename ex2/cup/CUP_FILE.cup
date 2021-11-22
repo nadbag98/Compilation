@@ -157,8 +157,8 @@ arrayTypedef ::= 	ARRAY ID:i EQ type:t LBRACK RBRACK SEMICOLON	{: RESULT = new A
 					;
 
 varDec		::=		type:t ID:i SEMICOLON 	{: RESULT = new AST_VARDEC(t, i, null); :}
-					| type:t ID:i ASSIGN exp:e SEMICOLON 	{: RESULT = AST_VARDEC(t, i, e); :}
-					| type:t ID:i ASSIGN newExp:n SEMICOLON 	{: RESULT = AST_VARDEC(t, i, n); :}
+					| type:t ID:i ASSIGN exp:e SEMICOLON 	{: RESULT = new AST_VARDEC(t, i, e); :}
+					| type:t ID:i ASSIGN newExp:n SEMICOLON 	{: RESULT = new AST_VARDEC(t, i, n); :}
 					;
 
 stmtList	::=		stmt:s	stmtList:l		{: RESULT = new AST_STMT_LIST(s,l); :}
