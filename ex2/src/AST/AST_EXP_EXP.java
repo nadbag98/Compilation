@@ -38,9 +38,9 @@ public class AST_EXP_EXP extends AST_EXP
 		/*************************************/
 		/* RECURSIVELY PRINT HEAD + TAIL ... */
 		/*************************************/
-		if (e1 != null) v.PrintMe();
-		if (b != null) l.PrintMe();
-    if (e2 != null) v.PrintMe();
+		if (e1 != null) e1.PrintMe();
+		if (b != null) b.PrintMe();
+    		if (e2 != null) e2.PrintMe();
 
 		/**********************************/
 		/* PRINT to AST GRAPHVIZ DOT file */
