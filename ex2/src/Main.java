@@ -32,7 +32,7 @@ public class Main
 			/*******************************/
 			/* [3] Initialize a new parser */
 			/*******************************/
-			p = new Parser(l);
+			p = new Parser(l, outputFilename);
 
 			/***********************************/
 			/* [4] 3 ... 2 ... 1 ... Parse !!! */
