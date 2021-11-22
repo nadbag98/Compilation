@@ -153,7 +153,7 @@ type 		::=		TYPE_INT 	{: RESULT = new AST_TYPE("int"); :}
 					| ID:i 	{: RESULT = new AST_TYPE(i); :}
 					;
 
-arrayTypedef ::= 	ARRAY ID:i EQ type:t LBRACK RBRACK SEMICOLON	{: RESULT = new AST_ARRAY(i, t); }
+arrayTypedef ::= 	ARRAY ID:i EQ type:t LBRACK RBRACK SEMICOLON	{: RESULT = new AST_ARRAY(i, t); :}
 					;
 
 varDec		::=		type:t ID:i SEMICOLON 	{: RESULT = new AST_VARDEC(t, i, null); :}
