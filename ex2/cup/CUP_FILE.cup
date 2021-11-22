@@ -26,7 +26,7 @@ parser code
 		try {
 		PrintWriter file_writer = new PrintWriter(this.path);
 		file_writer.print("ERROR(");
-		file_writer.print("lexer.getLine()");
+		file_writer.print(lexer.getLine());
 		file_writer.print(")\n");
 		file_writer.close(); 
 		} catch (Exception e){
