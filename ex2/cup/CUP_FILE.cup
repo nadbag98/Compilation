@@ -156,7 +156,7 @@ type 		::=		TYPE_INT 	{: RESULT = new AST_TYPE("int"); :}
 arrayTypedef ::= 	ARRAY ID:i EQ type:t LBRACK RBRACK SEMICOLON	{: RESULT = new AST_ARRAY(i, t); }
 					;
 
-varDec		::=		type:t ID:i SEMICOLON 	{:RESULT = new AST_VARDEC(t, i, null); :}
+varDec		::=		type:t ID:i SEMICOLON 	{: RESULT = new AST_VARDEC(t, i, null); :}
 					| type:t ID:i ASSIGN exp:e SEMICOLON 	{: RESULT = AST_VARDEC(t, i, e); :}
 					| type:t ID:i ASSIGN newExp:n SEMICOLON 	{: RESULT = AST_VARDEC(t, i, n); :}
 					;
