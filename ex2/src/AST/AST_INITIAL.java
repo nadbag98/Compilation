@@ -1,10 +1,10 @@
 package AST;
 
-public class AST_INIT extends AST_Node
+public class AST_INITIAL extends AST_Node
 {
 	public AST_PRO pro;
   
-  public AST_INIT(AST_PRO pro)
+  public AST_INITIAL(AST_PRO pro)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
