@@ -45,6 +45,9 @@ scan with
 		System.out.print(s.value);
 		System.out.print(" )");
 	}
+	if (s.sym == TokenNames.ERROR){
+		System.out.print("Error!!!!!");
+	}
 	System.out.print("\n");
 	return s; 
 :};
@@ -80,6 +83,7 @@ terminal EXTENDS;
 terminal RETURN;
 terminal NEW;
 terminal TYPE_STRING;
+terminal ERROR;
 
 /*************/
 /* TERMINALS */
