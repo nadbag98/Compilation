@@ -108,6 +108,7 @@ non terminal AST_STMT_LIST stmtList;
 non terminal AST_TYPE_LIST typeIdList;
 non terminal AST_CFIELD_LIST cFieldList;
 non terminal AST_EXP_LIST expList;
+non terminal AST_INIT init;
 
 /***********************/
 /* OPERATOR PRECEDENCE */
@@ -127,11 +128,13 @@ precedence left DOT;
 /************************/
 /* START WITH: stmtList */
 /************************/
-start with Program;
+start with init;
 
 /********************/
 /* DERIVATION RULES */
 /********************/
+
+init		::=		Program:p EOF 	{: RESULT = new AST_INIT(p); :}
 
 Program		::=		dec:d 		{: RESULT = new AST_PRO(d, null); :}
 					| dec:d Program:p 	{: RESULT = new AST_PRO(d, p); :}
