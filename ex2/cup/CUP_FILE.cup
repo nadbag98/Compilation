@@ -203,10 +203,10 @@ var 		::= 	ID:i 	{: RESULT = new AST_VAR(null, i, null);   :}
 					| var:v DOT ID:i 	{: RESULT = new AST_VAR(v, i, null);    :}
 					| var:v LBRACK exp:e RBRACK {: RESULT = new AST_VAR(v, null, e);    :}
 					;
-
+					
 stmt 		::= 	varDec:v 	{: RESULT = new AST_STMT_VARDEC(v);    :}
 					| var:v ASSIGN exp:e SEMICOLON 	{: RESULT = new AST_STMT_VAR_EXP(v, e, null);    :}
-					| var:v ASSIGN newExp:n SEMICOLON 	{: RESULT = new new AST_STMT_VAR_EXP(v, null, n);    :}
+					| var:v ASSIGN newExp:n SEMICOLON 	{: RESULT = new AST_STMT_VAR_EXP(v, null, n);    :}
 					| RETURN SEMICOLON 	{: RESULT = new AST_STMT_ID(null, null);   :}
 					| RETURN exp:e SEMICOLON 	{: RESULT = new AST_STMT_EXP(e, null, 0);     :}
 					| IF LPAREN exp:e RPAREN LBRACE stmtList:l RBRACE 	{: RESULT = new AST_STMT_EXP(e, l, 0);    :}
