@@ -23,11 +23,15 @@ parser code
 		System.out.print("[");
 		System.out.print(lexer.getLine());
 		System.out.print("] ");	
-		PrintWriter file_writer = new PrintWriter(path);
+		try {
+		PrintWriter file_writer = new PrintWriter(this.path);
 		file_writer.print("ERROR(");
 		file_writer.print("lexer.getLine()");
 		file_writer.print(")\n");
-		file_writer.close();
+		file_writer.close(); 
+		} except (Exception e){
+		System.out.print(this.path);
+		}
 		System.exit(0);
 	}
 :}
