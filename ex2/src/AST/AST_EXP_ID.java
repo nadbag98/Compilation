@@ -1,6 +1,6 @@
 package AST;
 
-public abstract class AST_EXP_ID extends AST_EXP
+public class AST_EXP_ID extends AST_EXP
 {
   public String i;
   public AST_EXP_LIST l;
