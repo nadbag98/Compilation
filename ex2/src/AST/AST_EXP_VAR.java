@@ -1,6 +1,6 @@
 package AST;
 
-public abstract class AST_EXP_VAR extends AST_EXP
+public class AST_EXP_VAR extends AST_EXP
 {
   public AST_VAR v;
 	public String s;
