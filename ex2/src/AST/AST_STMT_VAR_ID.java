@@ -1,6 +1,6 @@
 package AST;
 
-public abstract class AST_STMT_VAR_ID extends AST_STMT
+public class AST_STMT_VAR_ID extends AST_STMT
 {
   public AST_VAR v;
   public String s;
