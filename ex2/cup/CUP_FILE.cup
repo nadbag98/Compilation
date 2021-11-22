@@ -187,7 +187,7 @@ expList		::= 	exp:e 	{: RESULT = new AST_EXP_LIST(e, null);:}
 					;
 
 exp 		::= 	var:v 	{: RESULT = new AST_EXP_VAR(v, null, null);    :}
-					| LPAREN exp:e RPAREN	{: RESULT = new AST_EXP_EXP(e1, null, null);    :}
+					| LPAREN exp:e RPAREN	{: RESULT = new AST_EXP_EXP(e2, null, null);    :}
 					| exp:e1 binop:b exp:e2 	{: RESULT = new AST_EXP_EXP(e1, b, e2);   :}
 					| ID:i LPAREN RPAREN 	{: RESULT = new AST_EXP_ID(i, null);    :}
 					| ID:i LPAREN expList:l RPAREN 	{: RESULT = new AST_EXP_ID(i, l);     :}
