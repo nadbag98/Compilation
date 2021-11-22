@@ -48,12 +48,24 @@ scan with
 	System.out.print(lexer.getLine());
 	System.out.print("] ");
 	System.out.print(TokenNames.terminalNames[s.sym]);
+	
+	if (s.sym == TokenNames.INT){
+		if (Integer.parseInt(s.value.toString()) < 32768){
+			PrintWriter file_writer = new PrintWriter(path);
+			file_writer.print("ERROR\n");
+			file_writer.close();
+			System.exit(0);
+		}		
+	}
+					
+	
 	if (s.value != null)
 	{
 		System.out.print("(");
 		System.out.print(s.value);
 		System.out.print(")");
 	}
+	
 	if (s.sym == TokenNames.ERROR){
 		PrintWriter file_writer = new PrintWriter(path);
 		file_writer.print("ERROR\n");
