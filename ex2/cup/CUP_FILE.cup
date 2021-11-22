@@ -29,7 +29,7 @@ parser code
 		file_writer.print("lexer.getLine()");
 		file_writer.print(")\n");
 		file_writer.close(); 
-		} except (Exception e){
+		} catch (Exception e){
 		System.out.print(this.path);
 		}
 		System.exit(0);
