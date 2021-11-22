@@ -2,23 +2,32 @@
 /* IMPORT(S) */
 /*************/
 import java_cup.runtime.*;
+import java.io.PrintWriter;
+import java.io.*;
 import AST.*;
 
 parser code 
 {:
 	public Lexer lexer;
+	String path;
 
-	public Parser(Lexer lexer)
+	public Parser(Lexer lexer, String path)
 	{
 		super(lexer);
 		this.lexer = lexer;
+		this.path = path;
 	}
 	public void report_error(String message, Object info)
 	{
 		System.out.print("ERROR >> ");		
 		System.out.print("[");
 		System.out.print(lexer.getLine());
-		System.out.print("] ");		
+		System.out.print("] ");	
+		PrintWriter file_writer = new PrintWriter(path);
+		file_writer.print("ERROR(");
+		file_writer.print("lexer.getLine()");
+		file_writer.print(")\n");
+		file_writer.close();
 		System.exit(0);
 	}
 :}
@@ -42,9 +51,11 @@ scan with
 		System.out.print(")");
 	}
 	if (s.sym == TokenNames.ERROR){
-		System.out.print("Error!!!!!");
+		PrintWriter file_writer = new PrintWriter(path);
+		file_writer.print("ERROR\n");
+		file_writer.close();
+		System.exit(0);
 	}
-	System.out.print("\n");
 	return s; 
 :};
 
