@@ -1,6 +1,6 @@
 package AST;
 
-public class AST_VARDEC extends AST_Node
+public class AST_CLASSDEC extends AST_Node
 {
   public String s1;
   public String s2;
