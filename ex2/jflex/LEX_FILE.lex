@@ -138,10 +138,7 @@ CATCHALL		= .
 "("			{ return symbol(TokenNames.LPAREN);}
 ")"			{ return symbol(TokenNames.RPAREN);}
 {BADINT}		{ return symbol(TokenNames.ERROR);}
-{INTEGER}		{ if ( ((String) yytext()).length() < 6) {
-				return symbol(TokenNames.INT, new Integer(yytext()));
-				} else return symbol(TokenNames.ERROR);
-				}
+{INTEGER}		{ return symbol(TokenNames.INT,     new Integer( yytext()));}				
 {ID}			{ return symbol(TokenNames.ID,  new String( yytext()));}
 {STRING}		{ return symbol(TokenNames.STRING,     new String( yytext()));}
 {BADCOMMENT}		{ return symbol(TokenNames.ERROR);}
