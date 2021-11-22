@@ -50,7 +50,7 @@ scan with
 	System.out.print(TokenNames.terminalNames[s.sym]);
 	
 	if (s.sym == TokenNames.INT){
-		if (Integer.parseInt(s.value.toString()) < 32768){
+		if (Integer.parseInt(s.value.toString()) >= 32768){
 			PrintWriter file_writer = new PrintWriter(path);
 			file_writer.print("ERROR\n");
 			file_writer.close();
