@@ -5,13 +5,13 @@ public class AST_NEWEXP extends AST_Node
 	/****************/
 	/* DATA MEMBERS */
 	/****************/
-	public String i;
-  public AST_EXP e;
+	public AST_TYPE t;
+  	public AST_EXP e;
 
 	/******************/
 	/* CONSTRUCTOR(S) */
 	/******************/
-	public AST_NEWEXP(String i, AST_EXP e)
+	public AST_NEWEXP(AST_TYPE t, AST_EXP e)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -21,14 +21,15 @@ public class AST_NEWEXP extends AST_Node
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
-		if (e == null) System.out.print("====================== newExp --> NEW ID\n");
-    if (e != null) System.out.print("====================== newExp --> NEW ID(exp)\n");
+		if (e == null) System.out.print("====================== newExp --> NEW TYPE\n");
+    		if (e != null) System.out.print("====================== newExp --> NEW TYPE(exp)\n");
+		
 		
 		/*******************************/
 		/* COPY INPUT DATA NENBERS ... */
 		/*******************************/
-		this.i = i;
-    this.e = e;
+		this.t = t;
+    		this.e = e;
     
     }
 
@@ -45,7 +46,7 @@ public class AST_NEWEXP extends AST_Node
 		/*************************************/
 		/* RECURSIVELY PRINT HEAD + TAIL ... */
 		/*************************************/
-    System.out.print(i);
+    		if (t != null) t.PrintMe();
 		if (e != null) e.PrintMe();
 
 		/**********************************/
@@ -57,6 +58,7 @@ public class AST_NEWEXP extends AST_Node
 		/****************************************/
 		/* PRINT Edges to AST GRAPHVIZ DOT file */
 		/****************************************/
+		if (t != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,t.SerialNumber);
 		if (e != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,e.SerialNumber);
 	}
 	
