@@ -39,7 +39,6 @@ public class AST_ARRAY extends AST_Node
 		System.out.print(" EQ ");
 		if (t != null) t.PrintMe();
 		System.out.print(" LBRACK RBRACK SEMICOLON");
-		ARRAY ID:i EQ type:t LBRACK RBRACK SEMICOLON
 
 		/**********************************/
 		/* PRINT to AST GRAPHVIZ DOT file */
