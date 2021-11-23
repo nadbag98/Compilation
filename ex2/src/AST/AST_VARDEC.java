@@ -30,7 +30,7 @@ public class AST_VARDEC extends AST_Node
 		this.t = t;
 		this.s = s;
     this.exp = exp;
-    this.is_new = is_new
+    this.is_new = is_new;
 	}
   
   public void PrintMe()
