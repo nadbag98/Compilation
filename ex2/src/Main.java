@@ -43,7 +43,7 @@ public class Main
 			/* [5] Write OK */
 			/********************************/
 			file_writer = new PrintWriter(outputFilename);
-			file_writer.print("OK\n");
+			file_writer.print("OK");
 			file_writer.close();
 			
 			/*************************/
