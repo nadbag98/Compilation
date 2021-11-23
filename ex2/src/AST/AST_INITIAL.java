@@ -25,9 +25,9 @@ public class AST_INITIAL extends AST_Node
   public void PrintMe()
 	{
 		/**************************************/
-		/* AST NODE TYPE = AST PRO */
+		/* AST NODE TYPE = AST INITIAL */
 		/**************************************/
-		System.out.print("AST NODE INIT\n");
+		System.out.print("AST NODE INITIAL\n");
 
 		/*************************************/
 		/* RECURSIVELY PRINT HEAD + TAIL ... */
@@ -39,7 +39,7 @@ public class AST_INITIAL extends AST_Node
 		/**********************************/
 		AST_GRAPHVIZ.getInstance().logNode(
 			SerialNumber,
-			"PRO\n");
+			"INITIAL\n");
 		
 		/****************************************/
 		/* PRINT Edges to AST GRAPHVIZ DOT file */
