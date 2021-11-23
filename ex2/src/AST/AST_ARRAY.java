@@ -15,7 +15,7 @@ public class AST_ARRAY extends AST_Node
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
-    System.out.print("====================== arrayTypedef --> .... \n");
+    System.out.print("====================== arrayTypedef --> []ID = type();\n");
 
 		/*******************************/
 		/* COPY INPUT DATA NENBERS ... */
@@ -34,7 +34,12 @@ public class AST_ARRAY extends AST_Node
 		/*************************************/
 		/* RECURSIVELY PRINT HEAD + TAIL ... */
 		/*************************************/
+		System.out.print("ARRAY ");
+		System.out.print(i);
+		System.out.print(" EQ ");
 		if (t != null) t.PrintMe();
+		System.out.print(" LBRACK RBRACK SEMICOLON");
+		ARRAY ID:i EQ type:t LBRACK RBRACK SEMICOLON
 
 		/**********************************/
 		/* PRINT to AST GRAPHVIZ DOT file */
