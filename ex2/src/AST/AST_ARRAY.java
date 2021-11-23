@@ -35,7 +35,7 @@ public class AST_ARRAY extends AST_Node
 		/* RECURSIVELY PRINT HEAD + TAIL ... */
 		/*************************************/
 		System.out.print("ARRAY ");
-		System.out.print(i);
+		System.out.print(s);
 		System.out.print(" EQ ");
 		if (t != null) t.PrintMe();
 		System.out.print(" LBRACK RBRACK SEMICOLON");
