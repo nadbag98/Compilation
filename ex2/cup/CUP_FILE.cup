@@ -246,8 +246,8 @@ stmt 		::= 	varDec:v 	{: RESULT = new AST_STMT_VARDEC(v);    :}
 					| var:v DOT ID:i LPAREN expList:e RPAREN SEMICOLON	{: RESULT = new AST_STMT_VAR_ID(v, i, e);    :}
 					;
 
-newExp		::= 	NEW ID:i 	{: RESULT = new AST_NEWEXP(i, null);    :}
-					| NEW ID:i LBRACK exp:e RBRACK 	{: RESULT = new AST_NEWEXP(i, e);    :}
+newExp		::= 	NEW type:t 	{: RESULT = new AST_NEWEXP(t, null);    :}
+					| NEW type:t LBRACK exp:e RBRACK 	{: RESULT = new AST_NEWEXP(t, e);    :}
 					;
 
 cField 		::= 	varDec:v 	{: RESULT = new AST_CFIELD(v, null);    :}
