@@ -55,5 +55,9 @@ public class AST_EXP_INT extends AST_EXP
 		/* PRINT Edges to AST GRAPHVIZ DOT file */
 		/****************************************/
 	}
+	
+	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
+		return TYPE_INT.getInstance();
+	}
   
 }
