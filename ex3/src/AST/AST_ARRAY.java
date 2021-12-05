@@ -5,7 +5,7 @@ public class AST_ARRAY extends AST_Node
   public String s;
 	public AST_TYPE t;
   
-  public AST_ARRAY(String s,AST_TYPE t)
+  public AST_ARRAY(String s,AST_TYPE t, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -22,6 +22,7 @@ public class AST_ARRAY extends AST_Node
 		/*******************************/
 		this.s = s;
 		this.t = t;
+		this.line = line - 1;
 	}
   
   public void PrintMe()
