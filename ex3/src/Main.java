@@ -69,7 +69,7 @@ public class Main
 			/**************************/
 			/* [7] Semant the AST ... */
 			/**************************/
-			AST.SemantMe();
+			//AST.SemantMe();
 			
 			/*************************************/
 			/* [8] Finalize AST GRAPHIZ DOT file */
