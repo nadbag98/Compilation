@@ -21,9 +21,7 @@ public class AST_INITIAL extends AST_Node
 		/* COPY INPUT DATA NENBERS ... */
 		/*******************************/
 		this.pro = pro;
-		this.line = line;
-		System.out.print("HERERERERERER: ");
-		System.out.print(String.format("%d\n", this.line));
+		this.line = line-1;
 	}
   
   public void PrintMe()
