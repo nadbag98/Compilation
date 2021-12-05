@@ -62,4 +62,14 @@ public class AST_CFIELD extends AST_Node
     if (f != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,f.SerialNumber);
 	}
 	
+	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
+		if (this.v != null){
+			this.v.visit(sym_table);
+		}
+		if (this.f != null){
+			this.f.visit(sym_table);
+		}
+		return null;
+	}
+	
 }
