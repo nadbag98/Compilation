@@ -11,7 +11,7 @@ public class AST_DEC extends AST_Node
 	/******************/
 	/* CONSTRUCTOR(S) */
 	/******************/
-	public AST_DEC(AST_Node child, int i)
+	public AST_DEC(AST_Node child, int i, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -42,6 +42,7 @@ public class AST_DEC extends AST_Node
 		/*******************************/
 		this.child = child;
 		this.i = i;
+		this.line = line - 1;
 	}
 
 	/******************************************************/
