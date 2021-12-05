@@ -6,12 +6,13 @@ public class AST_STMT_VAR_ID extends AST_STMT
   public String s;
   public AST_EXP_LIST e;
   
-  public AST_STMT_VAR_ID(AST_VAR v, String s, AST_EXP_LIST e)
+  public AST_STMT_VAR_ID(AST_VAR v, String s, AST_EXP_LIST e, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
 		/******************************/
 		SerialNumber = AST_Node_Serial_Number.getFresh();
+		this.line = line - 1;
 
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
