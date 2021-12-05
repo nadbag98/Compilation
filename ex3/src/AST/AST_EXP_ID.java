@@ -5,7 +5,7 @@ public class AST_EXP_ID extends AST_EXP
   public String i;
   public AST_EXP_LIST l;
   
-  public AST_EXP_ID(String i, AST_EXP_LIST l)
+  public AST_EXP_ID(String i, AST_EXP_LIST l, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -24,6 +24,7 @@ public class AST_EXP_ID extends AST_EXP
 		/*******************************/
 		this.i = i;
 		this.l = l;
+		this.line = line - 1;
 	}
   
   public void PrintMe()
