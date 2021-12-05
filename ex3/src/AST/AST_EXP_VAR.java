@@ -6,7 +6,7 @@ public class AST_EXP_VAR extends AST_EXP
 	public String s;
   public AST_EXP_LIST l;
   
-  public AST_EXP_VAR(AST_VAR v, String s, AST_EXP_LIST l)
+  public AST_EXP_VAR(AST_VAR v, String s, AST_EXP_LIST l, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -26,6 +26,7 @@ public class AST_EXP_VAR extends AST_EXP
 		this.v = v;
 		this.s = s;
     this.l = l;
+    this.line = line-1
 	}
   
   public void PrintMe()
