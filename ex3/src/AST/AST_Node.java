@@ -2,7 +2,7 @@ package AST;
 
 import SYMBOL_TABLE.*;
 
-public abstract class AST_Node
+public abstract class AST_Node throws ArithmeticException
 {
 	/*******************************************/
 	/* The serial number is for debug purposes */
