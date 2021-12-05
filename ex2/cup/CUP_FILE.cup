@@ -237,9 +237,9 @@ stmt 		::= 	varDec:v 	{: RESULT = new AST_STMT_VARDEC(v);    :}
 					| var:v ASSIGN exp:e SEMICOLON 	{: RESULT = new AST_STMT_VAR_EXP(v, e, null);    :}
 					| var:v ASSIGN newExp:n SEMICOLON 	{: RESULT = new AST_STMT_VAR_EXP(v, null, n);    :}
 					| RETURN SEMICOLON 	{: RESULT = new AST_STMT_ID(null, null);   :}
-					| RETURN exp:e SEMICOLON 	{: RESULT = new AST_STMT_EXP(e, null, 0);     :}
-					| IF LPAREN exp:e RPAREN LBRACE stmtList:l RBRACE 	{: RESULT = new AST_STMT_EXP(e, l, 0);    :}
-					| WHILE LPAREN exp:e RPAREN LBRACE stmtList:l RBRACE 	{: RESULT = new AST_STMT_EXP(e, l, 1);    :}
+					| RETURN exp:e SEMICOLON 	{: RESULT = new AST_STMT_EXP(e, null, 0, lexer.getLine());     :}
+					| IF LPAREN exp:e RPAREN LBRACE stmtList:l RBRACE 	{: RESULT = new AST_STMT_EXP(e, l, 0, lexer.getLine());    :}
+					| WHILE LPAREN exp:e RPAREN LBRACE stmtList:l RBRACE 	{: RESULT = new AST_STMT_EXP(e, l, 1, lexer.getLine());    :}
 					| ID:i LPAREN RPAREN SEMICOLON	{: RESULT = new AST_STMT_ID(i, null);     :}
 					| var:v DOT ID:i LPAREN RPAREN SEMICOLON	{: RESULT = new AST_STMT_VAR_ID(v, i, null);    :}
 					| ID:i LPAREN expList:l RPAREN SEMICOLON	{: RESULT = new AST_STMT_ID(i, l);     :}
