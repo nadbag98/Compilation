@@ -4,7 +4,7 @@ public class AST_BINOP extends AST_Node
 {
   public int op;
   
-  public AST_BINOP(int op)
+  public AST_BINOP(int op, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -43,6 +43,7 @@ public class AST_BINOP extends AST_Node
 		/* COPY INPUT DATA NENBERS ... */
 		/*******************************/
 		this.op = op;
+		this.line = line - 1;
 	}
   
   public void PrintMe()
