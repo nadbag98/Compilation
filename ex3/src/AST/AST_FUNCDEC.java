@@ -8,7 +8,7 @@ public class AST_FUNCDEC extends AST_Node
 	public AST_TYPE_LIST l1;
   public AST_STMT_LIST l2;
   
-  public AST_FUNCDEC(AST_TYPE t, String s, AST_TYPE_LIST l1, AST_STMT_LIST l2)
+  public AST_FUNCDEC(AST_TYPE t, String s, AST_TYPE_LIST l1, AST_STMT_LIST l2, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -28,6 +28,7 @@ public class AST_FUNCDEC extends AST_Node
 		this.s = s;
     this.l1 = l1;
     this.l2 = l2;
+    this.line = line-1;
 	}
   
   public void PrintMe()
