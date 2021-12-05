@@ -194,7 +194,7 @@ stmtList	::=		stmt:s	stmtList:l		{: RESULT = new AST_STMT_LIST(s, l, lexer.getLi
 					| stmt:s				{: RESULT = new AST_STMT_LIST(s, null, lexer.getLine()); :}
 					;
 
-typeIdList	::= 	type:t ID:i 	{: RESULT = new AST_TYPE_LIST(t, null, i); :}
+typeIdList	::= 	type:t ID:i 	{: RESULT = new AST_TYPE_LIST(t, null, i, lexer.getLine()); :}
 					| 	type:t ID:i COMMA typeIdList:l	{: RESULT = new AST_TYPE_LIST(t, l, i, lexer.getLine()); :}
 					;
 
