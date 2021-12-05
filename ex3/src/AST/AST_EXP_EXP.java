@@ -27,6 +27,7 @@ public class AST_EXP_EXP extends AST_EXP
 		this.b = b;
     		this.e2 = e2;
     		this.line = line - 1;
+		System.out.print(String.format("HERRREEEEEEEEEEE: %d", this.line));
 	}
   
   public void PrintMe()
