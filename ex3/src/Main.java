@@ -3,6 +3,7 @@ import java.io.*;
 import java.io.PrintWriter;
 import java_cup.runtime.Symbol;
 import AST.*;
+import SYMBOL_TABLE.*;
 
 public class Main
 {
@@ -11,7 +12,7 @@ public class Main
 		Lexer l;
 		Parser p;
 		Symbol s;
-		AST_DEC_LIST AST;
+		AST_INITIAL AST;
 		FileReader file_reader;
 		PrintWriter file_writer;
 		String inputFilename = argv[0];
@@ -23,26 +24,42 @@ public class Main
 			/* [1] Initialize a file reader */
 			/********************************/
 			file_reader = new FileReader(inputFilename);
-
-			/********************************/
-			/* [2] Initialize a file writer */
-			/********************************/
-			file_writer = new PrintWriter(outputFilename);
 			
 			/******************************/
-			/* [3] Initialize a new lexer */
+			/* [2] Initialize a new lexer */
 			/******************************/
 			l = new Lexer(file_reader);
 			
 			/*******************************/
-			/* [4] Initialize a new parser */
+			/* [3] Initialize a new parser */
 			/*******************************/
-			p = new Parser(l);
+			p = new Parser(l, outputFilename);
 
 			/***********************************/
-			/* [5] 3 ... 2 ... 1 ... Parse !!! */
+			/* [4] 3 ... 2 ... 1 ... Parse !!! */
 			/***********************************/
-			AST = (AST_DEC_LIST) p.parse().value;
+			AST = (AST_INITIAL) p.parse().value;
+			
+			SYMBOL_TABLE sym_table = getInstance();
+
+			String output = "OK";
+
+			try 
+			{
+				AST.visit(sym_table);
+			}
+			catch (ArithmeticException e)
+			{
+				output = "ERROR(" + e.getMessage() + ")";
+			}
+
+
+			/********************************/
+			/* [5] Write OK */
+			/********************************/
+			file_writer = new PrintWriter(outputFilename);
+			file_writer.print(output);
+			file_writer.close();
 			
 			/*************************/
 			/* [6] Print the AST ... */
@@ -54,15 +71,10 @@ public class Main
 			/**************************/
 			AST.SemantMe();
 			
-			/*************************/
-			/* [8] Close output file */
-			/*************************/
-			file_writer.close();
-
 			/*************************************/
-			/* [9] Finalize AST GRAPHIZ DOT file */
+			/* [8] Finalize AST GRAPHIZ DOT file */
 			/*************************************/
-			AST_GRAPHVIZ.getInstance().finalizeFile();			
+			AST_GRAPHVIZ.getInstance().finalizeFile();
     	}
 			     
 		catch (Exception e)
@@ -71,5 +83,3 @@ public class Main
 		}
 	}
 }
-
-
