@@ -3,7 +3,6 @@ package AST;
 public class AST_INITIAL extends AST_Node
 {
 	public AST_PRO pro;
-	public int line;
   
   public AST_INITIAL(AST_PRO pro, int line)
 	{
