@@ -5,12 +5,13 @@ public class AST_STMT_ID extends AST_STMT
   public String s;
   public AST_EXP_LIST l;
   
-  public AST_STMT_ID(String s, AST_EXP_LIST l)
+  public AST_STMT_ID(String s, AST_EXP_LIST l, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
 		/******************************/
 		SerialNumber = AST_Node_Serial_Number.getFresh();
+		this.line = line - 1;
 
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
