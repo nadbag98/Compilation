@@ -11,7 +11,7 @@ public class AST_NEWEXP extends AST_Node
 	/******************/
 	/* CONSTRUCTOR(S) */
 	/******************/
-	public AST_NEWEXP(AST_TYPE t, AST_EXP e)
+	public AST_NEWEXP(AST_TYPE t, AST_EXP e, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -30,6 +30,7 @@ public class AST_NEWEXP extends AST_Node
 		/*******************************/
 		this.t = t;
     		this.e = e;
+		this.line = line-1;
     
     }
 
