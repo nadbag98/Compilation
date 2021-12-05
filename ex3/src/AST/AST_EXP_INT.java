@@ -26,6 +26,10 @@ public class AST_EXP_INT extends AST_EXP
 		this.i = i;
 		this.is_neg = is_neg;
 		this.line = line - 1;
+		if (i == 0){
+			this.isZero = 1;
+		}
+
 	}
   
   public void PrintMe()
