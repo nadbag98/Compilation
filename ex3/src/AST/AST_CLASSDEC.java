@@ -7,7 +7,7 @@ public class AST_CLASSDEC extends AST_Node
   public AST_CFIELD_LIST l;
   
   
-  public AST_CLASSDEC(String s1, String s2, AST_CFIELD_LIST l)
+  public AST_CLASSDEC(String s1, String s2, AST_CFIELD_LIST l, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -25,7 +25,8 @@ public class AST_CLASSDEC extends AST_Node
 		/*******************************/
 		this.s1 = s1;
 		this.s2 = s2;
-    this.l = l;
+    		this.l = l;
+		this.line = line - 1;
 	}
   
   public void PrintMe()
