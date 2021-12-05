@@ -27,7 +27,7 @@ public AST_BINOP b;
 		this.e1 = e1;
 		this.b = b;
     		this.e2 = e2;
-    		this.line = line - 1;
+    		this.line = line;
 	}
   
   public void PrintMe()
@@ -90,8 +90,18 @@ public AST_BINOP b;
 					return TYPE_INT.getInstance();
 				}
 			} else { // this.b.op == 7
-
-				//complicated type compate hereeeee for =
+				if (t1 == t2)
+				{
+					return TYPE_INT.getInstance();
+				}
+				else if (inherence)
+				{
+					return TYPE_INT.getInstance();
+				} 
+				else if (one is nil)
+				{
+					return TYPE_INT.getInstance();
+				}				
 			}
 
 			throw new ArithmeticException(String.format("%d", this.line)); 
