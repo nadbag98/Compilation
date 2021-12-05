@@ -73,4 +73,9 @@ public class AST_DEC extends AST_Node
 		if (child != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,child.SerialNumber);
 	}
 	
+	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
+		this.child.visit(sym_table);
+		return null;
+	}
+	
 }
