@@ -6,12 +6,13 @@ public class AST_STMT_EXP extends AST_STMT
   public AST_STMT_LIST l;
   public int is_while;
   
-  public AST_STMT_EXP(AST_EXP e, AST_STMT_LIST l, int is_while)
+  public AST_STMT_EXP(AST_EXP e, AST_STMT_LIST l, int is_while, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
 		/******************************/
 		SerialNumber = AST_Node_Serial_Number.getFresh();
+		this.line = line - 1;
 
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
