@@ -26,7 +26,7 @@ public class AST_EXP_VAR extends AST_EXP
 		this.v = v;
 		this.s = s;
     this.l = l;
-    this.line = line-1
+    this.line = line-1;
 	}
   
   public void PrintMe()
