@@ -4,12 +4,13 @@ public class AST_STMT_VARDEC extends AST_STMT
 {
   public AST_VARDEC v;
   
-  public AST_STMT_VARDEC(AST_VARDEC v)
+  public AST_STMT_VARDEC(AST_VARDEC v, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
 		/******************************/
 		SerialNumber = AST_Node_Serial_Number.getFresh();
+		this.line = line - 1;
 
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
