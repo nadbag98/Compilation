@@ -8,12 +8,13 @@ public class AST_VARDEC extends AST_Node
   public int is_new;
   
   
-  public AST_VARDEC(AST_TYPE t, String s, AST_Node exp, int is_new)
+  public AST_VARDEC(AST_TYPE t, String s, AST_Node exp, int is_new, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
 		/******************************/
 		SerialNumber = AST_Node_Serial_Number.getFresh();
+		this.line = line - 1;
 
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
