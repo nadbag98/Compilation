@@ -52,6 +52,12 @@ public class AST_PRO extends AST_Node
 		if (dec != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,dec.SerialNumber);
 		if (pro != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,pro.SerialNumber);
 	}
+	
+	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
+		this.dec.visit(sym_table);
+		this.pro.visit(sym_table);
+		return null;
+	}
   
 }
 
