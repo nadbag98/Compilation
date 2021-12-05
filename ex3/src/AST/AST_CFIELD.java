@@ -11,7 +11,7 @@ public class AST_CFIELD extends AST_Node
 	/******************/
 	/* CONSTRUCTOR(S) */
 	/******************/
-	public AST_CFIELD(AST_VARDEC v, AST_FUNCDEC f)
+	public AST_CFIELD(AST_VARDEC v, AST_FUNCDEC f, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -28,7 +28,8 @@ public class AST_CFIELD extends AST_Node
 		/* COPY INPUT DATA NENBERS ... */
 		/*******************************/
 		this.v = v;
-    this.f = f;
+    		this.f = f;
+    		this.line = line - 1;
 	}
 
 	/******************************************************/
