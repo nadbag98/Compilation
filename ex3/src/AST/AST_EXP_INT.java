@@ -5,7 +5,8 @@ public class AST_EXP_INT extends AST_EXP
   public int i;
   public int is_neg;
   
-  public AST_EXP_INT(int i, int is_neg)
+  
+  public AST_EXP_INT(int i, int is_neg, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -24,6 +25,7 @@ public class AST_EXP_INT extends AST_EXP
 		/*******************************/
 		this.i = i;
 		this.is_neg = is_neg;
+		this.line = line - 1;
 	}
   
   public void PrintMe()
