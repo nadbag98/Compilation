@@ -6,7 +6,7 @@ public class AST_EXP_EXP extends AST_EXP
 	public AST_BINOP b;
   public AST_EXP e2;
   
-  public AST_EXP_EXP(AST_EXP e1, AST_BINOP b, AST_EXP e2)
+  public AST_EXP_EXP(AST_EXP e1, AST_BINOP b, AST_EXP e2, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -25,7 +25,8 @@ public class AST_EXP_EXP extends AST_EXP
 		/*******************************/
 		this.e1 = e1;
 		this.b = b;
-    this.e2 = e2;
+    		this.e2 = e2;
+    		this.line = line - 1;
 	}
   
   public void PrintMe()
