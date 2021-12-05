@@ -1,17 +1,16 @@
 package AST;
 
-public class AST_DEC extends AST_Node
+public class AST_TYPE extends AST_Node
 {
 	/****************/
 	/* DATA MEMBERS */
 	/****************/
-	public AST_Node child;
-	public int i;
+	public String s;
 
 	/******************/
 	/* CONSTRUCTOR(S) */
 	/******************/
-	public AST_DEC(AST_Node child, int i)
+	public AST_TYPE(String s)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -21,27 +20,12 @@ public class AST_DEC extends AST_Node
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
-		switch(i)
-		{
-			case(1):
-				System.out.print("====================== dec --> varDec \n");
-				break;
-			case(2):
-				System.out.print("====================== dec --> funcDec \n");
-				break;
-			case(3):
-				System.out.print("====================== dec --> classDec \n");
-				break;
-			case(4):
-				System.out.print("====================== dec --> arrayTypedef \n");
-				break;
-		}
+		if (s != null) System.out.format("====================== TYPE --> ( %s ) \n", s);
 		
 		/*******************************/
 		/* COPY INPUT DATA NENBERS ... */
 		/*******************************/
-		this.child = child;
-		this.i = i;
+		this.s = s;
 	}
 
 	/******************************************************/
@@ -52,24 +36,14 @@ public class AST_DEC extends AST_Node
 		/**************************************/
 		/* AST NODE TYPE = AST STATEMENT LIST */
 		/**************************************/
-		System.out.print("AST NODE DEC\n");
-
-		/*************************************/
-		/* RECURSIVELY PRINT HEAD + TAIL ... */
-		/*************************************/
-		if (child != null) child.PrintMe();
+		System.out.print(String.format("AST NODE TYPE (%s)\n", this.s));
 
 		/**********************************/
 		/* PRINT to AST GRAPHVIZ DOT file */
 		/**********************************/
-		AST_GRAPHVIZ.getInstance().logNode(
+    AST_GRAPHVIZ.getInstance().logNode(
 			SerialNumber,
-			"DEC\n");
-		
-		/****************************************/
-		/* PRINT Edges to AST GRAPHVIZ DOT file */
-		/****************************************/
-		if (child != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,child.SerialNumber);
+			String.format("TYPE\n(%s)",s));
 	}
 	
 }

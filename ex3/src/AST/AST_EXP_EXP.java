@@ -1,12 +1,12 @@
 package AST;
 
-public class AST_EXP_VAR extends AST_EXP
+public class AST_EXP_EXP extends AST_EXP
 {
-  public AST_VAR v;
-	public String s;
-  public AST_EXP_LIST l;
+  public AST_EXP e1;
+	public AST_BINOP b;
+  public AST_EXP e2;
   
-  public AST_EXP_VAR(AST_VAR v, String s, AST_EXP_LIST l)
+  public AST_EXP_EXP(AST_EXP e1, AST_BINOP b, AST_EXP e2)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -16,42 +16,44 @@ public class AST_EXP_VAR extends AST_EXP
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
-    if (s == null) System.out.print("====================== exp --> var\n");
-		if (l != null && s != null) System.out.print("====================== exp --> var id expList\n");
-		if (l == null && s != null) System.out.print("====================== exp --> var id\n");
+    if (b == null) System.out.print("====================== exp --> exp\n");
+    if (b != null) System.out.print("====================== exp --> exp binop exp\n");
+
 
 		/*******************************/
 		/* COPY INPUT DATA NENBERS ... */
 		/*******************************/
-		this.v = v;
-		this.s = s;
-    this.l = l;
+		this.e1 = e1;
+		this.b = b;
+    this.e2 = e2;
 	}
   
   public void PrintMe()
 	{
 		/**************************************/
-		/* AST NODE TYPE = AST STATEMENT LIST */
+		/* AST NODE TYPE = AST EXP_EXP */
 		/**************************************/
-		System.out.print("AST NODE EXP_VAR\n");
+		System.out.print("AST NODE EXP_EXP\n");
 
 		/*************************************/
 		/* RECURSIVELY PRINT HEAD + TAIL ... */
 		/*************************************/
-		if (v != null) v.PrintMe();
-		if (l != null) l.PrintMe();
+		if (e1 != null) e1.PrintMe();
+		if (b != null) b.PrintMe();
+    		if (e2 != null) e2.PrintMe();
 
 		/**********************************/
 		/* PRINT to AST GRAPHVIZ DOT file */
 		/**********************************/
 		AST_GRAPHVIZ.getInstance().logNode(
-			SerialNumber, "EXP\n");
+			SerialNumber, "EXP_EXP\n");
 		
 		/****************************************/
 		/* PRINT Edges to AST GRAPHVIZ DOT file */
 		/****************************************/
-		if (v != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,v.SerialNumber);
-		if (l != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,l.SerialNumber);
+		if (e1 != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,e1.SerialNumber);
+		if (b != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,b.SerialNumber);
+		if (e2 != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,e2.SerialNumber);
 	}
   
 }

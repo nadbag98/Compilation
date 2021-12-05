@@ -1,44 +1,53 @@
 package AST;
 
-import TYPES.*;
-
 public class AST_EXP_INT extends AST_EXP
 {
-	public int value;
-	
-	/******************/
-	/* CONSTRUCTOR(S) */
-	/******************/
-	public AST_EXP_INT(int value)
+  public int i;
+  public int is_neg;
+  
+  public AST_EXP_INT(int i, int is_neg)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
 		/******************************/
 		SerialNumber = AST_Node_Serial_Number.getFresh();
 
-		System.out.format("====================== exp -> INT( %d )\n", value);
-		this.value = value;
+		/***************************************/
+		/* PRINT CORRESPONDING DERIVATION RULE */
+		/***************************************/
+    if (is_neg == 0) System.out.print("====================== exp --> INT\n");
+    if (is_neg == 1) System.out.print("====================== exp --> MINUS INT \n");
+
+
+		/*******************************/
+		/* COPY INPUT DATA NENBERS ... */
+		/*******************************/
+		this.i = i;
+		this.is_neg = is_neg;
 	}
-
-	/************************************************/
-	/* The printing message for an INT EXP AST node */
-	/************************************************/
-	public void PrintMe()
+  
+  public void PrintMe()
 	{
-		/*******************************/
-		/* AST NODE TYPE = AST INT EXP */
-		/*******************************/
-		System.out.format("AST NODE INT( %d )\n",value);
+		/**************************************/
+		/* AST NODE TYPE = AST EXP_INT */
+		/**************************************/
+		System.out.print("AST NODE EXP_INT\n");
 
-		/***************************************/
-		/* PRINT Node to AST GRAPHVIZ DOT file */
-		/***************************************/
+		/*************************************/
+		/* RECURSIVELY PRINT HEAD + TAIL ... */
+		/*************************************/
+		if (is_neg == 0) System.out.print(String.format("%d\n", i));
+    if (is_neg == 1) System.out.print(String.format("-%d\n", i));
+
+		/**********************************/
+		/* PRINT to AST GRAPHVIZ DOT file */
+		/**********************************/
 		AST_GRAPHVIZ.getInstance().logNode(
-			SerialNumber,
-			String.format("INT(%d)",value));
+			SerialNumber, "EXP_INT\n");
+		
+		/****************************************/
+		/* PRINT Edges to AST GRAPHVIZ DOT file */
+		/****************************************/
 	}
-	public TYPE SemantMe()
-	{
-		return TYPE_INT.getInstance();
-	}
+  
 }

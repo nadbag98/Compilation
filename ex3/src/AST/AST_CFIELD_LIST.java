@@ -1,18 +1,17 @@
 package AST;
 
-public class AST_EXP_LIST extends AST_Node
+public class AST_CFIELD_LIST extends AST_Node
 {
 	/****************/
 	/* DATA MEMBERS */
 	/****************/
-	public AST_EXP head;
-	public AST_EXP_LIST tail;
-  
+	public AST_CFIELD head;
+	public AST_CFIELD_LIST tail;
 
 	/******************/
 	/* CONSTRUCTOR(S) */
 	/******************/
-	public AST_EXP_LIST(AST_EXP head,AST_EXP_LIST tail)
+	public AST_CFIELD_LIST(AST_CFIELD head,AST_CFIELD_LIST tail)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -22,8 +21,8 @@ public class AST_EXP_LIST extends AST_Node
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
-		if (tail != null) System.out.print("====================== expList -> exp expList\n");
-		if (tail == null) System.out.print("====================== expList -> exp      \n");
+		if (tail != null) System.out.print("====================== cField -> cField cFieldList\n");
+		if (tail == null) System.out.print("====================== cField -> cField      \n");
 
 		/*******************************/
 		/* COPY INPUT DATA NENBERS ... */
@@ -38,9 +37,9 @@ public class AST_EXP_LIST extends AST_Node
 	public void PrintMe()
 	{
 		/**************************************/
-		/* AST NODE EXP = AST EXP LIST */
+		/* AST NODE TYPE = AST CFIELD LIST */
 		/**************************************/
-		System.out.print("AST NODE EXP LIST\n");
+		System.out.print("AST NODE CFIELD LIST\n");
 
 		/*************************************/
 		/* RECURSIVELY PRINT HEAD + TAIL ... */
@@ -53,7 +52,7 @@ public class AST_EXP_LIST extends AST_Node
 		/**********************************/
 		AST_GRAPHVIZ.getInstance().logNode(
 			SerialNumber,
-			"EXP\nLIST\n");
+			"cField\nLIST\n");
 		
 		/****************************************/
 		/* PRINT Edges to AST GRAPHVIZ DOT file */

@@ -1,12 +1,14 @@
 package AST;
 
-public class AST_EXP_VAR extends AST_EXP
+public class AST_FUNCDEC extends AST_Node
 {
-  public AST_VAR v;
-	public String s;
-  public AST_EXP_LIST l;
+
+  public AST_TYPE t;
+  public String s;
+	public AST_TYPE_LIST l1;
+  public AST_STMT_LIST l2;
   
-  public AST_EXP_VAR(AST_VAR v, String s, AST_EXP_LIST l)
+  public AST_FUNCDEC(AST_TYPE t, String s, AST_TYPE_LIST l1, AST_STMT_LIST l2)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -16,16 +18,16 @@ public class AST_EXP_VAR extends AST_EXP
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
-    if (s == null) System.out.print("====================== exp --> var\n");
-		if (l != null && s != null) System.out.print("====================== exp --> var id expList\n");
-		if (l == null && s != null) System.out.print("====================== exp --> var id\n");
+		if (l1 != null) System.out.print("====================== funcDec --> 1/2\n");
+		if (l1 == null) System.out.print("====================== funcDec --> 2/2\n");
 
 		/*******************************/
 		/* COPY INPUT DATA NENBERS ... */
 		/*******************************/
-		this.v = v;
+		this.t = t;
 		this.s = s;
-    this.l = l;
+    this.l1 = l1;
+    this.l2 = l2;
 	}
   
   public void PrintMe()
@@ -33,25 +35,27 @@ public class AST_EXP_VAR extends AST_EXP
 		/**************************************/
 		/* AST NODE TYPE = AST STATEMENT LIST */
 		/**************************************/
-		System.out.print("AST NODE EXP_VAR\n");
+		System.out.print("AST NODE VARDEC\n");
 
 		/*************************************/
 		/* RECURSIVELY PRINT HEAD + TAIL ... */
 		/*************************************/
-		if (v != null) v.PrintMe();
-		if (l != null) l.PrintMe();
+		if (t != null) t.PrintMe();
+		if (l1 != null) l1.PrintMe();
+    if (l2 != null) l2.PrintMe();
 
 		/**********************************/
 		/* PRINT to AST GRAPHVIZ DOT file */
 		/**********************************/
 		AST_GRAPHVIZ.getInstance().logNode(
-			SerialNumber, "EXP\n");
+			SerialNumber, String.format("funcDec\n%s\n", s));
 		
 		/****************************************/
 		/* PRINT Edges to AST GRAPHVIZ DOT file */
 		/****************************************/
-		if (v != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,v.SerialNumber);
-		if (l != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,l.SerialNumber);
+		if (t != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,t.SerialNumber);
+    if (l1 != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,l1.SerialNumber);
+    if (l2 != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,l2.SerialNumber);
 	}
   
 }

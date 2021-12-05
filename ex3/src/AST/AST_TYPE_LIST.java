@@ -1,18 +1,19 @@
 package AST;
 
-public class AST_EXP_LIST extends AST_Node
+public class AST_TYPE_LIST extends AST_Node
 {
 	/****************/
 	/* DATA MEMBERS */
 	/****************/
-	public AST_EXP head;
-	public AST_EXP_LIST tail;
+	public AST_TYPE head;
+	public AST_TYPE_LIST tail;
+  public String s;
   
 
 	/******************/
 	/* CONSTRUCTOR(S) */
 	/******************/
-	public AST_EXP_LIST(AST_EXP head,AST_EXP_LIST tail)
+	public AST_TYPE_LIST(AST_TYPE head,AST_TYPE_LIST tail, String s)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -22,14 +23,15 @@ public class AST_EXP_LIST extends AST_Node
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
-		if (tail != null) System.out.print("====================== expList -> exp expList\n");
-		if (tail == null) System.out.print("====================== expList -> exp      \n");
+		if (tail != null) System.out.print("====================== stmts -> stmt stmts\n");
+		if (tail == null) System.out.print("====================== stmts -> stmt      \n");
 
 		/*******************************/
 		/* COPY INPUT DATA NENBERS ... */
 		/*******************************/
 		this.head = head;
 		this.tail = tail;
+    this.s = s;
 	}
 
 	/******************************************************/
@@ -38,9 +40,9 @@ public class AST_EXP_LIST extends AST_Node
 	public void PrintMe()
 	{
 		/**************************************/
-		/* AST NODE EXP = AST EXP LIST */
+		/* AST NODE TYPE = AST STATEMENT LIST */
 		/**************************************/
-		System.out.print("AST NODE EXP LIST\n");
+		System.out.print("AST NODE TYPE LIST\n");
 
 		/*************************************/
 		/* RECURSIVELY PRINT HEAD + TAIL ... */
@@ -53,7 +55,7 @@ public class AST_EXP_LIST extends AST_Node
 		/**********************************/
 		AST_GRAPHVIZ.getInstance().logNode(
 			SerialNumber,
-			"EXP\nLIST\n");
+			"TYPE\nLIST\n");
 		
 		/****************************************/
 		/* PRINT Edges to AST GRAPHVIZ DOT file */
