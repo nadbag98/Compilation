@@ -6,13 +6,14 @@ public class AST_VAR extends AST_Node
   public String s;
 	public AST_EXP e;
   
-  public AST_VAR(AST_VAR v, String s, AST_EXP e)
+  public AST_VAR(AST_VAR v, String s, AST_EXP e, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
 		/******************************/
 		SerialNumber = AST_Node_Serial_Number.getFresh();
-
+		this.line = line - 1;
+		
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
