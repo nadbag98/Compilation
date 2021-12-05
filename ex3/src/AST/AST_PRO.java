@@ -5,7 +5,7 @@ public class AST_PRO extends AST_Node
   public AST_DEC dec;
 	public AST_PRO pro;
   
-  public AST_PRO( AST_DEC dec,AST_PRO pro)
+  public AST_PRO( AST_DEC dec,AST_PRO pro, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -23,6 +23,7 @@ public class AST_PRO extends AST_Node
 		/*******************************/
 		this.pro = pro;
 		this.dec = dec;
+		this.line = line-1;
 	}
   
   public void PrintMe()
