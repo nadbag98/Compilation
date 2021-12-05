@@ -3,8 +3,9 @@ package AST;
 public class AST_INITIAL extends AST_Node
 {
 	public AST_PRO pro;
+	public int line;
   
-  public AST_INITIAL(AST_PRO pro)
+  public AST_INITIAL(AST_PRO pro, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -20,6 +21,9 @@ public class AST_INITIAL extends AST_Node
 		/* COPY INPUT DATA NENBERS ... */
 		/*******************************/
 		this.pro = pro;
+		this.line = line;
+		System.out.print("HERERERERERER: ");
+		System.out.print(String.format("%d\n", this.line));
 	}
   
   public void PrintMe()
@@ -28,6 +32,7 @@ public class AST_INITIAL extends AST_Node
 		/* AST NODE TYPE = AST INITIAL */
 		/**************************************/
 		System.out.print("AST NODE INITIAL\n");
+		System.out.print(String.format("%d", this.line));
 
 		/*************************************/
 		/* RECURSIVELY PRINT HEAD + TAIL ... */
