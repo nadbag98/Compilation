@@ -4,7 +4,7 @@ public class AST_EXP_REST extends AST_EXP
 {
   public String s;
   
-  public AST_EXP_REST(String s)
+  public AST_EXP_REST(String s, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -22,6 +22,7 @@ public class AST_EXP_REST extends AST_EXP
 		/* COPY INPUT DATA NENBERS ... */
 		/*******************************/
 		this.s = s;
+		this.line = line-1;
 	}
   
   public void PrintMe()
