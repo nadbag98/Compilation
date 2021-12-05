@@ -48,5 +48,10 @@ public class AST_INITIAL extends AST_Node
 		/****************************************/
 		if (pro != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,pro.SerialNumber);
 	}
+	
+	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
+		this.pro.visit(sym_table);
+		return null;
+	}
   
 }
