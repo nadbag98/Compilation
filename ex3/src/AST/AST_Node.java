@@ -1,5 +1,7 @@
 package AST;
 
+import SYMBOL_TABLE.*;
+
 public abstract class AST_Node
 {
 	/*******************************************/
