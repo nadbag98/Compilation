@@ -6,12 +6,13 @@ public class AST_STMT_VAR_EXP extends AST_STMT
   public AST_EXP e;
   public AST_NEWEXP ne;
   
-  public AST_STMT_VAR_EXP(AST_VAR v, AST_EXP e, AST_NEWEXP ne)
+  public AST_STMT_VAR_EXP(AST_VAR v, AST_EXP e, AST_NEWEXP ne, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
 		/******************************/
 		SerialNumber = AST_Node_Serial_Number.getFresh();
+		this.line = line - 1;
 
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
