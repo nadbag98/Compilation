@@ -163,7 +163,7 @@ start with initial;
 /* DERIVATION RULES */
 /********************/
 
-initial		::=		Program:p 	{: RESULT = new AST_INITIAL(p); :} 
+initial		::=		Program:p 	{: RESULT = new AST_INITIAL(p, lexer.getLine()); :} 
 					;
 
 Program		::=		dec:d 		{: RESULT = new AST_PRO(d, null); :}
