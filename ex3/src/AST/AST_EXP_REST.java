@@ -48,5 +48,13 @@ public class AST_EXP_REST extends AST_EXP
 		/* PRINT Edges to AST GRAPHVIZ DOT file */
 		/****************************************/
 	}
+	
+	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
+		if (this.s == null){
+			return TYPE_NIL.getInstance();
+		} else {
+			return TYPE_STRING.getInstance();
+		}
+	}
   
 }
