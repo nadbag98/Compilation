@@ -5,8 +5,9 @@ public class AST_STMT_EXP extends AST_STMT
   public AST_EXP e;
   public AST_STMT_LIST l;
   public int is_while;
+  public int line;
   
-  public AST_STMT_EXP(AST_EXP e, AST_STMT_LIST l, int is_while)
+  public AST_STMT_EXP(AST_EXP e, AST_STMT_LIST l, int is_while, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -26,6 +27,9 @@ public class AST_STMT_EXP extends AST_STMT
     this.e = e;
     this.l = l;
     this.is_while = is_while;
+    this.line = line;
+    System.out.print("HERERERERERERERE: ");
+    System.out.print(String.format("%d\n", this.line));
 	}
   
   public void PrintMe()
