@@ -13,13 +13,14 @@ public class AST_TYPE_LIST extends AST_Node
 	/******************/
 	/* CONSTRUCTOR(S) */
 	/******************/
-	public AST_TYPE_LIST(AST_TYPE head,AST_TYPE_LIST tail, String s)
+	public AST_TYPE_LIST(AST_TYPE head,AST_TYPE_LIST tail, String s, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
 		/******************************/
 		SerialNumber = AST_Node_Serial_Number.getFresh();
-
+		this.line = line - 1;
+		
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
