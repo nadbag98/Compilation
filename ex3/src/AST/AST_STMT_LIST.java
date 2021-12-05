@@ -11,12 +11,13 @@ public class AST_STMT_LIST extends AST_Node
 	/******************/
 	/* CONSTRUCTOR(S) */
 	/******************/
-	public AST_STMT_LIST(AST_STMT head,AST_STMT_LIST tail)
+	public AST_STMT_LIST(AST_STMT head,AST_STMT_LIST tail, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
 		/******************************/
 		SerialNumber = AST_Node_Serial_Number.getFresh();
+		this.line = line - 1;
 
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
