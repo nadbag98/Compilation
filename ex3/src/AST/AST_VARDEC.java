@@ -2,10 +2,10 @@ package AST;
 
 public class AST_VARDEC extends AST_Node
 {
-  public AST_TYPE t;
+  	public AST_TYPE t;
 	public AST_Node exp;
-  public String s;
-  public int is_new;
+  	public String s;
+  	public int is_new;
   
   
   public AST_VARDEC(AST_TYPE t, String s, AST_Node exp, int is_new, int line)
@@ -30,8 +30,8 @@ public class AST_VARDEC extends AST_Node
 		/*******************************/
 		this.t = t;
 		this.s = s;
-    this.exp = exp;
-    this.is_new = is_new;
+	    this.exp = exp;
+	    this.is_new = is_new;
 	}
   
   public void PrintMe()
@@ -64,6 +64,27 @@ public class AST_VARDEC extends AST_Node
 		/****************************************/
 		if (exp != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,exp.SerialNumber);
 		if (t != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,t.SerialNumber);
+	}
+	
+	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
+		if (sym_table.searchCurrScope(this.s)){
+			throw new ArithmeticException(String.format("%d", this.line)); 
+		}
+		
+		TYPE t1 = findType(this.t.s);
+		
+		if (null == t1){
+			throw new ArithmeticException(String.format("%d", this.line));
+		}
+		
+		if (null != this.exp){
+			TYPE t2 = this.exp.visit(sym_table);
+			if (!checkInheritance(t1, t2)){
+				throw new ArithmeticException(String.format("%d", this.line));
+			}
+		}
+		
+		sym_table.enter(this.s, t1);			
 	}
   
 }
