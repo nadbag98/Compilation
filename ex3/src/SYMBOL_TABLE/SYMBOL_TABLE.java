@@ -124,6 +124,10 @@ public class SYMBOL_TABLE
 		}
 		return 0;
 	}
+	
+	public TYPE findType(String name){
+		//type int or type string or type class or array in all the table
+	}
 
 	/********************************************************************************/
 	/* end scope = Keep popping elements out of the data structure,                 */
