@@ -277,6 +277,7 @@ public class SYMBOL_TABLE
 				TYPE_VOID.getInstance(),
 				"PrintTrace",
 				new TYPE_LIST(
+					null,
 					null)));
 			
 		}
