@@ -10,7 +10,7 @@ parser code
 {:
 	public Lexer lexer;
 	String path;
-	int prevLine = 0;
+	public int prevLine = 0;
 
 	public Parser(Lexer lexer, String path)
 	{
