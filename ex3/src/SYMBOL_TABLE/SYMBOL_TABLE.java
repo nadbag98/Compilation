@@ -126,11 +126,24 @@ public class SYMBOL_TABLE
 	}
 	
 	public TYPE findType(String name){
-		//type int or type string or type isclass
+		TYPE t1 = find(name);
+		if (t1 == TYPE_INT.getInstance() && name.equals("int")){
+			return t1;
+		}
+		if (t1 == TYPE_STRING.getInstance() && name.equals("string")){
+			return t1;
+		}
+		if (t1.isClass()){
+			return t1;
+		}
+		if (t1.isArray()){
+			return t1;
+		}
+		return null;
 	}
 	
 	public boolean checkInheritance(TYPE father, TYPE son){
-		// 
+		// or compare with nil
 	}
 
 	/********************************************************************************/
