@@ -138,6 +138,7 @@ non terminal AST_TYPE_LIST typeIdList;
 non terminal AST_CFIELD_LIST cFieldList;
 non terminal AST_EXP_LIST expList;
 non terminal AST_INITIAL initial;
+non terminal AST_VARDEC_CLASS varDecClass;
 
 /***********************/
 /* OPERATOR PRECEDENCE */
@@ -188,6 +189,12 @@ arrayTypedef ::= 	ARRAY ID:i EQ type:t LBRACK RBRACK SEMICOLON	{: RESULT = new A
 varDec		::=		type:t ID:i SEMICOLON 	{: RESULT = new AST_VARDEC(t, i, null, 0, lexer.getLine()); :}
 					| type:t ID:i ASSIGN exp:e SEMICOLON 	{: RESULT = new AST_VARDEC(t, i, e, 0, lexer.getLine()); :}
 					| type:t ID:i ASSIGN newExp:n SEMICOLON 	{: RESULT = new AST_VARDEC(t, i, n, 1, lexer.getLine()); :}
+					;
+					
+varDecClass		::=		type:t ID:i SEMICOLON 	{: RESULT = new AST_VARDEC_CLASS(t, i, null, 0, 0, lexer.getLine()); :}
+					| type:t ID:i ASSIGN STRING:s SEMICOLON 	{: RESULT = new AST_VARDEC_CLASS(t, i, s, 0, 1, lexer.getLine()); :}
+					| type:t ID:i ASSIGN INT:i2 SEMICOLON 	{: RESULT = new AST_VARDEC_CLASS(t, i, null, i2, 2, lexer.getLine()); :}
+					| type:t ID:i ASSIGN NIL SEMICOLON 	{: RESULT = new AST_VARDEC_CLASS(t, i, null, 0, 3, lexer.getLine()); :}
 					;
 
 stmtList	::=		stmt:s	stmtList:l		{: RESULT = new AST_STMT_LIST(s, l, lexer.getLine()); :}
@@ -250,7 +257,7 @@ newExp		::= 	NEW type:t 	{: RESULT = new AST_NEWEXP(t, null, lexer.getLine());  
 					| NEW type:t LBRACK exp:e RBRACK 	{: RESULT = new AST_NEWEXP(t, e, lexer.getLine());    :}
 					;
 
-cField 		::= 	varDec:v 	{: RESULT = new AST_CFIELD(v, null, lexer.getLine());    :}
+cField 		::= 	varDecClass:v 	{: RESULT = new AST_CFIELD(v, null, lexer.getLine());    :}
 					| funcDec:f 	{: RESULT = new AST_CFIELD(null, f, lexer.getLine());    :}
 					;
 
