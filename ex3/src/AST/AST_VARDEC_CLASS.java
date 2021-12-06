@@ -60,33 +60,34 @@ public class AST_VARDEC_CLASS extends AST_Node
 	
 	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
   
-    if (sym_table.searchCurrScope(this.s)){
-			throw new ArithmeticException(String.format("%d", this.line)); 
-		}
-    
-    TYPE t1 = findType(this.t.s);
-    if (null == t1){
-			throw new ArithmeticException(String.format("%d", this.line));
-		}
-    
-    switch(rule){
-      case(1):
-          if (t1 != TYPE_STRING.getInstance()){
-            throw new ArithmeticException(String.format("%d", this.line));
-          }
-          break;
-      case(2):
-          if (t1 != TYPE_INT.getInstance()){
-            throw new ArithmeticException(String.format("%d", this.line));
-          }
-          break;
-      case(3):
-          if (t1 == TYPE_INT.getInstance() || t1 == TYPE_STRING.getInstance()){
-            throw new ArithmeticException(String.format("%d", this.line));
-          }
-    }  
-    
-    sym_table.enter(this.s, t1);	 
+	    if (sym_table.searchCurrScope(this.s)){
+				throw new ArithmeticException(String.format("%d", this.line)); 
+			}
+
+	    TYPE t1 = findType(this.t.s);
+	    if (null == t1){
+				throw new ArithmeticException(String.format("%d", this.line));
+			}
+
+	    switch(rule){
+	      case(1):
+		  if (t1 != TYPE_STRING.getInstance()){
+		    throw new ArithmeticException(String.format("%d", this.line));
+		  }
+		  break;
+	      case(2):
+		  if (t1 != TYPE_INT.getInstance()){
+		    throw new ArithmeticException(String.format("%d", this.line));
+		  }
+		  break;
+	      case(3):
+		  if (t1 == TYPE_INT.getInstance() || t1 == TYPE_STRING.getInstance()){
+		    throw new ArithmeticException(String.format("%d", this.line));
+		  }
+	    }  
+	   
+
+	    sym_table.enter(this.s, t1);	 
       
 	}
   
