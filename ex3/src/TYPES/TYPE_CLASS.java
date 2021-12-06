@@ -23,4 +23,6 @@ public class TYPE_CLASS extends TYPE
 		this.father = father;
 		this.data_members = data_members;
 	}
+	
+	public boolean isClass(){ return true;}
 }
