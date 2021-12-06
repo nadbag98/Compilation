@@ -143,7 +143,22 @@ public class SYMBOL_TABLE
 	}
 	
 	public boolean checkInheritance(TYPE father, TYPE son){
-		// or compare with nil
+		if (father == son){
+			return true;
+		}
+		if ((father.isClass() || father.isArray()) && son == TYPE_NIL.getInstance()){
+			return true;
+		}
+		if (father.isClass() && son.isClass()){
+			familyMember = son.father;
+			while (familyMember != null){
+				if (father == familyMember){
+					return true;
+				}
+				familyMember = familyMember.father;
+			}
+		}
+		return false;
 	}
 
 	/********************************************************************************/
