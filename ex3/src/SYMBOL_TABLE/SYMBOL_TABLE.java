@@ -110,6 +110,20 @@ public class SYMBOL_TABLE
 		/*********************************************/
 		PrintMe();
 	}
+	
+	public int searchCurrScope(String name){
+		
+		SYMBOL_TABLE_ENTRY entry = top;
+		
+		while (entry.name != "SCOPE-BOUNDARY")
+		{
+			if (entry.name.equals(name)){
+				return 1;
+			}
+			enrty = entry.prevtop;
+		}
+		return 0;
+	}
 
 	/********************************************************************************/
 	/* end scope = Keep popping elements out of the data structure,                 */
