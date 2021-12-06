@@ -242,6 +242,7 @@ public class SYMBOL_TABLE
 			/*****************************************/
 			/* [1] Enter primitive types int, string */
 			/*****************************************/
+			instance.beginScope();
 			instance.enter("int",   TYPE_INT.getInstance());
 			instance.enter("string",TYPE_STRING.getInstance());
 
