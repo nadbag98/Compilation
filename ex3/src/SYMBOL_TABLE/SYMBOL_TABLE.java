@@ -111,22 +111,26 @@ public class SYMBOL_TABLE
 		PrintMe();
 	}
 	
-	public int searchCurrScope(String name){
+	public boolean searchCurrScope(String name){
 		
 		SYMBOL_TABLE_ENTRY entry = top;
 		
 		while (entry.name != "SCOPE-BOUNDARY")
 		{
 			if (entry.name.equals(name)){
-				return 1;
+				return true;
 			}
 			enrty = entry.prevtop;
 		}
-		return 0;
+		return false;
 	}
 	
 	public TYPE findType(String name){
-		//type int or type string or type class or array in all the table
+		//type int or type string or type isclass
+	}
+	
+	public boolean checkInheritance(TYPE father, TYPE son){
+		// 
 	}
 
 	/********************************************************************************/
