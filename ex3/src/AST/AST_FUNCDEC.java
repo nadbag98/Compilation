@@ -28,7 +28,7 @@ public class AST_FUNCDEC extends AST_Node
 		this.s = s;
     this.l1 = l1;
     this.l2 = l2;
-    this.line = line-1;
+    this.line = line;
 	}
   
   public void PrintMe()
