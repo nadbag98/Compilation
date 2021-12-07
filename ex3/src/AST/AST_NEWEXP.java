@@ -30,7 +30,7 @@ public class AST_NEWEXP extends AST_Node
 		/*******************************/
 		this.t = t;
     		this.e = e;
-		this.line = line-1;
+		this.line = line;
     
     }
 
