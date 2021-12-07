@@ -43,7 +43,7 @@ public class AST_BINOP extends AST_Node
 		/* COPY INPUT DATA NENBERS ... */
 		/*******************************/
 		this.op = op;
-		this.line = line - 1;
+		this.line = line;
 	}
   
   public void PrintMe()
