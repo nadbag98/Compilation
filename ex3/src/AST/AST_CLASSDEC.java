@@ -52,5 +52,29 @@ public class AST_CLASSDEC extends AST_Node
 		/****************************************/
 		if (l != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,l.SerialNumber);
 	}
+	
+	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
+		if (sym_table.searchCurrScope(this.s1)){
+			throw new ArithmeticException(String.format("%d", this.line)); 
+		}
+		
+
+		
+		TYPE t1 = new TYPE_CLASS(null, this.s1, null);
+		if (this.s2 != null){
+			t1.father = sym_table.find(this.s2);
+			if (t1.father == null){
+				throw new ArithmeticException(String.format("%d", this.line)); 
+			}
+		}
+		t1.data_members = new TYPE_LIST(null, null);
+		
+		sym_table.beginScope();
+		visit(this.l, t1);
+		sym_table.endScope();
+		sym_table.enter(this.s, t1);	
+		
+	}
+  	
   
 }
