@@ -16,4 +16,19 @@ public class TYPE_LIST
 		this.head = head;
 		this.tail = tail;
 	}
+	
+	public insert(TYPE t)
+	{
+		if (this.head == null)
+		{
+			this.head = t;
+			return;
+		}
+		if (this.tail == null)
+		{
+			this.tail = new TYPE_LIST(t, null);
+			return;
+		}
+		this.tail.insert(t);
+	}
 }
