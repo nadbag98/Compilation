@@ -23,7 +23,7 @@ public class AST_PRO extends AST_Node
 		/*******************************/
 		this.pro = pro;
 		this.dec = dec;
-		this.line = line-1;
+		this.line = line;
 	}
   
   public void PrintMe()
