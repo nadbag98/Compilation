@@ -5,13 +5,13 @@ public class AST_CFIELD extends AST_Node
 	/****************/
 	/* DATA MEMBERS */
 	/****************/
-	public AST_VARDEC v;
+	public AST_VARDEC_CLASS v;
   	public AST_FUNCDEC f;
 
 	/******************/
 	/* CONSTRUCTOR(S) */
 	/******************/
-	public AST_CFIELD(AST_VARDEC v, AST_FUNCDEC f, int line)
+	public AST_CFIELD(AST_VARDEC_CLASS v, AST_FUNCDEC f, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
