@@ -25,7 +25,7 @@ public class AST_EXP_INT extends AST_EXP
 		/*******************************/
 		this.i = i;
 		this.is_neg = is_neg;
-		this.line = line - 1;
+		this.line = line;
 		if (i == 0){
 			this.isZero = 1;
 		}
