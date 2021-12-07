@@ -22,7 +22,7 @@ public class AST_EXP_REST extends AST_EXP
 		/* COPY INPUT DATA NENBERS ... */
 		/*******************************/
 		this.s = s;
-		this.line = line-1;
+		this.line = line;
 	}
   
   public void PrintMe()
