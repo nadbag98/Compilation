@@ -29,7 +29,7 @@ public class AST_CFIELD extends AST_Node
 		/*******************************/
 		this.v = v;
     		this.f = f;
-    		this.line = line - 1;
+    		this.line = line;
 	}
 
 	/******************************************************/
