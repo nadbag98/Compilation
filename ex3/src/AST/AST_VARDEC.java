@@ -91,7 +91,7 @@ public class AST_VARDEC extends AST_Node
 			}
 		}
 		
-		sym_table.enter(this.s, t1);			
+		sym_table.enter(this.s, t1.getInstance());			
 	}
   
 }
