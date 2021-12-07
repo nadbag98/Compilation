@@ -6,19 +6,18 @@ public class TYPE_CLASS extends TYPE
 	/* If this class does not extend a father class this should be null  */
 	/*********************************************************************/
 	public TYPE_CLASS father;
-	private static TYPE_CLASS_VAR_DEC instance = null;
 
 	/**************************************************/
 	/* Gather up all data members in one place        */
 	/* Note that data members coming from the AST are */
 	/* packed together with the class methods         */
 	/**************************************************/
-	public TYPE_LIST data_members;
+	public DATA_MEMBER_LIST data_members;
 	
 	/****************/
 	/* CTROR(S) ... */
 	/****************/
-	public TYPE_CLASS(TYPE_CLASS father,String name,TYPE_LIST data_members)
+	public TYPE_CLASS(TYPE_CLASS father,String name,DATA_MEMBER_LIST data_members)
 	{
 		this.name = name;
 		this.father = father;
@@ -26,13 +25,4 @@ public class TYPE_CLASS extends TYPE
 	}
 	
 	public boolean isClass(){ return true;}
-	
-	public static TYPE_CLASS_VAR_DEC getInstance()
-	{
-		if (instance == null)
-		{
-			instance = new TYPE_CLASS_VAR_DEC(this, this.name);
-		}
-		return instance;
-	}
 }
