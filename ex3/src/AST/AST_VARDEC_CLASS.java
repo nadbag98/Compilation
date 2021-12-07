@@ -28,9 +28,9 @@ public class AST_VARDEC_CLASS extends AST_Node
 		/*******************************/
 		this.t = t;
 		this.s = s;
-    this.s2 = s2;
-	    this.rule = rule;
-	    this.i = i;
+    		this.s2 = s2;
+	    	this.rule = rule;
+	    	this.i = i;
 	}
   
   public void PrintMe()
@@ -58,8 +58,9 @@ public class AST_VARDEC_CLASS extends AST_Node
 		if (t != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,t.SerialNumber);
 	}
 	
-	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
+	public TYPE visit(SYMBOL_TABLE sym_table, TYPE_CLASS my_class) throws ArithmeticException {
   
+  		  // TODO check duplicate name in same scope	
 	    if (sym_table.searchCurrScope(this.s)){
 				throw new ArithmeticException(String.format("%d", this.line)); 
 			}
@@ -85,9 +86,24 @@ public class AST_VARDEC_CLASS extends AST_Node
 		    throw new ArithmeticException(String.format("%d", this.line));
 		  }
 	    }  
+	    
+	  
 	   
-	   
+	   // check ancestors for contradictions:
+	   TYPE_CLASS ancestor = my_class.father;
+	   TYPE dup;
+	   while(ancestor != null)
+	   {
+	   	dup = ancestor.data_members.find(this.s);
+		if (dup != null)
+		{
+			if 
+		}
+		ancestor = ancestor.father;
+	   }
 
+
+ 	    my_class.data_members.insert(this)
 	    sym_table.enter(this.s, t1);	 
       
 	}
