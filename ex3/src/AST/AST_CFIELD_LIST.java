@@ -29,7 +29,7 @@ public class AST_CFIELD_LIST extends AST_Node
 		/*******************************/
 		this.head = head;
 		this.tail = tail;
-		this.line = line - 1;
+		this.line = line;
 	}
 
 	/******************************************************/
