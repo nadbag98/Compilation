@@ -62,12 +62,12 @@ public class AST_CFIELD_LIST extends AST_Node
 		if (tail != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,tail.SerialNumber);
 	}
 	
-	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
+	public TYPE visit(SYMBOL_TABLE sym_table, TYPE_CLASS my_class) throws ArithmeticException {
 		if (this.head != null){
-			this.head.visit(sym_table);
+			this.head.visit(sym_table, my_class);
 		}
 		if (this.tail != null){
-			this.tail.visit(sym_table);
+			this.tail.visit(sym_table, my_class);
 		}
 		return null;
 	}
