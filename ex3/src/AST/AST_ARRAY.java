@@ -22,7 +22,7 @@ public class AST_ARRAY extends AST_Node
 		/*******************************/
 		this.s = s;
 		this.t = t;
-		this.line = line - 1;
+		this.line = line;
 	}
   
   public void PrintMe()
