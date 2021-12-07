@@ -24,7 +24,7 @@ public class AST_EXP_ID extends AST_EXP
 		/*******************************/
 		this.i = i;
 		this.l = l;
-		this.line = line - 1;
+		this.line = line;
 	}
   
   public void PrintMe()
