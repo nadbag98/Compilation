@@ -42,7 +42,7 @@ public class AST_DEC extends AST_Node
 		/*******************************/
 		this.child = child;
 		this.i = i;
-		this.line = line - 1;
+		this.line = line;
 	}
 
 	/******************************************************/
