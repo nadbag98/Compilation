@@ -6,7 +6,7 @@ public class AST_CFIELD extends AST_Node
 	/* DATA MEMBERS */
 	/****************/
 	public AST_VARDEC v;
-  public AST_FUNCDEC f;
+  	public AST_FUNCDEC f;
 
 	/******************/
 	/* CONSTRUCTOR(S) */
@@ -22,7 +22,7 @@ public class AST_CFIELD extends AST_Node
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
 		if (v != null && f == null) System.out.print("====================== cField --> varDec \n");
-    if (v == null && f != null) System.out.print("====================== cField --> funcDec \n");
+   		if (v == null && f != null) System.out.print("====================== cField --> funcDec \n");
 		
 		/*******************************/
 		/* COPY INPUT DATA NENBERS ... */
@@ -46,7 +46,7 @@ public class AST_CFIELD extends AST_Node
 		/* RECURSIVELY PRINT HEAD + TAIL ... */
 		/*************************************/
 		if (v != null) v.PrintMe();
-    if (f != null) f.PrintMe();
+    		if (f != null) f.PrintMe();
 
 		/**********************************/
 		/* PRINT to AST GRAPHVIZ DOT file */
@@ -59,15 +59,15 @@ public class AST_CFIELD extends AST_Node
 		/* PRINT Edges to AST GRAPHVIZ DOT file */
 		/****************************************/
 		if (v != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,v.SerialNumber);
-    if (f != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,f.SerialNumber);
+    		if (f != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,f.SerialNumber);
 	}
 	
-	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
+	public TYPE visit(SYMBOL_TABLE sym_table, TYPE_CLASS my_class) throws ArithmeticException {
 		if (this.v != null){
-			this.v.visit(sym_table);
+			this.v.visit(sym_table, my_class);
 		}
 		if (this.f != null){
-			this.f.visit(sym_table);
+			this.f.visit(sym_table, my_class);
 		}
 		return null;
 	}
