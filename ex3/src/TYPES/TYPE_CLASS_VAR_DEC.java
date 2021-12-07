@@ -1,6 +1,6 @@
 package TYPES;
 
-public class TYPE_CLASS_VAR_DEC extends TYPE
+public class TYPE_CLASS_VAR_DEC
 {
 	public TYPE t;
 	public String name;
