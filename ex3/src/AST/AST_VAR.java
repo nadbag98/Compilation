@@ -12,7 +12,7 @@ public class AST_VAR extends AST_Node
 		/* SET A UNIQUE SERIAL NUMBER */
 		/******************************/
 		SerialNumber = AST_Node_Serial_Number.getFresh();
-		this.line = line - 1;
+		this.line = line;
 		
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
