@@ -26,7 +26,7 @@ public class AST_CLASSDEC extends AST_Node
 		this.s1 = s1;
 		this.s2 = s2;
     		this.l = l;
-		this.line = line - 1;
+		this.line = line;
 	}
   
   public void PrintMe()
