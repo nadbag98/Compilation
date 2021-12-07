@@ -6,6 +6,7 @@ public class TYPE_CLASS extends TYPE
 	/* If this class does not extend a father class this should be null  */
 	/*********************************************************************/
 	public TYPE_CLASS father;
+	public TYPE_CLASS_VAR_DEC instance;
 
 	/**************************************************/
 	/* Gather up all data members in one place        */
@@ -25,4 +26,13 @@ public class TYPE_CLASS extends TYPE
 	}
 	
 	public boolean isClass(){ return true;}
+	
+	public static TYPE_CLASS_VAR_DEC getInstance()
+	{
+		if (instance == null)
+		{
+			instance = new TYPE_CLASS_VAR_DEC(this, this.name);
+		}
+		return instance;
+	}
 }
