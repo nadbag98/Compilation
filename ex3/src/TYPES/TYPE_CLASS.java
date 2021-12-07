@@ -6,7 +6,7 @@ public class TYPE_CLASS extends TYPE
 	/* If this class does not extend a father class this should be null  */
 	/*********************************************************************/
 	public TYPE_CLASS father;
-	public TYPE_CLASS_VAR_DEC instance;
+	private static TYPE_CLASS_VAR_DEC instance = null;
 
 	/**************************************************/
 	/* Gather up all data members in one place        */
