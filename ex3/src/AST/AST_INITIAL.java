@@ -20,7 +20,7 @@ public class AST_INITIAL extends AST_Node
 		/* COPY INPUT DATA NENBERS ... */
 		/*******************************/
 		this.pro = pro;
-		this.line = line-1;
+		this.line = line;
 	}
   
   public void PrintMe()
