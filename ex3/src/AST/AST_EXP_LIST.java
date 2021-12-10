@@ -63,4 +63,8 @@ public class AST_EXP_LIST extends AST_Node
 		if (tail != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,tail.SerialNumber);
 	}
 	
+	public TYPE visit(SYMBOL_TABLE sym_table, TYPE_LIST lst) throws ArithmeticException {
+	
+	}
+	
 }
