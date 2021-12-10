@@ -92,21 +92,26 @@ public class AST_VARDEC_CLASS extends AST_Node
 	   // check ancestors for contradictions:
 	   //TODO!!!
 	   TYPE_CLASS ancestor = my_class.father;
-	   TYPE dup;
+	   DATA_MEMBER dup;
 	   while(ancestor != null)
 	   {
 	   	dup = ancestor.data_members.find(this.s);
-		if (dup != null)
+		if (dup != null && dup.type != t1)
 		{
-			if 
+			throw new ArithmeticException(String.format("%d", this.line));
 		}
 		ancestor = ancestor.father;
 	   }
-
-
- 	    my_class.data_members.insert(this)
-	    sym_table.enter(this.s, t1);	 
-      
+	   DATA_MEMBER d = new DATA_MEMBER(t1, this.s);
+ 	   my_class.data_members.insert(d);
+	   if (t1 == TYPE_INT.getInstance() || t1 == TYPE_STRING.getInstance())
+	   {
+	   	sym_table.enter(this.s, t1, null);
+	   } 
+	   else {
+	 	sym_table.enter(this.s, TYPE_INSTANCE.get_instance(), t1);
+	   }
+	return null;
 	}
   
 }
