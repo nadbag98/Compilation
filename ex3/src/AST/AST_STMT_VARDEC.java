@@ -47,5 +47,10 @@ public class AST_STMT_VARDEC extends AST_STMT
 		/****************************************/
 		if (v != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,v.SerialNumber);
 	}
+	
+	public TYPE visit(SYMBOL_TABLE sym_table, TYPE returnType) throws ArithmeticException {
+		this.v.visit(sym_table);
+		return null;
+	}
   
 }
