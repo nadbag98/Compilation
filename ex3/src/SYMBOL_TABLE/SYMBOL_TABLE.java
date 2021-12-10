@@ -125,6 +125,21 @@ public class SYMBOL_TABLE
 		return false;
 	}
 	
+	public TYPE searchFamily(String name, TYPE_CLASS my_class){
+		TYPE_CLASS ancestor = my_class;
+	   	DATA_MEMBER dup;
+	   	while(ancestor != null)
+	   	{
+			dup = ancestor.data_members.find(name);
+			if (dup != null)
+			{
+				return dup.type;
+			}
+			ancestor = ancestor.father;
+	   	}
+		return null;
+	}
+	
 	public TYPE searchAll(String name){
 		
 		SYMBOL_TABLE_ENTRY e = this.top;
