@@ -58,5 +58,38 @@ public class AST_FUNCDEC extends AST_Node
     if (l1 != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,l1.SerialNumber);
     if (l2 != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,l2.SerialNumber);
 	}
+	
+    public TYPE visit(SYMBOL_TABLE sym_table, TYPE_CLASS my_class, boolean in_class) throws ArithmeticException {
+		if (sym_table.searchCurrScope(this.s)){
+			throw new ArithmeticException(String.format("%d", this.line)); 
+		}
+		TYPE ret_val = sym_table.findType(this.t.s);
+		if (ret_val == null) {
+			throw new ArithmeticException(String.format("%d", this.line));
+		}
+		TYPE_LIST param_list = new TYPE_LIST(null, null);
+		TYPE_FUNCTION func = new TYPE_FUNCTION(ret_val, this.s, param_list);
+		sym_table.enter(this.s, func, null);
+		sym_table.beginScope();
+		if (this.l1 != null) {
+			l1.visit(sym_table, func.params);
+		}
+		l2.visit(sym_table, func.returnType);
+		sym_table.endScope();
+		if (in_class) {
+			TYPE_CLASS ancestor = my_class.father;
+			DATA_MEMBER dup;
+			while(ancestor != null) {
+				dup = ancestor.data_members.find(this.s);
+				if (dup != null && !func.equals(dup.type)) {
+					throw new ArithmeticException(String.format("%d", this.line));
+				}
+				ancestor = ancestor.father;
+			}
+			DATA_MEMBER d = new DATA_MEMBER(func, this.s);
+			my_class.data_members.insert(d);
+		}
+		return null;
+	}
   
 }
