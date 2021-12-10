@@ -56,5 +56,20 @@ public class AST_STMT_VAR_EXP extends AST_STMT
     if (e != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,e.SerialNumber);
     if (ne != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,ne.SerialNumber);
 	}
+	
+	public TYPE visit(SYMBOL_TABLE sym_table, TYPE returnType) throws ArithmeticException {
+		TYPE t1 = this.v.visit(sym_table);
+		TYPE t2;
+		if (this.e != null){
+			t2 = this.e.visit(sym_table);
+		} else {
+			t2 = this.ne.visit(sym_table);
+		}
+		if (!sym_table.checkInheritance(t1, t2)){
+			throw new ArithmeticException(String.format("%d", this.line)); 
+		}	
+		
+		return null;
+	}
   
 }
