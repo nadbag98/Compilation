@@ -90,7 +90,6 @@ public class AST_VARDEC_CLASS extends AST_Node
 	  
 	   
 	   // check ancestors for contradictions:
-	   //TODO!!!
 	   TYPE_CLASS ancestor = my_class.father;
 	   DATA_MEMBER dup;
 	   while(ancestor != null)
