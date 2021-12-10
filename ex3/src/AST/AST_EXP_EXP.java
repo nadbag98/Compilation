@@ -90,18 +90,10 @@ public AST_BINOP b;
 					return TYPE_INT.getInstance();
 				}
 			} else { // this.b.op == 7
-				if (t1 == t2)
-				{
+				if (sym_table.checkInheritance(t1, t2) || sym_table.checkInheritance(t2, t1)){
 					return TYPE_INT.getInstance();
 				}
-				else if (inherence)
-				{
-					return TYPE_INT.getInstance();
-				} 
-				else if (one is nil)
-				{
-					return TYPE_INT.getInstance();
-				}				
+					
 			}
 
 			throw new ArithmeticException(String.format("%d", this.line)); 
