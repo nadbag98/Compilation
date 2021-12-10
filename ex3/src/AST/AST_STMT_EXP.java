@@ -17,9 +17,9 @@ public class AST_STMT_EXP extends AST_STMT
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
-    if (e == null) System.out.print("====================== stmt --> RETURN exp SEMICOLON\n");
-    if (e != null && is_while == 0) System.out.print("====================== stmt --> IF (exp) {stmtList}\n");
-    if (e != null && is_while == 1) System.out.print("====================== stmt --> WHILE (exp) {stmtList}\n");
+    if (l == null) System.out.print("====================== stmt --> RETURN exp SEMICOLON\n");
+    if (l != null && is_while == 0) System.out.print("====================== stmt --> IF (exp) {stmtList}\n");
+    if (l != null && is_while == 1) System.out.print("====================== stmt --> WHILE (exp) {stmtList}\n");
 
 		/*******************************/
 		/* COPY INPUT DATA NENBERS ... */
@@ -29,31 +29,47 @@ public class AST_STMT_EXP extends AST_STMT
     this.is_while = is_while;
 	}
   
-  public void PrintMe()
+  	public void PrintMe()
 	{
-		/**************************************/
-		/* AST NODE TYPE = AST AST_STMT_EXP */
-		/**************************************/
-		System.out.print("AST NODE AST_STMT_EXP\n");
+			/**************************************/
+			/* AST NODE TYPE = AST AST_STMT_EXP */
+			/**************************************/
+			System.out.print("AST NODE AST_STMT_EXP\n");
 
-		/*************************************/
-		/* RECURSIVELY PRINT HEAD + TAIL ... */
-		/*************************************/
-		if (l != null) l.PrintMe();
-    if (e != null) e.PrintMe();
+			/*************************************/
+			/* RECURSIVELY PRINT HEAD + TAIL ... */
+			/*************************************/
+			if (l != null) l.PrintMe();
+	    if (e != null) e.PrintMe();
 
-		/**********************************/
-		/* PRINT to AST GRAPHVIZ DOT file */
-		/**********************************/
-		AST_GRAPHVIZ.getInstance().logNode(
-			SerialNumber, "AST_STMT_EXP\n");
-		
-		/****************************************/
-		/* PRINT Edges to AST GRAPHVIZ DOT file */
-		/****************************************/
-		if (l != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,l.SerialNumber);
-    if (e != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,e.SerialNumber);
+			/**********************************/
+			/* PRINT to AST GRAPHVIZ DOT file */
+			/**********************************/
+			AST_GRAPHVIZ.getInstance().logNode(
+				SerialNumber, "AST_STMT_EXP\n");
+
+			/****************************************/
+			/* PRINT Edges to AST GRAPHVIZ DOT file */
+			/****************************************/
+			if (l != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,l.SerialNumber);
+	    if (e != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,e.SerialNumber);
 
 	}
+	
+	public TYPE visit(SYMBOL_TABLE sym_table, TYPE returnType) throws ArithmeticException {
+		
+		if (this.l == null){
+			TYPE t1 = this.e.visit(sym_table);
+			if (!sym_table.checkInheritance(returnType, t1)){
+				throw new ArithmeticException(String.format("%d", this.line)); 
+			}			
+		}
+		
+		
+		
+		
+		
+		return null;
+	}	
   
 }
