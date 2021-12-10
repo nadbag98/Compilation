@@ -27,4 +27,19 @@ public class DATA_MEMBER_LIST
 		}
 		return this.tail.find(name);
 	}
+	
+	public insert(DATA_MEMBER d)
+	{
+		if (this.head == null)
+		{
+			this.head = d;
+			return;
+		}
+		if (this.tail == null)
+		{
+			this.tail = new DATA_MEMBER_LIST(d, null);
+			return;
+		}
+		this.tail.insert(d);
+	}
 }
