@@ -27,6 +27,8 @@ public class SYMBOL_TABLE_ENTRY
 	/* TYPE value ... */
 	/******************/
 	public TYPE type;
+	
+	public TYPE_CLASS my_class;
 
 	/*********************************************/
 	/* prevtop and next symbol table entries ... */
@@ -46,6 +48,7 @@ public class SYMBOL_TABLE_ENTRY
 		String name,
 		TYPE type,
 		int index,
+		TYPE_CLASS my_class,
 		SYMBOL_TABLE_ENTRY next,
 		SYMBOL_TABLE_ENTRY prevtop,
 		int prevtop_index)
@@ -53,6 +56,7 @@ public class SYMBOL_TABLE_ENTRY
 		this.index = index;
 		this.name = name;
 		this.type = type;
+		this.my_class = my_class;
 		this.next = next;
 		this.prevtop = prevtop;
 		this.prevtop_index = prevtop_index;
