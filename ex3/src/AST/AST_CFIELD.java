@@ -67,7 +67,7 @@ public class AST_CFIELD extends AST_Node
 			this.v.visit(sym_table, my_class);
 		}
 		if (this.f != null){
-			this.f.visit(sym_table, my_class);
+			this.f.visit(sym_table, my_class, true);
 		}
 		return null;
 	}
