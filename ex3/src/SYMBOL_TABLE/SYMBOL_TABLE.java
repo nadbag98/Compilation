@@ -125,6 +125,48 @@ public class SYMBOL_TABLE
 		return false;
 	}
 	
+	public TYPE searchAll(String name){
+		
+		SYMBOL_TABLE_ENTRY e = this.top;
+		
+		while (e != null && !e.type.isClass())
+		{
+			if (name == e.name){
+				if (e.type == TYPE_INSTANCE.getInstance()){
+					return e.my_class;
+				}
+				return e.type;
+			}
+			e = e.prevtop;
+		}
+		
+		if (e == null){
+			return null;
+		}
+		
+		TYPE_CLASS familyMember = (TYPE_CLASS) e.type;
+		familyMember = familyMember.father;
+		DATA_MEMBER dup;
+		while (familyMember != null){
+			dup = familyMember.data_members.find(name);
+			if (dup != null){
+				return dup.type;
+			}
+			familyMember = familyMember.father;
+		}
+		while (e != null)
+		{
+			if (name == e.name){
+				if (e.type == TYPE_INSTANCE.getInstance()){
+					return e.my_class;
+				}
+				return e.type;
+			}
+			e = e.prevtop;
+		}
+		return null;	
+	}
+	
 	public TYPE findType(String name){
 		TYPE t1 = find(name).type;
 		if (t1 == TYPE_INT.getInstance() && name.equals("int")){
@@ -150,7 +192,7 @@ public class SYMBOL_TABLE
 			return true;
 		}
 		if (father.isClass() && son.isClass()){
-			familyMember = son.father;
+			TYPE familyMember = son.father;
 			while (familyMember != null){
 				if (father == familyMember){
 					return true;
