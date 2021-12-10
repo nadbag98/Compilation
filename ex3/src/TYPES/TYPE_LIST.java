@@ -48,4 +48,29 @@ public class TYPE_LIST
 		}
 		return this.tail.find(name);
 	}
+	
+	public boolean equals(TYPE_LIST other){
+		
+		TYPE_LIST L1 = this;
+		TYPE_LIST L2 = other;
+		
+		if (L1.head != L2.head){
+			return false;
+		}
+		
+		while (L1.head != null && L2.head != null){
+			if (L1.head != L2.head){
+				return false;
+			}
+			L1 = L1.tail;
+			L2 = L2.tail;
+		}
+		
+		if (L1.head == L2.head){
+			return true;
+		}
+		
+		return false;
+		
+	}
 }
