@@ -61,10 +61,29 @@ public class AST_STMT_ID extends AST_STMT
 			}
 		}
 		
+		if (s != null) { 				
+			TYPE t1 = sym_table.searchAll(this.s);
+			if (t1 == null || !t1.isFunc()){
+				throw new ArithmeticException(String.format("%d", this.line));
+			}
+			TYPE_FUNCTION func = (TYPE_FUNCTION) t1;
+			
+			if (l == null){
+				if (func.params.head != null){
+					throw new ArithmeticException(String.format("%d", this.line));
+				}			
+			} else {
+				TYPE_LIST lst = new TYPE_LIST(null, null);
+				this.l.visit(sym_table, lst);
+				if (!lst.equals(func.params)){
+					throw new ArithmeticException(String.format("%d", this.line));
+				}
+			}
+			
+			return func.returnType;
+		}
 		
-		
-		
-		
+		return null;
 	}
   
 }
