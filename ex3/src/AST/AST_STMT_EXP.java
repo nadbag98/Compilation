@@ -57,17 +57,21 @@ public class AST_STMT_EXP extends AST_STMT
 	}
 	
 	public TYPE visit(SYMBOL_TABLE sym_table, TYPE returnType) throws ArithmeticException {
-		
+		TYPE t1 = this.e.visit(sym_table);
 		if (this.l == null){
-			TYPE t1 = this.e.visit(sym_table);
 			if (!sym_table.checkInheritance(returnType, t1)){
 				throw new ArithmeticException(String.format("%d", this.line)); 
 			}			
 		}
 		
-		
-		
-		
+		else {
+			if (!(t1==TYPE_INT.getInstance()){
+				throw new ArithmeticException(String.format("%d", e.line));
+			}
+			sym_table.beginScope();
+			this.l.visit(sym_table, returnType);
+			sym_table.endScope();
+		}		
 		
 		return null;
 	}	
