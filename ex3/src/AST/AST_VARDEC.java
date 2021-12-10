@@ -79,19 +79,18 @@ public class AST_VARDEC extends AST_Node
 		
 		if (null != this.exp){
 			TYPE t2 = this.exp.visit(sym_table);
-			if (is_new == 0){
-				if (!sym_table.checkInheritance(t1, t2.t)){
+			if (!sym_table.checkInheritance(t1, t2)){
 					throw new ArithmeticException(String.format("%d", this.line));
-				}
-			}
-			if (is_new == 1){
-				if (!sym_table.checkInheritance(t1, t2)){
-					throw new ArithmeticException(String.format("%d", this.line));
-				}
 			}
 		}
-		
-		sym_table.enter(this.s, t1.getInstance());			
+		if (t1 == TYPE_INT.getInstance() || t1 == TYPE_STRING.getInstance())
+		   {
+			sym_table.enter(this.s, t1, null);
+		   } 
+		   else {
+			sym_table.enter(this.s, TYPE_INSTANCE.get_instance(), t1);
+		   }
+		return null;			
 	}
   
 }
