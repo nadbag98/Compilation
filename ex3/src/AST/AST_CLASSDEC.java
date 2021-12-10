@@ -57,23 +57,20 @@ public class AST_CLASSDEC extends AST_Node
 		if (sym_table.searchCurrScope(this.s1)){
 			throw new ArithmeticException(String.format("%d", this.line)); 
 		}
-		
-
-		
 		TYPE t1 = new TYPE_CLASS(null, this.s1, null);
 		if (this.s2 != null){
-			t1.father = sym_table.find(this.s2);
-			if (t1.father == null){
-				throw new ArithmeticException(String.format("%d", this.line)); 
+			SYMBOL_TABLE_ENTRY father_entry = sym_table.find(this.s2);
+			if (father_entry == null || !father_entry.type.isClass()) {
+				throw new ArithmeticException(String.format("%d", this.line));
 			}
+			t1.father = father_entry.type;
 		}
-		t1.data_members = new TYPE_LIST(null, null);
-		
+		t1.data_members = new DATA_MEMBER_LIST(null, null);
+		sym_table.enter(this.s, t1, null);	
 		sym_table.beginScope();
 		visit(this.l, t1);
 		sym_table.endScope();
-		sym_table.enter(this.s, t1);	
-		
+		return null;
 	}
   	
   
