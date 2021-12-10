@@ -2,11 +2,11 @@ package AST;
 
 public class AST_VARDEC_CLASS extends AST_Node
 {
-  	public AST_TYPE t;
+    public AST_TYPE t;
     public String s;
     public String s2;
     public int i;
-  	public int rule;
+    public int rule;
 
   
   public AST_VARDEC_CLASS(AST_TYPE t, String s, String s2, int i, int rule, int line)
@@ -21,7 +21,7 @@ public class AST_VARDEC_CLASS extends AST_Node
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
     
-		System.out.print("if there a problem come to vardec_class");
+		System.out.print("if there a exists an a problem come to vardec_class");
 
 		/*******************************/
 		/* COPY INPUT DATA NENBERS ... */
@@ -90,6 +90,7 @@ public class AST_VARDEC_CLASS extends AST_Node
 	  
 	   
 	   // check ancestors for contradictions:
+	   //TODO!!!
 	   TYPE_CLASS ancestor = my_class.father;
 	   TYPE dup;
 	   while(ancestor != null)
