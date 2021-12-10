@@ -32,7 +32,7 @@ public class AST_TYPE_LIST extends AST_Node
 		/*******************************/
 		this.head = head;
 		this.tail = tail;
-    this.s = s;
+    		this.s = s;
 	}
 
 	/******************************************************/
@@ -85,7 +85,9 @@ public class AST_TYPE_LIST extends AST_Node
 		}
 		
 		params.insert(this.t1);
-		this.tail.visit(sym_table, params);
+		if (this.tail != null){
+			this.tail.visit(sym_table, params);
+		}
 		return null;				
 		
 	}
