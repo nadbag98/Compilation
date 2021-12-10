@@ -53,5 +53,18 @@ public class AST_STMT_ID extends AST_STMT
 		if (l != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,l.SerialNumber);
 
 	}
+	
+	public TYPE visit(SYMBOL_TABLE sym_table, TYPE returnType) throws ArithmeticException {
+		if (this.s == null && this.l == null){
+			if (returnType != TYPE_VOID.getInstance()){
+				throw new ArithmeticException(String.format("%d", this.line));
+			}
+		}
+		
+		
+		
+		
+		
+	}
   
 }
