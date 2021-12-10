@@ -61,11 +61,11 @@ public class AST_FUNCDEC extends AST_Node
 	
     public TYPE visit(SYMBOL_TABLE sym_table, TYPE_CLASS my_class, boolean in_class) throws ArithmeticException {
 		if (sym_table.searchCurrScope(this.s)){
-			throw new ArithmeticException(String.format("%d", this.line)); 
+			throw new ArithmeticException(String.format("%d", t.line)); 
 		}
 		TYPE ret_val = sym_table.findType(this.t.s);
 		if (ret_val == null) {
-			throw new ArithmeticException(String.format("%d", this.line));
+			throw new ArithmeticException(String.format("%d", t.line));
 		}
 		TYPE_LIST param_list = new TYPE_LIST(null, null);
 		TYPE_FUNCTION func = new TYPE_FUNCTION(ret_val, this.s, param_list);
@@ -82,7 +82,7 @@ public class AST_FUNCDEC extends AST_Node
 			while(ancestor != null) {
 				dup = ancestor.data_members.find(this.s);
 				if (dup != null && !func.equals(dup.type)) {
-					throw new ArithmeticException(String.format("%d", this.line));
+					throw new ArithmeticException(String.format("%d", t.line));
 				}
 				ancestor = ancestor.father;
 			}
