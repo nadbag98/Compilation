@@ -65,4 +65,29 @@ public class AST_TYPE_LIST extends AST_Node
 		if (tail != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,tail.SerialNumber);
 	}
 	
+	public TYPE visit(SYMBOL_TABLE sym_table, TYPE_LIST params) throws ArithmeticException {
+		
+		if (sym_table.searchCurrScope(this.s)){
+			throw new ArithmeticException(String.format("%d", this.line)); 
+		}
+		
+		TYPE t1 = sym_table.findType(this.t.s);
+		
+		if (null == t1){
+			throw new ArithmeticException(String.format("%d", this.line));
+		}
+		if (t1 == TYPE_INT.getInstance() || t1 == TYPE_STRING.getInstance())
+		{
+			sym_table.enter(this.s, t1, null);
+		} 
+		else {
+			sym_table.enter(this.s, TYPE_INSTANCE.get_instance(), t1);
+		}
+		
+		params.insert(this.t1);
+		this.tail.visit(sym_table, params);
+		return null;				
+		
+	}
+	
 }
