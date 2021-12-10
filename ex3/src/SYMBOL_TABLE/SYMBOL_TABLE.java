@@ -38,7 +38,7 @@ public class SYMBOL_TABLE
 	/****************************************************************************/
 	/* Enter a variable, function, class type or array type to the symbol table */
 	/****************************************************************************/
-	public void enter(String name,TYPE t)
+	public void enter(String name,TYPE t, TYPE_CLASS my_class)
 	{
 		/*************************************************/
 		/* [1] Compute the hash value for this new entry */
@@ -54,7 +54,7 @@ public class SYMBOL_TABLE
 		/**************************************************************************/
 		/* [3] Prepare a new symbol table entry with name, type, next and prevtop */
 		/**************************************************************************/
-		SYMBOL_TABLE_ENTRY e = new SYMBOL_TABLE_ENTRY(name,t,hashValue,next,top,top_index++);
+		SYMBOL_TABLE_ENTRY e = new SYMBOL_TABLE_ENTRY(name,t,hashValue,my_class,next,top,top_index++);
 
 		/**********************************************/
 		/* [4] Update the top of the symbol table ... */
@@ -75,7 +75,7 @@ public class SYMBOL_TABLE
 	/***********************************************/
 	/* Find the inner-most scope element with name */
 	/***********************************************/
-	public TYPE find(String name)
+	public SYMBOL_TABLE_ENTRY find(String name)
 	{
 		SYMBOL_TABLE_ENTRY e;
 				
@@ -83,7 +83,7 @@ public class SYMBOL_TABLE
 		{
 			if (name.equals(e.name))
 			{
-				return e.type;
+				return e;
 			}
 		}
 		
@@ -103,7 +103,7 @@ public class SYMBOL_TABLE
 		/************************************************************************/
 		enter(
 			"SCOPE-BOUNDARY",
-			new TYPE_FOR_SCOPE_BOUNDARIES("NONE"));
+			new TYPE_FOR_SCOPE_BOUNDARIES("NONE"), null);
 
 		/*********************************************/
 		/* Print the symbol table after every change */
@@ -120,13 +120,13 @@ public class SYMBOL_TABLE
 			if (entry.name.equals(name)){
 				return true;
 			}
-			enrty = entry.prevtop;
+			entry = entry.prevtop;
 		}
 		return false;
 	}
 	
 	public TYPE findType(String name){
-		TYPE t1 = find(name);
+		TYPE t1 = find(name).type;
 		if (t1 == TYPE_INT.getInstance() && name.equals("int")){
 			return t1;
 		}
@@ -293,8 +293,8 @@ public class SYMBOL_TABLE
 			/* [1] Enter primitive types int, string */
 			/*****************************************/
 			instance.beginScope();
-			instance.enter("int",   TYPE_INT.getInstance());
-			instance.enter("string",TYPE_STRING.getInstance());
+			instance.enter("int",   TYPE_INT.getInstance(), null);
+			instance.enter("string",TYPE_STRING.getInstance(), null);
 
 			/*************************************/
 			/* [2] How should we handle void ??? */
@@ -310,7 +310,8 @@ public class SYMBOL_TABLE
 					"PrintInt",
 					new TYPE_LIST(
 						TYPE_INT.getInstance(),
-						null)));
+						null)),
+				null);
 		
 			
 			instance.enter(
@@ -320,7 +321,8 @@ public class SYMBOL_TABLE
 					"PrintString",
 					new TYPE_LIST(
 						TYPE_STRING.getInstance(),
-						null)));
+						null)),
+				null);
 			
 			instance.enter(
 			"PrintTrace",
@@ -329,7 +331,8 @@ public class SYMBOL_TABLE
 				"PrintTrace",
 				new TYPE_LIST(
 					null,
-					null)));
+					null)),
+				null);
 			
 		}
 		return instance;
