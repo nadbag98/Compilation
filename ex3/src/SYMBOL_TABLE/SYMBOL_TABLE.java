@@ -190,6 +190,9 @@ public class SYMBOL_TABLE
 		if (t1 == TYPE_STRING.getInstance() && name.equals("string")){
 			return t1;
 		}
+		if (t1 == TYPE_VOID.getInstance() && name.equals("void")){
+			return t1;
+		}
 		if (t1.isClass()){
 			return t1;
 		}
