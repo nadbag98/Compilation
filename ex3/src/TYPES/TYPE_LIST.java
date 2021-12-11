@@ -1,5 +1,7 @@
 package TYPES;
 
+import SYMBOL_TABLE.*;
+
 public class TYPE_LIST
 {
 	/****************/
@@ -67,6 +69,32 @@ public class TYPE_LIST
 		}
 		
 		if (L1.head == L2.head && L1.tail == null && L2.tail == null){
+			return true;
+		}
+		
+		return false;
+		
+	}
+	
+	public boolean equalsOrFamily(TYPE_LIST other){
+		SYMBOL_TABLE sym_table = SYMBOL_TABLE.getInstance();
+		
+		TYPE_LIST L1 = this;
+		TYPE_LIST L2 = other;
+		
+		if (L1.head != L2.head){
+			return false;
+		}
+		
+		while (L1.tail != null && L2.tail != null){
+			if (!(sym_table.checkInheritance(L1.head, L2.head)){
+				return false;
+			}
+			L1 = L1.tail;
+			L2 = L2.tail;
+		}
+		
+		if (sym_table.checkInheritance(L1.head, L2.head) && L1.tail == null && L2.tail == null){
 			return true;
 		}
 		
