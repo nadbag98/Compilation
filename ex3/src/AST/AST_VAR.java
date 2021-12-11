@@ -80,10 +80,11 @@ public class AST_VAR extends AST_Node
 			throw new ArithmeticException(String.format("%d", this.line));
 		}
 		TYPE t2 = this.e.visit(sym_table);
-		if (!t2 == TYPE_INT.getInstance()) {
+		if (t2 != TYPE_INT.getInstance()) {
 			throw new ArithmeticException(String.format("%d", this.line));
 		}
-		return t1.arrayType;
+		TYPE_ARRAY t1_array = (TYPE_ARRAY) t1;
+		return t1_array.arrayType;
 		
 	}
   
