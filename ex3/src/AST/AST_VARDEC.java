@@ -90,7 +90,7 @@ public class AST_VARDEC extends AST_Node
 			sym_table.enter(this.s, t1, null);
 		   } 
 		   else {
-			sym_table.enter(this.s, TYPE_INSTANCE.get_instance(), t1);
+			sym_table.enter(this.s, TYPE_INSTANCE.getInstance(), t1);
 		   }
 		return null;			
 	}
