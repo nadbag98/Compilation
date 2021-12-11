@@ -57,8 +57,11 @@ public class AST_STMT_ID extends AST_STMT
 	}
 	
 	public TYPE visit(SYMBOL_TABLE sym_table, TYPE returnType) throws ArithmeticException {
+		System.out.print("Visiting AST_STMT_ID\n");
+		
 		if (this.s == null && this.l == null){
 			if (returnType != TYPE_VOID.getInstance()){
+				System.out.print("Exception in AST_STMT_ID - Failed getInstance\n");
 				throw new ArithmeticException(String.format("%d", this.line));
 			}
 		}
@@ -66,18 +69,21 @@ public class AST_STMT_ID extends AST_STMT
 		if (this.s != null) { 				
 			TYPE t1 = sym_table.searchAll(this.s);
 			if (t1 == null || !t1.isFunc()){
+				System.out.print("Exception in AST_STMT_ID - Failed isFunc\n");
 				throw new ArithmeticException(String.format("%d", this.line));
 			}
 			TYPE_FUNCTION func = (TYPE_FUNCTION) t1;
 			
 			if (this.l == null){
 				if (func.params.head != null){
+					System.out.print("Exception in AST_STMT_ID - func.params.head != null\n");
 					throw new ArithmeticException(String.format("%d", this.line));
 				}			
 			} else {
 				TYPE_LIST lst = new TYPE_LIST(null, null);
 				this.l.visit(sym_table, lst);
 				if (!lst.equals(func.params)){
+					System.out.print("Exception in AST_STMT_ID - lst != func.params\n");
 					throw new ArithmeticException(String.format("%d", this.line));
 				}
 			}
