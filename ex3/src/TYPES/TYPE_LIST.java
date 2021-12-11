@@ -82,7 +82,7 @@ public class TYPE_LIST
 		TYPE_LIST L1 = this;
 		TYPE_LIST L2 = other;
 		
-		if (L1.head != L2.head){
+		if (!(sym_table.checkInheritance(L1.head, L2.head))){
 			return false;
 		}
 		
