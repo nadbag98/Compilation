@@ -17,7 +17,7 @@ public class TYPE_LIST
 		this.tail = tail;
 	}
 	
-	public insert(TYPE t)
+	public void insert(TYPE t)
 	{
 		if (this.head == null)
 		{
