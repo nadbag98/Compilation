@@ -64,13 +64,32 @@ public class AST_STMT_VAR_EXP extends AST_STMT
 		TYPE t2;
 		if (this.e != null){
 			t2 = this.e.visit(sym_table);
+			if (!sym_table.checkInheritance(t1, t2)){
+				throw new ArithmeticException(String.format("%d", this.line)); 
+			}
 		} else {
 			t2 = this.ne.visit(sym_table);
-		}
-		if (!sym_table.checkInheritance(t1, t2)){
-			throw new ArithmeticException(String.format("%d", this.line)); 
+			if (t1.isArray() && !t2.isArray()){
+				throw new ArithmeticException(String.format("%d", this.line));
+			}
+			else if (!t1.isArray() && t2.isArray()){
+				throw new ArithmeticException(String.format("%d", this.line));
+			}
+			else if (t1.isArray() && t2.isArray()){
+				TYPE_ARRAY arr1 = (TYPE_ARRAY) t1;
+				TYPE_ARRAY arr2 = (TYPE_ARRAY) t2;
+				if (!sym_table.checkInheritance(arr1.typeArray, arr2.typeArray){
+					throw new ArithmeticException(String.format("%d", this.line));
+				}
+			}
+			else {
+				if (!sym_table.checkInheritance(t1, t2)){
+					System.out.print("Exception in AST_FUNCDEC - Failed checkInheritance\n");
+					throw new ArithmeticException(String.format("%d", this.line));
+				}
+			}
+	
 		}	
-		
 		return null;
 	}
   
