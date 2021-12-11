@@ -73,9 +73,6 @@ public class AST_NEWEXP extends AST_Node
 		}
 		
 		if (this.e != null) {
-			if (!t1.isArray()) {
-				throw new ArithmeticException(String.format("%d", this.line));
-			}
 			TYPE t2 = this.e.visit(sym_table);
 			if (t2 != TYPE_INT.getInstance() || !this.e.isValidForArray) {
 				throw new ArithmeticException(String.format("%d", this.line));
