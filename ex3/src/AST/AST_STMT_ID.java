@@ -68,7 +68,7 @@ public class AST_STMT_ID extends AST_STMT
 			}
 			TYPE_FUNCTION func = (TYPE_FUNCTION) t1;
 			
-			if (l == null){
+			if (this.l == null){
 				if (func.params.head != null){
 					throw new ArithmeticException(String.format("%d", this.line));
 				}			
