@@ -38,7 +38,7 @@ public class SYMBOL_TABLE
 	/****************************************************************************/
 	/* Enter a variable, function, class type or array type to the symbol table */
 	/****************************************************************************/
-	public void enter(String name,TYPE t, TYPE_CLASS my_class)
+	public void enter(String name,TYPE t, TYPE my_class)
 	{
 		/*************************************************/
 		/* [1] Compute the hash value for this new entry */
