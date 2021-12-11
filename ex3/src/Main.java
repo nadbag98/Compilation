@@ -20,6 +20,7 @@ public class Main
 		
 		try
 		{
+			System.out.print("BEGINING OF TRY INSIDE MAIN");
 			/********************************/
 			/* [1] Initialize a file reader */
 			/********************************/
@@ -79,6 +80,7 @@ public class Main
 			     
 		catch (Exception e)
 		{
+			System.out.print("ERROR IN MAIN!!!!\n");
 			e.printStackTrace();
 		}
 	}
