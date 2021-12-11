@@ -79,6 +79,7 @@ public class AST_DEC extends AST_Node
 		if (this.i ==  2){
 			AST_FUNCDEC func_child = (AST_FUNCDEC) child;
 			func_child.visit(sym_table, null, false);
+			return null;
 		}
 		this.child.visit(sym_table);
 		return null;
