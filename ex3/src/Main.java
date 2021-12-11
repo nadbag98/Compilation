@@ -40,7 +40,7 @@ public class Main
 			/***********************************/
 			AST = (AST_INITIAL) p.parse().value;
 			
-			SYMBOL_TABLE sym_table = getInstance();
+			SYMBOL_TABLE sym_table = SYMBOL_TABLE.getInstance();
 
 			String output = "OK";
 
