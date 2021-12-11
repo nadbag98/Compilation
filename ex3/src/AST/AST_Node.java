@@ -1,4 +1,6 @@
 package AST;
+import SYMBOL_TABLE.*;
+import TYPES.*;
 
 import SYMBOL_TABLE.*;
 import TYPES.*;
