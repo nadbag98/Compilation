@@ -28,6 +28,10 @@ public class AST_EXP_INT extends AST_EXP
 		this.line = line;
 		if (i == 0){
 			this.isZero = 1;
+			this.isValidForArray = false;
+		}
+		if (is_neg == 1){
+			this.isValidForArray = false;
 		}
 
 	}
