@@ -27,7 +27,7 @@ public class AST_EXP_ID extends AST_EXP
 		this.line = line;
 	}
   
-  public void PrintMe()
+  	public void PrintMe()
 	{
 		/**************************************/
 		/* AST NODE TYPE = AST EXP_ID */
@@ -49,6 +49,28 @@ public class AST_EXP_ID extends AST_EXP
 		/* PRINT Edges to AST GRAPHVIZ DOT file */
 		/****************************************/
 		if (l != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,l.SerialNumber);
+	}
+	
+	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
+		TYPE t1 = sym_table.searchAll(this.i);
+		if (t1 == null || !t1.isFunc()){
+			throw new ArithmeticException(String.format("%d", this.line));
+		}
+		TYPE_FUNCTION func = (TYPE_FUNCTION) t1;
+
+		if (this.l == null) {
+			if (func.params.head != null){
+				throw new ArithmeticException(String.format("%d", this.line));
+			}			
+		} 
+		else {
+			TYPE_LIST lst = new TYPE_LIST(null, null);
+			this.l.visit(sym_table, lst);
+			if (!lst.equals(func.params)){
+				throw new ArithmeticException(String.format("%d", this.line));
+			}
+		return func.returnType;
+		
 	}
   
 }
