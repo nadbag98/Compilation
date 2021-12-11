@@ -133,7 +133,7 @@ public class SYMBOL_TABLE
 			dup = ancestor.data_members.find(name);
 			if (dup != null)
 			{
-				return dup.type;
+				return dup.t;
 			}
 			ancestor = ancestor.father;
 	   	}
@@ -165,7 +165,7 @@ public class SYMBOL_TABLE
 		while (familyMember != null){
 			dup = familyMember.data_members.find(name);
 			if (dup != null){
-				return dup.type;
+				return dup.t;
 			}
 			familyMember = familyMember.father;
 		}
@@ -207,9 +207,11 @@ public class SYMBOL_TABLE
 			return true;
 		}
 		if (father.isClass() && son.isClass()){
-			TYPE familyMember = son.father;
+			TYPE_CLASS son_class = (TYPE_CLASS) son;
+			TYPE_CLASS father_class = (TYPE_CLASS) father;
+			TYPE_CLASS familyMember = son_class.father;
 			while (familyMember != null){
-				if (father == familyMember){
+				if (father_class == familyMember){
 					return true;
 				}
 				familyMember = familyMember.father;
