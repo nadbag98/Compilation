@@ -69,6 +69,8 @@ public class AST_VARDEC extends AST_Node
 	}
 	
 	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
+		System.out.print("Visiting AST_VARDEC\n");
+		
 		if (sym_table.searchCurrScope(this.s)){
 			System.out.print("Exception in AST_FUNCDEC - Failed searchCurrScope\n");
 			throw new ArithmeticException(String.format("%d", this.line)); 
