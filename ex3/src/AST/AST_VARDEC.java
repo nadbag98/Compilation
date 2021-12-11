@@ -95,7 +95,7 @@ public class AST_VARDEC extends AST_Node
 				else if (t1.isArray() && t2.isArray()){
 					TYPE_ARRAY arr1 = (TYPE_ARRAY) t1;
 					TYPE_ARRAY arr2 = (TYPE_ARRAY) t2;
-					if (arr1.typeArray != arr2.typeArray){
+					if (!sym_table.checkInheritance(arr1.typeArray, arr2.typeArray){
 						throw new ArithmeticException(String.format("%d", this.line));
 					}
 				}
