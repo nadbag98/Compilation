@@ -52,5 +52,18 @@ public class AST_ARRAY extends AST_Node
 		/****************************************/
 		if (t != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,t.SerialNumber);
 	}
+	
+	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
+		if (sym_table.searchCurrScope(this.s)){
+			throw new ArithmeticException(String.format("%d", this.line)); 
+		}
+		TYPE t1 = sym_table.findType(this.t.s);
+		if (t1 == null) {
+			throw new ArithmeticException(String.format("%d", this.line));
+		}
+		TYPE t2 = new TYPE_ARRAY(t1, this.s);
+		sym_table.enter(this.s, t2, null);
+		return null;
+	}
   
 }
