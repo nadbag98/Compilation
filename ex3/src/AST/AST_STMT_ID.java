@@ -83,7 +83,7 @@ public class AST_STMT_ID extends AST_STMT
 			} else {
 				TYPE_LIST lst = new TYPE_LIST(null, null);
 				this.l.visit(sym_table, lst);
-				if (!lst.equals(func.params)){
+				if (!func.params.equalsOrFamily(lst)){
 					System.out.print("Exception in AST_STMT_ID - lst != func.params\n");
 					throw new ArithmeticException(String.format("%d", this.line));
 				}
