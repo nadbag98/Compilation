@@ -97,7 +97,7 @@ public class AST_VARDEC_CLASS extends AST_Node
 	   while(ancestor != null)
 	   {
 	   	dup = ancestor.data_members.find(this.s);
-		if (dup != null && dup.type != t1)
+		if (dup != null && dup.t != t1)
 		{
 			throw new ArithmeticException(String.format("%d", this.line));
 		}
@@ -110,7 +110,7 @@ public class AST_VARDEC_CLASS extends AST_Node
 	   	sym_table.enter(this.s, t1, null);
 	   } 
 	   else {
-	 	sym_table.enter(this.s, TYPE_INSTANCE.get_instance(), t1);
+	 	sym_table.enter(this.s, TYPE_INSTANCE.getInstance(), t1);
 	   }
 	return null;
 	}
