@@ -25,8 +25,8 @@ public class AST_EXP_VAR extends AST_EXP
 		/*******************************/
 		this.v = v;
 		this.s = s;
-    this.l = l;
-    this.line = line;
+    		this.l = l;
+    		this.line = line;
 	}
   
   public void PrintMe()
@@ -53,6 +53,41 @@ public class AST_EXP_VAR extends AST_EXP
 		/****************************************/
 		if (v != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,v.SerialNumber);
 		if (l != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,l.SerialNumber);
+	}
+	
+	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
+		
+		TYPE t1 = this.v.visit(sym_table);
+		
+		if (this.s == null && this.l == null) {
+			return t1;
+		}
+		
+		if (t1 == null || !t1.isClass()){
+			throw new ArithmeticException(String.format("%d", this.line));
+		}
+		
+		TYPE t2 = sym_table.searchFamily(this.s, (TYPE_CLASS) t1);
+		
+		if (t2 == null || !t2.isFunc()){
+			throw new ArithmeticException(String.format("%d", this.line));
+		}
+		
+		TYPE_FUNCTION func = (TYPE_FUNCTION) t2;
+		
+		if (this.l == null){
+			if (func.params.head != null){
+				throw new ArithmeticException(String.format("%d", this.line));
+			}			
+		} else {
+			TYPE_LIST lst = new TYPE_LIST(null, null);
+			this.l.visit(sym_table, lst);
+			if (!lst.equals(func.params)){
+				throw new ArithmeticException(String.format("%d", this.line));
+			}
+		}
+
+		return func.returnType;
 	}
   
 }
