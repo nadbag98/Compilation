@@ -61,7 +61,7 @@ public class AST_STMT_ID extends AST_STMT
 			}
 		}
 		
-		if (s != null) { 				
+		if (this.s != null) { 				
 			TYPE t1 = sym_table.searchAll(this.s);
 			if (t1 == null || !t1.isFunc()){
 				throw new ArithmeticException(String.format("%d", this.line));
