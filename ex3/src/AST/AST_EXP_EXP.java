@@ -98,7 +98,6 @@ public AST_BINOP b;
 			}
 
 			throw new ArithmeticException(String.format("%d", this.line)); 
-			return null;
 		}
 
 		else {
