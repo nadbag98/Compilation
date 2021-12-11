@@ -73,7 +73,7 @@ public class AST_TYPE_LIST extends AST_Node
 			throw new ArithmeticException(String.format("%d", this.line)); 
 		}
 		
-		TYPE t1 = sym_table.findType(this.t.s);
+		TYPE t1 = sym_table.findType(this.head.s);
 		
 		if (null == t1){
 			throw new ArithmeticException(String.format("%d", this.line));
@@ -83,10 +83,10 @@ public class AST_TYPE_LIST extends AST_Node
 			sym_table.enter(this.s, t1, null);
 		} 
 		else {
-			sym_table.enter(this.s, TYPE_INSTANCE.get_instance(), t1);
+			sym_table.enter(this.s, TYPE_INSTANCE.getInstance(), t1);
 		}
 		
-		params.insert(this.t1);
+		params.insert(t1);
 		if (this.tail != null){
 			this.tail.visit(sym_table, params);
 		}
