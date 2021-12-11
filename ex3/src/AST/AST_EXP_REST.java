@@ -52,6 +52,8 @@ public class AST_EXP_REST extends AST_EXP
 	}
 	
 	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
+		System.out.print("Visiting AST_EXP_REST\n");
+	
 		if (this.s == null){
 			return TYPE_NIL.getInstance();
 		} else {
