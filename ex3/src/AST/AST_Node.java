@@ -25,6 +25,8 @@ public abstract class AST_Node
 	
 	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
 		System.out.print("AST NODE ABSTRACT VISIT, ERROR ERROR ERROR ERROR !!!!!!!!!! ERROR ERROR ERROR ERRORRRRRR! !!! !!#$$%)#$(6\n");
+		Class a = this.getClass();   
+        	System.out.println("Class of AST_NODE is : " + a.getName() + "\n");  
 		return null;
 	}
 }
