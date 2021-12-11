@@ -63,4 +63,30 @@ public class AST_NEWEXP extends AST_Node
 		if (e != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,e.SerialNumber);
 	}
 	
+	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
+		TYPE t1 = sym_table.findType(this.t.s);
+		
+		if (null == t1){
+			throw new ArithmeticException(String.format("%d", this.line));
+		}
+		
+		if (this.e != null) {
+			if (!t1.isArray()) {
+				throw new ArithmeticException(String.format("%d", this.line));
+			}
+			TYPE t2 = this.e.visit(sym_table);
+			if (t2 != TYPE_INT.getInstance() || !this.e.isValidForArray) {
+				throw new ArithmeticException(String.format("%d", this.line));
+			}
+			
+		}
+		else {
+			if (!t1.isClass()) {
+				throw new ArithmeticException(String.format("%d", this.line));
+			}
+		}
+		
+		return t1;			
+	}
+	
 }
