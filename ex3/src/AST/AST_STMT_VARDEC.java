@@ -51,6 +51,8 @@ public class AST_STMT_VARDEC extends AST_STMT
 	}
 	
 	public TYPE visit(SYMBOL_TABLE sym_table, TYPE returnType) throws ArithmeticException {
+		System.out.print("Visiting AST_STMT_VARDEC\n");
+	
 		this.v.visit(sym_table);
 		return null;
 	}
