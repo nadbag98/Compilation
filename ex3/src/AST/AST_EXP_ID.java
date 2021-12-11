@@ -66,9 +66,10 @@ public class AST_EXP_ID extends AST_EXP
 		else {
 			TYPE_LIST lst = new TYPE_LIST(null, null);
 			this.l.visit(sym_table, lst);
-			if (!lst.equals(func.params)){
+			if (!lst.equals(func.params)) {
 				throw new ArithmeticException(String.format("%d", this.line));
 			}
+		}
 		return func.returnType;
 		
 	}
