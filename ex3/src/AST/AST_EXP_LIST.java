@@ -64,7 +64,12 @@ public class AST_EXP_LIST extends AST_Node
 	}
 	
 	public TYPE visit(SYMBOL_TABLE sym_table, TYPE_LIST lst) throws ArithmeticException {
-	
+		TYPE t1 = this.head.visit(sym_table);
+		lst.insert(t1);
+		if (this.tail != null) {
+			this.tail.visit(sym_table, lst);
+		}
+		return null;
 	}
 	
 }
