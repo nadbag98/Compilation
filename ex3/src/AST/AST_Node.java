@@ -22,4 +22,9 @@ public abstract class AST_Node
 	{
 		System.out.print("AST NODE UNKNOWN\n");
 	}
+	
+	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
+		System.out.print("AST NODE ABSTRACT VISIT, ERROR ERROR ERROR ERROR !!!!!!!!!! ERROR ERROR ERROR ERRORRRRRR! !!! !!#$$%)#$(6");
+		return null;
+	}
 }
