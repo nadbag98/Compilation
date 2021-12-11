@@ -65,7 +65,7 @@ public class AST_CLASSDEC extends AST_Node
 			if (father_entry == null || !father_entry.type.isClass()) {
 				throw new ArithmeticException(String.format("%d", this.line));
 			}
-			t1.father = father_entry.type;
+			t1.father = (TYPE_CLASS) father_entry.type;
 		}
 		t1.data_members = new DATA_MEMBER_LIST(null, null);
 		sym_table.enter(this.s1, t1, null);	
