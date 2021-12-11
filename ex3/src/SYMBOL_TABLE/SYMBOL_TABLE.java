@@ -146,7 +146,7 @@ public class SYMBOL_TABLE
 		
 		while (e != null && !e.type.isClass())
 		{
-			if (name == e.name){
+			if (name.equals(e.name)){
 				if (e.type == TYPE_INSTANCE.getInstance()){
 					return e.my_class;
 				}
@@ -171,7 +171,7 @@ public class SYMBOL_TABLE
 		}
 		while (e != null)
 		{
-			if (name == e.name){
+			if (name.equals(e.name)){
 				if (e.type == TYPE_INSTANCE.getInstance()){
 					return e.my_class;
 				}
