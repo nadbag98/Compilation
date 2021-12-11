@@ -65,7 +65,7 @@ public class AST_STMT_EXP extends AST_STMT
 		}
 		
 		else {
-			if (!(t1==TYPE_INT.getInstance()){
+			if (!(t1==TYPE_INT.getInstance())){
 				throw new ArithmeticException(String.format("%d", e.line));
 			}
 			sym_table.beginScope();
