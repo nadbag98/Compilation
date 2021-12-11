@@ -28,7 +28,7 @@ public class SYMBOL_TABLE_ENTRY
 	/******************/
 	public TYPE type;
 	
-	public TYPE_CLASS my_class;
+	public TYPE my_class;
 
 	/*********************************************/
 	/* prevtop and next symbol table entries ... */
@@ -48,7 +48,7 @@ public class SYMBOL_TABLE_ENTRY
 		String name,
 		TYPE type,
 		int index,
-		TYPE_CLASS my_class,
+		TYPE my_class,
 		SYMBOL_TABLE_ENTRY next,
 		SYMBOL_TABLE_ENTRY prevtop,
 		int prevtop_index)
