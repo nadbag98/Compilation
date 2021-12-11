@@ -58,7 +58,7 @@ public class TYPE_LIST
 			return false;
 		}
 		
-		while (L1.head != null && L2.head != null){
+		while (L1.tail != null && L2.tail != null){
 			if (L1.head != L2.head){
 				return false;
 			}
@@ -66,7 +66,7 @@ public class TYPE_LIST
 			L2 = L2.tail;
 		}
 		
-		if (L1.head == L2.head){
+		if (L1.head == L2.head && L1.tail == null && L2.tail == null){
 			return true;
 		}
 		
