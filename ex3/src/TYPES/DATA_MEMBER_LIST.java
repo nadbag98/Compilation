@@ -28,7 +28,7 @@ public class DATA_MEMBER_LIST
 		return this.tail.find(name);
 	}
 	
-	public insert(DATA_MEMBER d)
+	public void insert(DATA_MEMBER d)
 	{
 		if (this.head == null)
 		{
