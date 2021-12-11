@@ -196,6 +196,7 @@ varDec		::=		type:t ID:i SEMICOLON 	{: RESULT = new AST_VARDEC(t, i, null, 0, pr
 varDecClass		::=		type:t ID:i SEMICOLON 	{: RESULT = new AST_VARDEC_CLASS(t, i, null, 0, 0, prevLine); :}
 					| type:t ID:i ASSIGN STRING:s SEMICOLON 	{: RESULT = new AST_VARDEC_CLASS(t, i, s, 0, 1, prevLine); :}
 					| type:t ID:i ASSIGN INT:i2 SEMICOLON 	{: RESULT = new AST_VARDEC_CLASS(t, i, null, i2, 2, prevLine); :}
+					| type:t ID:i ASSIGN MINUS INT:i2 SEMICOLON 	{: RESULT = new AST_VARDEC_CLASS(t, i, null, i2, 2, prevLine); :}
 					| type:t ID:i ASSIGN NIL SEMICOLON 	{: RESULT = new AST_VARDEC_CLASS(t, i, null, 0, 3, prevLine); :}
 					;
 
