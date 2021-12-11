@@ -70,19 +70,21 @@ public class AST_VARDEC extends AST_Node
 	
 	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
 		if (sym_table.searchCurrScope(this.s)){
+			System.out.print("Exception in AST_FUNCDEC - Failed searchCurrScope\n");
 			throw new ArithmeticException(String.format("%d", this.line)); 
 		}
 		
 		TYPE t1 = sym_table.findType(this.t.s);
 		
 		if (null == t1){
+			System.out.print("Exception in AST_FUNCDEC - null == t1\n");
 			throw new ArithmeticException(String.format("%d", this.line));
 		}
 		
 		if (null != this.exp){
 			TYPE t2 = this.exp.visit(sym_table);
 			if (!sym_table.checkInheritance(t1, t2)){
-					System.out.print("Expection in AST_VARDEC");
+					System.out.print("Exception in AST_FUNCDEC - Failed checkInheritance\n");
 					throw new ArithmeticException(String.format("%d", this.line));
 			}
 		}
