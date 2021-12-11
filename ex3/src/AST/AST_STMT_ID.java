@@ -69,7 +69,8 @@ public class AST_STMT_ID extends AST_STMT
 		if (this.s != null) { 				
 			TYPE t1 = sym_table.searchAll(this.s);
 			if (t1 == null || !t1.isFunc()){
-				System.out.print("Exception in AST_STMT_ID - Failed isFunc\n");
+				if (t1 == null){System.out.print("Exception in AST_STMT_ID - t1 == null\n");}
+				else{ System.out.print("Exception in AST_STMT_ID - Failed isFunc\n");}
 				throw new ArithmeticException(String.format("%d", this.line));
 			}
 			TYPE_FUNCTION func = (TYPE_FUNCTION) t1;
