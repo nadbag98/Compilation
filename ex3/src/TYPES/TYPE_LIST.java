@@ -87,7 +87,7 @@ public class TYPE_LIST
 		}
 		
 		while (L1.tail != null && L2.tail != null){
-			if (!(sym_table.checkInheritance(L1.head, L2.head)){
+			if (!(sym_table.checkInheritance(L1.head, L2.head))){
 				return false;
 			}
 			L1 = L1.tail;
