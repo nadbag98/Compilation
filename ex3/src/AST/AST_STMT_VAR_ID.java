@@ -81,7 +81,7 @@ public class AST_STMT_VAR_ID extends AST_STMT
 		} else {
 			TYPE_LIST lst = new TYPE_LIST(null, null);
 			this.e.visit(sym_table, lst);
-			if (!lst.equals(func.params)){
+			if (!func.params.equalsOrFamily(lst)){
 				throw new ArithmeticException(String.format("%d", this.line));
 			}
 		}
