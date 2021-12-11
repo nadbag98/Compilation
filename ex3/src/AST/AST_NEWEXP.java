@@ -78,6 +78,10 @@ public class AST_NEWEXP extends AST_Node
 				throw new ArithmeticException(String.format("%d", this.line));
 			}
 			
+			
+			TYPE_ARRAY array = new TYPE_ARRAY(t1, "dummy");
+			return array;
+			
 		}
 		else {
 			if (!t1.isClass()) {
