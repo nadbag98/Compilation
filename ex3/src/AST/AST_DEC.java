@@ -78,7 +78,7 @@ public class AST_DEC extends AST_Node
 	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
 		if (this.i ==  2){
 			AST_FUNCDEC func_child = (AST_FUNCDEC) child;
-			this.child.visit(sym_table, null, false);
+			this.func_child.visit(sym_table, null, false);
 		}
 		this.child.visit(sym_table);
 		return null;
