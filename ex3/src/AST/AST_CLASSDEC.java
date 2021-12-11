@@ -7,9 +7,10 @@ public class AST_CLASSDEC extends AST_Node
   public String s1;
   public String s2;
   public AST_CFIELD_LIST l;
+  public AST_CLASS_DUMMY cd;
   
   
-  public AST_CLASSDEC(String s1, String s2, AST_CFIELD_LIST l, int line)
+  public AST_CLASSDEC(AST_CLASS_DUMMY cd, String s1, String s2, AST_CFIELD_LIST l, int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -29,6 +30,7 @@ public class AST_CLASSDEC extends AST_Node
 		this.s2 = s2;
     		this.l = l;
 		this.line = line;
+		this.cd = cd;
 	}
   
   public void PrintMe()
@@ -57,13 +59,13 @@ public class AST_CLASSDEC extends AST_Node
 	
 	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
 		if (sym_table.searchCurrScope(this.s1)){
-			throw new ArithmeticException(String.format("%d", this.line)); 
+			throw new ArithmeticException(String.format("%d", this.cd.line)); 
 		}
 		TYPE_CLASS t1 = new TYPE_CLASS(null, this.s1, null);
 		if (this.s2 != null){
 			SYMBOL_TABLE_ENTRY father_entry = sym_table.find(this.s2);
 			if (father_entry == null || !father_entry.type.isClass()) {
-				throw new ArithmeticException(String.format("%d", this.line));
+				throw new ArithmeticException(String.format("%d", this.cd.line));
 			}
 			t1.father = (TYPE_CLASS) father_entry.type;
 		}
