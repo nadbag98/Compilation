@@ -65,6 +65,8 @@ public class AST_STMT_LIST extends AST_Node
 	}
 	
 	public TYPE visit(SYMBOL_TABLE sym_table, TYPE returnType) throws ArithmeticException {
+		System.out.print("Visiting AST_STMT_LIST\n");
+	
 		this.head.visit(sym_table, returnType);
 		if (this.tail != null){
 			this.tail.visit(sym_table, returnType);
