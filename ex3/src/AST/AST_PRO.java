@@ -57,7 +57,9 @@ public class AST_PRO extends AST_Node
 	
 	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
 		this.dec.visit(sym_table);
-		this.pro.visit(sym_table);
+		if (this.pro != null){
+			this.pro.visit(sym_table);
+		}
 		return null;
 	}
   
