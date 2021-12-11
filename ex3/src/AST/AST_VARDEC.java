@@ -85,10 +85,36 @@ public class AST_VARDEC extends AST_Node
 		
 		if (null != this.exp){
 			TYPE t2 = this.exp.visit(sym_table);
-			if (!sym_table.checkInheritance(t1, t2)){
+			if (this.is_new == 1){
+				if (t1.isArray() && !t2.isArray()){
+					throw new ArithmeticException(String.format("%d", this.line));
+				}
+				else if (!t1.isArray() && t2.isArray()){
+					throw new ArithmeticException(String.format("%d", this.line));
+				}
+				else if (t1.isArray() && t2.isArray()){
+					TYPE_ARRAY arr1 = (TYPE_ARRAY) t1;
+					TYPE_ARRAY arr2 = (TYPE_ARRAY) t2;
+					if (arr1.typeArray != arr2.typeArray){
+						throw new ArithmeticException(String.format("%d", this.line));
+					}
+				}
+				else {
+					if (!sym_table.checkInheritance(t1, t2)){
+						System.out.print("Exception in AST_FUNCDEC - Failed checkInheritance\n");
+						throw new ArithmeticException(String.format("%d", this.line));
+					}
+				}
+				
+			}
+			else 
+			{
+				if (!sym_table.checkInheritance(t1, t2)){
 					System.out.print("Exception in AST_FUNCDEC - Failed checkInheritance\n");
 					throw new ArithmeticException(String.format("%d", this.line));
+				}
 			}
+			
 		}
 		if (t1 == TYPE_INT.getInstance() || t1 == TYPE_STRING.getInstance())
 		   {
