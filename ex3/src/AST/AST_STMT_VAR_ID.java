@@ -72,7 +72,7 @@ public class AST_STMT_VAR_ID extends AST_STMT
 		
 		TYPE_FUNCTION func = (TYPE_FUNCTION) t2;
 		
-		if (e == null){
+		if (this.e == null){
 			if (func.params.head != null){
 				throw new ArithmeticException(String.format("%d", this.line));
 			}			
