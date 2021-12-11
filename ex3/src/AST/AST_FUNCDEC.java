@@ -68,7 +68,7 @@ public class AST_FUNCDEC extends AST_Node
 		}
 		TYPE ret_val = sym_table.findType(this.t.s);
 		if (ret_val == null) {
-			System.out.print("Exception in AST_FUNCDEC\n - Failed findType");
+			System.out.print("Exception in AST_FUNCDEC - Failed findType\n");
 			throw new ArithmeticException(String.format("%d", t.line));
 		}
 		TYPE_LIST param_list = new TYPE_LIST(null, null);
@@ -86,7 +86,7 @@ public class AST_FUNCDEC extends AST_Node
 			while(ancestor != null) {
 				dup = ancestor.data_members.find(this.s);
 				if (dup != null && !func.equals(dup.t)) {
-					System.out.print("Exception in AST_FUNCDEC - Failed dup memebers.find\n");
+					System.out.print("Exception in AST_FUNCDEC - Failed dup memebers.find()\n");
 					throw new ArithmeticException(String.format("%d", t.line));
 				}
 				ancestor = ancestor.father;
