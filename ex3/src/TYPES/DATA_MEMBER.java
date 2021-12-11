@@ -1,6 +1,6 @@
 package TYPES;
 
-public class DATA_MEMBER;
+public class DATA_MEMBER
 {
 	public TYPE t;
 	public String name;
