@@ -66,12 +66,14 @@ public class AST_EXP_VAR extends AST_EXP
 		}
 		
 		if (t1 == null || !t1.isClass()){
+			System.out.print("First error in visit AST_EXP_VAR");
 			throw new ArithmeticException(String.format("%d", this.line));
 		}
 		
 		TYPE t2 = sym_table.searchFamily(this.s, (TYPE_CLASS) t1);
 		
 		if (t2 == null || !t2.isFunc()){
+			System.out.print("Second error in visit AST_EXP_VAR");
 			throw new ArithmeticException(String.format("%d", this.line));
 		}
 		
@@ -79,12 +81,14 @@ public class AST_EXP_VAR extends AST_EXP
 		
 		if (this.l == null){
 			if (func.params.head != null){
+				System.out.print("Third error in visit AST_EXP_VAR");
 				throw new ArithmeticException(String.format("%d", this.line));
 			}			
 		} else {
 			TYPE_LIST lst = new TYPE_LIST(null, null);
 			this.l.visit(sym_table, lst);
 			if (!lst.equals(func.params)){
+				System.out.print("Forth error in visit AST_EXP_VAR");
 				throw new ArithmeticException(String.format("%d", this.line));
 			}
 		}
