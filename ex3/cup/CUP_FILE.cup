@@ -141,6 +141,7 @@ non terminal AST_CFIELD_LIST cFieldList;
 non terminal AST_EXP_LIST expList;
 non terminal AST_INITIAL initial;
 non terminal AST_VARDEC_CLASS varDecClass;
+non terminal AST_CLASS_DUMMY classDummy;
 
 /***********************/
 /* OPERATOR PRECEDENCE */
@@ -216,9 +217,12 @@ funcDec		::= 	type:t ID:i LPAREN RPAREN LBRACE stmtList:l RBRACE	{: RESULT = new
 cFieldList	::=		cField:c	cFieldList:l		{: RESULT = new AST_CFIELD_LIST(c, l, prevLine); :}
 					| cField:c				{: RESULT = new AST_CFIELD_LIST(c, null, prevLine); :}
 					;
+					
+classDummy	::= 	CLASS 		{: RESULT = new AST_CLASS_DUMMY(prevLine); :}
+					;
 
-classDec 	::= 	CLASS ID:i LBRACE cFieldList:c RBRACE 	{: RESULT = new AST_CLASSDEC(i, null, c, prevLine); :}
-					| CLASS ID:i1  EXTENDS ID:i2 LBRACE cFieldList:c RBRACE 	{: RESULT = new AST_CLASSDEC(i1, i2, c, prevLine); :}
+classDec 	::= 	classDummy:cd ID:i LBRACE cFieldList:c RBRACE 	{: RESULT = new AST_CLASSDEC(cd, i, null, c, prevLine); :}
+					| classDummy:cd ID:i1  EXTENDS ID:i2 LBRACE cFieldList:c RBRACE 	{: RESULT = new AST_CLASSDEC(cd, i1, i2, c, prevLine); :}
 					;
 
 expList		::= 	exp:e 	{: RESULT = new AST_EXP_LIST(e, null, prevLine);:}
