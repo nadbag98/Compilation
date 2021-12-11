@@ -2,11 +2,10 @@ package AST;
 import SYMBOL_TABLE.*;
 import TYPES.*;
 
-public class AST_EXP_REST extends AST_Node
+public class AST_CLASS_DUMMY extends AST_Node
 {
-  public String s;
   
-  public AST_EXP_REST(String s, int line)
+  public AST_CLASS_DUMMY(int line)
 	{
 		/******************************/
 		/* SET A UNIQUE SERIAL NUMBER */
@@ -16,14 +15,12 @@ public class AST_EXP_REST extends AST_Node
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
-    if (s == null) System.out.print("====================== exp --> NIL\n");
-    if (s != null) System.out.print("====================== exp --> STRING\n");
+   System.out.print("====================== CLASS -> class dummy\n");
 
 
 		/*******************************/
 		/* COPY INPUT DATA NENBERS ... */
 		/*******************************/
-		this.s = s;
 		this.line = line;
 	}
   
@@ -32,33 +29,22 @@ public class AST_EXP_REST extends AST_Node
 		/**************************************/
 		/* AST NODE TYPE = AST EXP_REST */
 		/**************************************/
-		System.out.print("AST NODE EXP_REST\n");
 
 		/*************************************/
 		/* RECURSIVELY PRINT HEAD + TAIL ... */
 		/*************************************/
-		if (s != null) System.out.print(s);
-    if (s == null) System.out.print("NIL");
+		System.out.print("AST NODE class dummy\n");
 
 		/**********************************/
 		/* PRINT to AST GRAPHVIZ DOT file */
 		/**********************************/
 		AST_GRAPHVIZ.getInstance().logNode(
-			SerialNumber, "EXP_REST\n");
+			SerialNumber, "CLASS_DUMMY\n");
 		
 		/****************************************/
 		/* PRINT Edges to AST GRAPHVIZ DOT file */
 		/****************************************/
 	}
 	
-	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
-		System.out.print("Visiting AST_EXP_REST\n");
-	
-		if (this.s == null){
-			return TYPE_NIL.getInstance();
-		} else {
-			return TYPE_STRING.getInstance();
-		}
-	}
   
 }
