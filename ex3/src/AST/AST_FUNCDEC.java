@@ -63,12 +63,12 @@ public class AST_FUNCDEC extends AST_Node
 	
     public TYPE visit(SYMBOL_TABLE sym_table, TYPE_CLASS my_class, boolean in_class) throws ArithmeticException {
 		if (sym_table.searchCurrScope(this.s)){
-			System.out.print("Expection in AST_FUNCDEC");
+			System.out.print("Exception in AST_FUNCDEC - Failed searchCurrScope\n");
 			throw new ArithmeticException(String.format("%d", t.line)); 
 		}
 		TYPE ret_val = sym_table.findType(this.t.s);
 		if (ret_val == null) {
-			System.out.print("Expection in AST_FUNCDEC");
+			System.out.print("Exception in AST_FUNCDEC\n - Failed findType");
 			throw new ArithmeticException(String.format("%d", t.line));
 		}
 		TYPE_LIST param_list = new TYPE_LIST(null, null);
@@ -86,7 +86,7 @@ public class AST_FUNCDEC extends AST_Node
 			while(ancestor != null) {
 				dup = ancestor.data_members.find(this.s);
 				if (dup != null && !func.equals(dup.t)) {
-					System.out.print("Expection in AST_FUNCDEC");
+					System.out.print("Exception in AST_FUNCDEC - Failed dup memebers.find\n");
 					throw new ArithmeticException(String.format("%d", t.line));
 				}
 				ancestor = ancestor.father;
