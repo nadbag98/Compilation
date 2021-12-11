@@ -82,6 +82,7 @@ public class AST_VARDEC extends AST_Node
 		if (null != this.exp){
 			TYPE t2 = this.exp.visit(sym_table);
 			if (!sym_table.checkInheritance(t1, t2)){
+					System.out.print("Expection in AST_VARDEC");
 					throw new ArithmeticException(String.format("%d", this.line));
 			}
 		}
