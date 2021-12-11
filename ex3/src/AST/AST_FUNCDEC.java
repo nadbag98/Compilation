@@ -83,7 +83,7 @@ public class AST_FUNCDEC extends AST_Node
 			DATA_MEMBER dup;
 			while(ancestor != null) {
 				dup = ancestor.data_members.find(this.s);
-				if (dup != null && !func.equals(dup.type)) {
+				if (dup != null && !func.equals(dup.t)) {
 					throw new ArithmeticException(String.format("%d", t.line));
 				}
 				ancestor = ancestor.father;
