@@ -60,6 +60,7 @@ public class AST_STMT_VAR_ID extends AST_STMT
 	
 	
 	public TYPE visit(SYMBOL_TABLE sym_table, TYPE returnType) throws ArithmeticException {
+		System.out.print("Visiting AST_STMT_VAR_ID\n");
 		
 		TYPE t1 = this.v.visit(sym_table);
 		if (t1 == null || !t1.isClass()){
@@ -76,12 +77,14 @@ public class AST_STMT_VAR_ID extends AST_STMT
 		
 		if (this.e == null){
 			if (func.params.head != null){
+				System.out.print("Exception in AST_STMT_VAR_ID - func.param.head != null\n");
 				throw new ArithmeticException(String.format("%d", this.line));
 			}			
 		} else {
 			TYPE_LIST lst = new TYPE_LIST(null, null);
 			this.e.visit(sym_table, lst);
 			if (!func.params.equalsOrFamily(lst)){
+				System.out.print("Exception in AST_STMT_VAR_ID - param lists not equal\n");
 				throw new ArithmeticException(String.format("%d", this.line));
 			}
 		}
