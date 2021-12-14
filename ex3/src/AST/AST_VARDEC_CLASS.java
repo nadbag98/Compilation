@@ -23,7 +23,7 @@ public class AST_VARDEC_CLASS extends AST_Node
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
     
-		System.out.print("if there a exists an a problem come to vardec_class");
+		System.out.print("vardec_class init");
 
 		/*******************************/
 		/* COPY INPUT DATA NENBERS ... */
