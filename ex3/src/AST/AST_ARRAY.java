@@ -60,7 +60,7 @@ public class AST_ARRAY extends AST_Node
 			throw new ArithmeticException(String.format("%d", this.line)); 
 		}
 		TYPE t1 = sym_table.findType(this.t.s);
-		if (t1 == null) {
+		if (t1 == null || t1 == TYPE_VOID.getInstance()) {
 			throw new ArithmeticException(String.format("%d", this.line));
 		}
 		TYPE t2 = new TYPE_ARRAY(t1, this.s);

@@ -75,7 +75,7 @@ public class AST_TYPE_LIST extends AST_Node
 		
 		TYPE t1 = sym_table.findType(this.head.s);
 		
-		if (null == t1){
+		if (null == t1 || t1 == TYPE_VOID.getInstance()){
 			throw new ArithmeticException(String.format("%d", this.line));
 		}
 		if (t1 == TYPE_INT.getInstance() || t1 == TYPE_STRING.getInstance())

@@ -79,9 +79,13 @@ public class AST_VARDEC extends AST_Node
 		TYPE t1 = sym_table.findType(this.t.s);
 		
 		if (null == t1){
-			System.out.print("Exception in AST_FUNCDEC - null == t1\n");
+			System.out.print("Exception in AST_VARDEC - null == t1\n");
 			throw new ArithmeticException(String.format("%d", this.line));
 		}
+   if (t1 == TYPE_VOID.getInstance()) {
+     System.out.print("Exception in AST_VARDEC - tried initializing void var\n");
+     throw new ArithmeticException(String.format("%d", this.line));
+   }
 		
 		if (null != this.exp){
 			TYPE t2 = this.exp.visit(sym_table);

@@ -46,6 +46,9 @@ public class TYPE_FUNCTION extends TYPE
 			if (L1.head != L2.head){
 				return false;
 			}
+      if (L1.tail == null) {
+        return L2.tail == null;
+      }
 			L1 = L1.tail;
 			L2 = L2.tail;
 		}

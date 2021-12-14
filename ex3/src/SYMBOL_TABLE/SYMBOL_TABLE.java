@@ -183,7 +183,11 @@ public class SYMBOL_TABLE
 	}
 	
 	public TYPE findType(String name){
-		TYPE t1 = find(name).type;
+		SYMBOL_TABLE_ENTRY e = find(name);
+    if (e == null) {
+      return null;
+    }
+    TYPE t1 = e.type;
 		if (t1 == TYPE_INT.getInstance() && name.equals("int")){
 			return t1;
 		}
