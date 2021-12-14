@@ -58,9 +58,12 @@ public class AST_VAR extends AST_Node
 	}
 	
 	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
+		System.out.print("Visiting AST_VAR\n");
+	
 		if (this.v == null && this.e == null) {
 			TYPE t1 = sym_table.searchAllNotClass(this.s);
 			if (t1 == null) {
+				System.out.print("Exception in AST_VAR - t1 == null\n");
 				throw new ArithmeticException(String.format("%d", this.line));
 			}
 			return t1;
@@ -68,19 +71,23 @@ public class AST_VAR extends AST_Node
 		TYPE t1 = this.v.visit(sym_table);
 		if (this.e == null) {
 			if (!t1.isClass()) {
+				System.out.print("Exception in AST_VAR: t1 is not class\n");
 				throw new ArithmeticException(String.format("%d", this.line));
 			}
 			TYPE t2 = sym_table.searchFamily(this.s, (TYPE_CLASS) t1);
 			if (t2 == null) {
+				System.out.print("Exception in AST_VAR: t2 == null\n");
 				throw new ArithmeticException(String.format("%d", this.line));
 			}
 			return t2;
 		}
 		if (!t1.isArray()) {
+			System.out.print("Exception in AST_VAR: t1 is not array\n");
 			throw new ArithmeticException(String.format("%d", this.line));
 		}
 		TYPE t2 = this.e.visit(sym_table);
 		if (t2 != TYPE_INT.getInstance()) {
+			System.out.print("Exception in AST_VAR: t2 is not instace\n");
 			throw new ArithmeticException(String.format("%d", this.line));
 		}
 		TYPE_ARRAY t1_array = (TYPE_ARRAY) t1;
