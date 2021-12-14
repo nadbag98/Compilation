@@ -190,7 +190,7 @@ public class SYMBOL_TABLE
 		{
 			if (name.equals(e.name)){
 				if (e.type == TYPE_INSTANCE.getInstance()){
-					return e.type;
+					return e.my_class;
 				}
 				return null;
 			}
