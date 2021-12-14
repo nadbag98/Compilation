@@ -59,7 +59,7 @@ public class AST_VAR extends AST_Node
 	
 	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
 		if (this.v == null && this.e == null) {
-			TYPE t1 = sym_table.searchAll(this.s);
+			TYPE t1 = sym_table.searchAllNotClass(this.s);
 			if (t1 == null) {
 				throw new ArithmeticException(String.format("%d", this.line));
 			}
