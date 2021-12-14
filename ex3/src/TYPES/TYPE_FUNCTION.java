@@ -49,6 +49,9 @@ public class TYPE_FUNCTION extends TYPE
       if (L1.tail == null) {
         return L2.tail == null;
       }
+      if (L2.tail == null) {
+      	return false;
+      }
 			L1 = L1.tail;
 			L2 = L2.tail;
 		}
