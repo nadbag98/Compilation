@@ -63,11 +63,18 @@ public class AST_STMT_VAR_ID extends AST_STMT
 		System.out.print("Visiting AST_STMT_VAR_ID\n");
 		
 		TYPE t1 = this.v.visit(sym_table);
-		if (t1 == null || !t1.isClass()){
-			System.out.print("Exception in AST_STMT_VAR_ID - t1 == null || t1 is not class\n");
+// 		if (t1 == null || !t1.isClass()){
+// 			System.out.print("Exception in AST_STMT_VAR_ID - t1 == null || t1 is not class\n");
+// 			throw new ArithmeticException(String.format("%d", this.line));
+// 		}
+		if (t1 == null){
+			System.out.print("Exception in AST_STMT_VAR_ID - t1 == null\n");
 			throw new ArithmeticException(String.format("%d", this.line));
 		}
-		
+		if (!t1.isClass()){
+			System.out.print("Exception in AST_STMT_VAR_ID - t1 isn't class\n");
+			throw new ArithmeticException(String.format("%d", this.line));
+		}
 		TYPE t2 = sym_table.searchFamily(this.s, (TYPE_CLASS)t1);
 		
 		if (t2 == null || !t2.isFunc()){
