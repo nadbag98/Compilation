@@ -253,6 +253,9 @@ public class SYMBOL_TABLE
 		if (father == son){
 			return true;
 		}
+		if (father == null) {
+			return false;
+		}
 		if ((father.isClass() || father.isArray()) && son == TYPE_NIL.getInstance()){
 			return true;
 		}
