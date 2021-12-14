@@ -78,8 +78,6 @@ public class AST_FUNCDEC extends AST_Node
 		if (this.l1 != null) {
 			l1.visit(sym_table, func.params);
 		}
-		l2.visit(sym_table, func.returnType);
-		sym_table.endScope();
 		if (in_class) {
 			TYPE_CLASS ancestor = my_class.father;
 			DATA_MEMBER dup;
@@ -94,6 +92,8 @@ public class AST_FUNCDEC extends AST_Node
 			DATA_MEMBER d = new DATA_MEMBER(func, this.s);
 			my_class.data_members.insert(d);
 		}
+		l2.visit(sym_table, func.returnType);
+		sym_table.endScope();
 		return null;
 	}
   
