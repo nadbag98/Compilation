@@ -220,6 +220,9 @@ public class SYMBOL_TABLE
 				if (e.type == TYPE_INSTANCE.getInstance()){
 					return e.my_class;
 				}
+				if (e.type == TYPE_STRING.getInstance() || e.type == TYPE_INT.getInstance()){
+					return e.type;
+				}
 				return null;
 			}
 			e = e.prevtop;
