@@ -233,10 +233,10 @@ public class SYMBOL_TABLE
 	
 	public TYPE findType(String name){
 		SYMBOL_TABLE_ENTRY e = find(name);
-    if (e == null) {
-      return null;
-    }
-    TYPE t1 = e.type;
+	    if (e == null) {
+	      return null;
+	    }
+	    TYPE t1 = e.type;
 		if (t1 == TYPE_INT.getInstance() && name.equals("int")){
 			return t1;
 		}
@@ -305,6 +305,20 @@ public class SYMBOL_TABLE
 		/* Print the symbol table after every change */		
 		/*********************************************/
 		PrintMe();
+	}
+	
+	public boolean is_global()
+	{
+		SYMBOL_TABLE_ENTRY entry = top;
+		
+		while (entry.name != "SCOPE-BOUNDARY")
+		{
+			entry = entry.prevtop;
+		}
+		if (entry.prevtop_index == 1){
+			return true;
+		}
+		return false;
 	}
 	
 	public static int n=0;
