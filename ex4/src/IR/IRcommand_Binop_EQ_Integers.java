@@ -59,7 +59,7 @@ public class IRcommand_Binop_EQ_Integers extends IRcommand
 		/*************************/
 		/* [4] label_AssignZero: */
 		/*                       */
-		/*         t3 := 1       */
+		/*         t3 := 0       */
 		/*         goto end;     */
 		/*                       */
 		/*************************/
