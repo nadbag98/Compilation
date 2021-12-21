@@ -315,7 +315,7 @@ public class SYMBOL_TABLE
 		{
 			entry = entry.prevtop;
 		}
-		if (entry.prevtop_index == 1){
+		if (entry.prevtop == null){
 			return true;
 		}
 		return false;
