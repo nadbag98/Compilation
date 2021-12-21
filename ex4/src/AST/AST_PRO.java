@@ -62,6 +62,14 @@ public class AST_PRO extends AST_Node
 		}
 		return null;
 	}
+	
+	public TEMP IRme()
+	{
+		if (this.dec != null) this.dec.IRme();
+		if (this.pro != null) this.pro.IRme();
+		
+		return null;			
+	}
   
 }
 
