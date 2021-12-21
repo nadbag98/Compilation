@@ -96,5 +96,15 @@ public class AST_FUNCDEC extends AST_Node
 		sym_table.endScope();
 		return null;
 	}
+	
+	public TEMP IRme()
+	{
+		IR.
+		getInstance().
+		Add_IRcommand(new IRcommand_Label(this.s));		
+		//if (body != null) body.IRme();
+		//TODO
+		return null;
+	}
   
 }
