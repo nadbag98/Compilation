@@ -321,7 +321,7 @@ public class SYMBOL_TABLE
 		return false;
 	}
 	
-	public int func_offset(){
+	public int get_func_offset(){
 		SYMBOL_TABLE_ENTRY e = top;
 		while (e != null && !e.type.isFunc())
 		{
