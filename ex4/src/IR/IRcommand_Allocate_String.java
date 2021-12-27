@@ -18,7 +18,7 @@ import MIPS.*;
 public class IRcommand_Allocate_String extends IRcommand
 {
 	String var_name;
-	String value
+	String value;
 	
 	public IRcommand_Allocate_String(String var_name, String value)
 	{
