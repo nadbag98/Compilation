@@ -321,6 +321,20 @@ public class SYMBOL_TABLE
 		return false;
 	}
 	
+	public int func_offset(){
+		SYMBOL_TABLE_ENTRY e = top;
+		while (e != null && !e.type.isFunc())
+		{
+			entry = entry.prevtop;
+		}
+		if (e == null){
+			System.out.println("ERRORRRRRR in func_offset");
+			return 0;
+		}
+		e.offset++;
+		return e.offset;	
+	}
+	
 	public static int n=0;
 	
 	public void PrintMe()
