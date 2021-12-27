@@ -167,9 +167,22 @@ public class AST_VARDEC extends AST_Node
 			}
 		}
 		
-		else {
+		else { // not global
+			if (this.exp == null){
+				return null;
+			}
 			
+			if (this.is_new == 0){
+				String address = String.format("%d($fp)", -44 - (4*this.offset));
+				IR.getInstance().Add_IRcommand(new IRcommand_AssignToVar(address, this.exp.IRme()));
+				return null;
+			}
+			
+			// TODO - new decleration, and erase lalalalala
+			lalalalalala
 		}
+		
+		return null;
 				
 // 		if (initialValue != null)
 // 		{
