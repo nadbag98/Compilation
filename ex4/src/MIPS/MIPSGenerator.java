@@ -50,11 +50,19 @@ public class MIPSGenerator
 	//	
 	//	return t;
 	//}
-	public void allocate(String var_name)
+	public void allocate_word(String var_name, int value)
 	{
 		fileWriter.format(".data\n");
-		fileWriter.format("\tglobal_%s: .word 721\n",var_name);
+		fileWriter.format("\tglobal_%s: .word %d\n",var_name, value);
+		fileWriter.format(".text\n");
 	}
+	public void allocate_string(String var_name, string value)
+	{
+		fileWriter.format(".data\n");
+		fileWriter.format("\tglobal_%s: .asciiz %s\n",var_name, value);
+		fileWriter.format(".text\n");
+	}
+
 	public void load(TEMP dst,String var_name)
 	{
 		int idxdst=dst.getSerialNumber();
