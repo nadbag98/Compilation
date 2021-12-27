@@ -18,10 +18,12 @@ import MIPS.*;
 public class IRcommand_Allocate_Word extends IRcommand
 {
 	String var_name;
+	int value;
 	
-	public IRcommand_Allocate_Word(String var_name)
+	public IRcommand_Allocate_Word(String var_name, int value)
 	{
 		this.var_name = var_name;
+		this.value = value;
 	}
 	
 	/***************/
@@ -29,6 +31,6 @@ public class IRcommand_Allocate_Word extends IRcommand
 	/***************/
 	public void MIPSme()
 	{
-		MIPSGenerator.getInstance().allocate_word(this.var_name);
+		MIPSGenerator.getInstance().allocate_word(this.var_name, this.value);
 	}
 }
