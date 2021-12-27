@@ -328,7 +328,21 @@ public class SYMBOL_TABLE
 			entry = entry.prevtop;
 		}
 		if (e == null){
-			System.out.println("ERRORRRRRR in func_offset");
+			System.out.println("ERRORRRRRR in get_func_offset");
+			return 0;
+		}
+		e.offset++;
+		return e.offset;	
+	}
+	
+	public int get_class_offset(){
+		SYMBOL_TABLE_ENTRY e = top;
+		while (e != null && !e.type.isClass())
+		{
+			entry = entry.prevtop;
+		}
+		if (e == null){
+			System.out.println("ERRORRRRRR in get_class_offset");
 			return 0;
 		}
 		e.offset++;
