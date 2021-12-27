@@ -56,7 +56,7 @@ public class MIPSGenerator
 		fileWriter.format("\tglobal_%s: .word %d\n",var_name, value);
 		fileWriter.format(".text\n");
 	}
-	public void allocate_string(String var_name, String name)
+	public void allocate_string(String var_name, String value)
 	{
 		fileWriter.format(".data\n");
 		fileWriter.format("\tglobal_%s: %s\n",var_name, value);
