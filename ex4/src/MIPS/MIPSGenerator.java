@@ -63,15 +63,15 @@ public class MIPSGenerator
 		fileWriter.format(".text\n");
 	}
 
-	public void load(TEMP dst,String var_name)
+	public void load(TEMP dst,String address)
 	{
 		int idxdst=dst.getSerialNumber();
-		fileWriter.format("\tlw Temp_%d,global_%s\n",idxdst,var_name);
+		fileWriter.format("\tlw Temp_%d,%s\n",idxdst,address);
 	}
-	public void store(String var_name,TEMP src)
+	public void store(String address,TEMP src)
 	{
 		int idxsrc=src.getSerialNumber();
-		fileWriter.format("\tsw Temp_%d,global_%s\n",idxsrc,var_name);		
+		fileWriter.format("\tsw Temp_%d,%s\n",idxsrc,address);		
 	}
 	public void li(TEMP t,int value)
 	{
