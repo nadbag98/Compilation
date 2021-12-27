@@ -141,17 +141,41 @@ public class AST_VARDEC extends AST_Node
 	
 		if (this.is_global){
 			if (this.t.s == "int"){
-				IR.getInstance().Add_IRcommand(new IRcommand_Allocate_Word(this.s));
+				if (this.exp != null){
+					AST_EXP_INT int_exp = (AST_EXP_INT)this.exp;
+					int value = int_exp.i;
+					if(int_exp.is_neg){
+						value = -value;
+					}
+					IR.getInstance().Add_IRcommand(new IRcommand_Allocate_Word(this.s, value));
+				}
+				else {
+					IR.getInstance().Add_IRcommand(new IRcommand_Allocate_Word(this.s, 0));
+				}
 			}
+			else if (this.t.s == "string"){
+				if (this.exp != null){
+					AST_EXP_REST my_exp = (AST_EXP_REST)this.exp;
+					IR.getInstance().Add_IRcommand(new IRcommand_Allocate_String(this.s, my_exp.s));
+				}
+				else {
+					IR.getInstance().Add_IRcommand(new IRcommand_Allocate_String(this.s, "Default str"));
+				}
+			}
+			else {
+				IR.getInstance().Add_IRcommand(new IRcommand_Allocate_Word(this.s, 0));
+			}
+		}
 		
-			IR.getInstance().Add_IRcommand(new IRcommand_Allocate(this.s));
+		else {
+			
 		}
 				
-		if (initialValue != null)
-		{
-			IR.getInstance().Add_IRcommand(new IRcommand_Store(name,initialValue.IRme()));
-		}
-		return null;
+// 		if (initialValue != null)
+// 		{
+// 			IR.getInstance().Add_IRcommand(new IRcommand_Store(name,initialValue.IRme()));
+// 		}
+// 		return null;
 	}
   
 }
