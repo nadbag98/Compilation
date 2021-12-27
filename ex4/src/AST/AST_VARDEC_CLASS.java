@@ -9,6 +9,7 @@ public class AST_VARDEC_CLASS extends AST_Node
     public String s2;
     public int i;
     public int rule;
+    public int offset;
 
   
   public AST_VARDEC_CLASS(AST_TYPE t, String s, String s2, int i, int rule, int line)
@@ -112,6 +113,10 @@ public class AST_VARDEC_CLASS extends AST_Node
 	   else {
 	 	sym_table.enter(this.s, TYPE_INSTANCE.getInstance(), t1);
 	   }
+	   
+	   this.offset = sym_table.get_class_offset();
+	   sym_table.top.offset = this.offset;		
+		
 	return null;
 	}
   
