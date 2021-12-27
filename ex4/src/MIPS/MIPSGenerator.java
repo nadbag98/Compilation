@@ -115,7 +115,7 @@ public class MIPSGenerator
 		if (inlabel.equals("main"))
 		{
 			fileWriter.format(".text\n");
-			fileWriter.format("%s:\n",inlabel);
+			fileWriter.format("%s:\n","user_main");
 		}
 		else
 		{
