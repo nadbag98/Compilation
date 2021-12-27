@@ -8,6 +8,7 @@ public class AST_VARDEC extends AST_Node
 	public AST_Node exp;
   	public String s;
   	public int is_new;
+	public boolean is_global;
   
   
   public AST_VARDEC(AST_TYPE t, String s, AST_Node exp, int is_new, int line)
@@ -34,6 +35,7 @@ public class AST_VARDEC extends AST_Node
 		this.s = s;
 	    this.exp = exp;
 	    this.is_new = is_new;
+	    this.is_global = false;
 	}
   
   public void PrintMe()
@@ -71,6 +73,8 @@ public class AST_VARDEC extends AST_Node
 	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
 		System.out.print("Visiting AST_VARDEC\n");
 		
+		this.is_global = sym_table.is_global();
+		
 		if (sym_table.searchCurrScope(this.s)){
 			System.out.print("Exception in AST_FUNCDEC - Failed searchCurrScope\n");
 			throw new ArithmeticException(String.format("%d", this.line)); 
@@ -82,10 +86,10 @@ public class AST_VARDEC extends AST_Node
 			System.out.print("Exception in AST_VARDEC - null == t1\n");
 			throw new ArithmeticException(String.format("%d", this.line));
 		}
-   if (t1 == TYPE_VOID.getInstance()) {
-     System.out.print("Exception in AST_VARDEC - tried initializing void var\n");
-     throw new ArithmeticException(String.format("%d", this.line));
-   }
+  		 if (t1 == TYPE_VOID.getInstance()) {
+    			 System.out.print("Exception in AST_VARDEC - tried initializing void var\n");
+    			 throw new ArithmeticException(String.format("%d", this.line));
+  		 }
 		
 		if (null != this.exp){
 			TYPE t2 = this.exp.visit(sym_table);
@@ -120,6 +124,7 @@ public class AST_VARDEC extends AST_Node
 			}
 			
 		}
+		
 		if (t1 == TYPE_INT.getInstance() || t1 == TYPE_STRING.getInstance())
 		   {
 			sym_table.enter(this.s, t1, null);
@@ -128,6 +133,25 @@ public class AST_VARDEC extends AST_Node
 			sym_table.enter(this.s, TYPE_INSTANCE.getInstance(), t1);
 		   }
 		return null;			
+	}
+	
+	
+	public TEMP IRme()
+	{
+	
+		if (this.is_global){
+			if (this.t.s == "int"){
+				IR.getInstance().Add_IRcommand(new IRcommand_Allocate_Word(this.s));
+			}
+		
+			IR.getInstance().Add_IRcommand(new IRcommand_Allocate(this.s));
+		}
+				
+		if (initialValue != null)
+		{
+			IR.getInstance().Add_IRcommand(new IRcommand_Store(name,initialValue.IRme()));
+		}
+		return null;
 	}
   
 }
