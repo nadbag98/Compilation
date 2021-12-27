@@ -134,6 +134,13 @@ public class AST_VARDEC extends AST_Node
 		   else {
 			sym_table.enter(this.s, TYPE_INSTANCE.getInstance(), t1);
 		   }
+		   
+		   int off = 0;
+		   if (!this.is_global){
+		   	off = sym_table.get_func_offset();
+		   }
+		   this.offset = off;
+		   sym_table.top.offset = off;
 		return null;			
 	}
 	
@@ -175,7 +182,7 @@ public class AST_VARDEC extends AST_Node
 			}
 			
 			if (this.is_new == 0){
-				String address = String.format("%d($fp)", -44 - (4*this.offset));
+				String address = String.format("%d($fp)", -40 - (4*this.offset));
 				IR.getInstance().Add_IRcommand(new IRcommand_AssignToVar(address, this.exp.IRme()));
 				return null;
 			}
