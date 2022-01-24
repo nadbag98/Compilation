@@ -278,6 +278,47 @@ public class SYMBOL_TABLE
 		}
 		return false;
 	}
+	
+	public int offsetToFunc(String s){
+		
+		SYMBOL_TABLE_ENTRY e = this.top;
+		int offset = 0;
+		
+		while (e != null)
+		{
+			if (e.type.isFunc()){
+				return offset;
+			}
+			if (s.equals(e.name) && !e.type.isClass()){
+				offset = e.offset;
+			}
+			e = e.prevtop;
+		}
+		
+		return 0;
+	}
+	
+	public int offsetToObject(String s){
+		
+		SYMBOL_TABLE_ENTRY e = this.top;
+		DATA_MEMBER d;
+		
+		while (e != null)
+		{
+			if (e.type.isClass()){
+				TYPE_CLASS t = (TYPE_CLASS) e.type;
+				// TODO - CHECK IF D IS FUNC OR VAR (???????????????????????????????????????????????)
+				d = t.data_members.find(s);
+				if (d != null){
+					return d.offset;	
+				}
+				return 0;
+			}
+			e = e.prevtop;
+		}
+		return 0;
+	}
+		
 
 	/********************************************************************************/
 	/* end scope = Keep popping elements out of the data structure,                 */
