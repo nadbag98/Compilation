@@ -50,4 +50,28 @@ public class DATA_MEMBER_LIST
 		}
 		return res;
 	}
+	
+	public int getVarOffset(){
+		DATA_MEMBER_LIST tmp = this;
+		int counter = 1;
+		while(tmp != null){
+			if (tmp.head != null && !tmp.head.t.isFunc()){
+				counter++;
+			}
+			tmp = tmp.tail;
+		}
+		return counter;
+	}
+	
+	public int getFuncOffset(){
+		DATA_MEMBER_LIST tmp = this;
+		int counter = 1;
+		while(tmp != null){
+			if (tmp.head != null && tmp.head.t.isFunc()){
+				counter++;
+			}
+			tmp = tmp.tail;
+		}
+		return counter;
+	}
 }
