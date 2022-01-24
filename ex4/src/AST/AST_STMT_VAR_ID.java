@@ -7,6 +7,7 @@ public class AST_STMT_VAR_ID extends AST_STMT
   public AST_VAR v;
   public String s;
   public AST_EXP_LIST e;
+  public int offset;
   
   public AST_STMT_VAR_ID(AST_VAR v, String s, AST_EXP_LIST e, int line)
 	{
@@ -26,7 +27,7 @@ public class AST_STMT_VAR_ID extends AST_STMT
 		/*******************************/
 		/* COPY INPUT DATA NENBERS ... */
 		/*******************************/
-		this.v = v;
+	this.v = v;
     this.s = s;
     this.e = e;
 	}
@@ -76,12 +77,15 @@ public class AST_STMT_VAR_ID extends AST_STMT
 			System.out.print(t1.name);
 			throw new ArithmeticException(String.format("%d", this.line));
 		}
-		TYPE t2 = sym_table.searchFamily(this.s, (TYPE_CLASS)t1);
+		TYPE_CLASS t1_class = (TYPE_CLASS) t1;
+		TYPE t2 = sym_table.searchFamily(this.s, t1_class);
 		
 		if (t2 == null || !t2.isFunc()){
 			System.out.print("Exception in AST_STMT_VAR_ID - t2 == null || t2 is not func\n");
 			throw new ArithmeticException(String.format("%d", this.line));
 		}
+		
+		this.offset = t1_class.data_members.find(this.s).offset;
 		
 		TYPE_FUNCTION func = (TYPE_FUNCTION) t2;
 		
