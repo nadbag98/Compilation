@@ -63,7 +63,6 @@ public class AST_VARDEC_CLASS extends AST_Node
 	
 	public TYPE visit(SYMBOL_TABLE sym_table, TYPE_CLASS my_class) throws ArithmeticException {
   
-  		  // TODO check duplicate name in same scope	
 	    if (sym_table.searchCurrScope(this.s)){
 				throw new ArithmeticException(String.format("%d", this.line)); 
 			}
@@ -90,11 +89,10 @@ public class AST_VARDEC_CLASS extends AST_Node
 		  }
 	    }  
 	    
-	  
-	   
 	   // check ancestors for contradictions:
 	   TYPE_CLASS ancestor = my_class.father;
 	   DATA_MEMBER dup;
+	   boolean inherited = false;
 	   while(ancestor != null)
 	   {
 	   	dup = ancestor.data_members.find(this.s);
@@ -102,20 +100,23 @@ public class AST_VARDEC_CLASS extends AST_Node
 		{
 			throw new ArithmeticException(String.format("%d", this.line));
 		}
+		if (dup != null)
+		{
+			inherited = true;
+		}
 		ancestor = ancestor.father;
 	   }
-	   DATA_MEMBER d = new DATA_MEMBER(t1, this.s);
- 	   my_class.data_members.insert(d);
+	   if (!inherited){
+		   DATA_MEMBER d = new DATA_MEMBER(t1, this.s, my_class.data_members.getVarOffset());
+		   my_class.data_members.insert(d);
+	   }
 	   if (t1 == TYPE_INT.getInstance() || t1 == TYPE_STRING.getInstance())
 	   {
 	   	sym_table.enter(this.s, t1, null);
 	   } 
 	   else {
 	 	sym_table.enter(this.s, TYPE_INSTANCE.getInstance(), t1);
-	   }
-	   
-	   this.offset = sym_table.get_class_offset();
-	   sym_table.top.offset = this.offset;		
+	   }	
 		
 	return null;
 	}
