@@ -74,4 +74,12 @@ public class AST_CFIELD extends AST_Node
 		return null;
 	}
 	
+	public TEMP IRme(){
+		if (this.v != null && this.f == null) this.v.IRme();
+   		if (this.v == null && this.f != null) this.f.IRme();
+		
+		return null;
+		
+	}	
+	
 }
