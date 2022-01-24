@@ -68,8 +68,11 @@ public class AST_CLASSDEC extends AST_Node
 				throw new ArithmeticException(String.format("%d", this.cd.line));
 			}
 			t1.father = (TYPE_CLASS) father_entry.type;
+			t1.data_members = t1.father.data_members.copy();
 		}
-		t1.data_members = new DATA_MEMBER_LIST(null, null);
+		else{
+			t1.data_members = new DATA_MEMBER_LIST(null, null);
+		}
 		sym_table.enter(this.s1, t1, null);	
 		sym_table.beginScope();
 		this.l.visit(sym_table, t1);
