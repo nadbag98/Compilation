@@ -6,6 +6,8 @@ public class AST_STMT_ID extends AST_STMT
 {
   public String s;
   public AST_EXP_LIST l;
+  public boolean is_global;
+  public int offset;
   
   public AST_STMT_ID(String s, AST_EXP_LIST l, int line)
 	{
@@ -87,6 +89,11 @@ public class AST_STMT_ID extends AST_STMT
 					System.out.print("Exception in AST_STMT_ID - lst != func.params\n");
 					throw new ArithmeticException(String.format("%d", this.line));
 				}
+			}
+			
+			this.offset = sym_table.offsetFuncToObject(this.s);
+			if (this.offset == -1){
+				this.is_global = true;
 			}
 			
 			return func.returnType;
