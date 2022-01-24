@@ -8,6 +8,7 @@ public class AST_CLASSDEC extends AST_Node
   public String s2;
   public AST_CFIELD_LIST l;
   public AST_CLASS_DUMMY cd;
+  public TYPE_CLASS type;
   
   
   public AST_CLASSDEC(AST_CLASS_DUMMY cd, String s1, String s2, AST_CFIELD_LIST l, int line)
@@ -77,8 +78,25 @@ public class AST_CLASSDEC extends AST_Node
 		sym_table.beginScope();
 		this.l.visit(sym_table, t1);
 		sym_table.endScope();
+		
+		this.type = t1;
+		
 		return null;
 	}
   	
+	public TEMP IRme(){
+	
+		IR ir = IR.getInstance();
+		
+		ir.Add_IRcommand(new IRcommand_Label(".data"));
+		ir.Add_IRcommand(new IRcommand_Label(String.format("vt_%s", this.s1)));
+		
+		DATA_MEMBER_LIST data_members = this.type.data_members;
+		
+		dklfjadskjgasjkgandfjkgnadfkgjndfgjkndafkgjndafkgjdf
+		
+		
+		return null;
+	}
   
 }
