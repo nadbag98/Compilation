@@ -37,7 +37,6 @@ public class AST_VARDEC extends AST_Node
 	    this.exp = exp;
 	    this.is_new = is_new;
 	    this.is_global = false;
-	    this.offset = -1;
 	}
   
   public void PrintMe()
@@ -78,7 +77,7 @@ public class AST_VARDEC extends AST_Node
 		this.is_global = sym_table.is_global();
 		
 		if (sym_table.searchCurrScope(this.s)){
-			System.out.print("Exception in AST_FUNCDEC - Failed searchCurrScope\n");
+			System.out.print("Exception in AST_VARCDEC - Failed searchCurrScope\n");
 			throw new ArithmeticException(String.format("%d", this.line)); 
 		}
 		
@@ -135,12 +134,17 @@ public class AST_VARDEC extends AST_Node
 			sym_table.enter(this.s, TYPE_INSTANCE.getInstance(), t1);
 		   }
 		   
-		   int off = 0;
 		   if (!this.is_global){
-		   	off = sym_table.get_func_offset();
+		   	int off;
+			if (sym_table.top.prevtop.offset >= 0){
+				off = -10;
+			}
+			else{
+				off = sym_table.top.prevtop.offset - 1;
+			}
+		   	sym_table.top.offset = off;
 		   }
-		   this.offset = off;
-		   sym_table.top.offset = off;
+		   
 		return null;			
 	}
 	
