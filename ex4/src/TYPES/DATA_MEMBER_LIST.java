@@ -44,7 +44,7 @@ public class DATA_MEMBER_LIST
 	}
 	
 	public DATA_MEMBER_LIST copy(){
-		DATA_MEMBER_LIST res = new DATA_MEMBER_LIST(this.head, null);
+		DATA_MEMBER_LIST res = new DATA_MEMBER_LIST(this.head.copy(), null);
 		if (this.tail != null){
 			res.tail = this.tail.copy();
 		}
