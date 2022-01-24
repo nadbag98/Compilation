@@ -74,4 +74,14 @@ public class AST_CFIELD_LIST extends AST_Node
 		return null;
 	}
 	
+	public TEMP IRme() {
+		if (this.head != null){
+			this.head.IRme();
+		}
+		if (this.tail != null){
+			this.tail.IRme();
+		}
+		return null;
+	}
+	
 }
