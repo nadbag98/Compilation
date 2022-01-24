@@ -8,6 +8,7 @@ public class AST_EXP_EXP extends AST_EXP
 public AST_BINOP b;
   public AST_EXP e2;
   public boolean is_int_op;
+  public boolean is_string_op;
   
   public AST_EXP_EXP(AST_EXP e1, AST_BINOP b, AST_EXP e2, int line)
 	{
@@ -30,6 +31,7 @@ public AST_BINOP b;
 		this.b = b;
     		this.e2 = e2;
 		this.is_int_op = true;
+		this.is_string_op = false;
     		this.line = line;
 	}
   
@@ -96,6 +98,9 @@ public AST_BINOP b;
 			} else { // this.b.op == 7
 				if (!( (t1 == TYPE_INT.getInstance()) && (t2 == TYPE_INT.getInstance()) ) ) {
 					this.is_int_op = false;
+				}
+				if ((t1 == TYPE_STRING.getInstance()) && (t2 == TYPE_STRING.getInstance()) ) {
+					this.is_string_op = true;
 				}
 				if (sym_table.checkInheritance(t1, t2) || sym_table.checkInheritance(t2, t1)){
 					return TYPE_INT.getInstance();
@@ -170,13 +175,15 @@ public AST_BINOP b;
 		}
 		if (this.b.op == 7)
 		{
-			if (this.is_int_op) {
+			if (!this.is_string_op) {
 				IR.
 				getInstance().
-				Add_IRcommand(new IRcommand_Binop_EQ_Integers(dst,t1,t2));
+				Add_IRcommand(new IRcommand_Binop_EQ_NotStrings(dst,t1,t2));
 			}
 			else {
-				//TODO
+				IR.
+				getInstance().
+				Add_IRcommand(new IRcommand_Binop_EQ_Strings(dst,t1,t2));
 			}
 		}
 		return dst;
