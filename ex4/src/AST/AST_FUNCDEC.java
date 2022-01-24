@@ -80,6 +80,13 @@ public class AST_FUNCDEC extends AST_Node
 		sym_table.enter(this.s, func, null);
 		sym_table.beginScope();
 		
+		if (in_class){
+			sym_table.top.offset = 2;
+		}
+		else{
+			sym_table.top.offset = 1;
+		}
+		
 		if (this.l1 != null) {
 			l1.visit(sym_table, func.params);
 		}
