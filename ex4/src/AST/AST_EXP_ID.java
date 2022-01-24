@@ -6,6 +6,8 @@ public class AST_EXP_ID extends AST_EXP
 {
   public String i;
   public AST_EXP_LIST l;
+  public boolean is_global;
+  public int offset;
   
   public AST_EXP_ID(String i, AST_EXP_LIST l, int line)
 	{
@@ -27,6 +29,7 @@ public class AST_EXP_ID extends AST_EXP
 		this.i = i;
 		this.l = l;
 		this.line = line;
+		this.is_global = false;
 	}
   
   	public void PrintMe()
@@ -72,6 +75,12 @@ public class AST_EXP_ID extends AST_EXP
 				throw new ArithmeticException(String.format("%d", this.line));
 			}
 		}
+		
+		this.offset = sym_table.offsetFuncToObject(this.i);
+		if (this.offset == -1){
+			this.is_global = true;
+		}
+		
 		return func.returnType;
 		
 	}
