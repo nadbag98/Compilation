@@ -86,6 +86,10 @@ public class MIPSGenerator
 
 		fileWriter.format("\tadd Temp_%d,Temp_%d,Temp_%d\n",dstidx,i1,i2);
 	}
+	public void addu(String s1, String s2, int i)
+	{
+		fileWriter.format("\taddu %s,%s,%d\n", s1, s2, i);				
+	}
 	public void sub(TEMP dst,TEMP oprnd1,TEMP oprnd2)
 	{
 		int i1 =oprnd1.getSerialNumber();
@@ -154,6 +158,7 @@ public class MIPSGenerator
 		
 		fileWriter.format("\tble Temp_%d,Temp_%d,%s\n",i1,i2,label);				
 	}
+	
 	public void bne(TEMP oprnd1,TEMP oprnd2,String label)
 	{
 		int i1 =oprnd1.getSerialNumber();
@@ -161,6 +166,11 @@ public class MIPSGenerator
 		
 		fileWriter.format("\tbne Temp_%d,Temp_%d,%s\n",i1,i2,label);				
 	}
+	public void bne(String s1, String s2, String label)
+	{
+		fileWriter.format("\tbne %s,%s,%s\n", s1, s2, label);				
+	}
+	
 	public void beq(TEMP oprnd1,TEMP oprnd2,String label)
 	{
 		int i1 =oprnd1.getSerialNumber();
@@ -168,6 +178,11 @@ public class MIPSGenerator
 		
 		fileWriter.format("\tbeq Temp_%d,Temp_%d,%s\n",i1,i2,label);				
 	}
+	public void beq(String s1, int i, String label)
+	{
+		fileWriter.format("\tbeq %s,%d,%s\n", s1, i, label);				
+	}
+	
 	public void beqz(TEMP oprnd1,String label)
 	{
 		int i1 =oprnd1.getSerialNumber();
@@ -182,11 +197,18 @@ public class MIPSGenerator
 		fileWriter.format("\tmov Temp_%d,Temp_%d\n",i1, i2);				
 	}
 	
-	public void movToString(String s, TEMP oprnd1)
+	public void mov(String s, TEMP oprnd1)
 	{
 		int i1 =oprnd1.getSerialNumber();
 		fileWriter.format("\tmov %s,Temp_%d\n", s, i1);				
 	}
+	
+	public void lb(String s1, int i, String s2)
+	{
+		fileWriter.format("\tlb %s,%d(%s)\n", s1, i, s2);				
+	}
+	
+	
 	
 	/**************************************/
 	/* USUAL SINGLETON IMPLEMENTATION ... */
