@@ -9,7 +9,7 @@ public class AST_TYPE_LIST extends AST_Node
 	/****************/
 	public AST_TYPE head;
 	public AST_TYPE_LIST tail;
-  public String s;
+  	public String s;
   
 
 	/******************/
@@ -86,10 +86,13 @@ public class AST_TYPE_LIST extends AST_Node
 			sym_table.enter(this.s, TYPE_INSTANCE.getInstance(), t1);
 		}
 		
+		sym_table.top.offset = sym_table.top.prevtop.offset + 1;
+		
 		params.insert(t1);
 		if (this.tail != null){
 			this.tail.visit(sym_table, params);
 		}
+		
 		return null;				
 		
 	}
