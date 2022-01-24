@@ -29,6 +29,7 @@ public class AST_STMT_ID extends AST_STMT
 		/*******************************/
     this.s = s;
     this.l = l;
+    this.is_global = false;
 
 	}
   
