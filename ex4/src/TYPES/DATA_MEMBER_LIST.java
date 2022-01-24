@@ -65,7 +65,7 @@ public class DATA_MEMBER_LIST
 	
 	public int getFuncOffset(){
 		DATA_MEMBER_LIST tmp = this;
-		int counter = 1;
+		int counter = 0;
 		while(tmp != null){
 			if (tmp.head != null && tmp.head.t.isFunc()){
 				counter++;
