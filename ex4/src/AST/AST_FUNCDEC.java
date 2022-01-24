@@ -9,6 +9,8 @@ public class AST_FUNCDEC extends AST_Node
   public String s;
 	public AST_TYPE_LIST l1;
   public AST_STMT_LIST l2;
+  public boolean in_class;
+  public String class_name;
   
   public AST_FUNCDEC(AST_TYPE t, String s, AST_TYPE_LIST l1, AST_STMT_LIST l2, int line)
 	{
@@ -62,6 +64,7 @@ public class AST_FUNCDEC extends AST_Node
 	}
 	
     public TYPE visit(SYMBOL_TABLE sym_table, TYPE_CLASS my_class, boolean in_class) throws ArithmeticException {
+		this.in_class = in_class;
 		if (sym_table.searchCurrScope(this.s))
 		{
 			System.out.print("Exception in AST_FUNCDEC - Failed searchCurrScope\n");
@@ -82,6 +85,7 @@ public class AST_FUNCDEC extends AST_Node
 		
 		if (in_class){
 			sym_table.top.offset = 2;
+			this.class_name = my_class.name;
 		}
 		else{
 			sym_table.top.offset = 1;
@@ -122,11 +126,17 @@ public class AST_FUNCDEC extends AST_Node
 	
 	public TEMP IRme()
 	{
-		IR.
-		getInstance().
-		Add_IRcommand(new IRcommand_Label(this.s));		
-		//if (body != null) body.IRme();
-		//TODO
+		IR ir = IR.getInstance();
+		if (this.in_class){
+			ir.Add_IRcommand(new IRcommand_Label(String.format("%s_%s", this.class_name, this.s)));
+		} else {
+			ir.Add_IRcommand(new IRcommand_Label(this.s));
+		}
+		
+		ir.Add_IRcommand(new IRcommand_FuncPrologue(this.s));
+		if (this.l2 != null) this.l2.IRme();
+		ir.Add_IRcommand(new IRcommand_FuncEpilogue(this.s));
+		
 		return null;
 	}
   
