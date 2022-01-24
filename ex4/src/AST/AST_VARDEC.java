@@ -9,7 +9,6 @@ public class AST_VARDEC extends AST_Node
   	public String s;
   	public int is_new;
 	public boolean is_global;
-	public int offset;
   
   
   public AST_VARDEC(AST_TYPE t, String s, AST_Node exp, int is_new, int line)
