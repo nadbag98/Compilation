@@ -22,7 +22,7 @@ public class AST_VAR extends AST_Node
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
     if (v == null && e == null && s != null) System.out.print("====================== var --> ID\n");
-		if (v != null && e == null && s != null) System.out.print("====================== var --> var ID\n");
+		if (v != null && e == null && s != null) System.out.print("====================== var --> var.ID\n");
 		if (v != null && e != null && s == null) System.out.print("====================== var --> var exp\n");
 
 		/*******************************/
@@ -88,13 +88,16 @@ public class AST_VAR extends AST_Node
 				System.out.print("Exception in AST_VAR: t1 is not class\n");
 				throw new ArithmeticException(String.format("%d", this.line));
 			}
-			TYPE t2 = sym_table.searchFamily(this.s, (TYPE_CLASS) t1);
+			TYPE_CLASS t1_class = (TYPE_CLASS) t1;
+			TYPE t2 = sym_table.searchFamily(this.s, t1_class);
 			if (t2 == null) {
 				System.out.print("Exception in AST_VAR: t2 == null\n");
 				throw new ArithmeticException(String.format("%d", this.line));
 			}
+			this.offset = t1_class.data_members.find(this.s).offset;
 			return t2;
 		}
+		
 		if (!t1.isArray()) {
 			System.out.print("Exception in AST_VAR: t1 is not array\n");
 			throw new ArithmeticException(String.format("%d", this.line));
