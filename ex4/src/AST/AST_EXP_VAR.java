@@ -7,6 +7,7 @@ public class AST_EXP_VAR extends AST_EXP
   public AST_VAR v;
 	public String s;
   public AST_EXP_LIST l;
+  public int offset;
   
   public AST_EXP_VAR(AST_VAR v, String s, AST_EXP_LIST l, int line)
 	{
@@ -18,7 +19,7 @@ public class AST_EXP_VAR extends AST_EXP
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
-    if (s == null) System.out.print("====================== exp --> var\n");
+    		if (s == null) System.out.print("====================== exp --> var\n");
 		if (l != null && s != null) System.out.print("====================== exp --> var id expList\n");
 		if (l == null && s != null) System.out.print("====================== exp --> var id\n");
 
@@ -70,7 +71,8 @@ public class AST_EXP_VAR extends AST_EXP
 			throw new ArithmeticException(String.format("%d", this.line));
 		}
 		
-		TYPE t2 = sym_table.searchFamily(this.s, (TYPE_CLASS) t1);
+		TYPE_CLASS t1_class = (TYPE_CLASS) t1;
+		TYPE t2 = sym_table.searchFamily(this.s, t1_class);
 		
 		if (t2 == null || !t2.isFunc()){
 			System.out.print("Second error in visit AST_EXP_VAR");
@@ -78,6 +80,8 @@ public class AST_EXP_VAR extends AST_EXP
 		}
 		
 		TYPE_FUNCTION func = (TYPE_FUNCTION) t2;
+		
+		this.offset = t1_class.data_members.find(this.s).offset;
 		
 		if (this.l == null){
 			if (func.params.head != null){
