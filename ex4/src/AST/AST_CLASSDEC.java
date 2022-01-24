@@ -89,12 +89,19 @@ public class AST_CLASSDEC extends AST_Node
 		IR ir = IR.getInstance();
 		
 		ir.Add_IRcommand(new IRcommand_Label(".data"));
-		ir.Add_IRcommand(new IRcommand_Label(String.format("vt_%s", this.s1)));
+		ir.Add_IRcommand(new IRcommand_Label(String.format("vt_%s:", this.s1)));
 		
 		DATA_MEMBER_LIST data_members = this.type.data_members;
 		
-		dklfjadskjgasjkgandfjkgnadfkgjndfgjkndafkgjndafkgjdf
+		while (data_members != null){
+			if (data_members.head != null && data_members.head.t.isFunc()){
+				ir.Add_IRcommand(new IRcommand_Label(String.format(".word %s_%s", data_members.head.defClass, data_members.head.name)));
+			}
+			
+			data_members = data_members.tail;
+		}
 		
+		ir.Add_IRcommand(new IRcommand_Label(".text"));
 		
 		return null;
 	}
