@@ -318,6 +318,27 @@ public class SYMBOL_TABLE
 		}
 		return 0;
 	}
+	
+	public int offsetFuncToObject(String s){
+		
+		SYMBOL_TABLE_ENTRY e = this.top;
+		DATA_MEMBER d;
+		
+		while (e != null)
+		{
+			if (e.type.isClass()){
+				TYPE_CLASS t = (TYPE_CLASS) e.type;
+				// TODO - CHECK IF D IS FUNC OR VAR (???????????????????????????????????????????????)
+				d = t.data_members.find(s);
+				if (d != null){
+					return d.offset;	
+				}
+				return -1;
+			}
+			e = e.prevtop;
+		}
+		return -1;
+	}
 		
 
 	/********************************************************************************/
