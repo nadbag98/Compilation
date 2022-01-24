@@ -107,8 +107,12 @@ public class AST_FUNCDEC extends AST_Node
 				ancestor = ancestor.father;
 			}
 			if (!inherited){
-				DATA_MEMBER d = new DATA_MEMBER(func, this.s, my_class.data_members.getFuncOffset());
+				DATA_MEMBER d = new DATA_MEMBER(func, this.s, my_class.data_members.getFuncOffset(), this.s);
 				my_class.data_members.insert(d);
+			}
+			else{
+				dup = my_class.data_members.find(this.s);
+				dup.defClass = my_class.name;
 			}
 		}
 		l2.visit(sym_table, func.returnType);
