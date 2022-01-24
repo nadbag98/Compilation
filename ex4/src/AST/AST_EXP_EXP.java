@@ -19,7 +19,7 @@ public AST_BINOP b;
 		/***************************************/
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
-    if (b == null) System.out.print("====================== exp --> exp\n");
+    if (b == null) System.out.print("====================== exp --> (exp)\n");
     if (b != null) System.out.print("====================== exp --> exp binop exp\n");
 
 
