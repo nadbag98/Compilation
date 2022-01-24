@@ -182,6 +182,12 @@ public class MIPSGenerator
 		fileWriter.format("\tmov Temp_%d,Temp_%d\n",i1, i2);				
 	}
 	
+	public void movToString(String s, TEMP oprnd1)
+	{
+		int i1 =oprnd1.getSerialNumber();
+		fileWriter.format("\tmov %s,Temp_%d\n", s, i1);				
+	}
+	
 	/**************************************/
 	/* USUAL SINGLETON IMPLEMENTATION ... */
 	/**************************************/
