@@ -105,7 +105,7 @@ public class AST_VARDEC_CLASS extends AST_Node
 		ancestor = ancestor.father;
 	   }
 	   if (!inherited){
-		   DATA_MEMBER d = new DATA_MEMBER(t1, this.s, my_class.data_members.getVarOffset());
+		   DATA_MEMBER d = new DATA_MEMBER(t1, this.s, my_class.data_members.getVarOffset(), null);
 		   my_class.data_members.insert(d);
 	   }
 	   if (t1 == TYPE_INT.getInstance() || t1 == TYPE_STRING.getInstance())
