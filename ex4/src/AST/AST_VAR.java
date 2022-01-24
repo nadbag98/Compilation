@@ -7,6 +7,8 @@ public class AST_VAR extends AST_Node
   	public AST_VAR v;
   	public String s;
 	public AST_EXP e;
+	public int offsetTo; // 0: Function (FP) , 1: Object, 2: Global
+	public int offset;
   
   public AST_VAR(AST_VAR v, String s, AST_EXP e, int line)
 	{
@@ -66,8 +68,20 @@ public class AST_VAR extends AST_Node
 				System.out.print("Exception in AST_VAR - t1 == null\n");
 				throw new ArithmeticException(String.format("%d", this.line));
 			}
+			else{
+				this.offset = sym_table.offsetToFunc(this.s);
+				this.offsetTo = 0;
+				if (this.offset == 0){
+					this.offset = sym_table.offsetToObject(this.s);
+					this.offsetTo = 1;
+					if (this.offset == 0){
+						this.offsetTo = 2;
+					}
+				}
+			}
 			return t1;
 		}
+		
 		TYPE t1 = this.v.visit(sym_table);
 		if (this.e == null) {
 			if (!t1.isClass()) {
