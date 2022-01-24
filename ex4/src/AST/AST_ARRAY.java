@@ -67,5 +67,9 @@ public class AST_ARRAY extends AST_Node
 		sym_table.enter(this.s, t2, null);
 		return null;
 	}
+	
+	public TEMP IRme(){
+		return null;
+	}
   
 }
