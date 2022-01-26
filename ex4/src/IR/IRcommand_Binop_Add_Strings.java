@@ -30,7 +30,6 @@ public class IRcommand_Binop_Add_Strings extends IRcommand
 	/***************/
 	public void MIPSme()
 	{
-    //TODO
-		// MIPSGenerator.getInstance().add(dst,t1,t2);
+		MIPSGenerator.getInstance().addStrings(dst,t1,t2);
 	}
 }
