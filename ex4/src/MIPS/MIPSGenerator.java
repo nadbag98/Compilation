@@ -217,13 +217,13 @@ public class MIPSGenerator
 	{
 		int i1 =oprnd1.getSerialNumber();
 		int i2 =oprnd2.getSerialNumber();
-		fileWriter.format("\tmov Temp_%d,Temp_%d\n",i1, i2);				
+		fileWriter.format("\tmove Temp_%d,Temp_%d\n",i1, i2);				
 	}
 	
 	public void mov(String s, TEMP oprnd1)
 	{
 		int i1 =oprnd1.getSerialNumber();
-		fileWriter.format("\tmov %s,Temp_%d\n", s, i1);				
+		fileWriter.format("\tmove %s,Temp_%d\n", s, i1);				
 	}
 	
 	public void lb(String s1, int i, String s2)
@@ -237,7 +237,7 @@ public class MIPSGenerator
 		fileWriter.format("\tsw $ra,0($sp)\n");
 		fileWriter.format("\tsubu $sp,$sp,4\n");
 		fileWriter.format("\tsw $fp,0($sp)\n");
-		fileWriter.format("\tmov $fp,$sp\n");
+		fileWriter.format("\tmove $fp,$sp\n");
 		
 		for (int i = 0; i < 10; i++){
 			fileWriter.format("\tsubu $sp,$sp,4\n");
@@ -247,7 +247,7 @@ public class MIPSGenerator
 	
 	public void funcEpilogue()
 	{
-		fileWriter.format("\tmov $sp,$fp\n");
+		fileWriter.format("\tmove $sp,$fp\n");
 		for (int i = 0; i < 10; i++){
 			fileWriter.format("\tlw $t%d,-%d($sp)\n", i,(i+1)*4);
 		}
@@ -255,6 +255,64 @@ public class MIPSGenerator
 		fileWriter.format("\tlw $ra,4($sp)\n");
 		fileWriter.format("\taddu $sp,$sp,8\n");
 		fileWriter.format("\tjr $ra\n");
+	}
+	
+	public addStrings(TEMP dst,TEMP t1,TEMP t2, String str1_len_loop, String str1_len_end, String str2_len_loop, String str2_len_end, String copy_str1_loop,
+			 	String copy_str1_end, String copy_str2_loop, String copy_str2_end){
+		
+		int dst_ind = dst.getSerialNumber();
+		int t1_ind = t1.getSerialNumber();
+		int t2_ind = t2.getSerialNumber();
+		
+		fileWriter.format("\tli $s0,1\n");
+		fileWriter.format("\tmove $s1,Temp_%d\n", t1_ind);
+		fileWriter.format("\t%s:\n", str1_len_loop);
+		fileWriter.format("\tlb $s2, 0($s1)\n");
+		fileWriter.format("\tbeq $s2, 0, %s\n", str1_len_end);
+		fileWriter.format("\taddu $s0, $s0, 1\n");
+		fileWriter.format("\taddu $s1, $s1, 1\n");
+		fileWriter.format("\tj%s\n", str1_len_loop);
+		fileWriter.format("\t%s:\n", str1_len_end);
+		
+		fileWriter.format("\tmove $s1,Temp_%d\n", t2_ind);
+		fileWriter.format("\t%s:\n", str2_len_loop);
+		fileWriter.format("\tlb $s2, 0($s1)\n");
+		fileWriter.format("\tbeq $s2, 0, %s\n", str2_len_end);
+		fileWriter.format("\taddu $s0, $s0, 1\n");
+		fileWriter.format("\taddu $s1, $s1, 1\n");
+		fileWriter.format("\tj%s\n", str2_len_loop);
+		fileWriter.format("\t%s:\n", str2_len_end);
+		//$s0 holds the concated string length, including null terminator
+		
+		fileWriter.format("\tli $v0, 9\n");
+		fileWriter.format("\tmove $a0, $s0\n");
+		fileWriter.format("\tsyscall\n");
+		fileWriter.format("\tmove $s0,$v0\n");
+		fileWriter.format("\tmove Temp_%d,$v0\n", dst_ind);
+		//$s0 holds the address for the new string
+		
+		fileWriter.format("\tmove $s1,Temp_%d\n", t1_ind);
+		fileWriter.format("\t%s:\n", copy_str1_loop);
+		fileWriter.format("\tlb $s2, 0($s1)\n");
+		fileWriter.format("\tbeq $s2, 0, %s\n", copy_str1_end);
+		fileWriter.format("\tsb $s2, 0($s0)\n");
+		fileWriter.format("\taddu $s0, $s0, 1\n");
+		fileWriter.format("\taddu $s1, $s1, 1\n");
+		fileWriter.format("\tj%s\n", copy_str1_loop);
+		fileWriter.format("\t%s:\n", copy_str1_end);
+		
+		
+		fileWriter.format("\tmove $s1,Temp_%d\n", t2_ind);
+		fileWriter.format("\t%s:\n", copy_str2_loop);
+		fileWriter.format("\tlb $s2, 0($s1)\n");
+		fileWriter.format("\tbeq $s2, 0, %s\n", copy_str2_end);
+		fileWriter.format("\tsb $s2, 0($s0)\n");
+		fileWriter.format("\taddu $s0, $s0, 1\n");
+		fileWriter.format("\taddu $s1, $s1, 1\n");
+		fileWriter.format("\tj%s\n", copy_str2_loop);
+		fileWriter.format("\t%s:\n", copy_str2_end);
+		fileWriter.format("\taddu $s0, $s0, 1\n");
+		fileWriter.format("\tsb $s2, 0($s0)\n");
 	}
 	
 	
