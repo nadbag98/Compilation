@@ -92,5 +92,19 @@ public class AST_STMT_VAR_EXP extends AST_STMT
 		}	
 		return null;
 	}
-  
+	
+	public TEMP IRme(){
+		TEMP src;
+		if (this.e != null && this.ne == null){
+			src = this.e.IRme();
+			
+		} else {
+			src = this.ne.IRme();
+		}
+		
+		TEMP dst_address = this.v.IRme();
+		IR.
+		getInstance().
+		Add_IRcommand(new IRcommand_StoreTemp2Temp(dst_address, src));
+	}  
 }
