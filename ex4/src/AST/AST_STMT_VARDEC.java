@@ -57,4 +57,10 @@ public class AST_STMT_VARDEC extends AST_STMT
 		return null;
 	}
   
+  	public TEMP IRme(){
+		IR.
+		getInstance().
+		Add_IRcommand(new IRcommand_subu("$sp", "$sp", 4));
+		if (this.v != null) this.v.IRme();
+	}
 }
