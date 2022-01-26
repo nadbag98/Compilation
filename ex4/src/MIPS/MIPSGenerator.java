@@ -208,6 +208,31 @@ public class MIPSGenerator
 		fileWriter.format("\tlb %s,%d(%s)\n", s1, i, s2);				
 	}
 	
+	public void funcPrologue()
+	{
+		fileWriter.format("\tsubu $sp,$sp,4\n");
+		fileWriter.format("\tsw $ra,0($sp)\n");
+		fileWriter.format("\tsubu $sp,$sp,4\n");
+		fileWriter.format("\tsw $fp,0($sp)\n");
+		fileWriter.format("\tmov $fp,$sp\n");
+		
+		for (int i = 0; i < 10; i++){
+			fileWriter.format("\tsubu $sp,$sp,4\n");
+			fileWriter.format("\tsw $t%d,0($sp)\n", i);
+		}			
+	}
+	
+	public void funcEpilogue()
+	{
+		fileWriter.format("\tmov $sp,$fp\n");
+		for (int i = 0; i < 10; i++){
+			fileWriter.format("\tlw $t%d,-%d($sp)\n", i,(i+1)*4);
+		}
+		fileWriter.format("\tlw $fp,0($sp)\n");
+		fileWriter.format("\tlw $ra,4($sp)\n");
+		fileWriter.format("\taddu $sp,$sp,8\n");
+		fileWriter.format("\tjr $ra\n");
+	}
 	
 	
 	/**************************************/
