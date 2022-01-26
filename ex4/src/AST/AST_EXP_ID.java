@@ -84,5 +84,38 @@ public class AST_EXP_ID extends AST_EXP
 		return func.returnType;
 		
 	}
+	
+	public TEMP IRme(){
+		TEMP res = TEMP_FACTORY.getInstance().getFreshTEMP();
+		IR inst = IR.getInstance();
+		if (this.l == null){
+			if (this.is_global){
+				inst.Add_IRcommand(new IRcommand_Jal(this.i));
+			} else {
+				TEMP obj = TEMP_FACTORY.getInstance().getFreshTEMP();
+				inst.Add_IRcommand(new IRcommand_load(obj, "8($fp)"));
+				inst.Add_IRcommand(new IRcommand_callMethodInClass(this.offset, obj));
+			}
+		}
+		
+		if (this.l != null){
+			this.l.IRme();
+			if (this.is_global){
+				inst.Add_IRcommand(new IRcommand_Jal(this.s));
+			} else {
+				TEMP obj = TEMP_FACTORY.getInstance().getFreshTEMP();
+				inst.Add_IRcommand(new IRcommand_load(obj, "8($fp)"));
+				inst.Add_IRcommand(new IRcommand_callMethodInClass(this.offset, obj));
+			}
+			
+			AST_EXP_LIST curr = this.l;
+			while (curr != null){
+				inst.Add_IRcommand(new IRcommand_addu("$sp", "$sp", 4));
+				curr = curr.tail;
+			}
+		}
+		inst.Add_IRcommand(new IRcommand_movStringToTemp(res, "$v0"));
+		return res;
+	}
   
 }
