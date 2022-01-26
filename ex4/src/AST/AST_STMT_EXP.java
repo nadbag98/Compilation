@@ -170,9 +170,14 @@ public class AST_STMT_EXP extends AST_STMT
 		
 		if (this.l == null){
 			TEMP res = this.e.IRme();
+			
 			IR.
 			getInstance().
 			Add_IRcommand(new IRcommand_movTempToString("$v0", res));
+			
+			IR.
+			getInstance().
+			Add_IRcommand(new IRcommand_funcEpilogue());
 
 		}
 	}
