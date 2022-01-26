@@ -65,5 +65,17 @@ public class AST_EXP_INT extends AST_EXP
 	public TYPE visit(SYMBOL_TABLE sym_table) throws ArithmeticException {
 		return TYPE_INT.getInstance();
 	}
+	
+	public TEMP IRme(){
+		TEMP res = TEMP_FACTORY.getInstance().getFreshTEMP();
+		IR inst = IR.getInstance();
+		if (this.is_neg == 0) {
+			inst.Add_IRcommand(new IRcommand_Li(res, this.i));
+		} 
+		else {
+			inst.Add_IRcommand(new IRcommand_Li(res, -this.i));
+		}
+		return res;
+	}
   
 }
