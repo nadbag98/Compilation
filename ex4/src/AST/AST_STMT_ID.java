@@ -114,7 +114,7 @@ public class AST_STMT_ID extends AST_STMT
 			if (this.is_global){
 				IR.
 				getInstance().
-				Add_IRcommand(new IRcommand_Jump_Label(this.s));
+				Add_IRcommand(new IRcommand_Jal(this.s));
 			} else {
 				TEMP obj = TEMP_FACTORY.getInstance().getFreshTEMP();
 				IR.
