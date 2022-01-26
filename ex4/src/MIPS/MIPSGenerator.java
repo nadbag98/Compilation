@@ -142,7 +142,11 @@ public class MIPSGenerator
 	public void jump(String inlabel)
 	{
 		fileWriter.format("\tj %s\n",inlabel);
-	}	
+	}
+	public void jalr(String dst)
+	{
+		fileWriter.format("\tjalr %s\n",dst);
+	}
 	public void blt(TEMP oprnd1,TEMP oprnd2,String label)
 	{
 		int i1 =oprnd1.getSerialNumber();
