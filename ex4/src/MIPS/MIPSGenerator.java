@@ -229,6 +229,11 @@ public class MIPSGenerator
 		int i1 =oprnd1.getSerialNumber();
 		fileWriter.format("\tmove %s,Temp_%d\n", s, i1);				
 	}
+	public void mov(TEMP dst, String src)
+	{
+		int dst_ind =dst.getSerialNumber();
+		fileWriter.format("\tmove Temp_%d,%s\n", dst_ind, src);				
+	}
 	
 	public void lb(String s1, int i, String s2)
 	{
