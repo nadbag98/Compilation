@@ -68,6 +68,15 @@ public class MIPSGenerator
 		int idxdst=dst.getSerialNumber();
 		fileWriter.format("\tlw Temp_%d,%s\n",idxdst,address);
 	}
+	public void load(String dst, TEMP address, int offset)
+	{
+		int idx=address.getSerialNumber();
+		fileWriter.format("\tlw %s, %d(Temp_%d)\n", dst, offset, idx);
+	}
+	public void load(String dst, String address, int offset)
+	{
+		fileWriter.format("\tlw %s, %d(%s)\n", dst, offset, address);
+	}
 	public void store(String address,TEMP src)
 	{
 		int idxsrc=src.getSerialNumber();
@@ -97,6 +106,10 @@ public class MIPSGenerator
 		int dstidx=dst.getSerialNumber();
 
 		fileWriter.format("\tsub Temp_%d,Temp_%d,Temp_%d\n",dstidx,i1,i2);
+	}
+	public void subu(String dst, String op1, int op2)
+	{
+		fileWriter.format("\tsubu %s,%s,%d\n",dst, op1, op2);	
 	}
 	public void mul(TEMP dst,TEMP oprnd1,TEMP oprnd2)
 	{
