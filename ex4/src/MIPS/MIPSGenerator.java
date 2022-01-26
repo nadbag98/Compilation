@@ -82,6 +82,12 @@ public class MIPSGenerator
 		int idxsrc=src.getSerialNumber();
 		fileWriter.format("\tsw Temp_%d,%s\n",idxsrc,address);		
 	}
+	public void store(TEMP dst,TEMP src)
+	{
+		int idxsrc=src.getSerialNumber();
+		int idxdst=dst.getSerialNumber();
+		fileWriter.format("\tsw Temp_%d,0(Temp_%d)\n",idxsrc,idxdst);		
+	}
 	public void li(TEMP t,int value)
 	{
 		int idx=t.getSerialNumber();
