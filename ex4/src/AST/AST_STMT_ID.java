@@ -102,5 +102,34 @@ public class AST_STMT_ID extends AST_STMT
 		
 		return null;
 	}
+	
+	public TEMP IRme(){
+		if (this.s == null && this.l == null){
+			IR.
+			getInstance().
+			Add_IRcommand(new IRcommand_funcEpilogue());
+		}
+		
+		if (this.s != null && this.l == null){
+			if (this.is_global){
+				IR.
+				getInstance().
+				Add_IRcommand(new IRcommand_Jump_Label(this.s));
+			} else {
+				TEMP obj = TEMP_FACTORY.getInstance().getFreshTEMP();
+				IR.
+				getInstance().
+				Add_IRcommand(new IRcommand_load(obj, "8($fp)"));
+				
+				IR.
+				getInstance().
+				Add_IRcommand(new IRcommand_callMethodInClass(this.offset, false, obj));
+			}
+		}
+		
+		if (this.s != null && this.l != null){
+			
+		}
+	}
   
 }
