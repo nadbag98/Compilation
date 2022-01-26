@@ -106,6 +106,25 @@ public class AST_STMT_VAR_ID extends AST_STMT
 		return func.returnType;
 	}
 	
-	
-  
+	public TEMP IRme(){
+		TEMP obj = this.v.IRme();
+		if (this.e == null){
+			IR.
+			getInstance().
+			Add_IRcommand(new IRcommand_callMethodInClass(this.offset, obj));
+		} else {
+			this.e.IRme();
+			IR.
+			getInstance().
+			Add_IRcommand(new IRcommand_callMethodInClass(this.offset, obj));
+
+			AST_EXP_LIST curr = this.e;
+			while (curr != null){
+				IR.
+				getInstance().
+				Add_IRcommand(new IRcommand_addu("$sp", "$sp", 4));
+				curr = curr.tail;
+			}
+		}	
+	}
 }
