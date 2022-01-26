@@ -74,4 +74,18 @@ public class AST_EXP_LIST extends AST_Node
 		return null;
 	}
 	
+	public TEMP IRme(){
+		TEMP res = this.head.IRme();
+		IR.
+		getInstance().
+		Add_IRcommand(new IRcommand_subu("$sp", "$sp", 4));
+		IR.
+		getInstance().
+		Add_IRcommand(new IRcommand_Store("0($sp)", res));
+		if (this.tail != null) {
+			this.tail.visit(sym_table, lst);
+		}
+		return null;
+	}
+	
 }
