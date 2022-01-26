@@ -133,9 +133,9 @@ public class AST_FUNCDEC extends AST_Node
 			ir.Add_IRcommand(new IRcommand_Label(this.s));
 		}
 		
-		ir.Add_IRcommand(new IRcommand_FuncPrologue(this.s));
+		ir.Add_IRcommand(new IRcommand_FuncPrologue());
 		if (this.l2 != null) this.l2.IRme();
-		ir.Add_IRcommand(new IRcommand_FuncEpilogue(this.s));
+		ir.Add_IRcommand(new IRcommand_FuncEpilogue());
 		
 		return null;
 	}
