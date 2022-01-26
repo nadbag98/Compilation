@@ -60,5 +60,19 @@ public class AST_EXP_REST extends AST_EXP
 			return TYPE_STRING.getInstance();
 		}
 	}
+	
+	public TEMP IRme(){
+		TEMP res = TEMP_FACTORY.getInstance().getFreshTEMP();
+		IR inst = IR.getInstance();
+		if (this.s == null) {
+			inst.Add_IRcommand(new IRcommand_Li(res, 0));
+		} 
+		else {
+			String str_lab = IRcommand.getFreshLabel("str"); 
+			inst.Add_IRcommand(new IRcommand_Allocate_String(str_lab, this.s));
+			//TODO - GET FUCKED: return temporary that holds label
+		}
+		return res;
+	}
   
 }
