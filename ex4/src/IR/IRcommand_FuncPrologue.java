@@ -24,6 +24,6 @@ public class IRcommand_FuncPrologue extends IRcommand
 	/***************/
 	public void MIPSme()
 	{
-		MIPSGenerator.getInstance().FuncPrologue();
+		MIPSGenerator.getInstance().funcPrologue();
 	}
 }
