@@ -29,6 +29,6 @@ public class IRcommand_StoreTemp2Temp extends IRcommand
 	/***************/
 	public void MIPSme()
 	{
-		MIPSGenerator.getInstance().store(src, dst);
+		MIPSGenerator.getInstance().store(this.dst, this.src);
 	}
 }
