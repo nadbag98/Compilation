@@ -131,6 +131,42 @@ public class AST_STMT_EXP extends AST_STMT
 			/*******************/
 			return null;
 		}
+		
+		if (this.l != null && this.is_while == 0){
+			/*******************************/
+			/* [1] Allocate 2 fresh labels */
+			/*******************************/
+			String label_end   = IRcommand.getFreshLabel("end");
+
+			/********************/
+			/* [3] cond.IRme(); */
+			/********************/
+			TEMP cond_temp = this.e.IRme();
+
+			/******************************************/
+			/* [4] Jump conditionally to the loop end */
+			/******************************************/
+			IR.
+			getInstance().
+			Add_IRcommand(new IRcommand_Jump_If_Eq_To_Zero(cond_temp,label_end));		
+
+			/*******************/
+			/* [5] body.IRme() */
+			/*******************/
+			this.l.IRme();	
+
+			/**********************/
+			/* [7] Loop end label */
+			/**********************/
+			IR.
+			getInstance().
+			Add_IRcommand(new IRcommand_Label(label_end));
+
+			/*******************/
+			/* [8] return null */
+			/*******************/
+			return null;
+		}
 	}
   
 }
