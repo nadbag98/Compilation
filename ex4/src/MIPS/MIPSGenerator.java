@@ -149,6 +149,10 @@ public class MIPSGenerator
 	{
 		fileWriter.format("\tj %s\n",inlabel);
 	}
+	public void jal(String inlabel)
+	{
+		fileWriter.format("\tjal %s\n",inlabel);
+	}
 	public void jalr(String dst)
 	{
 		fileWriter.format("\tjalr %s\n",dst);
