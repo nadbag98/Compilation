@@ -74,4 +74,12 @@ public class AST_STMT_LIST extends AST_Node
 		return null;
 	}
 	
+	public TEMP IRme(){
+		this.head.IRme();
+		if (this.tail != null){
+			this.tail.IRme();
+		}
+		return null;
+	}
+	
 }
