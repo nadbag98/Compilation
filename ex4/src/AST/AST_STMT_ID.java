@@ -123,12 +123,34 @@ public class AST_STMT_ID extends AST_STMT
 				
 				IR.
 				getInstance().
-				Add_IRcommand(new IRcommand_callMethodInClass(this.offset, false, obj));
+				Add_IRcommand(new IRcommand_callMethodInClass(this.offset, obj));
 			}
 		}
 		
 		if (this.s != null && this.l != null){
+			this.l.IRme();
+			if (this.is_global){
+				IR.
+				getInstance().
+				Add_IRcommand(new IRcommand_Jump_Label(this.s));
+			} else {
+				TEMP obj = TEMP_FACTORY.getInstance().getFreshTEMP();
+				IR.
+				getInstance().
+				Add_IRcommand(new IRcommand_load(obj, "8($fp)"));
+				
+				IR.
+				getInstance().
+				Add_IRcommand(new IRcommand_callMethodInClass(this.offset, obj));
+			}
 			
+			AST_EXP_LIST curr = this.l;
+			while (curr != null){
+				IR.
+				getInstance().
+				Add_IRcommand(new IRcommand_addu("$sp", "$sp", 4));
+				curr = curr.tail;
+			}
 		}
 	}
   
