@@ -138,9 +138,18 @@ public AST_BINOP b;
 				Add_IRcommand(new IRcommand_Binop_Add_Integers(dst,t1,t2));	
 			}
 			else {
+				String str1_len_loop= IRcommand.getFreshLabel("str1_len_loop"); 
+				String str1_len_end= IRcommand.getFreshLabel("str1_len_end"); 
+				String str2_len_loop= IRcommand.getFreshLabel("str2_len_loop"); 
+				String str2_len_end= IRcommand.getFreshLabel("str2_len_end"); 
+				String copy_str1_loop= IRcommand.getFreshLabel("copy_str1_loop");
+				String copy_str1_end= IRcommand.getFreshLabel("copy_str1_end"); 
+				String copy_str2_loop= IRcommand.getFreshLabel("copy_str2_loop"); 
+				String copy_str2_end= IRcommand.getFreshLabel("copy_str2_end");
 				IR.
 				getInstance().
-				Add_IRcommand(new IRcommand_Binop_Add_Strings(dst,t1,t2));
+				Add_IRcommand(new IRcommand_Binop_Add_Strings(dst,t1,t2,str1_len_loop, str1_len_end, str2_len_loop, str2_len_end, copy_str1_loop,
+			 	copy_str1_end, copy_str2_loop, copy_str2_end));
 			}
 		}
 		if (this.b.op == 2)
