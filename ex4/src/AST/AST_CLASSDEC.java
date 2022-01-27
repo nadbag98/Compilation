@@ -102,7 +102,9 @@ public class AST_CLASSDEC extends AST_Node
 		}
 		
 		ir.Add_IRcommand(new IRcommand_Label(".text"));
-		
+		if (this.l != null) {
+			this.l.IRme();
+		}
 		return null;
 	}
   
