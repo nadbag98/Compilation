@@ -104,54 +104,46 @@ public class AST_STMT_ID extends AST_STMT
 	}
 	
 	public TEMP IRme(){
+		IR inst = IR.getInstance();
 		if (this.s == null && this.l == null){
-			IR.
-			getInstance().
-			Add_IRcommand(new IRcommand_funcEpilogue());
+			inst.Add_IRcommand(new IRcommand_funcEpilogue());
 		}
 		
 		if (this.s != null && this.l == null){
 			if (this.is_global){
-				IR.
-				getInstance().
-				Add_IRcommand(new IRcommand_Jal(this.s));
+				inst.Add_IRcommand(new IRcommand_Jal(this.s));
 			} else {
 				TEMP obj = TEMP_FACTORY.getInstance().getFreshTEMP();
-				IR.
-				getInstance().
-				Add_IRcommand(new IRcommand_load(obj, "8($fp)"));
-				
-				IR.
-				getInstance().
-				Add_IRcommand(new IRcommand_callMethodInClass(this.offset, obj));
+				inst.Add_IRcommand(new IRcommand_load(obj, "8($fp)"));
+				inst.Add_IRcommand(new IRcommand_callMethodInClass(this.offset, obj));
 			}
 		}
 		
 		if (this.s != null && this.l != null){
 			this.l.IRme();
 			if (this.is_global){
-				IR.
-				getInstance().
-				Add_IRcommand(new IRcommand_Jal(this.s));
+				if (this.s.equals("PrintString")){ 
+					inst.Add_IRcommand(new IRcommand_PrintString());
+				}
+				else if (this.s.equals("PrintInt")){ 
+					inst.Add_IRcommand(new IRcommand_PrintInt());
+				}
+				else {
+					inst.Add_IRcommand(new IRcommand_Jal(this.s));
+				}
 			} else {
 				TEMP obj = TEMP_FACTORY.getInstance().getFreshTEMP();
-				IR.
-				getInstance().
-				Add_IRcommand(new IRcommand_load(obj, "8($fp)"));
-				
-				IR.
-				getInstance().
-				Add_IRcommand(new IRcommand_callMethodInClass(this.offset, obj));
+				inst.Add_IRcommand(new IRcommand_load(obj, "8($fp)"));
+				inst.Add_IRcommand(new IRcommand_callMethodInClass(this.offset, obj));
 			}
 			
 			AST_EXP_LIST curr = this.l;
 			while (curr != null){
-				IR.
-				getInstance().
-				Add_IRcommand(new IRcommand_addu("$sp", "$sp", 4));
+				inst.Add_IRcommand(new IRcommand_addu("$sp", "$sp", 4));
 				curr = curr.tail;
 			}
 		}
+		return null;
 	}
   
 }
