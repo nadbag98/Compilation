@@ -91,6 +91,10 @@ public class MIPSGenerator
 		int idx=t.getSerialNumber();
 		fileWriter.format("\tli Temp_%d,%d\n",idx,value);
 	}
+	public void li(String t,int value)
+	{
+		fileWriter.format("\tli %s,%d\n",t,value);
+	}
 	public void la(TEMP t,String value)
 	{
 		int idx=t.getSerialNumber();
