@@ -111,5 +111,40 @@ public class AST_VAR extends AST_Node
 		return t1_array.arrayType;
 		
 	}
+	
+	public TEMP IRme(){
+		TEMP dst = TEMP_FACTORY.getInstance().getFreshTEMP();
+		IR inst = IR.getInstance();
+		
+		if (this.v == null && this.e == null) {
+			if (this.offsetTo == 0){
+				inst.Add_IRcommand(new IRcommand_movStringToTemp(dst, "$fp"));
+				inst.Add_IRcommand(new IRcommand_AddTempTempInt(dst, dst, this.offset * 4));
+			}
+			else if (this.offsetTo == 1){
+				inst.Add_IRcommand(new IRcommand_load(dst, "8($fp)"));
+				inst.Add_IRcommand(new IRcommand_AddTempTempInt(dst, dst, this.offset * 4));
+			}
+			else {
+				inst.Add_IRcommand(new IRcommand_La(dst, String.format("global_%s", this.s)));
+			}
+		}
+		
+		if (this.v != null && this.e == null && this.s != null){
+			dst = this.v.IRme();
+			inst.Add_IRcommand(new IRcommand_AddTempTempInt(dst, dst, this.offset * 4));
+		}
+		
+		if (this.v != null && this.e != null && this.s == null){
+			TEMP index = this.e.IRme();
+			inst.Add_IRcommand(new IRcommand_AddTempTempInt(index, index, 1));
+			inst.Add_IRcommand(new IRcommand_MulTempTempInt(index, index, 4));
+			dst = this.v.IRme();
+			inst.Add_IRcommand(new IRcommand_AdduTempTempTemp(index, index, dst));
+			inst.Add_IRcommand(new IRcommand_LoadTempTemp(dst, index));
+		}
+		
+		return dst;
+	}
   
 }
