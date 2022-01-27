@@ -125,6 +125,7 @@ public class AST_STMT_VAR_ID extends AST_STMT
 				Add_IRcommand(new IRcommand_addu("$sp", "$sp", 4));
 				curr = curr.tail;
 			}
-		}	
+		}
+		return null;
 	}
 }
