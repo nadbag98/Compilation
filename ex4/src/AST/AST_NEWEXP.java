@@ -24,7 +24,7 @@ public class AST_NEWEXP extends AST_Node
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
 		if (e == null) System.out.print("====================== newExp --> NEW TYPE\n");
-    		if (e != null) System.out.print("====================== newExp --> NEW TYPE(exp)\n");
+    		if (e != null) System.out.print("====================== newExp --> NEW TYPE[exp]\n");
 		
 		
 		/*******************************/
@@ -90,6 +90,14 @@ public class AST_NEWEXP extends AST_Node
 		}
 		
 		return t1;			
+	}
+	
+	public TEMP IRme(){
+		IR inst = IR.getInstance();
+		if (this.e == null){
+			//TODO - get fucked
+		}
+		
 	}
 	
 }
