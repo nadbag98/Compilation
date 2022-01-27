@@ -41,6 +41,18 @@ public class MIPSGenerator
 		fileWriter.format("\tli $v0,11\n");
 		fileWriter.format("\tsyscall\n");
 	}
+	public void print_string(TEMP t)
+	{
+		int idx=t.getSerialNumber();
+		fileWriter.format("\tli $v0,4\n");
+		fileWriter.format("\tmove $a0,Temp_%d\n",idx);
+		fileWriter.format("\tsyscall\n");
+		// next 3 lines print a space
+		fileWriter.format("\tli $a0,32\n");
+		fileWriter.format("\tli $v0,11\n");
+		fileWriter.format("\tsyscall\n");
+
+	}
 	//public TEMP addressLocalVar(int serialLocalVarNum)
 	//{
 	//	TEMP t  = TEMP_FACTORY.getInstance().getFreshTEMP();
@@ -77,6 +89,16 @@ public class MIPSGenerator
 	{
 		fileWriter.format("\tlw %s, %d(%s)\n", dst, offset, address);
 	}
+	public void li(TEMP t,int value)
+	{
+		int idx=t.getSerialNumber();
+		fileWriter.format("\tli Temp_%d,%d\n",idx,value);
+	}
+	public void la(TEMP t,String value)
+	{
+		int idx=t.getSerialNumber();
+		fileWriter.format("\tla Temp_%d,%s\n",idx,value);
+	}
 	public void store(String address,TEMP src)
 	{
 		int idxsrc=src.getSerialNumber();
@@ -88,11 +110,7 @@ public class MIPSGenerator
 		int idxdst=dst.getSerialNumber();
 		fileWriter.format("\tsw Temp_%d,0(Temp_%d)\n",idxsrc,idxdst);		
 	}
-	public void li(TEMP t,int value)
-	{
-		int idx=t.getSerialNumber();
-		fileWriter.format("\tli Temp_%d,%d\n",idx,value);
-	}
+	
 	public void add(TEMP dst,TEMP oprnd1,TEMP oprnd2)
 	{
 		int i1 =oprnd1.getSerialNumber();
