@@ -13,5 +13,26 @@ public class CI_Class_List
 		this.head = head;
 		this.tail = tail;
 	}
+	
+	public void Add_CI_Class(CI_Class c)
+	{
+		if ((this.head == null) && (this.tail == null))
+		{
+			this.head = c;
+		}
+		else if ((this.head != null) && (this.tail == null))
+		{
+			this.tail = new CI_Class_List(c,null);
+		}
+		else
+		{
+			CI_Class_List it = this.tail;
+			while ((it != null) && (it.tail != null))
+			{
+				it = it.tail;
+			}
+			it.tail = new CI_Class_List(c,null);
+		}
+	}
 
 }
