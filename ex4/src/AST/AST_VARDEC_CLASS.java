@@ -118,5 +118,9 @@ public class AST_VARDEC_CLASS extends AST_Node
 		
 	return null;
 	}
+	
+	public TEMP IRme() {
+		return null;
+	}
   
 }
