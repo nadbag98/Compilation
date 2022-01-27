@@ -129,6 +129,10 @@ public class MIPSGenerator
 
 		fileWriter.format("\tadd Temp_%d,Temp_%d,Temp_%d\n",dstidx,i1,i2);
 	}
+	public void add(String dst,String oprnd1,int oprnd2)
+	{
+		fileWriter.format("\tadd %s,%s,%d\n",dst, oprnd1, oprnd2);
+	}
 	public void addu(String s1, String s2, int i)
 	{
 		fileWriter.format("\taddu %s,%s,%d\n", s1, s2, i);				
