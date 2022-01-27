@@ -14,4 +14,14 @@ public class CI_Class
     this.c_name = c_name;
     this.c_list = new Class_Field_List(null, null);
   }
+  
+  public void add_field(int offset, String str){
+		this.c_list.add(offset, str);
+	}
+	
+	public void add_field(int offset, int i){
+		this.c_list.add(offset, i);
+	}
+  
+  
 }
