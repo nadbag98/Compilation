@@ -91,6 +91,7 @@ public class AST_VARDEC_CLASS extends AST_Node
 	   TYPE_CLASS ancestor = my_class.father;
 	   DATA_MEMBER dup;
 	   boolean inherited = false;
+	   int offset = 0;
 	   while(ancestor != null)
 	   {
 	   	dup = ancestor.data_members.find(this.s);
@@ -100,13 +101,14 @@ public class AST_VARDEC_CLASS extends AST_Node
 		}
 		if (dup != null)
 		{
+			offset = dup.offset;
 			inherited = true;
 		}
 		ancestor = ancestor.father;
 	   }
 	   if (!inherited){
-	   
-		   DATA_MEMBER d = new DATA_MEMBER(t1, this.s, my_class.data_members.getVarOffset(), null);
+	   	   offset = my_class.data_members.getVarOffset();
+		   DATA_MEMBER d = new DATA_MEMBER(t1, this.s, offset, null);
 		   my_class.data_members.insert(d);
 	   }
 	   if (t1 == TYPE_INT.getInstance() || t1 == TYPE_STRING.getInstance())
@@ -120,7 +122,14 @@ public class AST_VARDEC_CLASS extends AST_Node
 	   AST_CI inst = AST_CI.getInstance();
 	   switch(this.rule){
 	   	case(1):
-			inst.add_field(
+			inst.add_field(offset, this.s2);
+			break;
+		case(2):
+			inst.add_field(offset, this.i);
+			break;
+		default:
+			inst.add_field(offset, 0);
+			break;
 	   }
 	   return null;
 	}
