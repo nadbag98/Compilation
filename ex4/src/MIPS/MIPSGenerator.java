@@ -80,11 +80,17 @@ public class MIPSGenerator
 	public void load(String dst, TEMP address, int offset)
 	{
 		int idx=address.getSerialNumber();
-		fileWriter.format("\tlw %s, %d(Temp_%d)\n", dst, offset, idx);
+		fileWriter.format("\tlw %s,%d(Temp_%d)\n", dst, offset, idx);
 	}
 	public void load(String dst, String address, int offset)
 	{
-		fileWriter.format("\tlw %s, %d(%s)\n", dst, offset, address);
+		fileWriter.format("\tlw %s,%d(%s)\n", dst, offset, address);
+	}
+	public void load(TEMP dst, TEMP src)
+	{
+		int idxsrc=src.getSerialNumber();
+		int idxdst=dst.getSerialNumber();
+		fileWriter.format("\tlw Temp_%d,0(Temp_%d)\n", idxdst, idxsrc);
 	}
 	public void li(TEMP t,int value)
 	{
