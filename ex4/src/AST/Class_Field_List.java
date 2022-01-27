@@ -13,5 +13,24 @@ public class Class_Field_List
 		this.head = head;
 		this.tail = tail;
 	}
+	
+	public void add(int offset, String str){
+		if (this.tail != null){
+			this.tail.add(offset, str);
+		} else {
+			Class_Field c = new Class_Field(offset, 0, str);
+			this.tail = new Class_Field_List(c, null);
+		}
+	}
+	
+	public void add(int offset, int i){
+		if (this.tail != null){
+			this.tail.add(offset, i);
+		} else {
+			Class_Field c = new Class_Field(offset, i, null);
+			this.tail = new Class_Field_List(c, null);
+		}
+		
+	}
 
 }
