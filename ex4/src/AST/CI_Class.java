@@ -14,6 +14,4 @@ public class CI_Class
     this.c_name = c_name;
     this.c_list = new Class_Field_List(null, null);
   }
-  
-  
 }
