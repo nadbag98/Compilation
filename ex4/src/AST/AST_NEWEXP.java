@@ -94,15 +94,37 @@ public class AST_NEWEXP extends AST_Node
 	
 	public TEMP IRme(){
 		IR inst = IR.getInstance();
+		TEMP dst = TEMP_FACTORY.getInstance().getFreshTEMP();
 		if (this.e == null){
 			AST_CI ci = AST_CI.getInstance();
 			CI_Class c_class = ci.find_class(this.t.s);
 			inst.Add_IRcommand(new IRcommand_LiToString("$v0", 9));
+			inst.Add_IRcommand(new IRcommand_LiToString("$a0", c_class.c_size));
+			inst.Add_IRcommand(new IRcommand_Syscall());
+			inst.Add_IRcommand(new IRcommand_movStringToTemp(dst, "$v0"));
+			inst.Add_IRcommand(new IRcommand_LaToString("$s0", String.format("vt_%s", this.t.s)));
+			inst.Add_IRcommand(new IRcommand_StoreStringToTemp("$s0", dst, 0));
+			
+			Class_Field_List curr = c_class.c_list;
+			while (curr != null){
+				if (curr.head.string_val != null){					
+					String str_lab = IRcommand.getFreshLabel("str"); 
+					inst.Add_IRcommand(new IRcommand_Allocate_String(str_lab, curr.head.string_val));
+					inst.Add_IRcommand(new IRcommand_LaToString("$s0", str_lab));
+					inst.Add_IRcommand(new IRcommand_StoreStringToTemp("$s0", dst, curr.head.offset * 4));
+
+				}
+				else {
+					inst.Add_IRcommand(new IRcommand_LiToString("$s0", curr.head.int_val));
+					inst.Add_IRcommand(new IRcommand_StoreStringToTemp("$s0", dst, curr.head.offset * 4));
+				}
+				curr = curr.tail;
+			}
 		}
 		else {
 		
 		}
-		
+		return dst;
 	}
 	
 }
