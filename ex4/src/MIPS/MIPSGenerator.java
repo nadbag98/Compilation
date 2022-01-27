@@ -115,6 +115,11 @@ public class MIPSGenerator
 		int idxdst=dst.getSerialNumber();
 		fileWriter.format("\tsw Temp_%d,0(Temp_%d)\n",idxsrc,idxdst);		
 	}
+	public void store(TEMP dst,String src, int offset)
+	{
+		int idxdst=dst.getSerialNumber();
+		fileWriter.format("\tsw %s,%d(Temp_%d)\n", src, offset, idxdst);		
+	}
 	
 	public void add(TEMP dst,TEMP oprnd1,TEMP oprnd2)
 	{
