@@ -17,10 +17,12 @@ public class CI_Class
   
   public void add_field(int offset, String str){
 		this.c_list.add(offset, str);
+	  	this.c_size = this.c_size + 1;
 	}
 	
 	public void add_field(int offset, int i){
 		this.c_list.add(offset, i);
+		this.c_size = this.c_size + 1;
 	}
   
   
