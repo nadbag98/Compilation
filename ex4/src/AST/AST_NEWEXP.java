@@ -121,9 +121,18 @@ public class AST_NEWEXP extends AST_Node
 				curr = curr.tail;
 			}
 		}
-		else {
 		
+		else {
+			TEMP array_size = this.e.IRme();
+			inst.Add_IRcommand(new IRcommand_LiToString("$v0", 9));
+			inst.Add_IRcommand(new IRcommand_movTempToString("$a0", array_size));
+			inst.Add_IRcommand(new IRcommand_AddStringStringInt("$a0", "$a0", 1));
+			inst.Add_IRcommand(new IRcommand_MulStringStringInt("$a0", "$a0", 4));
+			inst.Add_IRcommand(new IRcommand_Syscall());
+			inst.Add_IRcommand(new IRcommand_movStringToTemp(dst, "$v0"));
+			inst.Add_IRcommand(new IRcommand_StoreTemp2Temp(dst, array_size));
 		}
+		
 		return dst;
 	}
 	
