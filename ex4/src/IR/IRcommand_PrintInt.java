@@ -15,11 +15,9 @@ import MIPS.*;
 
 public class IRcommand_PrintInt extends IRcommand
 {
-	TEMP t;
 	
-	public IRcommand_PrintInt(TEMP t)
+	public IRcommand_PrintInt()
 	{
-		this.t = t;
 	}
 	
 	/***************/
@@ -27,6 +25,6 @@ public class IRcommand_PrintInt extends IRcommand
 	/***************/
 	public void MIPSme()
 	{
-		MIPSGenerator.getInstance().print_int(t);
+		MIPSGenerator.getInstance().print_int();
 	}
 }
