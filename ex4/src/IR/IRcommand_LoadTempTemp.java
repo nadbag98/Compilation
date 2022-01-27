@@ -29,6 +29,6 @@ public class IRcommand_LoadTempTemp extends IRcommand
 	/***************/
 	public void MIPSme()
 	{
-		MIPSGenerator.getInstance().load(dst,src);
+		MIPSGenerator.getInstance().load(this.dst,this.src);
 	}
 }
