@@ -56,4 +56,8 @@ public class AST_CI
 		CI_Class new_c = new CI_Class(class_name);
 		this.c_list.Add_CI_Class(new_c);
 	}
+	
+	public CI_Class find_class(String class_name){
+		return this.c_list.find_class(class_name);
+	}
 }
