@@ -133,6 +133,13 @@ public class MIPSGenerator
 	{
 		fileWriter.format("\tadd %s,%s,%d\n",dst, oprnd1, oprnd2);
 	}
+	public void add(TEMP dst,TEMP oprnd1,int oprnd2)
+	{
+		int i1 =oprnd1.getSerialNumber();
+		int dstidx=dst.getSerialNumber();
+
+		fileWriter.format("\tadd Temp_%d,Temp_%d,%d\n",dstidx,i1,oprnd2);
+	}
 	public void addu(String s1, String s2, int i)
 	{
 		fileWriter.format("\taddu %s,%s,%d\n", s1, s2, i);				
