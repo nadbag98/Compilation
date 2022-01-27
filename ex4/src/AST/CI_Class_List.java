@@ -42,4 +42,11 @@ public class CI_Class_List
 			return this.head;
 		}
 	}
+	
+	public CI_Class find_class(String class_name){
+		if (class_name.equals(this.head.c_name)){
+			return this.head;
+		}
+		return this.tail.find_class(class_name);
+	}
 }
