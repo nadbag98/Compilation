@@ -99,5 +99,27 @@ public class AST_EXP_VAR extends AST_EXP
 
 		return func.returnType;
 	}
+	
+	public TEMP IRme(){
+		IR inst = IR.getInstance();
+		TEMP obj = this.v.IRme();
+		if (this.s == null) {
+			return obj;
+		}
+		TEMP res = TEMP_FACTORY.getInstance().getFreshTEMP();
+		if (this.l == null){
+			inst.Add_IRcommand(new IRcommand_callMethodInClass(this.offset, obj));
+		} else {
+			this.l.IRme();
+			inst.Add_IRcommand(new IRcommand_callMethodInClass(this.offset, obj));
+			AST_EXP_LIST curr = this.e;
+			while (curr != null){
+				inst.Add_IRcommand(new IRcommand_addu("$sp", "$sp", 4));
+				curr = curr.tail;
+			}
+		}
+		inst.Add_IRcommand(new IRcommand_movStringToTemp(res, "$v0"));
+		return res;
+	}
   
 }
