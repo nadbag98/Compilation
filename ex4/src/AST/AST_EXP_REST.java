@@ -70,7 +70,7 @@ public class AST_EXP_REST extends AST_EXP
 		else {
 			String str_lab = IRcommand.getFreshLabel("str"); 
 			inst.Add_IRcommand(new IRcommand_Allocate_String(str_lab, this.s));
-			//TODO - GET FUCKED: return temporary that holds label
+			inst.Add_IRcommand(new IRcommand_La(res, str_lab));
 		}
 		return res;
 	}
