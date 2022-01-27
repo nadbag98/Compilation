@@ -59,7 +59,7 @@ public class MIPSGenerator
 	public void allocate_string(String var_name, String value)
 	{
 		fileWriter.format(".data\n");
-		fileWriter.format("\tglobal_%s: %s\n",var_name, value);
+		fileWriter.format("\t%s: .asciiz %s\n",var_name, value);
 		fileWriter.format(".text\n");
 	}
 
