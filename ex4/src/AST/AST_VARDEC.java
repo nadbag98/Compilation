@@ -147,60 +147,22 @@ public class AST_VARDEC extends AST_Node
 		return null;			
 	}
 	
-	
-	public TEMP IRme()
-	{
-	
+	public TEMP IRme(){
+		IR inst = IR.getInstance();
 		if (this.is_global){
-			if (this.t.s == "int"){
-				if (this.exp != null){
-					AST_EXP_INT int_exp = (AST_EXP_INT)this.exp;
-					int value = int_exp.i;
-					if(int_exp.is_neg){
-						value = -value;
-					}
-					IR.getInstance().Add_IRcommand(new IRcommand_Allocate_Word(this.s, value));
-				}
-				else {
-					IR.getInstance().Add_IRcommand(new IRcommand_Allocate_Word(this.s, 0));
-				}
+			inst.Add_IRcommand(new IRcommand_Allocate_Word(this.s, 0));
+			if (this.exp != null){
+				TEMP value = this.exp.IRme();
+				inst.Add_IRcommand(new IRcommand_Store(String.format("global_%s", this.s), value));
 			}
-			else if (this.t.s == "string"){
-				if (this.exp != null){
-					AST_EXP_REST my_exp = (AST_EXP_REST)this.exp;
-					IR.getInstance().Add_IRcommand(new IRcommand_Allocate_String(this.s, my_exp.s));
-				}
-				else {
-					IR.getInstance().Add_IRcommand(new IRcommand_Allocate_String(this.s, "Default str"));
-				}
+		} 
+		else {
+			if (this.exp != null){
+				TEMP value = this.exp.IRme();
+				inst.Add_IRcommand(new IRcommand_Store("0($sp)", value));
 			}
-			else {
-				IR.getInstance().Add_IRcommand(new IRcommand_Allocate_Word(this.s, 0));
-			}
-		}
-		
-		else { // not global
-			if (this.exp == null){
-				return null;
-			}
-			
-			if (this.is_new == 0){
-				String address = String.format("%d($fp)", -40 - (4*this.offset));
-				IR.getInstance().Add_IRcommand(new IRcommand_AssignToVar(address, this.exp.IRme()));
-				return null;
-			}
-			
-			// TODO - new decleration, and erase lalalalala
-			lalalalalala
 		}
 		
 		return null;
-				
-// 		if (initialValue != null)
-// 		{
-// 			IR.getInstance().Add_IRcommand(new IRcommand_Store(name,initialValue.IRme()));
-// 		}
-// 		return null;
-	}
-  
+	}  
 }
