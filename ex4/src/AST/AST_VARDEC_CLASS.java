@@ -70,7 +70,7 @@ public class AST_VARDEC_CLASS extends AST_Node
 				throw new ArithmeticException(String.format("%d", this.line));
 			}
 
-	    switch(rule){
+	    switch(this.rule){
 	      case(1):
 		  if (t1 != TYPE_STRING.getInstance()){
 		    throw new ArithmeticException(String.format("%d", this.line));
@@ -105,6 +105,7 @@ public class AST_VARDEC_CLASS extends AST_Node
 		ancestor = ancestor.father;
 	   }
 	   if (!inherited){
+	   
 		   DATA_MEMBER d = new DATA_MEMBER(t1, this.s, my_class.data_members.getVarOffset(), null);
 		   my_class.data_members.insert(d);
 	   }
@@ -115,8 +116,13 @@ public class AST_VARDEC_CLASS extends AST_Node
 	   else {
 	 	sym_table.enter(this.s, TYPE_INSTANCE.getInstance(), t1);
 	   }	
-		
-	return null;
+	   
+	   AST_CI inst = AST_CI.getInstance();
+	   switch(this.rule){
+	   	case(1):
+			inst.add_field(
+	   }
+	   return null;
 	}
 	
 	public TEMP IRme() {
