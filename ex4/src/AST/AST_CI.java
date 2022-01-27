@@ -7,32 +7,8 @@ import TYPES.*;
 
 public class AST_CI
 {
-	private CI_Class head=null;
-	private CI_Class_List tail=null;
+	private CI_Class_List c_list = null;
 
-	/******************/
-	/* Add IR command */
-	/******************/
-	public void Add_CI_Class(CI_Class c)
-	{
-		if ((this.head == null) && (this.tail == null))
-		{
-			this.head = c;
-		}
-		else if ((this.head != null) && (this.tail == null))
-		{
-			this.tail = new CI_Class_List(c,null);
-		}
-		else
-		{
-			CI_Class_List it = this.tail;
-			while ((it != null) && (it.tail != null))
-			{
-				it = it.tail;
-			}
-			it.tail = new CI_Class_List(c,null);
-		}
-	}
 	
 
 	/**************************************/
@@ -50,13 +26,34 @@ public class AST_CI
 	/******************************/
 	public static AST_CI getInstance()
 	{
-		if (this.instance == null)
+		if (instance == null)
 		{
 			/*******************************/
 			/* [0] The instance itself ... */
 			/*******************************/
-			this.instance = new AST_CI();
+			instance = new AST_CI();
 		}
-		return this.instance;
+		return instance;
+	}
+	
+	public void add_field(int offset, String str){
+		CI_Class curr = this.c_list.get_last();
+		if (cur == null){
+			System.out.println("ERROR come to add field in AST_CI\n");
+		}
+		curr.add_field(int offset, String str);
+	}
+	
+	public void add_field(int offset, int i){
+		CI_Class curr = this.c_list.get_last();
+		if (cur == null){
+			System.out.println("ERROR come to add field in AST_CI\n");
+		}
+		curr.add_field(int offset, String str);
+	}
+	
+	public void add_class(String class_name){
+		CI_Class new_c = new CI_Class(class_name);
+		this.c_list.Add_CI_Class(new_c);
 	}
 }
