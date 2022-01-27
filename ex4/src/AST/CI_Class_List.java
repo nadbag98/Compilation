@@ -34,5 +34,12 @@ public class CI_Class_List
 			it.tail = new CI_Class_List(c,null);
 		}
 	}
-
+	
+	public CI_Class get_last(){
+		if (this.tail != null){
+			return this.tail.get_last();
+		} else {
+			return this.head;
+		}
+	}
 }
