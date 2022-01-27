@@ -343,6 +343,11 @@ public class MIPSGenerator
 		fileWriter.format("\tsb $s2, 0($s0)\n");
 	}
 	
+	public void syscall()
+	{
+		fileWriter.format("\tsyscall\n");
+	}
+	
 	
 	/**************************************/
 	/* USUAL SINGLETON IMPLEMENTATION ... */
