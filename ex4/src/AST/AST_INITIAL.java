@@ -55,5 +55,10 @@ public class AST_INITIAL extends AST_Node
 		this.pro.visit(sym_table);
 		return null;
 	}
+	
+	public TEMP IRme() {
+		this.pro.IRme();
+		return null;
+	}
   
 }
