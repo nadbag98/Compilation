@@ -95,7 +95,12 @@ public class AST_NEWEXP extends AST_Node
 	public TEMP IRme(){
 		IR inst = IR.getInstance();
 		if (this.e == null){
-			//TODO - get fucked
+			AST_CI ci = AST_CI.getInstance();
+			CI_Class c_class = ci.find_class(this.t.s);
+			inst.Add_IRcommand(new IRcommand_LiToString("$v0", 9));
+		}
+		else {
+		
 		}
 		
 	}
