@@ -30,11 +30,9 @@ public class MIPSGenerator
 		fileWriter.print("\tsyscall\n");
 		fileWriter.close();
 	}
-	public void print_int(TEMP t)
+	public void print_int()
 	{
-		int idx=t.getSerialNumber();
-		// fileWriter.format("\taddi $a0,Temp_%d,0\n",idx);
-		fileWriter.format("\tmove $a0,Temp_%d\n",idx);
+		fileWriter.format("\tlw $a0,0($sp)\n");
 		fileWriter.format("\tli $v0,1\n");
 		fileWriter.format("\tsyscall\n");
 		fileWriter.format("\tli $a0,32\n");
@@ -43,9 +41,8 @@ public class MIPSGenerator
 	}
 	public void print_string(TEMP t)
 	{
-		int idx=t.getSerialNumber();
 		fileWriter.format("\tli $v0,4\n");
-		fileWriter.format("\tmove $a0,Temp_%d\n",idx);
+		fileWriter.format("\tlw $a0,0($sp)\n");
 		fileWriter.format("\tsyscall\n");
 		// next 3 lines print a space
 		fileWriter.format("\tli $a0,32\n");
