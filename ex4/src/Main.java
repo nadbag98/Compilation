@@ -76,7 +76,10 @@ public class Main
 			/***************************/
 			/* [11] Finalize MIPS file */
 			/***************************/
-			MIPSGenerator.getInstance().finalizeFile();			
+			MIPSGenerator.getInstance().finalizeFile();
+			
+			Graph graph = Graph.getInstance();
+			graph.createBlocks();
 
 			/**************************/
 			/* [12] Close output file */
