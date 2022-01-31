@@ -109,8 +109,7 @@ public class AST_STMT_VAR_ID extends AST_STMT
 	public TEMP IRme(){
 		TEMP obj = this.v.IRme();
 		IR.
-		getInstance().
-		.Add_IRcommand(new IRcommand_Check_Init(obj));
+		getInstance().Add_IRcommand(new IRcommand_Check_Init(obj));
 		if (this.e == null){
 			IR.
 			getInstance().
