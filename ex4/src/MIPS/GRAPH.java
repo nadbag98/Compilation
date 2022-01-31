@@ -39,7 +39,7 @@ public class GRAPH
         this.nodes.add(prevNode);
 
       }
-      else if(line.contains("\tj ") || line.contains("\tblt") || line.contains("\tbgt") || line.containts("\tbge") ||
+      else if(line.contains("\tj ") || line.contains("\tblt") || line.contains("\tbgt") || line.contains("\tbge") ||
         line.contains("\tble") || line.contains("\tbne") || line.contains("\tbeq")){
         line = reader.readLine();
           counter++;
@@ -74,11 +74,11 @@ public class GRAPH
     String line = reader.readLine();
     while(line != null){
 
-      if(line.contains("\tblt") || line.contains("\tbgt") || line.containts("\tbge") ||
+      if(line.contains("\tblt") || line.contains("\tbgt") || line.contains("\tbge") ||
         line.contains("\tble") || line.contains("\tbne") || line.contains("\tbeq")){
         Node src = this.nodes.findByLast(counter);
         int idx = line.lastIndexOf(",");
-        String label = line.subString(idx+1, line.length());
+        String label = line.substring(idx+1, line.length());
         Node dst = this.nodes.findByLabel(label);
         src.after.add(dst);
         dst.before.add(src);
@@ -90,7 +90,7 @@ public class GRAPH
 
       else if(line.contains("\tj ")){
         Node src = this.nodes.findByLast(counter);
-        String label = line.subString(3, line.length());
+        String label = line.substring(3, line.length());
         Node dst = this.nodes.findByLabel(label);
 
         src.after.add(dst);
