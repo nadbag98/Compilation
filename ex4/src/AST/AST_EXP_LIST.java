@@ -85,7 +85,7 @@ public class AST_EXP_LIST extends AST_Node
 		getInstance().
 		Add_IRcommand(new IRcommand_Store("0($sp)", res));
 		if (this.tail != null) {
-			this.tail.visit(sym_table, lst);
+			this.tail.IRme();
 		}
 		return null;
 	}
