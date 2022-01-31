@@ -108,5 +108,6 @@ public class AST_STMT_VAR_EXP extends AST_STMT
 		IR.
 		getInstance().
 		Add_IRcommand(new IRcommand_StoreTemp2Temp(dst_address, src));
+		return null;
 	}  
 }
