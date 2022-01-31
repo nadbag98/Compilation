@@ -1,3 +1,5 @@
+package GRAPH;
+
 public class Node
 {
   public NodeList before;
