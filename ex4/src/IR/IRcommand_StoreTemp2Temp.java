@@ -18,7 +18,7 @@ public class IRcommand_StoreTemp2Temp extends IRcommand
 	TEMP dst;
 	TEMP src;
 	
-	public IRcommand_StoreTemp2Temp(TMP dst,TEMP src)
+	public IRcommand_StoreTemp2Temp(TEMP dst,TEMP src)
 	{
 		this.src      = src;
 		this.dst = dst;
