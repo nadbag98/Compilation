@@ -78,7 +78,7 @@ public class Main
 			/***************************/
 			MIPSGenerator.getInstance().finalizeFile();
 			
-			Graph graph = Graph.getInstance();
+			Graph graph = new Graph();
 			graph.createBlocks();
 
 			/**************************/
