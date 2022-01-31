@@ -30,6 +30,7 @@ public class IRcommand_MulTempTempInt extends IRcommand
 	/***************/
 	public void MIPSme()
 	{
-		MIPSGenerator.getInstance().mul(dst,op1,op2);
+		MIPSGenerator.getInstance().li("$s0", this.op2);
+		MIPSGenerator.getInstance().mul(dst,op1,"$s0");
 	}
 }
