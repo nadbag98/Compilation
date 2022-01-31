@@ -46,7 +46,7 @@ public class GRAPH
           if (prevNode != null){
           prevNode.lastLine = counter-1;
           }
-          if (line.contains(":"){
+          if (line.contains(":")){
             prevNode = new Node(counter, line.substring(0, line.length()-1));
             this.nodes.add(prevNode);
         }
