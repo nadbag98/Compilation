@@ -103,7 +103,7 @@ public class AST_EXP_ID extends AST_EXP
 		if (this.l != null){
 			this.l.IRme();
 			if (this.is_global){
-				inst.Add_IRcommand(new IRcommand_Jal(this.s));
+				inst.Add_IRcommand(new IRcommand_Jal(this.i));
 			} else {
 				TEMP obj = TEMP_FACTORY.getInstance().getFreshTEMP();
 				inst.Add_IRcommand(new IRcommand_Load(obj, "8($fp)"));
