@@ -15,6 +15,9 @@ public class IR
 {
 	private IRcommand head=null;
 	private IRcommandList tail=null;
+// 	public String div_by_zero;
+// 	public String null_ref;
+// 	public String acc_violation;
 
 	/******************/
 	/* Add IR command */
@@ -70,6 +73,9 @@ public class IR
 			/* [0] The instance itself ... */
 			/*******************************/
 			instance = new IR();
+			instance.Add_IRCommand(new IRcommand_Allocate_String("_div_by_zero", "Division By Zero"));
+			instance.Add_IRCommand(new IRcommand_Allocate_String("_null_ref", "Invalid Pointer Dereference"));
+			instance.Add_IRCommand(new IRcommand_Allocate_String("_acc_violation", "Access Violation"));
 		}
 		return instance;
 	}
