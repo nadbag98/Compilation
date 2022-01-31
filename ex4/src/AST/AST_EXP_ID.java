@@ -95,7 +95,7 @@ public class AST_EXP_ID extends AST_EXP
 				inst.Add_IRcommand(new IRcommand_Jal(this.i));
 			} else {
 				TEMP obj = TEMP_FACTORY.getInstance().getFreshTEMP();
-				inst.Add_IRcommand(new IRcommand_load(obj, "8($fp)"));
+				inst.Add_IRcommand(new IRcommand_Load(obj, "8($fp)"));
 				inst.Add_IRcommand(new IRcommand_callMethodInClass(this.offset, obj));
 			}
 		}
@@ -106,7 +106,7 @@ public class AST_EXP_ID extends AST_EXP
 				inst.Add_IRcommand(new IRcommand_Jal(this.s));
 			} else {
 				TEMP obj = TEMP_FACTORY.getInstance().getFreshTEMP();
-				inst.Add_IRcommand(new IRcommand_load(obj, "8($fp)"));
+				inst.Add_IRcommand(new IRcommand_Load(obj, "8($fp)"));
 				inst.Add_IRcommand(new IRcommand_callMethodInClass(this.offset, obj));
 			}
 			
