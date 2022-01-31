@@ -5,6 +5,7 @@ import java_cup.runtime.Symbol;
 import AST.*;
 import IR.*;
 import MIPS.*;
+import SYMBOL_TABLE.*;
 
 public class Main
 {
@@ -13,7 +14,7 @@ public class Main
 		Lexer l;
 		Parser p;
 		Symbol s;
-		AST_INITIAL AST;
+		AST_INITIAL AST_I;
 		FileReader file_reader;
 		PrintWriter file_writer;
 		String inputFilename = argv[0];
@@ -44,22 +45,23 @@ public class Main
 			/***********************************/
 			/* [5] 3 ... 2 ... 1 ... Parse !!! */
 			/***********************************/
-			AST = (AST_INITIAL) p.parse().value;
+			AST_I = (AST_INITIAL) p.parse().value;
 			
 			/*************************/
 			/* [6] Print the AST ... */
 			/*************************/
-			AST.PrintMe();
+			AST_I.PrintMe();
 
 			/**************************/
 			/* [7] Semant the AST ... */
 			/**************************/
-			AST.visit();
+			SYMBOL_TABLE sym_table = SYMBOL_TABLE.getInstance();
+			AST_I.visit(sym_table);
 
 			/**********************/
 			/* [8] IR the AST ... */
 			/**********************/
-			AST.IRme();
+			AST_I.IRme();
 			
 			/***********************/
 			/* [9] MIPS the IR ... */
