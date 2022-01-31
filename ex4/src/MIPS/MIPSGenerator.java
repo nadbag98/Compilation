@@ -246,6 +246,11 @@ public class MIPSGenerator
 		fileWriter.format("\tli $s0,%d\n",imm);
 		fileWriter.format("\tbge Temp_%d,$s0,%s\n",i1,label);				
 	}
+	public void bge(TEMP oprnd1,String oprnd2,String label)
+	{
+		int i1 =oprnd1.getSerialNumber();
+		fileWriter.format("\tbge Temp_%d,%s,%s\n",i1,oprnd2,label);				
+	}
 	public void ble(TEMP oprnd1,TEMP oprnd2,String label)
 	{
 		int i1 =oprnd1.getSerialNumber();
