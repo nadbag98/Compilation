@@ -399,7 +399,7 @@ public class SYMBOL_TABLE
 		SYMBOL_TABLE_ENTRY e = top;
 		while (e != null && !e.type.isClass())
 		{
-			entry = entry.prevtop;
+			e = e.prevtop;
 		}
 		if (e == null){
 			System.out.println("ERRORRRRRR in get_class_offset");
