@@ -1,7 +1,7 @@
 /***********/
 /* PACKAGE */
 /***********/
-package GRAPH;
+package Graph;
 
 import java.io.*;
 
