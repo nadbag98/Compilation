@@ -11,10 +11,11 @@ package GRAPH;
 /* PROJECT IMPORTS */
 /*******************/
 
-public class GRAPH
+public class Graph
 {
 
-  public NodeList nodes;
+ public NodeList nodes;
+	
 	public Graph() {
     this.nodes = new NodeList(null, null);
   }
