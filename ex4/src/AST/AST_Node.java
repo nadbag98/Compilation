@@ -28,4 +28,9 @@ public abstract class AST_Node
         	System.out.println("Class of AST_NODE is : " + a.getName() + "\n");  
 		return null;
 	}
+	
+	public TEMP IRme(){
+		System.out.print("AST NODE ABSTRACT IRme, ERROR ERROR ERROR ERROR !!!!!!!!!! ERROR ERROR ERROR ERRORRRRRR! !!! !!#$$%)#$(7\n");
+		return null;
+	}
 }
