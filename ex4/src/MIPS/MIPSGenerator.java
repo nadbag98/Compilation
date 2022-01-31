@@ -193,14 +193,18 @@ public class MIPSGenerator
 	{
 		if (inlabel.equals("main"))
 		{
-			fileWriter.format(".text\n");
 			fileWriter.format("%s:\n","user_main");
 		}
 		else
 		{
 			fileWriter.format("%s:\n",inlabel);
 		}
-	}	
+	}
+	public void label_main()
+	{
+		fileWriter.format(".text\n");
+		fileWriter.format("%s:\n","main");
+	}
 	public void jump(String inlabel)
 	{
 		fileWriter.format("\tj %s\n",inlabel);
