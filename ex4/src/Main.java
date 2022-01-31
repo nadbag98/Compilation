@@ -80,6 +80,7 @@ public class Main
 			
 			Graph graph = new Graph();
 			graph.createBlocks();
+			graph.createEdges();
 
 			/**************************/
 			/* [12] Close output file */
