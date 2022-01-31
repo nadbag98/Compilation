@@ -9,7 +9,7 @@ import IR.*;
 
 public class AST_CI
 {
-	private CI_Class_List c_list = null;
+	public CI_Class_List c_list = null;
 
 	
 
@@ -34,6 +34,7 @@ public class AST_CI
 			/* [0] The instance itself ... */
 			/*******************************/
 			instance = new AST_CI();
+			instance.c_list = new CI_Class_List(null, null);
 		}
 		return instance;
 	}
