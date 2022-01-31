@@ -109,6 +109,7 @@ public class AST_NEWEXP extends AST_Node
 			
 			Class_Field_List curr = c_class.c_list;
 			while (curr != null){
+				if (curr.head == null) break;
 				if (curr.head.string_val != null){					
 					String str_lab = IRcommand.getFreshLabel("str"); 
 					inst.Add_IRcommand(new IRcommand_Allocate_String(str_lab, curr.head.string_val));
