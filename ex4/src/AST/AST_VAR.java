@@ -124,7 +124,7 @@ public class AST_VAR extends AST_Node
 				inst.Add_IRcommand(new IRcommand_AddTempTempInt(dst, dst, this.offset * 4));
 			}
 			else if (this.offsetTo == 1){
-				inst.Add_IRcommand(new IRcommand_load(dst, "8($fp)"));
+				inst.Add_IRcommand(new IRcommand_Load(dst, "8($fp)"));
 				inst.Add_IRcommand(new IRcommand_AddTempTempInt(dst, dst, this.offset * 4));
 			}
 			else {
