@@ -1,3 +1,6 @@
+import TEMP.*;
+import IR.*;
+
 /***********/
 /* PACKAGE */
 /***********/
