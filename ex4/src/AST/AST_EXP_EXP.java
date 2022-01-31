@@ -131,13 +131,10 @@ public AST_BINOP b;
 				
 		if (this.e1  != null) t1 = this.e1.IRme();
 		if (this.e2 != null) t2 = this.e2.IRme();
-		String gt_max_int = IRcommand.getFreshLabel("gt_max_int"); 
-		String lt_min_int = IRcommand.getFreshLabel("lt_min_int");
-		String good_range = IRcommand.getFreshLabel("good_range");
 		if (this.b.op == 1) {
 			if (this.is_int_op) {
 				inst.Add_IRcommand(new IRcommand_Binop_Add_Integers(dst,t1,t2));
-				inst.Add_IRcommand(new IRcommand_Check_Range(dst, gt_max_int, lt_min_int, good_range));
+				inst.Add_IRcommand(new IRcommand_Check_Range(dst));
 			}
 			else {
 				String str1_len_loop= IRcommand.getFreshLabel("str1_len_loop"); 
