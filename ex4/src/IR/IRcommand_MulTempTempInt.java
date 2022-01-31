@@ -15,11 +15,11 @@ import MIPS.*;
 
 public class IRcommand_MulTempTempInt extends IRcommand
 {
-	public Temp dst;
-	public Temp op1;
+	public TEMP dst;
+	public TEMP op1;
 	public int op2;
 	
-	public IRcommand_MulTempTempInt(Temp dst, Temp op1, int op2)
+	public IRcommand_MulTempTempInt(TEMP dst, TEMP op1, int op2)
 	{
 		this.dst = dst;
 		this.op1 = op1;
@@ -31,6 +31,6 @@ public class IRcommand_MulTempTempInt extends IRcommand
 	public void MIPSme()
 	{
 		MIPSGenerator.getInstance().li("$s0", this.op2);
-		MIPSGenerator.getInstance().mul(dst,op1,"$s0");
+		MIPSGenerator.getInstance().mul(this.dst,this.op1,"$s0");
 	}
 }
