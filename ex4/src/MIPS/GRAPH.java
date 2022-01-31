@@ -27,6 +27,7 @@ public class GRAPH
     Node prevNode = null;
     int counter = 1;
      BufferedReader reader;
+   System.out.println("Working Directory = " + System.getProperty("user.dir") + "\nget fucked\n");
    reader = new BufferedReader(new FileReader("output/MIPS.txt"));
     String line = reader.readLine();
     while(line != null){
