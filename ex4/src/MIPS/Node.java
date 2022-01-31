@@ -12,7 +12,7 @@ public class Node
     this.before = new NodeList(null, null);
     this.after = new NodeList(null, null);
     this.line = line;
-	this.LastLine = line;
+	this.lastLine = line;
     this.label = label;
   }
 }
