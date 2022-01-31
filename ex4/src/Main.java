@@ -13,7 +13,7 @@ public class Main
 		Lexer l;
 		Parser p;
 		Symbol s;
-		AST_DEC_LIST AST;
+		AST_INITIAL AST;
 		FileReader file_reader;
 		PrintWriter file_writer;
 		String inputFilename = argv[0];
@@ -44,7 +44,7 @@ public class Main
 			/***********************************/
 			/* [5] 3 ... 2 ... 1 ... Parse !!! */
 			/***********************************/
-			AST = (AST_DEC_LIST) p.parse().value;
+			AST = (AST_INITIAL) p.parse().value;
 			
 			/*************************/
 			/* [6] Print the AST ... */
@@ -54,7 +54,7 @@ public class Main
 			/**************************/
 			/* [7] Semant the AST ... */
 			/**************************/
-			AST.SemantMe();
+			AST.visit();
 
 			/**********************/
 			/* [8] IR the AST ... */
