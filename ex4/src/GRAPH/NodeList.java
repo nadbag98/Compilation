@@ -8,18 +8,18 @@ public class NodeList
     this.tail = tail;
   }
 	
-	public void add(int line, String name){
+	public Node add(int line, String name){
 		if (this.head == null)
 			Node n = New Node(line, name);{
 			this.head = n;
-			return;
+			return n;
 		}
 		if (this.tail == null){
 			Node n = New Node(line, name);
 			this.tail = new NodeList(n, null);
-			return;
+			return n;
 		}
-		this.tail.add(line, name);
+		return this.tail.add(line, name);
 	}
   
 
