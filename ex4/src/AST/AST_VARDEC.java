@@ -169,7 +169,7 @@ public class AST_VARDEC extends AST_Node
 					AST_EXP_REST myStr = (AST_EXP_REST) this.exp;
 					String str_lab = IRcommand.getFreshLabel("str"); 
 					inst.Add_IRcommand(new IRcommand_Allocate_String(str_lab, myStr.s));
-					inst.Add_IRcommand(new IRcommand_Allocate_Word(this.s, str_lab));					
+					inst.Add_IRcommand(new IRcommand_Allocate_Word_String(this.s, str_lab));					
 				} else {
 					inst.Add_IRcommand(new IRcommand_Allocate_Word(this.s, 0));
 				}
