@@ -62,10 +62,10 @@ public class NodeList
 			System.out.println("help me nodelist label\n");
 			return null;
 		}
-		if (this.head.label.equals(label)){
+		if (this.head.label != null && this.head.label.equals(label)){
 			return this.head;
 		}
-		else if(this.tail != null){
+		else if (this.tail != null){
 			return this.tail.findByLabel(label);
 		}
 		else{
