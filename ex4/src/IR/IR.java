@@ -76,6 +76,7 @@ public class IR
 			instance.Add_IRCommand(new IRcommand_Allocate_String("_div_by_zero", "Division By Zero"));
 			instance.Add_IRCommand(new IRcommand_Allocate_String("_null_ref", "Invalid Pointer Dereference"));
 			instance.Add_IRCommand(new IRcommand_Allocate_String("_acc_violation", "Access Violation"));
+			instance.Add_IRCommand(new IRcommand_Insert_Main());
 		}
 		return instance;
 	}
