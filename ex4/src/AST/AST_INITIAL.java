@@ -60,6 +60,7 @@ public class AST_INITIAL extends AST_Node
 	
 	public TEMP IRme() {
 		this.pro.IRme();
+		IR.getInstance().Add_IRcommand(new IRcommand_Insert_Main());
 		return null;
 	}
   
