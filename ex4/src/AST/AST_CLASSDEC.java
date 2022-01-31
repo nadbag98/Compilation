@@ -1,6 +1,8 @@
 package AST;
 import SYMBOL_TABLE.*;
 import TYPES.*;
+import TEMP.*;
+import IR.*;
 
 public class AST_CLASSDEC extends AST_Node
 {
