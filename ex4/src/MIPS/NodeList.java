@@ -1,4 +1,4 @@
-package GRAPH;
+package MIPS;
 
 public class NodeList
 {
