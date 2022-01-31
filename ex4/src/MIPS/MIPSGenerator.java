@@ -345,7 +345,7 @@ public class MIPSGenerator
 	
 	public void funcPrologue()
 	{
-		fileWriter.format("\tsubu $sp,$sp,4\n");
+		fileWriter.format("\n\tsubu $sp,$sp,4\n");
 		fileWriter.format("\tsw $ra,0($sp)\n");
 		fileWriter.format("\tsubu $sp,$sp,4\n");
 		fileWriter.format("\tsw $fp,0($sp)\n");
@@ -366,7 +366,7 @@ public class MIPSGenerator
 		fileWriter.format("\tlw $fp,0($sp)\n");
 		fileWriter.format("\tlw $ra,4($sp)\n");
 		fileWriter.format("\taddu $sp,$sp,8\n");
-		fileWriter.format("\tjr $ra\n");
+		fileWriter.format("\tjr $ra\n\n");
 	}
 	
 	public void addStrings(TEMP dst,TEMP t1,TEMP t2, String str1_len_loop, String str1_len_end, String str2_len_loop, String str2_len_end, String copy_str1_loop,
