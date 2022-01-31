@@ -6,7 +6,7 @@ import AST.*;
 import IR.*;
 import MIPS.*;
 import SYMBOL_TABLE.*;
-import GRAPH.*;
+import Graph.*;
 
 public class Main
 {
