@@ -1,10 +1,10 @@
+package AST;
 import TEMP.*;
 import IR.*;
 
 /***********/
 /* PACKAGE */
 /***********/
-package AST;
 
 public class Class_Field
 {
