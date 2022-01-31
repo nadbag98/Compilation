@@ -31,10 +31,10 @@ public class GRAPH
    try {
    reader = new BufferedReader(new FileReader("../../output/MIPS.txt")); 
    }
-   catch (Exception e)
-		{
-    e.printStackTrace();
-		}
+   catch (Exception e){
+    	e.printStackTrace();
+	   exit();
+	}
     String line = reader.readLine();
     while(line != null){
       if (line.contains(":") && !line.contains(".word") && !line.contains(".asciiz")) {
