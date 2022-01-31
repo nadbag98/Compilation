@@ -115,7 +115,7 @@ public class AST_EXP_VAR extends AST_EXP
 		} else {
 			this.l.IRme();
 			inst.Add_IRcommand(new IRcommand_callMethodInClass(this.offset, obj));
-			AST_EXP_LIST curr = this.e;
+			AST_EXP_LIST curr = this.l;
 			while (curr != null){
 				inst.Add_IRcommand(new IRcommand_addu("$sp", "$sp", 4));
 				curr = curr.tail;
