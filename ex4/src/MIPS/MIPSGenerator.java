@@ -39,7 +39,7 @@ public class MIPSGenerator
 		fileWriter.format("\tli $v0,11\n");
 		fileWriter.format("\tsyscall\n");
 	}
-	public void print_string(TEMP t)
+	public void print_string()
 	{
 		fileWriter.format("\tli $v0,4\n");
 		fileWriter.format("\tlw $a0,0($sp)\n");
