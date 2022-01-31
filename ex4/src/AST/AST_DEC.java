@@ -87,7 +87,7 @@ public class AST_DEC extends AST_Node
 		return null;
 	}
 	
-	public TYPE IRme()
+	public TEMP IRme()
 	{
 		this.child.IRme();
 		return null;
