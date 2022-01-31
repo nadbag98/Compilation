@@ -121,6 +121,7 @@ public AST_BINOP b;
 	
 	public TEMP IRme()
 	{
+		IR inst = IR.getInstance();
 		if (b == null) {
 			return this.e1.IRme();
 		}
@@ -130,12 +131,13 @@ public AST_BINOP b;
 				
 		if (this.e1  != null) t1 = this.e1.IRme();
 		if (this.e2 != null) t2 = this.e2.IRme();
-
+		String gt_max_int = IRcommand.getFreshLabel("gt_max_int"); 
+		String lt_min_int = IRcommand.getFreshLabel("lt_min_int");
+		String good_range = IRcommand.getFreshLabel("good_range");
 		if (this.b.op == 1) {
 			if (this.is_int_op) {
-				IR.
-				getInstance().
-				Add_IRcommand(new IRcommand_Binop_Add_Integers(dst,t1,t2));	
+				inst.Add_IRcommand(new IRcommand_Binop_Add_Integers(dst,t1,t2));
+				inst.Add_IRcommand(new IRcommand_Check_Range(dst, gt_max_int, lt_min_int, good_range));
 			}
 			else {
 				String str1_len_loop= IRcommand.getFreshLabel("str1_len_loop"); 
@@ -146,54 +148,42 @@ public AST_BINOP b;
 				String copy_str1_end= IRcommand.getFreshLabel("copy_str1_end"); 
 				String copy_str2_loop= IRcommand.getFreshLabel("copy_str2_loop"); 
 				String copy_str2_end= IRcommand.getFreshLabel("copy_str2_end");
-				IR.
-				getInstance().
-				Add_IRcommand(new IRcommand_Binop_Add_Strings(dst,t1,t2,str1_len_loop, str1_len_end, str2_len_loop, str2_len_end, copy_str1_loop,
+				inst.Add_IRcommand(new IRcommand_Binop_Add_Strings(dst,t1,t2,str1_len_loop, str1_len_end, str2_len_loop, str2_len_end, copy_str1_loop,
 			 	copy_str1_end, copy_str2_loop, copy_str2_end));
 			}
 		}
 		if (this.b.op == 2)
 		{
-			IR.
-			getInstance().
-			Add_IRcommand(new IRcommand_Binop_Sub_Integers(dst,t1,t2));
+			inst.Add_IRcommand(new IRcommand_Binop_Sub_Integers(dst,t1,t2));
+			inst.Add_IRcommand(new IRcommand_Check_Range(dst, gt_max_int, lt_min_int, good_range));
 		}
 		if (this.b.op == 3)
 		{
-			IR.
-			getInstance().
-			Add_IRcommand(new IRcommand_Binop_Mul_Integers(dst,t1,t2));
+			inst.Add_IRcommand(new IRcommand_Binop_Mul_Integers(dst,t1,t2));
+			inst.Add_IRcommand(new IRcommand_Check_Range(dst, gt_max_int, lt_min_int, good_range));
 		}
 		if (this.b.op == 4)
 		{
-			IR.
-			getInstance().
-			Add_IRcommand(new IRcommand_Binop_Div_Integers(dst,t1,t2));
+			inst.Add_IRcommand(new IRcommand_Binop_Div_Integers(dst,t1,t2));
+			inst.Add_IRcommand(new IRcommand_Check_Range(dst, gt_max_int, lt_min_int, good_range));
 		}
 		if (this.b.op == 5)
 		{
-			IR.
-			getInstance().
-			Add_IRcommand(new IRcommand_Binop_LT_Integers(dst,t1,t2));
+			inst.Add_IRcommand(new IRcommand_Binop_LT_Integers(dst,t1,t2));
 		}
 		if (this.b.op == 6)
 		{
-			IR.
-			getInstance().
-			Add_IRcommand(new IRcommand_Binop_GT_Integers(dst,t1,t2));
+			inst.Add_IRcommand(new IRcommand_Binop_GT_Integers(dst,t1,t2));
 		}
 		if (this.b.op == 7)
 		{
 			if (!this.is_string_op) {
-				IR.
-				getInstance().
-				Add_IRcommand(new IRcommand_Binop_EQ_NotStrings(dst,t1,t2));
+				inst.Add_IRcommand(new IRcommand_Binop_EQ_NotStrings(dst,t1,t2));
 			}
 			else {
-				IR.
-				getInstance().
-				Add_IRcommand(new IRcommand_Binop_EQ_Strings(dst,t1,t2));
+				inst.Add_IRcommand(new IRcommand_Binop_EQ_Strings(dst,t1,t2));
 			}
+		
 		}
 		return dst;
 	}
