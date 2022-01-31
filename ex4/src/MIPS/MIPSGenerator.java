@@ -345,7 +345,7 @@ public class MIPSGenerator
 	
 	public void funcPrologue()
 	{
-		fileWriter.format("\n\tsubu $sp,$sp,4\n");
+		fileWriter.format("\tsubu $sp,$sp,4\n");
 		fileWriter.format("\tsw $ra,0($sp)\n");
 		fileWriter.format("\tsubu $sp,$sp,4\n");
 		fileWriter.format("\tsw $fp,0($sp)\n");
