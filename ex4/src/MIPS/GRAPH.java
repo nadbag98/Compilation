@@ -33,7 +33,7 @@ public class GRAPH
    }
    catch (Exception e){
     	e.printStackTrace();
-	   exit();
+	  return;
 	}
     String line = reader.readLine();
     while(line != null){
