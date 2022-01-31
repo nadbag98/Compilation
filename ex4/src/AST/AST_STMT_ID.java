@@ -108,7 +108,7 @@ public class AST_STMT_ID extends AST_STMT
 	public TEMP IRme(){
 		IR inst = IR.getInstance();
 		if (this.s == null && this.l == null){
-			inst.Add_IRcommand(new IRcommand_funcEpilogue());
+			inst.Add_IRcommand(new IRcommand_FuncEpilogue());
 		}
 		
 		if (this.s != null && this.l == null){
@@ -116,7 +116,7 @@ public class AST_STMT_ID extends AST_STMT
 				inst.Add_IRcommand(new IRcommand_Jal(this.s));
 			} else {
 				TEMP obj = TEMP_FACTORY.getInstance().getFreshTEMP();
-				inst.Add_IRcommand(new IRcommand_load(obj, "8($fp)"));
+				inst.Add_IRcommand(new IRcommand_Load(obj, "8($fp)"));
 				inst.Add_IRcommand(new IRcommand_callMethodInClass(this.offset, obj));
 			}
 		}
@@ -135,7 +135,7 @@ public class AST_STMT_ID extends AST_STMT
 				}
 			} else {
 				TEMP obj = TEMP_FACTORY.getInstance().getFreshTEMP();
-				inst.Add_IRcommand(new IRcommand_load(obj, "8($fp)"));
+				inst.Add_IRcommand(new IRcommand_Load(obj, "8($fp)"));
 				inst.Add_IRcommand(new IRcommand_callMethodInClass(this.offset, obj));
 			}
 			
