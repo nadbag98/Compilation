@@ -27,7 +27,7 @@ public class GRAPH
     Node prevNode = null;
     int counter = 1;
      BufferedReader reader;
-   reader = new BufferedReader(new FileReader("../output/MIPS.txt"));
+   reader = new BufferedReader(new FileReader("output/MIPS.txt"));
     String line = reader.readLine();
     while(line != null){
       if (line.contains(":") && !line.contains(".word") && !line.contains(".asciiz")) {
@@ -70,7 +70,7 @@ public class GRAPH
   public void createEdges(){
     int counter = 1;
     BufferedReader reader;
-    reader = new BufferedReader(new FileReader("../output/MIPS.txt"));
+    reader = new BufferedReader(new FileReader("output/MIPS.txt"));
     String line = reader.readLine();
     while(line != null){
 
