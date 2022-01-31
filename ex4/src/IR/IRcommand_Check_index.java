@@ -37,7 +37,9 @@ public class IRcommand_Check_index extends IRcommand
 	    MIPSGenerator.getInstance().jump(label_end);
 	    MIPSGenerator.getInstance().label(label_error);
 	    MIPSGenerator.getInstance().la(this.idx,"_acc_violation");
-	    MIPSGenerator.getInstance().print_string(this.idx);
+	    MIPSGenerator.getInstance().subu("$sp","$sp", 4);
+	    MIPSGenerator.getInstance().store("0($sp)",this.idx);
+	    MIPSGenerator.getInstance().print_string();
 	    MIPSGenerator.getInstance().li("$v0",10);
 	    MIPSGenerator.getInstance().syscall(); 
 	    MIPSGenerator.getInstance().label(label_end);
