@@ -154,18 +154,18 @@ public AST_BINOP b;
 		if (this.b.op == 2)
 		{
 			inst.Add_IRcommand(new IRcommand_Binop_Sub_Integers(dst,t1,t2));
-			inst.Add_IRcommand(new IRcommand_Check_Range(dst, gt_max_int, lt_min_int, good_range));
+			inst.Add_IRcommand(new IRcommand_Check_Range(dst));
 		}
 		if (this.b.op == 3)
 		{
 			inst.Add_IRcommand(new IRcommand_Binop_Mul_Integers(dst,t1,t2));
-			inst.Add_IRcommand(new IRcommand_Check_Range(dst, gt_max_int, lt_min_int, good_range));
+			inst.Add_IRcommand(new IRcommand_Check_Range(dst));
 		}
 		if (this.b.op == 4)
 		{
 			inst.Add_IRcommand(new IRcommand_Check_Div_By_Zero(t2));
 			inst.Add_IRcommand(new IRcommand_Binop_Div_Integers(dst,t1,t2));
-			inst.Add_IRcommand(new IRcommand_Check_Range(dst, gt_max_int, lt_min_int, good_range));
+			inst.Add_IRcommand(new IRcommand_Check_Range(dst));
 		}
 		if (this.b.op == 5)
 		{
