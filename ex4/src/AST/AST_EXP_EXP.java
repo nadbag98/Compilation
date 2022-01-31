@@ -161,6 +161,7 @@ public AST_BINOP b;
 		}
 		if (this.b.op == 4)
 		{
+			inst.Add_IRcommand(new IRcommand_Check_Div_By_Zero(t2));
 			inst.Add_IRcommand(new IRcommand_Binop_Div_Integers(dst,t1,t2));
 			inst.Add_IRcommand(new IRcommand_Check_Range(dst, gt_max_int, lt_min_int, good_range));
 		}
