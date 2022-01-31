@@ -10,5 +10,9 @@ public abstract class AST_STMT extends AST_Node
     System.out.print("YOU ARE IN AST_STMT!!! VARY BAD!!!\n");
     return null;
   }
+  
+  public TEMP IRme(){
+    return null;
+  }
 
 }
