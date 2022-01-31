@@ -28,7 +28,13 @@ public class GRAPH
     int counter = 1;
      BufferedReader reader;
    System.out.println("Working Directory = " + System.getProperty("user.dir") + "\nget fucked\n");
-   reader = new BufferedReader(new FileReader("output/MIPS.txt"));
+   try {
+   reader = new BufferedReader(new FileReader("../../output/MIPS.txt")); 
+   }
+   catch (Exception e)
+		{
+    e.printStackTrace();
+		}
     String line = reader.readLine();
     while(line != null){
       if (line.contains(":") && !line.contains(".word") && !line.contains(".asciiz")) {
