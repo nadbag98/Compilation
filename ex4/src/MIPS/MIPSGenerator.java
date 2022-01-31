@@ -220,6 +220,12 @@ public class MIPSGenerator
 		
 		fileWriter.format("\tblt Temp_%d,Temp_%d,%s\n",i1,i2,label);				
 	}
+	public void bltz(TEMP oprnd1,String label)
+	{
+		int i1 =oprnd1.getSerialNumber();
+		
+		fileWriter.format("\tbltz Temp_%d,%s\n",i1,label);				
+	}
 	public void bgt(TEMP oprnd1,TEMP oprnd2,String label)
 	{
 		int i1 =oprnd1.getSerialNumber();
