@@ -14,7 +14,7 @@ import MIPS.*;
 
 public class IRcommand_LiToString extends IRcommand
 {
-	TEMP dst;
+	String dst;
 	int imm;
 	
 	public IRcommand_LiToString(String dst,int imm)
@@ -28,6 +28,6 @@ public class IRcommand_LiToString extends IRcommand
 	/***************/
 	public void MIPSme()
 	{
-		MIPSGenerator.getInstance().li(dst,imm);
+		MIPSGenerator.getInstance().li(this.dst,this.imm);
 	}
 }
