@@ -150,10 +150,27 @@ public class AST_VARDEC extends AST_Node
 	public TEMP IRme(){
 		IR inst = IR.getInstance();
 		if (this.is_global){
-			inst.Add_IRcommand(new IRcommand_Allocate_Word(this.s, 0));
-			if (this.exp != null){
-				TEMP value = this.exp.IRme();
-				inst.Add_IRcommand(new IRcommand_Store(String.format("global_%s", this.s), value));
+			if (this.exp == null){
+				inst.Add_IRcommand(new IRcommand_Allocate_Word(this.s, 0));
+			}
+			else {
+				if (this.t.s.equals("int")){
+					AST_EXP_INT myInt = (AST_EXP_INT) this.exp;
+					if (myInt.is_neg == 0) {
+						inst.Add_IRcommand(new IRcommand_Allocate_Word(this.s, myInt.i));
+					} 
+					else {
+						inst.Add_IRcommand(new IRcommand_Allocate_Word(this.s, -myInt.i));
+					}
+				}
+				 else if (this.t.s.equals("string")){
+					AST_EXP_REST myStr = (AST_EXP_REST) this.exp;
+					String str_lab = IRcommand.getFreshLabel("str"); 
+					inst.Add_IRcommand(new IRcommand_Allocate_String(str_lab, myStr.s));
+					inst.Add_IRcommand(new IRcommand_Allocate_Word(this.s, str_lab));					
+				} else {
+					inst.Add_IRcommand(new IRcommand_Allocate_Word(this.s, 0));
+				}
 			}
 		} 
 		else {
