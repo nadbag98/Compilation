@@ -73,10 +73,10 @@ public class IR
 			/* [0] The instance itself ... */
 			/*******************************/
 			instance = new IR();
-			instance.Add_IRCommand(new IRcommand_Allocate_String("_div_by_zero", "Division By Zero"));
-			instance.Add_IRCommand(new IRcommand_Allocate_String("_null_ref", "Invalid Pointer Dereference"));
-			instance.Add_IRCommand(new IRcommand_Allocate_String("_acc_violation", "Access Violation"));
-			instance.Add_IRCommand(new IRcommand_Insert_Main());
+			instance.Add_IRcommand(new IRcommand_Allocate_String("_div_by_zero", "Division By Zero"));
+			instance.Add_IRcommand(new IRcommand_Allocate_String("_null_ref", "Invalid Pointer Dereference"));
+			instance.Add_IRcommand(new IRcommand_Allocate_String("_acc_violation", "Access Violation"));
+			instance.Add_IRcommand(new IRcommand_Insert_Main());
 		}
 		return instance;
 	}
