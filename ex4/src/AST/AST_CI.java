@@ -40,7 +40,7 @@ public class AST_CI
 	
 	public void add_field(int offset, String str){
 		CI_Class curr = this.c_list.get_last();
-		if (cur == null){
+		if (curr == null){
 			System.out.println("ERROR come to add field in AST_CI\n");
 		}
 		curr.add_field(offset, str);
@@ -48,10 +48,10 @@ public class AST_CI
 	
 	public void add_field(int offset, int i){
 		CI_Class curr = this.c_list.get_last();
-		if (cur == null){
+		if (curr == null){
 			System.out.println("ERROR come to add field in AST_CI\n");
 		}
-		curr.add_field(offset, str);
+		curr.add_field(offset, i);
 	}
 	
 	public void add_class(String class_name){
