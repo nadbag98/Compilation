@@ -179,7 +179,7 @@ public class AST_STMT_EXP extends AST_STMT
 			
 			IR.
 			getInstance().
-			Add_IRcommand(new IRcommand_funcEpilogue());
+			Add_IRcommand(new IRcommand_FuncEpilogue());
 
 		}
 	}
