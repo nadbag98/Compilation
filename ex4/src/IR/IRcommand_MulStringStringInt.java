@@ -30,6 +30,7 @@ public class IRcommand_MulStringStringInt extends IRcommand
 	/***************/
 	public void MIPSme()
 	{
+		MIPSGenerator.getInstance().li("$s0", this.op2);
 		MIPSGenerator.getInstance().mul(dst,op1,op2);
 	}
 }
