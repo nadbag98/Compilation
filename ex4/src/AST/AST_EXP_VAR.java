@@ -20,8 +20,8 @@ public class AST_EXP_VAR extends AST_EXP
 		/* PRINT CORRESPONDING DERIVATION RULE */
 		/***************************************/
     		if (s == null) System.out.print("====================== exp --> var\n");
-		if (l != null && s != null) System.out.print("====================== exp --> var id expList\n");
-		if (l == null && s != null) System.out.print("====================== exp --> var id\n");
+		if (l != null && s != null) System.out.print("====================== exp --> var.id expList\n");
+		if (l == null && s != null) System.out.print("====================== exp --> var.id\n");
 
 		/*******************************/
 		/* COPY INPUT DATA NENBERS ... */
@@ -106,6 +106,7 @@ public class AST_EXP_VAR extends AST_EXP
 		if (this.s == null) {
 			return obj;
 		}
+		inst.Add_IRcommand(new IRcommand_Check_Init(obj));
 		TEMP res = TEMP_FACTORY.getInstance().getFreshTEMP();
 		if (this.l == null){
 			inst.Add_IRcommand(new IRcommand_callMethodInClass(this.offset, obj));
