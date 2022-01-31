@@ -30,6 +30,6 @@ public class IRcommand_Binop_Add_Integers extends IRcommand
 	/***************/
 	public void MIPSme()
 	{
-		MIPSGenerator.getInstance().add_ints(dst,t1,t2);
+		MIPSGenerator.getInstance().add(dst,t1,t2);
 	}
 }
