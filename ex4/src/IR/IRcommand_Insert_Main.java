@@ -27,7 +27,5 @@ public class IRcommand_Insert_Main extends IRcommand
 	{
     MIPSGenerator.getInstance().label_main();
 		MIPSGenerator.getInstance().jal("user_main");
-    MIPSGenerator.getInstance().li("$v0", 10);
-    MIPSGenerator.getInstance().syscall();
 	}
 }
