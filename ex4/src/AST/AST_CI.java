@@ -41,7 +41,7 @@ public class AST_CI
 		if (cur == null){
 			System.out.println("ERROR come to add field in AST_CI\n");
 		}
-		curr.add_field(int offset, String str);
+		curr.add_field(offset, str);
 	}
 	
 	public void add_field(int offset, int i){
@@ -49,7 +49,7 @@ public class AST_CI
 		if (cur == null){
 			System.out.println("ERROR come to add field in AST_CI\n");
 		}
-		curr.add_field(int offset, String str);
+		curr.add_field(offset, str);
 	}
 	
 	public void add_class(String class_name){
