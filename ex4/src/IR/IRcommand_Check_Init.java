@@ -27,12 +27,14 @@ public class IRcommand_Check_init extends IRcommand
 	/***************/
 	public void MIPSme()
 	{
-    String label_end        = getFreshLabel("end");
-		MIPSGenerator.getInstance().bnez(t,label_end);
-    MIPSGenerator.getInstance().la(t,"_null_ref");
-    MIPSGenerator.getInstance().print_string(t);
-    MIPSGenerator.getInstance().li("$v0",10);
-    MIPSGenerator.getInstance().syscall();
-    MIPSGenerator.getInstance().label(label_end);
+	    String label_end        = getFreshLabel("end");
+	    MIPSGenerator.getInstance().bnez(this.t,label_end);
+	    MIPSGenerator.getInstance().la(this.t,"_null_ref");
+	    MIPSGenerator.getInstance().subu("$sp","$sp", 4);
+	    MIPSGenerator.getInstance().store("0($sp)",this.t);
+	    MIPSGenerator.getInstance().print_string();
+	    MIPSGenerator.getInstance().li("$v0",10);
+	    MIPSGenerator.getInstance().syscall();
+	    MIPSGenerator.getInstance().label(label_end);
 	}
 }
