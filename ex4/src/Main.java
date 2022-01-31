@@ -6,7 +6,7 @@ import AST.*;
 import IR.*;
 import MIPS.*;
 import SYMBOL_TABLE.*;
-import Graph.*;
+import GRAPH.*;
 
 public class Main
 {
@@ -79,7 +79,7 @@ public class Main
 			/***************************/
 			MIPSGenerator.getInstance().finalizeFile();
 			
-			Graph graph = new Graph();
+			GRAPH graph = new GRAPH();
 			graph.createBlocks();
 			graph.createEdges();
 
