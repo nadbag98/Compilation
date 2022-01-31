@@ -1,7 +1,7 @@
 /***********/
 /* PACKAGE */
 /***********/
-package Graph;
+package GRAPH;
 
 import java.io.*;
 
@@ -13,13 +13,13 @@ import java.io.*;
 /* PROJECT IMPORTS */
 /*******************/
 
-public class Graph
+public class GRAPH
 {
 
 
  public NodeList nodes;
   
-  public Graph() {
+  public GRAPH() {
     this.nodes = new NodeList(null, null);
   }
   
