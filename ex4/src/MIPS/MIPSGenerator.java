@@ -234,6 +234,12 @@ public class MIPSGenerator
 		
 		fileWriter.format("\tbge Temp_%d,Temp_%d,%s\n",i1,i2,label);				
 	}
+	public void bge(TEMP oprnd1,int imm,String label)
+	{
+		int i1 =oprnd1.getSerialNumber();
+		fileWriter.format("\tli $s0,%d\n",imm);
+		fileWriter.format("\tbge Temp_%d,$s0,%s\n",i1,label);				
+	}
 	public void ble(TEMP oprnd1,TEMP oprnd2,String label)
 	{
 		int i1 =oprnd1.getSerialNumber();
@@ -241,7 +247,12 @@ public class MIPSGenerator
 		
 		fileWriter.format("\tble Temp_%d,Temp_%d,%s\n",i1,i2,label);				
 	}
-	
+	public void ble(TEMP oprnd1,int imm,String label)
+	{
+		int i1 =oprnd1.getSerialNumber();
+		fileWriter.format("\tli $s0,%d\n",imm);
+		fileWriter.format("\tble Temp_%d,$s0,%s\n",i1,label);				
+	}
 	public void bne(TEMP oprnd1,TEMP oprnd2,String label)
 	{
 		int i1 =oprnd1.getSerialNumber();
