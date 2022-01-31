@@ -129,6 +129,7 @@ public class AST_FUNCDEC extends AST_Node
 	public TEMP IRme()
 	{
 		IR ir = IR.getInstance();
+		ir.Add_IRcommand(new IRcommand_New_Line());
 		if (this.in_class){
 			ir.Add_IRcommand(new IRcommand_Label(String.format("%s_%s", this.class_name, this.s)));
 		} else {
