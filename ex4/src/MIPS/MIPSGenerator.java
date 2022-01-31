@@ -283,6 +283,12 @@ public class MIPSGenerator
 				
 		fileWriter.format("\tbeq Temp_%d,$zero,%s\n",i1,label);				
 	}
+	public void bnez(TEMP oprnd1,String label)
+	{
+		int i1 =oprnd1.getSerialNumber();
+				
+		fileWriter.format("\tbne Temp_%d,$zero,%s\n",i1,label);				
+	}
 	
 	public void mov(TEMP oprnd1, TEMP oprnd2)
 	{
