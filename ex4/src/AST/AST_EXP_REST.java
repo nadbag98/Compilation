@@ -1,6 +1,8 @@
 package AST;
 import SYMBOL_TABLE.*;
 import TYPES.*;
+import TEMP.*;
+import IR.*;
 
 public class AST_EXP_REST extends AST_EXP
 {
