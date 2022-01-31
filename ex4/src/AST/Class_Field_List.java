@@ -18,7 +18,10 @@ public class Class_Field_List
 	}
 	
 	public void add(int offset, String str){
-		if (this.tail != null){
+		if (this.head == null) {
+			this.head = new Class_Field(offset, 0, str);
+		}
+		else if (this.tail != null){
 			this.tail.add(offset, str);
 		} else {
 			Class_Field c = new Class_Field(offset, 0, str);
@@ -27,7 +30,10 @@ public class Class_Field_List
 	}
 	
 	public void add(int offset, int i){
-		if (this.tail != null){
+		if (this.head == null) {
+			this.head = new Class_Field(offset, i, null);
+		}
+		else if (this.tail != null){
 			this.tail.add(offset, i);
 		} else {
 			Class_Field c = new Class_Field(offset, i, null);
