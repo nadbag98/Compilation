@@ -13,13 +13,13 @@ import java.io.*;
 /* PROJECT IMPORTS */
 /*******************/
 
-public class Graph_
+public class GRAPH
 {
 
 
  public NodeList nodes;
   
-  public Graph_() {
+  public GRAPH() {
     this.nodes = new NodeList(null, null);
   }
   
