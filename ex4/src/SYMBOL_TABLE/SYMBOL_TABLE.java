@@ -24,7 +24,7 @@ public class SYMBOL_TABLE
 	/* The actual symbol table data structure ... */
 	/**********************************************/
 	private SYMBOL_TABLE_ENTRY[] table = new SYMBOL_TABLE_ENTRY[hashArraySize];
-	private SYMBOL_TABLE_ENTRY top;
+	public SYMBOL_TABLE_ENTRY top;
 	private int top_index = 0;
 	
 	/**************************************************************/
