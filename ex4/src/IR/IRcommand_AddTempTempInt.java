@@ -15,8 +15,8 @@ import MIPS.*;
 
 public class IRcommand_AddTempTempInt extends IRcommand
 {
+	public TEMP dst;
 	public TEMP t1;
-	public TEMP t2;
 	public int i;
 	
 	public IRcommand_AddTempTempInt(TEMP dst,TEMP t1,int i)
@@ -30,6 +30,6 @@ public class IRcommand_AddTempTempInt extends IRcommand
 	/***************/
 	public void MIPSme()
 	{
-		MIPSGenerator.getInstance().add(dst,t1,i);
+		MIPSGenerator.getInstance().add(this.dst,this.t1,this.i);
 	}
 }
