@@ -78,13 +78,12 @@ public class AST_CLASSDEC extends AST_Node
 		}
 		sym_table.enter(this.s1, t1, null);	
 		sym_table.beginScope();
+		AST_CI inst = AST_CI.getInstance();
+		inst.add_class(this.s1);
 		this.l.visit(sym_table, t1);
 		sym_table.endScope();
 		
 		this.type = t1;
-		
-		AST_CI inst = AST_CI.getInstance();
-		inst.add_class(this.s1);
 		
 		return null;
 	}
