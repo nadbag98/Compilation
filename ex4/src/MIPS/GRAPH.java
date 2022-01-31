@@ -23,18 +23,12 @@ public class GRAPH
     this.nodes = new NodeList(null, null);
   }
   
-  public void createBlocks(){
+  public void createBlocks() throws IOException, FileNotFoundException{
     Node prevNode = null;
     int counter = 1;
      BufferedReader reader;
    System.out.println("Working Directory = " + System.getProperty("user.dir") + "\nget fucked\n");
-   try {
    reader = new BufferedReader(new FileReader("../../output/MIPS.txt")); 
-   }
-   catch (Exception e){
-    	e.printStackTrace();
-	  return;
-	}
     String line = reader.readLine();
     while(line != null){
       if (line.contains(":") && !line.contains(".word") && !line.contains(".asciiz")) {
@@ -74,7 +68,7 @@ public class GRAPH
     reader.close();
   }
             
-  public void createEdges(){
+  public void createEdges() throws IOException, FileNotFoundException{
     int counter = 1;
     BufferedReader reader;
     reader = new BufferedReader(new FileReader("output/MIPS.txt"));
