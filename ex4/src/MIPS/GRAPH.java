@@ -1,7 +1,7 @@
 /***********/
 /* PACKAGE */
 /***********/
-package GRAPH;
+package MIPS;
 
 import java.io.*;
 
