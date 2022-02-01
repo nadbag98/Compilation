@@ -60,6 +60,7 @@ public class NodeList
 	}
 
 	public Node findByLabel(String label){
+		System.out.println(label);
 		if (this.head == null){
 			System.out.println("help me nodelist label\n");
 			return null;
