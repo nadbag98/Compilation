@@ -273,14 +273,15 @@ public class GRAPH
     this.tempCounter += 1;
     this.interMat = new int[this.tempCounter][this.tempCounter];
     this.interMat2 = new int[this.tempCounter][this.tempCounter];
-    for (int[] line : this.liveArr){
-      for (int i=0; i<3; i++){
-        for (int j=0; j<3; j++){
-          if (line[i] != -1 && line[j] != -1){
-            this.interMat[line[i]][line[j]] = 1;
-            this.interMat[line[j]][line[i]] = 1;
-            this.interMat2[line[i]][line[j]] = 1;
-            this.interMat2[line[j]][line[i]] = 1;
+    for (int i=0; i<this.lineCounter; i++){
+      int[] line = this.liveArr[i];
+      for (int u : line){
+        for (int v : line){
+          if (u != -1 && v != -1){
+            this.interMat[u][v] = 1;
+            this.interMat[v][u] = 1;
+            this.interMat2[u][v] = 1;
+            this.interMat2[v][u] = 1;
           }
         }
       }
