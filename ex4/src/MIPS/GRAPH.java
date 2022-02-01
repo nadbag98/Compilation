@@ -364,6 +364,7 @@ public class GRAPH
       if (!line.contains("Temp_")){
         fileWriter.print(line + "\n");
         counter++;
+        line = reader.readLine();
         continue;
       }
       temps = this.tempArr[counter];
