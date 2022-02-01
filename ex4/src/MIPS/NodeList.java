@@ -16,10 +16,12 @@ public class NodeList
 			return;
 		}
 		if (this.tail == null){
-			this.tail = new NodeList(n, null);
+			this.tail = new NodeList(this.head, null);
+			this.head = n;
 			return;
 		}
-		this.tail.add(n);
+		this.tail.add(this.head);
+		this.head = n;
 		return;
 	}
 
