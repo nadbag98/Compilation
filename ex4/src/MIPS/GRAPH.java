@@ -364,5 +364,10 @@ public class GRAPH
     
     this.createBlocks();
     this.createEdges();
+    this.liveAnalysis();
+    this.tempGraph();
+    this.colorGraph();
+    this.optimizeTemps(fileWriter);
+    return;
   }
 }
