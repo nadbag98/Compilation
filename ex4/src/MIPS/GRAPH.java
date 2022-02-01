@@ -267,6 +267,7 @@ public class GRAPH
 
 
   public void tempGraph(){
+    this.tempCounter += 1;
     this.interMat = new int[this.tempCounter][this.tempCounter];
     this.interMat2 = new int[this.tempCounter][this.tempCounter];
     for (int[] line : this.liveArr){
