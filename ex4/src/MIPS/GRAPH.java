@@ -213,7 +213,7 @@ public class GRAPH
     boolean changed = false;
     NodeList curr = node.after;
 
-    while (curr != null){
+    while (curr != null && curr.head != null){
       for (int i : this.liveArr[curr.head.line-1]){
         for (int j=0; j<10; j++){
           if (node.IN[j] == i){
