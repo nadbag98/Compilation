@@ -179,8 +179,7 @@ public class GRAPH
       return temps;
   }
 
-  public liveAnalysis(){
-    //TODO - while liveArr changes:
+  public void liveAnalysis(){
     boolean changed = true;
     while(changed){
       changed = false;
@@ -189,8 +188,7 @@ public class GRAPH
         changed = changed || this.liveNode(curr.head);
         curr = curr.tail;
       }
-   }
-
+    }
   }
 
 
