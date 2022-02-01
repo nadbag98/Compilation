@@ -7,6 +7,7 @@ public class Node
   public int line;
   public int lastLine;
   public String label;
+  public int[] IN;
   
 	public Node(int line, String label) {
     this.before = new NodeList(null, null);
@@ -14,5 +15,6 @@ public class Node
     this.line = line;
 	this.lastLine = line;
     this.label = label;
+   this.IN = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}
   }
 }
