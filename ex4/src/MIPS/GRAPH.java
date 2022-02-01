@@ -175,7 +175,11 @@ public class GRAPH
 
       temp_idx = line.substring(first_comma_idx+1, line.length()).indexOf("Temp_") + first_comma_idx+1;
       if ((temp_idx > first_comma_idx) && (temp_idx < second_comma_idx)){
-        temps[1] = Integer.parseInt(line.substring(temp_idx+5, second_comma_idx));
+        int finish_idx = line.indexOf(")");
+        if (finish_idx == -1){
+          finish_idx = second_comma_idx;
+        }
+        temps[1] = Integer.parseInt(line.substring(temp_idx+5, finish_idx));
         if (temps[1] > this.tempCounter){
           this.tempCounter = temps[1];
         }
