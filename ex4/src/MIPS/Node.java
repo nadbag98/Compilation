@@ -15,6 +15,6 @@ public class Node
     this.line = line;
 	this.lastLine = line;
     this.label = label;
-   this.IN = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}
+   this.IN = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
   }
 }
