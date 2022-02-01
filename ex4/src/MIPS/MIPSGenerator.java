@@ -385,54 +385,54 @@ public class MIPSGenerator
 		int t2_ind = t2.getSerialNumber();
 		
 		fileWriter.format("\tli $s0,1\n");
-		fileWriter.format("\tmove $s1,Temp_%d\n", t1_ind);
-		fileWriter.format("%s:\n", str1_len_loop);
-		fileWriter.format("\tlb $s2, 0($s1)\n");
-		fileWriter.format("\tbeq $s2, 0, %s\n", str1_len_end);
-		fileWriter.format("\taddu $s0, $s0, 1\n");
-		fileWriter.format("\taddu $s1, $s1, 1\n");
-		fileWriter.format("\tj %s\n", str1_len_loop);
-		fileWriter.format("%s:\n", str1_len_end);
+		fileWriter.format("\tmove $s1,Temp_%d\n",t1_ind);
+		fileWriter.format("%s:\n",str1_len_loop);
+		fileWriter.format("\tlb $s2,0($s1)\n");
+		fileWriter.format("\tbeq $s2,0,%s\n",str1_len_end);
+		fileWriter.format("\taddu $s0,$s0,1\n");
+		fileWriter.format("\taddu $s1,$s1,1\n");
+		fileWriter.format("\tj %s\n",str1_len_loop);
+		fileWriter.format("%s:\n",str1_len_end);
 		
-		fileWriter.format("\tmove $s1,Temp_%d\n", t2_ind);
-		fileWriter.format("%s:\n", str2_len_loop);
-		fileWriter.format("\tlb $s2, 0($s1)\n");
-		fileWriter.format("\tbeq $s2, 0, %s\n", str2_len_end);
-		fileWriter.format("\taddu $s0, $s0, 1\n");
-		fileWriter.format("\taddu $s1, $s1, 1\n");
-		fileWriter.format("\tj %s\n", str2_len_loop);
-		fileWriter.format("%s:\n", str2_len_end);
+		fileWriter.format("\tmove $s1,Temp_%d\n",t2_ind);
+		fileWriter.format("%s:\n",str2_len_loop);
+		fileWriter.format("\tlb $s2,0($s1)\n");
+		fileWriter.format("\tbeq $s2,0,%s\n",str2_len_end);
+		fileWriter.format("\taddu $s0,$s0,1\n");
+		fileWriter.format("\taddu $s1,$s1,1\n");
+		fileWriter.format("\tj %s\n",str2_len_loop);
+		fileWriter.format("%s:\n",str2_len_end);
 		//$s0 holds the concated string length, including null terminator
 		
-		fileWriter.format("\tli $v0, 9\n");
-		fileWriter.format("\tmove $a0, $s0\n");
+		fileWriter.format("\tli $v0,9\n");
+		fileWriter.format("\tmove $a0,$s0\n");
 		fileWriter.format("\tsyscall\n");
 		fileWriter.format("\tmove $s0,$v0\n");
 		fileWriter.format("\tmove Temp_%d,$v0\n", dst_ind);
 		//$s0 holds the address for the new string
 		
 		fileWriter.format("\tmove $s1,Temp_%d\n", t1_ind);
-		fileWriter.format("%s:\n", copy_str1_loop);
-		fileWriter.format("\tlb $s2, 0($s1)\n");
-		fileWriter.format("\tbeq $s2, 0, %s\n", copy_str1_end);
-		fileWriter.format("\tsb $s2, 0($s0)\n");
-		fileWriter.format("\taddu $s0, $s0, 1\n");
-		fileWriter.format("\taddu $s1, $s1, 1\n");
-		fileWriter.format("\tj %s\n", copy_str1_loop);
-		fileWriter.format("%s:\n", copy_str1_end);
+		fileWriter.format("%s:\n",copy_str1_loop);
+		fileWriter.format("\tlb $s2,0($s1)\n");
+		fileWriter.format("\tbeq $s2,0,%s\n", copy_str1_end);
+		fileWriter.format("\tsb $s2,0($s0)\n");
+		fileWriter.format("\taddu $s0,$s0,1\n");
+		fileWriter.format("\taddu $s1,$s1,1\n");
+		fileWriter.format("\tj %s\n",copy_str1_loop);
+		fileWriter.format("%s:\n",copy_str1_end);
 		
 		
 		fileWriter.format("\tmove $s1,Temp_%d\n", t2_ind);
 		fileWriter.format("%s:\n", copy_str2_loop);
-		fileWriter.format("\tlb $s2, 0($s1)\n");
-		fileWriter.format("\tbeq $s2, 0, %s\n", copy_str2_end);
-		fileWriter.format("\tsb $s2, 0($s0)\n");
-		fileWriter.format("\taddu $s0, $s0, 1\n");
-		fileWriter.format("\taddu $s1, $s1, 1\n");
+		fileWriter.format("\tlb $s2,0($s1)\n");
+		fileWriter.format("\tbeq $s2,0,%s\n", copy_str2_end);
+		fileWriter.format("\tsb $s2,0($s0)\n");
+		fileWriter.format("\taddu $s0,$s0,1\n");
+		fileWriter.format("\taddu $s1,$s1,1\n");
 		fileWriter.format("\tj %s\n", copy_str2_loop);
 		fileWriter.format("%s:\n", copy_str2_end);
-		fileWriter.format("\taddu $s0, $s0, 1\n");
-		fileWriter.format("\tsb $s2, 0($s0)\n");
+		fileWriter.format("\taddu $s0,$s0,1\n");
+		fileWriter.format("\tsb $s2,0($s0)\n");
 	}
 	
 	public void syscall()
