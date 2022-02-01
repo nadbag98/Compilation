@@ -285,7 +285,7 @@ public class GRAPH
         }
       }
     }
-    
+
     for (int i=0; i<this.tempCounter; i++){
       this.interMat[i][i] = 1;
       this.interMat2[i][i] = 1;  
@@ -393,6 +393,7 @@ public class GRAPH
     this.colorGraph();
     System.out.println("finished colorGraph()");
     this.optimizeTemps(fileWriter);
+    System.out.println("finished optimizeTemps()");
     return;
   }
 }
