@@ -119,32 +119,41 @@ public class GRAPH
         this.liveArr[counter][2] = -1;
         return;
       }
-      int[] temps = {-1, -1, -1};
-      int opIdx = line.indexOf(" ");
-      String op = line.substring(1, opIdx);
-      int first_comma_idx = line.indexOf(",");
-      int second_comma_idx = line.substring(first_comma_idx+1, line.length).indexOf(",");
-      int first_temp_idx = line.indexOf("Temp_");
-    
-      if (first_temp_idx < first_comma_idx){
-        temps[0] = Integer.parseInt(line.substring(first_temp_idx+5, first_comma_idx));
-      }
-      first_temp_idx = line.substring(first_comma_idx+1, line.length()).indexOf("Temp_");
-      if (first_temp_idx < second_comma_idx){
-        temps[1] = Integer.parseInt(line.substring(first_temp_idx+5, second_comma_idx));
-      }
-      if (second_comma_idx != -1){
-        first_temp_idx = line.substring(second_comma_idx+1, line.length()).indexOf("Temp_");
-        if (first_temp_idx != -1){
-          temps[2] = Integer.parseInt(line.substring(first_temp_idx+5, second_comma_idx));
-        }
-      }
+
+      int op_idx = line.indexOf(" ");
+      String op = line.substring(1, op_idx);
+      int[] temps = this.getTemps(line);
       
-      switch(op){
-          
-          
-      }
+
+    
+    return; 
   }
 
 
+  public int[] getTemps(String line){
+      int[] temps = {-1, -1, -1};
+
+      int first_comma_idx = line.indexOf(",");
+      int second_comma_idx = line.substring(first_comma_idx+1, line.length()).indexOf(",") + first_comma_idx+1;
+      if (second_comma_idx <= first_comma_idx){
+        second_comma_idx = line.length();
+      }
+
+      int temp_idx = line.indexOf("Temp_");
+    
+      if (temp_idx < first_comma_idx){    
+        temps[0] = Integer.parseInt(line.substring(temp_idx+5, first_comma_idx));
+      }
+
+      temp_idx = line.substring(first_comma_idx+1, line.length()).indexOf("Temp_") + first_comma_idx+1;
+      if ((temp_idx > first_comma_idx) && (temp_idx < second_comma_idx)){
+        temps[1] = Integer.parseInt(line.substring(temp_idx+5, second_comma_idx));
+      }
+
+      temp_idx = line.substring(second_comma_idx, line.length()).indexOf("Temp_") + second_comma_idx ;
+      if (temp_idx > second_comma_idx){
+        temps[2] = Integer.parseInt(line.substring(temp_idx+5, line.length()));
+      }
+      return temps;
+  }
 }
