@@ -36,7 +36,7 @@ public class GRAPH
     Node prevNode = null;
     int counter = 1;
     BufferedReader reader;
-   reader = new BufferedReader(new FileReader("output/MIPS_PRE_OPT.txt")); 
+    reader = new BufferedReader(new FileReader("output/MIPS_PRE_OPT.txt")); 
     String line = reader.readLine();
     while(line != null){
       if (line.contains(":") && !line.contains(".word") && !line.contains(".asciiz")) {
@@ -66,8 +66,10 @@ public class GRAPH
         }
       }
       else if(line.contains("\tjr")){
-        prevNode.lastLine = counter;
-      prevNode = null;    
+        if (prevNode != null){
+          prevNode.lastLine = counter;
+          prevNode = null;    
+        }
       }
       
       line = reader.readLine();
