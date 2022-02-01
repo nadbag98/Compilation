@@ -107,7 +107,7 @@ public class AST_EXP_VAR extends AST_EXP
 		TEMP obj = this.v.IRme();
 		TEMP res = TEMP_FACTORY.getInstance().getFreshTEMP();
 		if (this.s == null) {
-			inst.Add_IRcommand(new IRcommand_load(res, obj));
+			inst.Add_IRcommand(new IRcommand_LoadTempTemp(res, obj));
 			return res;
 		}
 		inst.Add_IRcommand(new IRcommand_Check_Init(obj));
