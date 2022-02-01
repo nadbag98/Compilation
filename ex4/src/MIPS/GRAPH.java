@@ -119,10 +119,16 @@ public class GRAPH
         this.liveArr[counter][2] = -1;
         return;
       }
-    
+      int[] temps = {-1, -1, -1};
       int opIdx = line.indexOf(" ");
       String op = line.substring(1, opIdx);
-
+      int first_comma_idx = line.indexOf(",");
+      int second_comma_idx = line.substring(first_comma_idx+1, line.length).indexOf(",");
+      int first_temp_idx = line.indexOf("Temp_");
+      if (first_temp_idx < first_comma_idx){
+        temps[0] = Integer.parseInt(line.substring(first_temp_idx+5, first_comma_idx));
+      } 
+      
       switch(op){
           
           
