@@ -273,9 +273,7 @@ public class GRAPH
     this.tempCounter += 1;
     this.interMat = new int[this.tempCounter][this.tempCounter];
     this.interMat2 = new int[this.tempCounter][this.tempCounter];
-    for (int i=0; i<this.lineCounter; i++){
-      int[] line = this.liveArr[i];
-      System.out.println(Arrays.toString(line));
+    for (int[] line : this.liveArr){
       for (int u : line){
         for (int v : line){
           if (u != -1 && v != -1){
@@ -311,7 +309,7 @@ public class GRAPH
 
     this.colors = new int[this.tempCounter];
     boolean[] takenColors;
-    for (int i=stack_idx; i>=0; i--){
+    for (int i=stack_idx-1; i>=0; i--){
         takenColors = new boolean[10];
 
         //update interMat2
