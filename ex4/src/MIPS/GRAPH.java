@@ -112,7 +112,7 @@ public class GRAPH
       
       // Init liveness array
       this.initLine(counter-1, line);
-      this.liveArr[counter] = new int[]{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+      this.liveArr[counter-1] = new int[]{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
 
       line = reader.readLine();
       counter++;
