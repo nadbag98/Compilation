@@ -272,10 +272,12 @@ public class GRAPH
     for (int[] line : this.liveArr){
       for (int u : line){
         for (int v : line){
-          this.interMat[u][v] = 1;
-          this.interMat[v][u] = 1;
-          this.interMat2[u][v] = 1;
-          this.interMat2[v][u] = 1;
+          if (u != -1 && v != -1){
+            this.interMat[u][v] = 1;
+            this.interMat[v][u] = 1;
+            this.interMat2[u][v] = 1;
+            this.interMat2[v][u] = 1;
+          }
         }
       }
     }
