@@ -125,9 +125,20 @@ public class GRAPH
       int first_comma_idx = line.indexOf(",");
       int second_comma_idx = line.substring(first_comma_idx+1, line.length).indexOf(",");
       int first_temp_idx = line.indexOf("Temp_");
+    
       if (first_temp_idx < first_comma_idx){
         temps[0] = Integer.parseInt(line.substring(first_temp_idx+5, first_comma_idx));
-      } 
+      }
+      first_temp_idx = line.substring(first_comma_idx+1, line.length()).indexOf("Temp_");
+      if (first_temp_idx < second_comma_idx){
+        temps[1] = Integer.parseInt(line.substring(first_temp_idx+5, second_comma_idx));
+      }
+      if (second_comma_idx != -1){
+        first_temp_idx = line.substring(second_comma_idx+1, line.length()).indexOf("Temp_");
+        if (first_temp_idx != -1){
+          temps[2] = Integer.parseInt(line.substring(first_temp_idx+5, second_comma_idx));
+        }
+      }
       
       switch(op){
           
