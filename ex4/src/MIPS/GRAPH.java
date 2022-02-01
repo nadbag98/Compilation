@@ -359,4 +359,10 @@ public class GRAPH
 
     reader.close();
   }
+  
+  public void finalize(PrintWriter fileWriter)throws IOException, FileNotFoundException{
+    
+    this.createBlocks();
+    this.createEdges();
+  }
 }
