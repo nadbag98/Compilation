@@ -323,7 +323,7 @@ public class GRAPH
           int is_neighbor = this.interMat2[j][j] * this.interMat[i][j];
           this.interMat2[i][j] = is_neighbor;
           this.interMat2[j][i] = is_neighbor;
-          if (is_neighbor == 1){
+          if (is_neighbor == 1 && (i != j)){
             takenColors[this.colors[j]] = true;
           }
         }
