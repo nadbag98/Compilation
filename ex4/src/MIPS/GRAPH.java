@@ -275,7 +275,7 @@ public class GRAPH
     this.interMat2 = new int[this.tempCounter][this.tempCounter];
     for (int[] line : this.liveArr){
       for (int i=0; i<3; i++){
-        for (int j=0; j<3; j++){}
+        for (int j=0; j<3; j++){
           if (line[i] != -1 && line[j] != -1){
             this.interMat[line[i]][line[j]] = 1;
             this.interMat[line[j]][line[i]] = 1;
