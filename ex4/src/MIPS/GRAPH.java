@@ -300,6 +300,7 @@ public class GRAPH
         if (prev == -1){
           System.out.println(Arrays.deepToString(interMat));
           System.out.println(Arrays.deepToString(interMat2));
+          System.out.println(String.format("%d", stack_idx));
         }
         this.interMat2[i][prev] = 0;
         this.interMat2[prev][i] = 0;
