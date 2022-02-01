@@ -16,11 +16,13 @@ import java.io.*;
 public class GRAPH
 {
 
-
- public NodeList nodes;
+  public int lineCounter;
+  public int[][] liveArr;
+  public NodeList nodes;
   
   public GRAPH() {
     this.nodes = new NodeList(null, null);
+    this.liveArr = null;
   }
   
   public void createBlocks() throws IOException, FileNotFoundException{
@@ -64,6 +66,9 @@ public class GRAPH
       line = reader.readLine();
       counter++;
     }
+
+    this.lineCounter = counter-1;
+    this.liveArr = new int[this.lineCounter][3];
     reader.close();
   }
             
@@ -97,9 +102,29 @@ public class GRAPH
         dst.before.add(src);
       }
       
+      // Init liveness array
+      this.initLine(counter-1, line);
+
       line = reader.readLine();
       counter++;
     }
     reader.close();
   }
+
+
+  public void initLine(int counter, String line){
+      if (!line.contains(".") || line.contains(":") || line.contains("syscall")){
+        this.liveArr[counter][0] = -1;
+        this.liveArr[counter][1] = -1;
+        this.liveArr[counter][2] = -1;
+        return;
+      }
+
+      int opIdx = line.indexOf(" ");
+      String op = line.substring(1, opIdx);
+
+
+  }
+
+
 }
