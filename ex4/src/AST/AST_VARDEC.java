@@ -138,7 +138,7 @@ public class AST_VARDEC extends AST_Node
 		   if (!this.is_global){
 		   	int off;
 			if (sym_table.top.prevtop.offset >= 0){
-				off = -10;
+				off = -11;
 			}
 			else{
 				off = sym_table.top.prevtop.offset - 1;
