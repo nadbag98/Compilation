@@ -113,7 +113,7 @@ public class AST_FUNCDEC extends AST_Node
 				ancestor = ancestor.father;
 			}
 			if (!inherited){
-				DATA_MEMBER d = new DATA_MEMBER(func, this.s, my_class.data_members.getFuncOffset(), this.s);
+				DATA_MEMBER d = new DATA_MEMBER(func, this.s, my_class.data_members.getFuncOffset(), this.class_name);
 				my_class.data_members.insert(d);
 			}
 			else{
