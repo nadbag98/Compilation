@@ -17,12 +17,16 @@ public class GRAPH
 {
 
   public int lineCounter;
+  public int tempCounter;
+
   public int[][] liveArr;
+  public int[][] tempArr;
+
   public NodeList nodes;
   
   public GRAPH() {
     this.nodes = new NodeList(null, null);
-    this.liveArr = null;
+    this.tempArr = null;
   }
   
   public void createBlocks() throws IOException, FileNotFoundException{
@@ -68,7 +72,8 @@ public class GRAPH
     }
 
     this.lineCounter = counter-1;
-    this.liveArr = new int[this.lineCounter][3];
+    this.tempArr = new int[this.lineCounter][3];
+    this.liveArr = new int[this.lineCounter][10];
     reader.close();
   }
             
@@ -104,6 +109,7 @@ public class GRAPH
       
       // Init liveness array
       this.initLine(counter-1, line);
+      this.liveArr[counter] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
 
       line = reader.readLine();
       counter++;
@@ -114,17 +120,33 @@ public class GRAPH
 
   public void initLine(int counter, String line){
       if (!line.contains("Temp_") || line.contains(".") || line.contains(":") || line.contains("syscall")){
-        this.liveArr[counter][0] = -1;
-        this.liveArr[counter][1] = -1;
-        this.liveArr[counter][2] = -1;
+        this.tempArr[counter][0] = -1;
+        this.tempArr[counter][1] = -1;
+        this.tempArr[counter][2] = -1;
         return;
       }
 
       int op_idx = line.indexOf(" ");
       String op = line.substring(1, op_idx);
       int[] temps = this.getTemps(line);
-      
 
+      switch(op){
+        case "bnez":
+        case "beqz":
+        case "beq":
+        case "bne":
+        case "ble":
+        case "bge":
+        case "bgt":
+        case "bltz":
+        case "blt":
+        case "store":
+          this.tempArr[counter] = {-1, temps[0], temps[1]};
+          break;
+
+        default:
+          this.tempArr[counter] = temps;
+      }
     
     return; 
   }
@@ -156,4 +178,76 @@ public class GRAPH
       }
       return temps;
   }
+
+  public liveAnalysis(){
+    //TODO - while liveArr changes:
+    boolean changed = true;
+    while(changed){
+      changed = false;
+      NodeList curr = this.nodes;
+      while (curr != null){
+        changed = changed || this.liveNode(curr.head);
+        curr = curr.tail;
+      }
+   }
+
+  }
+
+
+  public boolean liveNode(Node node){
+    boolean changed = false;
+    NodeList curr = node.after;
+
+    while (curr != null){
+      for (int i : this.liveArr[curr.head.line-1]){
+        for (int j=0; j<10; j++){
+          if (node.IN[j] == i){
+            break;
+          }
+          if (node.IN[j] != -1){
+            node.IN[j] = i;
+            changed = true;
+            break;
+          }
+        }
+      }
+      curr = curr.tail;      
+    }
+
+    int[] prev = node.IN;
+    for (int i=node.lastLine; i>=node.line; i--){
+      for (int k : prev){
+        if (k == this.tempArr[i-1][0]){
+          continue;
+        }
+        for (int j=0; j<10; j++){
+          if (k == this.liveArr[i-1][j]){
+            break;
+          }
+          if (this.liveArr[i-1][j] == -1){
+            this.liveArr[i-1][j] = k;
+            changed = true;
+            break;
+          }
+        }
+      }
+
+      for (int r = 1; r<3; r++){
+        int k = this.tempArr[i-1][r];
+        for (int j=0; j<10; j++){
+          if (k == this.liveArr[i-1][j]){
+            break;
+          }
+          if (this.liveArr[i-1][j] == -1){
+            this.liveArr[i-1][j] = k;
+            changed = true;
+            break;
+          }
+        }
+      }
+      prev = this.liveArr[i-1];
+    }
+    return changed;
+  }
+
 }
