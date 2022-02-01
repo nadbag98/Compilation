@@ -465,7 +465,7 @@ public class MIPSGenerator
 				/* [1] Open the MIPS text file and write data section with error message strings */
 				/*********************************************************************************/
 				String dirname="./output/";
-				String filename=String.format("MIPS.txt");
+				String filename=String.format("MIPS_PRE_OPT.txt");
 
 				/***************************************/
 				/* [2] Open MIPS text file for writing */
