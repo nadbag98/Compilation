@@ -113,17 +113,20 @@ public class GRAPH
 
 
   public void initLine(int counter, String line){
-      if (!line.contains(".") || line.contains(":") || line.contains("syscall")){
+      if (!line.contains("Temp_") || line.contains(".") || line.contains(":") || line.contains("syscall")){
         this.liveArr[counter][0] = -1;
         this.liveArr[counter][1] = -1;
         this.liveArr[counter][2] = -1;
         return;
       }
-
+    
       int opIdx = line.indexOf(" ");
       String op = line.substring(1, opIdx);
 
-
+      switch(op){
+          
+          
+      }
   }
 
 
