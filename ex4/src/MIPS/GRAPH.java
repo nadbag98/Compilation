@@ -378,10 +378,15 @@ public class GRAPH
   public void finalize(PrintWriter fileWriter)throws IOException, FileNotFoundException{
     
     this.createBlocks();
+    System.out.println("finished createBlocks()");
     this.createEdges();
+    System.out.println("finished createEdges()");
     this.liveAnalysis();
+    System.out.println("finished liveAnalysis()");
     this.tempGraph();
+    System.out.println("finished tempGraph()");
     this.colorGraph();
+    System.out.println("finished colorGraph()");
     this.optimizeTemps(fileWriter);
     return;
   }
