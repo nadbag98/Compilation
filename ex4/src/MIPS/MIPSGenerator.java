@@ -373,6 +373,10 @@ public class MIPSGenerator
 		fileWriter.format("\tjr $ra\n");
 	}
 	
+	public void text(String s){
+		fileWriter.format("%s\n", s);
+	}
+	
 	public void addStrings(TEMP dst,TEMP t1,TEMP t2, String str1_len_loop, String str1_len_end, String str2_len_loop, String str2_len_end, String copy_str1_loop,
 			 	String copy_str1_end, String copy_str2_loop, String copy_str2_end){
 		
