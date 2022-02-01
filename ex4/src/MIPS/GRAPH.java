@@ -144,7 +144,7 @@ public class GRAPH
         case "bltz":
         case "blt":
         case "store":
-          this.tempArr[counter] = {-1, temps[0], temps[1]};
+          this.tempArr[counter] = new int[]{-1, temps[0], temps[1]};
           break;
 
         default:
@@ -156,7 +156,7 @@ public class GRAPH
 
 
   public int[] getTemps(String line){
-      int[] temps = {-1, -1, -1};
+      int[] temps = new int[]{-1, -1, -1};
 
       int first_comma_idx = line.indexOf(",");
       int second_comma_idx = line.substring(first_comma_idx+1, line.length()).indexOf(",") + first_comma_idx+1;
