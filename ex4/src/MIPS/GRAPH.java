@@ -4,6 +4,7 @@
 package MIPS;
 
 import java.io.*;
+import java.util.Arrays;
 
 /*******************/
 /* GENERAL IMPORTS */
@@ -296,6 +297,10 @@ public class GRAPH
       stack[stack_idx] = prev;
       stack_idx++;
       for (int i=0; i<this.tempCounter; i++){
+        if (prev == -1){
+          System.out.println(Arrays.deepToString(interMat));
+          System.out.println(Arrays.deepToString(interMat2));
+        }
         this.interMat2[i][prev] = 0;
         this.interMat2[prev][i] = 0;
       }
