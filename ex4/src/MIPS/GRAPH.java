@@ -274,7 +274,6 @@ public class GRAPH
       for (int u : line){
         for (int v : line){
           if (u != -1 && v != -1){
-            System.out.println(String.format("%d", this.tempCounter));
             this.interMat[u][v] = 1;
             this.interMat[v][u] = 1;
             this.interMat2[u][v] = 1;
