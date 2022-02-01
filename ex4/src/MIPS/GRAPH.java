@@ -146,7 +146,7 @@ public class GRAPH
         case "bgt":
         case "bltz":
         case "blt":
-        case "store":
+        case "sw":
           this.tempArr[counter] = new int[]{-1, temps[0], temps[1]};
           break;
 
