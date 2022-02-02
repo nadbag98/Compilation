@@ -134,7 +134,6 @@ non terminal AST_VAR var;
 non terminal AST_STMT stmt;
 non terminal AST_NEWEXP newExp;
 non terminal AST_CFIELD cField;
-//non terminal AST_BINOP binop;
 non terminal AST_STMT_LIST stmtList;
 non terminal AST_TYPE_LIST typeIdList;
 non terminal AST_CFIELD_LIST cFieldList;
@@ -231,7 +230,6 @@ expList		::= 	exp:e 	{: RESULT = new AST_EXP_LIST(e, null, prevLine);:}
 
 exp 		::= 	var:v 	{: RESULT = new AST_EXP_VAR(v, null, null, prevLine);    :}
 					| LPAREN exp:e RPAREN	{: RESULT = new AST_EXP_EXP(e, null, null, prevLine);    :}
-					//| exp:e1 binop:b exp:e2 	{: RESULT = new AST_EXP_EXP(e1, b, e2, prevLine);   :}
 					| exp:e1 PLUS exp:e2 	{: RESULT = new AST_EXP_EXP(e1, new AST_BINOP(1, prevLine), e2, prevLine);   :}
 					| exp:e1 MINUS exp:e2 	{: RESULT = new AST_EXP_EXP(e1, new AST_BINOP(2, prevLine), e2, prevLine);   :}
 					| exp:e1 TIMES exp:e2 	{: RESULT = new AST_EXP_EXP(e1, new AST_BINOP(3, prevLine), e2, prevLine);   :}
@@ -274,13 +272,3 @@ newExp		::= 	NEW type:t 	{: RESULT = new AST_NEWEXP(t, null, prevLine);    :}
 cField 		::= 	varDecClass:v 	{: RESULT = new AST_CFIELD(v, null, prevLine);    :}
 					| funcDec:f 	{: RESULT = new AST_CFIELD(null, f, prevLine);    :}
 					;
-/*
-binop 		::= 	PLUS	{: RESULT = new AST_BINOP(1, prevLine);    :}
-					| MINUS 	{: RESULT = new AST_BINOP(2, prevLine);     :}
-					| TIMES 	{: RESULT = new AST_BINOP(3, prevLine);     :}
-					| DIVIDE 	{: RESULT = new AST_BINOP(4, prevLine);     :}
-					| LT 	{: RESULT = new AST_BINOP(5, prevLine);     :}
-					| GT 	{: RESULT = new AST_BINOP(6, prevLine);     :}
-					| EQ 	{: RESULT = new AST_BINOP(7, prevLine);     :}
-					;
-*/
