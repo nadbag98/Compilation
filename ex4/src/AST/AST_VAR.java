@@ -146,8 +146,8 @@ public class AST_VAR extends AST_Node
 			inst.Add_IRcommand(new IRcommand_Check_index(dst, index));
 			inst.Add_IRcommand(new IRcommand_AddTempTempInt(index, index, 1));
 			inst.Add_IRcommand(new IRcommand_MulTempTempInt(index, index, 4));
-			inst.Add_IRcommand(new IRcommand_AdduTempTempTemp(index, index, dst));
-			inst.Add_IRcommand(new IRcommand_LoadTempTemp(dst, index));
+			inst.Add_IRcommand(new IRcommand_AdduTempTempTemp(dst, index, dst));
+			//inst.Add_IRcommand(new IRcommand_LoadTempTemp(dst, index));
 		}
 		
 		return dst;
