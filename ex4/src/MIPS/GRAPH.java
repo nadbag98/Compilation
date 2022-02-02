@@ -43,21 +43,24 @@ public class GRAPH
       if (line.contains(":") && !line.contains(".word") && !line.contains(".asciiz")) {
         if (prevNode != null){
           prevNode.lastLine = counter-1;
+          newNode = new Node(counter, line.substring(0, line.length()-1));
+          this.nodes.add(newNode);
+          prevNode.after.add(newNode);
+          newNode.before.add(prevNode);
+          prevNode = newNode;
         }
-
-        newNode = new Node(counter, line.substring(0, line.length()-1));
-        this.nodes.add(newNode);
-        prevNode.after.add(newNode);
-        newNode.before.add(prevNode);
-        prevNode = newNode;
-
+        else {
+          prevNode = new Node(counter, line.substring(0, line.length()-1));
+          this.nodes.add(prevNode);
+        }
       }
-      else if(line.contains("\tj ") || line.contains("\tblt") || line.contains("\tbgt") || line.contains("\tbge") ||
+      else if(line.contains("\tblt") || line.contains("\tbgt") || line.contains("\tbge") ||
         line.contains("\tble") || line.contains("\tbne") || line.contains("\tbeq")){
         line = reader.readLine();
           counter++;
           if (prevNode != null){
-          prevNode.lastLine = counter-1;
+            prevNode.lastLine = counter-1;
+            prevNode = null;
           }
           if (line.contains(":")){
             prevNode = new Node(counter, line.substring(0, line.length()-1));
@@ -69,7 +72,7 @@ public class GRAPH
 
         }
       }
-      else if(line.contains("\tjr")){
+      else if(line.contains("\tj ") || line.contains("\tjr")){
         if (prevNode != null){
           prevNode.lastLine = counter;
           prevNode = null;    
