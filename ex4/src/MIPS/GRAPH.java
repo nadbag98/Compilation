@@ -209,6 +209,9 @@ public class GRAPH
         curr = curr.tail;
       }
     }
+    System.out.println(Arrays.toString(liveArr[68]));
+    System.out.println(Arrays.toString(liveArr[69]));
+    System.out.println(Arrays.toString(liveArr[70]));
   }
 
 
