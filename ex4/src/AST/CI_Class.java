@@ -28,8 +28,8 @@ public class CI_Class
 		this.c_size = this.c_size + 1;
 	}
 	
-	public CI_Field get_field(String field_name){
-		return c_list.get_field(field_name);
+	public CI_Field get_field(int offset){
+		return c_list.get_field(offset);
 	}
   
   
