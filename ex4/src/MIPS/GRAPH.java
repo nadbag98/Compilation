@@ -236,7 +236,7 @@ public class GRAPH
           if (node.IN[j] == i){
             break;
           }
-          if (node.IN[j] != -1){
+          if (node.IN[j] == -1){
             node.IN[j] = i;
             changed = true;
             break;
