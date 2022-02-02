@@ -35,8 +35,9 @@ public class IRcommand_Check_Range extends IRcommand
 		String label_lt_min = getFreshLabel("lt_min");
 		
 		MIPSGenerator.getInstance().bge(this.dst,32768,label_gt_max);
-		MIPSGenerator.getInstance().move(this.dst, this.dst);
+		MIPSGenerator.getInstance().li("$s5", 0);
 		MIPSGenerator.getInstance().ble(this.dst,-32769,label_lt_min);
+		MIPSGenerator.getInstance().li("$s5", 0);
     		MIPSGenerator.getInstance().jump(label_end);
 
 		MIPSGenerator.getInstance().label(label_gt_max);
