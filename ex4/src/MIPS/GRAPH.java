@@ -215,18 +215,18 @@ public class GRAPH
         curr = curr.tail;
       }
     }
-    System.out.println(Arrays.toString(liveArr[68]));
-    System.out.println(Arrays.toString(liveArr[69]));
-    System.out.println(Arrays.toString(liveArr[70]));
-    Node n = this.nodes.findByLabel("Label_7_copy_str2_loop");
-    System.out.println(Arrays.toString(n.IN));
-    System.out.println(n.line);
-    System.out.println(Arrays.toString(this.tempArr[90]));
-    System.out.println(Arrays.toString(this.liveArr[90]));
-    System.out.println(Arrays.toString(this.liveArr[89]));
-    System.out.println(Arrays.toString(this.liveArr[88]));
-    System.out.println(Arrays.toString(this.liveArr[87]));
-    System.out.println(Arrays.toString(this.liveArr[86]));
+//     System.out.println(Arrays.toString(liveArr[68]));
+//     System.out.println(Arrays.toString(liveArr[69]));
+//     System.out.println(Arrays.toString(liveArr[70]));
+//     Node n = this.nodes.findByLabel("Label_7_copy_str2_loop");
+//     System.out.println(Arrays.toString(n.IN));
+//     System.out.println(n.line);
+//     System.out.println(Arrays.toString(this.tempArr[90]));
+//     System.out.println(Arrays.toString(this.liveArr[90]));
+//     System.out.println(Arrays.toString(this.liveArr[89]));
+//     System.out.println(Arrays.toString(this.liveArr[88]));
+//     System.out.println(Arrays.toString(this.liveArr[87]));
+//     System.out.println(Arrays.toString(this.liveArr[86]));
   }
 
 
