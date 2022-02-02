@@ -212,7 +212,7 @@ public class GRAPH
     System.out.println(Arrays.toString(liveArr[68]));
     System.out.println(Arrays.toString(liveArr[69]));
     System.out.println(Arrays.toString(liveArr[70]));
-    Node n = this.nodes.findByLabel("Label_8_copy_str2_end");
+    Node n = this.nodes.findByLabel("Label_7_copy_str2_loop");
     System.out.println(Arrays.toString(n.IN));
     System.out.println(n.line);
     System.out.println(Arrays.toString(this.tempArr[90]));
