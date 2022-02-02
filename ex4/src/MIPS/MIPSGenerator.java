@@ -44,21 +44,8 @@ public class MIPSGenerator
 		fileWriter.format("\tli $v0,4\n");
 		fileWriter.format("\tlw $a0,0($sp)\n");
 		fileWriter.format("\tsyscall\n");
-// 		// next 3 lines print a space
-// 		fileWriter.format("\tli $a0,32\n");
-// 		fileWriter.format("\tli $v0,11\n");
-// 		fileWriter.format("\tsyscall\n");
 
 	}
-	//public TEMP addressLocalVar(int serialLocalVarNum)
-	//{
-	//	TEMP t  = TEMP_FACTORY.getInstance().getFreshTEMP();
-	//	int idx = t.getSerialNumber();
-	//
-	//	fileWriter.format("\taddi Temp_%d,$fp,%d\n",idx,-serialLocalVarNum*WORD_SIZE);
-	//	
-	//	return t;
-	//}
 	public void allocate_word(String var_name, int value)
 	{
 		fileWriter.format(".data\n");
@@ -431,7 +418,6 @@ public class MIPSGenerator
 		fileWriter.format("\taddu $s1,$s1,1\n");
 		fileWriter.format("\tj %s\n", copy_str2_loop);
 		fileWriter.format("%s:\n", copy_str2_end);
-// 		fileWriter.format("\taddu $s0,$s0,1\n");
 		fileWriter.format("\tsb $s2,0($s0)\n");
 	}
 	
