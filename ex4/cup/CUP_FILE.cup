@@ -147,12 +147,9 @@ non terminal AST_CLASS_DUMMY classDummy;
 /***********************/
 precedence left ASSIGN;
 precedence left EQ;
-precedence left LT;
-precedence left GT;
-precedence left PLUS;
-precedence left MINUS;
+precedence left LT, GT;
+precedence left PLUS, MINUS;
 precedence left TIMES, DIVIDE;
-//precedence left DIVIDE;
 precedence left LBRACK;
 precedence left LPAREN;
 precedence left DOT;
