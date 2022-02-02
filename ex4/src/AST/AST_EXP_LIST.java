@@ -77,10 +77,10 @@ public class AST_EXP_LIST extends AST_Node
 	}
 	
 	public TEMP IRme(){
+		TEMP res = this.head.IRme();
 		if (this.tail != null) {
 			this.tail.IRme();
 		}
-		TEMP res = this.head.IRme();
 		IR.
 		getInstance().
 		Add_IRcommand(new IRcommand_subu("$sp", "$sp", 4));
