@@ -48,10 +48,10 @@ public class IRcommand_Binop_EQ_Strings extends IRcommand
 		MIPSGenerator.getInstance().lb("$s3", 0, "$s1");
 		
 		MIPSGenerator.getInstance().bne("$s2", "$s3", label_AssignZero);
-		MIPSGenerator.getInstance().beq("$s2", 0, label_end);
 		
 		MIPSGenerator.getInstance().addu("$s0", "$s0", 1);
 		MIPSGenerator.getInstance().addu("$s1", "$s1", 1);
+		MIPSGenerator.getInstance().beq("$s2", 0, label_end);
 		
 		MIPSGenerator.getInstance().jump(label_loop);
 		
