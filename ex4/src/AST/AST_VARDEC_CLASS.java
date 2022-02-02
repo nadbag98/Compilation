@@ -150,7 +150,6 @@ public class AST_VARDEC_CLASS extends AST_Node
 				my_field.string_val = null;
 				break;
 		   }
-		me.update_field(this.s, );
 	   }
 	   return null;
 	}
