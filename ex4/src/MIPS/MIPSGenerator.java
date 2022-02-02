@@ -431,7 +431,7 @@ public class MIPSGenerator
 		fileWriter.format("\taddu $s1,$s1,1\n");
 		fileWriter.format("\tj %s\n", copy_str2_loop);
 		fileWriter.format("%s:\n", copy_str2_end);
-		fileWriter.format("\taddu $s0,$s0,1\n");
+// 		fileWriter.format("\taddu $s0,$s0,1\n");
 		fileWriter.format("\tsb $s2,0($s0)\n");
 	}
 	
