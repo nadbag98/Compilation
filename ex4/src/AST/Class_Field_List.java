@@ -49,5 +49,12 @@ public class Class_Field_List
 		}
 		return res;
 	}
+	
+	public CI_Field get_field(int offset){
+		if (this.head != null && this.head.offset == offset){
+			return this.head;
+		}
+		return this.tail.get_field(offset);
+	}
 
 }
