@@ -110,6 +110,7 @@ public class AST_EXP_VAR extends AST_EXP
 			inst.Add_IRcommand(new IRcommand_LoadTempTemp(res, obj));
 			return res;
 		}
+		inst.Add_IRcommand(new IRcommand_LoadTempTemp(obj, obj));
 		inst.Add_IRcommand(new IRcommand_Check_Init(obj));
 		if (this.l == null){
 			inst.Add_IRcommand(new IRcommand_callMethodInClass(this.offset, obj));
