@@ -391,34 +391,34 @@ public class GRAPH
       int temp1 = temps[1];
       int temp2 = temps[2];
       if (temp0 <= temp1 && temp1 <= temp2){
-        temp[0] = temp0;
-        temp[1] = temp1;
-        temp[2] = temp2; 
+        temps[0] = temp0;
+        temps[1] = temp1;
+        temps[2] = temp2; 
       }
       else if (temp1 <= temp0 && temp0 <= temp2){
-        temp[0] = temp1;
-        temp[1] = temp0;
-        temp[2] = temp2; 
+        temps[0] = temp1;
+        temps[1] = temp0;
+        temps[2] = temp2; 
       }
       else if (temp0 <= temp2 && temp2 <= temp1){
-        temp[0] = temp0;
-        temp[1] = temp2;
-        temp[2] = temp1; 
+        temps[0] = temp0;
+        temps[1] = temp2;
+        temps[2] = temp1; 
       }
       else if (temp1 <= temp2 && temp2 <= temp0){
-        temp[0] = temp1;
-        temp[1] = temp2;
-        temp[2] = temp0; 
+        temps[0] = temp1;
+        temps[1] = temp2;
+        temps[2] = temp0; 
       }
       else if (temp2 <= temp0 && temp0 <= temp1){
-        temp[0] = temp2;
-        temp[1] = temp0;
-        temp[2] = temp1; 
+        temps[0] = temp2;
+        temps[1] = temp0;
+        temps[2] = temp1; 
       }
       else {
-        temp[0] = temp2;
-        temp[1] = temp1;
-        temp[2] = temp0; 
+        temps[0] = temp2;
+        temps[1] = temp1;
+        temps[2] = temp0; 
       }
       
       for (int i=0; i<3; i++){
