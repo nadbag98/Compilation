@@ -4,7 +4,6 @@
 package MIPS;
 
 import java.io.*;
-import java.util.Arrays;
 
 /*******************/
 /* GENERAL IMPORTS */
@@ -310,16 +309,11 @@ public class GRAPH
       stack_idx++;
       for (int i=0; i<this.tempCounter; i++){
         if (prev == -1){
-          System.out.println(Arrays.deepToString(interMat));
-          System.out.println(Arrays.deepToString(interMat2));
-          System.out.println(String.format("%d", stack_idx));
         }
         this.interMat2[i][prev] = 0;
         this.interMat2[prev][i] = 0;
       }
     }
-//     System.out.println(Arrays.deepToString(interMat));
-//     System.out.println(Arrays.deepToString(interMat2));
     this.colors = new int[this.tempCounter];
     boolean[] takenColors;
     for (int i=stack_idx-1; i>=0; i--){
@@ -427,17 +421,11 @@ public class GRAPH
   public void finalize(PrintWriter fileWriter)throws IOException, FileNotFoundException{
     
     this.createBlocks();
-    System.out.println("finished createBlocks()");
     this.createEdges();
-    System.out.println("finished createEdges()");
     this.liveAnalysis();
-    System.out.println("finished liveAnalysis()");
     this.tempGraph();
-    System.out.println("finished tempGraph()");
     this.colorGraph();
-    System.out.println("finished colorGraph()");
     this.optimizeTemps(fileWriter);
-    System.out.println("finished optimizeTemps()");
     return;
   }
 }
