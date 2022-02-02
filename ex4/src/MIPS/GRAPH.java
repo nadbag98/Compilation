@@ -214,6 +214,8 @@ public class GRAPH
     System.out.println(Arrays.toString(liveArr[70]));
     Node n = this.nodes.findByLabel("Label_8_copy_str2_end");
     System.out.println(Arrays.toString(n.IN));
+    System.out.println(n.line);
+    System.out.println(Arrays.toString(this.tempArr[90]));
   }
 
 
