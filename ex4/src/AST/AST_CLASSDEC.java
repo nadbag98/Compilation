@@ -81,7 +81,7 @@ public class AST_CLASSDEC extends AST_Node
 		AST_CI inst = AST_CI.getInstance();
 		inst.add_class(this.s1);
 		if (this.s2 != null){
-			CI_Class me = inst.get_last();
+			CI_Class me = inst.c_list.get_last();
 			CI_Class myDad = inst.find_class(this.s2);
 			me.c_size = myDad.c_size;
 			me.c_list = myDad.c_list.copy();
