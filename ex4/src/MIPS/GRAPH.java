@@ -99,6 +99,7 @@ public class GRAPH
       if(line.contains("\tblt") || line.contains("\tbgt") || line.contains("\tbge") ||
         line.contains("\tble") || line.contains("\tbne") || line.contains("\tbeq")){
         Node src = this.nodes.findByLast(counter);
+        if (src == null) System.out.println("get blabla");
         int idx = line.lastIndexOf(",");
         String label = line.substring(idx+1, line.length());
         Node dst = this.nodes.findByLabel(label);
