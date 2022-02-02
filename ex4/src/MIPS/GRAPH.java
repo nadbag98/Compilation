@@ -421,7 +421,7 @@ public class GRAPH
         temps[2] = temp0; 
       }
       
-      for (int i=0; i<3; i++){
+      for (int i=2; i>=0; i--){
         if (temps[i] != -1){
           line = line.replace(String.format("Temp_%d", temps[i]), String.format("$t%d", this.colors[temps[i]]));
         }
