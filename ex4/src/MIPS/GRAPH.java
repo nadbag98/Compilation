@@ -329,8 +329,8 @@ public class GRAPH
         this.interMat2[prev][i] = 0;
       }
     }
-    System.out.println(Arrays.deepToString(interMat));
-    System.out.println(Arrays.deepToString(interMat2));
+//     System.out.println(Arrays.deepToString(interMat));
+//     System.out.println(Arrays.deepToString(interMat2));
     this.colors = new int[this.tempCounter];
     boolean[] takenColors;
     for (int i=stack_idx-1; i>=0; i--){
