@@ -212,6 +212,8 @@ public class GRAPH
     System.out.println(Arrays.toString(liveArr[68]));
     System.out.println(Arrays.toString(liveArr[69]));
     System.out.println(Arrays.toString(liveArr[70]));
+    Node n = this.nodes.findByLabel("Label_8_copy_str2_end");
+    System.out.println(Arrays.toString(n.IN));
   }
 
 
@@ -234,7 +236,7 @@ public class GRAPH
       }
       curr = curr.tail;      
     }
-
+    
     int[] prev = node.IN;
     for (int i=node.lastLine; i>=node.line; i--){
       for (int k : prev){
