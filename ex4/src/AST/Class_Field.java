@@ -17,4 +17,9 @@ public class Class_Field
     this.int_val = int_val;
     this.string_val = string_val;
   }
+  
+  public Class_Field copy(){
+		Class_Field d = new Class_Field(this.offset, this.int_val, this.string_val);
+		return d;
+	}
 }
