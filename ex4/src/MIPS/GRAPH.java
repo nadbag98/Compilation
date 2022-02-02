@@ -1,30 +1,3 @@
-/***********/
-/* PACKAGE */
-/***********/
-package MIPS;
-
-import java.io.*;
-import java.util.Arrays;
-
-/*******************/
-/* GENERAL IMPORTS */
-/*******************/
-
-/*******************/
-/* PROJECT IMPORTS */
-/*******************/
-
-public class GRAPH
-{
-
-  public int lineCounter;
-  public int tempCounter;
-
-  public int[][] liveArr;
-  public int[][] tempArr;
-  public int[][] interMat;
-  public int[][] interMat2;
-  public int[] colors;
 
   public NodeList nodes;
   
@@ -35,6 +8,7 @@ public class GRAPH
   
   public void createBlocks() throws IOException, FileNotFoundException{
     Node prevNode = null;
+    Node newNode = null;
     int counter = 1;
     BufferedReader reader;
     reader = new BufferedReader(new FileReader("output/MIPS_PRE_OPT.txt")); 
@@ -45,8 +19,11 @@ public class GRAPH
           prevNode.lastLine = counter-1;
         }
 
-        prevNode = new Node(counter, line.substring(0, line.length()-1));
-        this.nodes.add(prevNode);
+        newNode = new Node(counter, line.substring(0, line.length()-1));
+        this.nodes.add(newNode);
+        prevNode.after.add(newNode);
+        newNode.before.add(prevNode);
+        prevNode = newNode;
 
       }
       else if(line.contains("\tj ") || line.contains("\tblt") || line.contains("\tbgt") || line.contains("\tbge") ||
@@ -209,23 +186,18 @@ public class GRAPH
         curr = curr.tail;
       }
     }
-//     System.out.println(Arrays.toString(liveArr[68]));
-//     System.out.println(Arrays.toString(liveArr[69]));
-//     System.out.println(Arrays.toString(liveArr[70]));
+    System.out.println(Arrays.toString(liveArr[68]));
+    System.out.println(Arrays.toString(liveArr[69]));
+    System.out.println(Arrays.toString(liveArr[70]));
     Node n = this.nodes.findByLabel("Label_7_copy_str2_loop");
-//     System.out.println(Arrays.toString(n.IN));
-    Node l = this.nodes.findByLabel("Label_6_copy_str1_end");
-    System.out.println(Arrays.toString(l.IN));
-    System.out.println(Arrays.toString(this.liveArr[78]));
-    System.out.println(Arrays.toString(this.liveArr[77]));
-    System.out.println(l.line);
-//     System.out.println(n.line);
-//     System.out.println(Arrays.toString(this.tempArr[90]));
-//     System.out.println(Arrays.toString(this.liveArr[90]));
-//     System.out.println(Arrays.toString(this.liveArr[89]));
-//     System.out.println(Arrays.toString(this.liveArr[88]));
-//     System.out.println(Arrays.toString(this.liveArr[87]));
-//     System.out.println(Arrays.toString(this.liveArr[86]));
+    System.out.println(Arrays.toString(n.IN));
+    System.out.println(n.line);
+    System.out.println(Arrays.toString(this.tempArr[90]));
+    System.out.println(Arrays.toString(this.liveArr[90]));
+    System.out.println(Arrays.toString(this.liveArr[89]));
+    System.out.println(Arrays.toString(this.liveArr[88]));
+    System.out.println(Arrays.toString(this.liveArr[87]));
+    System.out.println(Arrays.toString(this.liveArr[86]));
   }
 
 
