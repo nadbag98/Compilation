@@ -216,6 +216,8 @@ public class GRAPH
 //     System.out.println(Arrays.toString(n.IN));
     Node l = this.nodes.findByLabel("Label_6_copy_str1_end");
     System.out.println(Arrays.toString(l.IN));
+    System.out.println(Arrays.toString(this.liveArr[78]));
+    System.out.println(Arrays.toString(this.liveArr[77]));
     System.out.println(l.line);
 //     System.out.println(n.line);
 //     System.out.println(Arrays.toString(this.tempArr[90]));
