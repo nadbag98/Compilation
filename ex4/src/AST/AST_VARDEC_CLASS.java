@@ -136,7 +136,7 @@ public class AST_VARDEC_CLASS extends AST_Node
 		   }
 	   }
 	   else {
-	   	CI_Class me = inst.get_last();
+	   	CI_Class me = inst.c_list.get_last();
 		Class_Field my_field = me.get_field(offset);
 		switch(this.rule){
 			case(1):
