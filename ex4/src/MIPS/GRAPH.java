@@ -216,6 +216,11 @@ public class GRAPH
     System.out.println(Arrays.toString(n.IN));
     System.out.println(n.line);
     System.out.println(Arrays.toString(this.tempArr[90]));
+    System.out.println(Arrays.toString(this.liveArr[90]));
+    System.out.println(Arrays.toString(this.liveArr[89]));
+    System.out.println(Arrays.toString(this.liveArr[88]));
+    System.out.println(Arrays.toString(this.liveArr[87]));
+    System.out.println(Arrays.toString(this.liveArr[86]));
   }
 
 
