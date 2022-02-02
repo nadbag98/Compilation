@@ -97,14 +97,13 @@ public class AST_STMT_VAR_EXP extends AST_STMT
 	
 	public TEMP IRme(){
 		TEMP src;
+		TEMP dst_address = this.v.IRme();
 		if (this.e != null && this.ne == null){
 			src = this.e.IRme();
 			
 		} else {
 			src = this.ne.IRme();
 		}
-		
-		TEMP dst_address = this.v.IRme();
 		IR.
 		getInstance().
 		Add_IRcommand(new IRcommand_StoreTemp2Temp(dst_address, src));
