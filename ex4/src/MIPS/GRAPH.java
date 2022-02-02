@@ -99,7 +99,7 @@ public class GRAPH
       if(line.contains("\tblt") || line.contains("\tbgt") || line.contains("\tbge") ||
         line.contains("\tble") || line.contains("\tbne") || line.contains("\tbeq")){
         Node src = this.nodes.findByLast(counter);
-        if (src == null) System.out.println("get blabla");
+        if (src == null) System.out.println(String.format("%d", counter));
         int idx = line.lastIndexOf(",");
         String label = line.substring(idx+1, line.length());
         Node dst = this.nodes.findByLabel(label);
@@ -216,18 +216,6 @@ public class GRAPH
         curr = curr.tail;
       }
     }
-//     System.out.println(Arrays.toString(liveArr[68]));
-//     System.out.println(Arrays.toString(liveArr[69]));
-//     System.out.println(Arrays.toString(liveArr[70]));
-//     Node n = this.nodes.findByLabel("Label_7_copy_str2_loop");
-//     System.out.println(Arrays.toString(n.IN));
-//     System.out.println(n.line);
-//     System.out.println(Arrays.toString(this.tempArr[90]));
-//     System.out.println(Arrays.toString(this.liveArr[90]));
-//     System.out.println(Arrays.toString(this.liveArr[89]));
-//     System.out.println(Arrays.toString(this.liveArr[88]));
-//     System.out.println(Arrays.toString(this.liveArr[87]));
-//     System.out.println(Arrays.toString(this.liveArr[86]));
   }
 
 
