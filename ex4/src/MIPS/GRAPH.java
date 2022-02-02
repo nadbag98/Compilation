@@ -1,4 +1,30 @@
+/***********/
+/* PACKAGE */
+/***********/
+package MIPS;
 
+import java.io.*;
+import java.util.Arrays;
+
+/*******************/
+/* GENERAL IMPORTS */
+/*******************/
+
+/*******************/
+/* PROJECT IMPORTS */
+/*******************/
+
+public class GRAPH
+{
+
+  public int lineCounter;
+  public int tempCounter;
+
+  public int[][] liveArr;
+  public int[][] tempArr;
+  public int[][] interMat;
+  public int[][] interMat2;
+  public int[] colors;
   public NodeList nodes;
   
   public GRAPH() {
