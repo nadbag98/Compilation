@@ -122,16 +122,35 @@ public class AST_VARDEC_CLASS extends AST_Node
 	   }	
 	   
 	   AST_CI inst = AST_CI.getInstance();
-	   switch(this.rule){
-	   	case(1):
-			inst.add_field(offset, this.s2);
-			break;
-		case(2):
-			inst.add_field(offset, this.i);
-			break;
-		default:
-			inst.add_field(offset, 0);
-			break;
+	   if (!inherited){
+		   switch(this.rule){
+			case(1):
+				inst.add_field(offset, this.s2);
+				break;
+			case(2):
+				inst.add_field(offset, this.i);
+				break;
+			default:
+				inst.add_field(offset, 0);
+				break;
+		   }
+	   }
+	   else {
+	   	CI_Class me = inst.get_last();
+		CI_Field my_field = me.get_field();
+		switch(this.rule){
+			case(1):
+				my_field.string_val = this.s2;
+				break;
+			case(2):
+				my_field.int_val = this.i;
+				break;
+			default:
+				my_field.int_val = 0;
+				my_field.string_val = null;
+				break;
+		   }
+		me.update_field(this.s, );
 	   }
 	   return null;
 	}
