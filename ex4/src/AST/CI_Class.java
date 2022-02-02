@@ -28,7 +28,7 @@ public class CI_Class
 		this.c_size = this.c_size + 1;
 	}
 	
-	public CI_Field get_field(int offset){
+	public Class_Field get_field(int offset){
 		return c_list.get_field(offset);
 	}
   
