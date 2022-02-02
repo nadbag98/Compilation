@@ -43,7 +43,10 @@ public class Class_Field_List
 	}
 	
 	public Class_Field_List copy(){
-		Class_Field_List res = new Class_Field_List(this.head.copy(), null);
+		Class_Field_List res = new Class_Field_List(null, null);
+		if (this.head != null){
+			res.head = this.head.copy();
+		}
 		if (this.tail != null){
 			res.tail = this.tail.copy();
 		}
