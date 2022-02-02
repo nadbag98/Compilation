@@ -43,7 +43,7 @@ public class IRcommand_Binop_EQ_NotStrings extends IRcommand
 		/*     if (t1!=t2) goto label_AssignZero; */
 		/******************************************/
 		MIPSGenerator.getInstance().beq(t1,t2,label_AssignOne);
-		MIPSGenerator.getInstance().move(this.dst, this.dst);
+		MIPSGenerator.getInstance().li("$s5", 0);
 		MIPSGenerator.getInstance().bne(t1,t2,label_AssignZero);
 
 		/************************/
