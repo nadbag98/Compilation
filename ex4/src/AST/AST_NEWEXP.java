@@ -101,7 +101,7 @@ public class AST_NEWEXP extends AST_Node
 			AST_CI ci = AST_CI.getInstance();
 			CI_Class c_class = ci.find_class(this.t.s);
 			inst.Add_IRcommand(new IRcommand_LiToString("$v0", 9));
-			inst.Add_IRcommand(new IRcommand_LiToString("$a0", c_class.c_size));
+			inst.Add_IRcommand(new IRcommand_LiToString("$a0", c_class.c_size * 4));
 			inst.Add_IRcommand(new IRcommand_Syscall());
 			inst.Add_IRcommand(new IRcommand_movStringToTemp(dst, "$v0"));
 			inst.Add_IRcommand(new IRcommand_LaToString("$s0", String.format("vt_%s", this.t.s)));
