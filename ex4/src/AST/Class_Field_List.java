@@ -41,5 +41,13 @@ public class Class_Field_List
 		}
 		
 	}
+	
+	public Class_Field_List copy(){
+		Class_Field_List res = new Class_Field_List(this.head.copy(), null);
+		if (this.tail != null){
+			res.tail = this.tail.copy();
+		}
+		return res;
+	}
 
 }
