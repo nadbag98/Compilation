@@ -176,10 +176,14 @@ public class AST_VARDEC extends AST_Node
 			}
 		} 
 		else {
+			TEMP value;
 			if (this.exp != null){
-				TEMP value = this.exp.IRme();
-				inst.Add_IRcommand(new IRcommand_Store("0($sp)", value));
+				value = this.exp.IRme();
+			} else {
+				value = TEMP_FACTORY.getInstance().getFreshTEMP();
+				inst.Add_IRcommand(new IRcommand_Li(value, 0));
 			}
+			inst.Add_IRcommand(new IRcommand_Store("0($sp)", value));
 		}
 		
 		return null;
