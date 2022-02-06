@@ -143,6 +143,7 @@ public class AST_VAR extends AST_Node
 			TEMP index = this.e.IRme();
 			dst = this.v.IRme();
 			inst.Add_IRcommand(new IRcommand_LoadTempTemp(dst, dst));
+			inst.Add_IRcommand(new IRcommand_Check_Init(dst));
 			inst.Add_IRcommand(new IRcommand_Check_index(dst, index));
 			inst.Add_IRcommand(new IRcommand_AddTempTempInt(index, index, 1));
 			inst.Add_IRcommand(new IRcommand_MulTempTempInt(index, index, 4));
