@@ -350,6 +350,10 @@ public class SYMBOL_TABLE
 	
 	public int offsetFuncToObject(String s){
 		
+		if (this.isInGlobalFunction(s)){
+			return -1;
+		}
+		
 		SYMBOL_TABLE_ENTRY e = this.top;
 		DATA_MEMBER d;
 		
