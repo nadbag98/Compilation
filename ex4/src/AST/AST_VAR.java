@@ -140,8 +140,8 @@ public class AST_VAR extends AST_Node
 		}
 		
 		if (this.v != null && this.e != null && this.s == null){
-			TEMP index = this.e.IRme();
 			dst = this.v.IRme();
+			TEMP index = this.e.IRme();
 			inst.Add_IRcommand(new IRcommand_LoadTempTemp(dst, dst));
 			inst.Add_IRcommand(new IRcommand_Check_Init(dst));
 			inst.Add_IRcommand(new IRcommand_Check_index(dst, index));
