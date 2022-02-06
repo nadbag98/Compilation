@@ -94,6 +94,12 @@ public class AST_STMT_EXP extends AST_STMT
 			/*********************************/
 			/* [2] entry label for the while */
 			/*********************************/
+			TEMP currSp = TEMP_FACTORY.getInstance().getFreshTEMP();
+			
+			IR.
+			getInstance().
+			Add_IRcommand(new IRcommand_movStringToTemp(currSp, "$sp"));
+			
 			IR.
 			getInstance().
 			Add_IRcommand(new IRcommand_Label(label_start));
@@ -128,6 +134,10 @@ public class AST_STMT_EXP extends AST_STMT
 			IR.
 			getInstance().
 			Add_IRcommand(new IRcommand_Label(label_end));
+			
+			IR.
+			getInstance().
+			Add_IRcommand(new IRcommand_movTempToString("$sp", currSp));
 
 			/*******************/
 			/* [8] return null */
@@ -149,6 +159,12 @@ public class AST_STMT_EXP extends AST_STMT
 			/******************************************/
 			/* [4] Jump conditionally to the loop end */
 			/******************************************/
+			TEMP currSp = TEMP_FACTORY.getInstance().getFreshTEMP();
+			
+			IR.
+			getInstance().
+			Add_IRcommand(new IRcommand_movStringToTemp(currSp, "$sp"));
+			
 			IR.
 			getInstance().
 			Add_IRcommand(new IRcommand_Jump_If_Eq_To_Zero(cond_temp,label_end));		
@@ -168,6 +184,11 @@ public class AST_STMT_EXP extends AST_STMT
 			/*******************/
 			/* [8] return null */
 			/*******************/
+			
+			IR.
+			getInstance().
+			Add_IRcommand(new IRcommand_movTempToString("$sp", currSp));
+			
 			return null;
 		}
 		
