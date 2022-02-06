@@ -300,6 +300,10 @@ public class SYMBOL_TABLE
 	
 	public int offsetToObject(String s){
 		
+		if (this.isInGlobalFunction(s)){
+			return 0;
+		}
+		
 		SYMBOL_TABLE_ENTRY e = this.top;
 		DATA_MEMBER d;
 		
@@ -316,6 +320,32 @@ public class SYMBOL_TABLE
 			e = e.prevtop;
 		}
 		return 0;
+	}
+	
+	public boolean isInGlobalFunction(String s){
+		SYMBOL_TABLE_ENTRY e = this.top;
+		DATA_MEMBER d;
+		
+		while (e != null)
+		{
+			if (e.type.isFunc()){	
+				while (e.name != "SCOPE-BOUNDARY")
+				{
+					e = e.prevtop;
+				}
+				if (e.prevtop == null){
+					return true;
+				}
+				return false;
+			}
+			
+			if (e.type.isClass()){
+				return false;
+			}
+			
+			e = e.prevtop;
+		}
+		return false;
 	}
 	
 	public int offsetFuncToObject(String s){
