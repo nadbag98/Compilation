@@ -73,6 +73,9 @@ public class AST_STMT_EXP extends AST_STMT
 				throw new ArithmeticException(String.format("%d", e.line));
 			}
 			sym_table.beginScope();
+			if (this.is_while == 1){
+				sym_table.top.isWhile = true;
+			}
 			sym_table.top.offset = sym_table.top.prevtop.offset;
 			this.l.visit(sym_table, returnType);
 			sym_table.endScope();
@@ -120,6 +123,10 @@ public class AST_STMT_EXP extends AST_STMT
 			/* [5] body.IRme() */
 			/*******************/
 			this.l.IRme();
+			
+			IR.
+			getInstance().
+			Add_IRcommand(new IRcommand_movTempToString("$sp", currSp));
 
 			/******************************/
 			/* [6] Jump to the loop entry */
