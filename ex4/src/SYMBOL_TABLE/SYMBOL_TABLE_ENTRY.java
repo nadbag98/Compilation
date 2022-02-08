@@ -31,10 +31,7 @@ public class SYMBOL_TABLE_ENTRY
 	public TYPE my_class;
 	
 	public int offset;
-	
-	public boolean isWhile;
-	
-	public int numOfVarDecsInWhile;
+
 
 	/*********************************************/
 	/* prevtop and next symbol table entries ... */
@@ -67,7 +64,5 @@ public class SYMBOL_TABLE_ENTRY
 		this.prevtop = prevtop;
 		this.prevtop_index = prevtop_index;
 		this.offset = 0;
-		this.isWhile = false;
-		this.numOfVarDecsInWhile = 0;
 	}
 }
