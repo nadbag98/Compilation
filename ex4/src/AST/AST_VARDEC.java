@@ -11,6 +11,7 @@ public class AST_VARDEC extends AST_Node
   	public String s;
   	public int is_new;
 	public boolean is_global;
+	public boolean isInWhile;
   
   
   public AST_VARDEC(AST_TYPE t, String s, AST_Node exp, int is_new, int line)
@@ -38,6 +39,7 @@ public class AST_VARDEC extends AST_Node
 	    this.exp = exp;
 	    this.is_new = is_new;
 	    this.is_global = false;
+	    this.isInWhile = false;
 	}
   
   public void PrintMe()
